@@ -1,0 +1,190 @@
+<!-- Copyright (c) Adrián Jiménez Pascual -  All rights reserved -->
+<!-- This page and its content is protected under copyright and intellectual property laws.  -->
+<!-- The content belongs to Adrián Jiménez Pascual, Tokio, Japan -->
+<!-- All rights reserved. -->
+<!--
+  **  Lawbreakers will be reported to competent authorities and sentenced by the law   **
+-->
+<!--Copyright (c) Adrián Jiménez Pascual - http://www.ms.u-tokyo.ac.jp/~adri/ -->
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="../Lasso_logo.ico"/>
+
+<title>Simon</title>
+
+<script>
+
+onload = function() {
+    canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    canvas.style.position = "absolute";
+    canvas.style.left = 0;
+    canvas.style.top = 0;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    context = canvas.getContext("2d");
+
+    simonSays();
+}
+
+function simonSays() { //Full game
+	var MARGIN = 10;
+	var button_width = (canvas.width-6*MARGIN)/3;
+    var button_height = (canvas.height-6*MARGIN)/3;
+    var ALPHA_CHANNEL = 0.2;
+    context.globalAlpha = ALPHA_CHANNEL;
+    var simon = new Array();
+    var colors = ["purple","blue","magenta","green","red","yellow","lightSkyBlue","orange","lime"];
+    var time_to_see = 500;
+    var back_color = "rgb(47,60,60)";
+
+	drawClear();
+    setTimeout(game, 1000);
+
+	function drawClear() {
+		context.globalAlpha = 1;
+		context.fillStyle = back_color;
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.globalAlpha = ALPHA_CHANNEL;
+		createButtons();
+	}
+
+	function game() {
+		simon.push(Math.floor(Math.random()*9));
+		simon_playing = true;
+		playSimon(0);
+		setTimeout(function(){simon_playing = false;}, time_to_see*simon.length);
+		num_taps = 0;
+	}
+
+	var simon_playing;
+	function playSimon(position) {
+		buttons[simon[position]].draw(1);
+		setTimeout(function(){
+			buttons[simon[position]].clearButton();
+			buttons[simon[position]].draw(ALPHA_CHANNEL);
+			setTimeout(function(){
+				if (position < simon.length-1){
+					playSimon(position+1);
+				}
+			}, time_to_see/4);
+		}, time_to_see);
+	}
+
+	function Button(number) {
+		this.x = MARGIN + (number%3)*(button_width+2*MARGIN);
+		this.y = MARGIN + Math.floor(number/3)*(button_height+2*MARGIN);
+		this.color = colors[number];
+
+		this.draw = function(alpha) {
+			context.fillStyle = this.color;
+			context.beginPath();
+			context.moveTo(this.x, this.y);
+			context.lineTo(this.x+button_width, this.y);
+			context.lineTo(this.x+button_width, this.y+button_height);
+			context.lineTo(this.x, this.y+button_height);
+			context.closePath();
+			context.globalAlpha = 1;
+			context.stroke();
+			context.globalAlpha = alpha;
+			context.fill();
+			context.globalAlpha = ALPHA_CHANNEL;
+		}
+
+		this.onButton = function(mouseX, mouseY) {
+			var result = false;
+			if (this.x < mouseX && mouseX < this.x+button_width && this.y < mouseY && mouseY < this.y+button_height)
+				result = true;
+			return result;
+		}
+
+		this.clearButton = function() {
+			context.globalAlpha = 1;
+			context.fillStyle = back_color;
+			context.beginPath();
+			context.moveTo(this.x, this.y);
+			context.lineTo(this.x+button_width, this.y);
+			context.lineTo(this.x+button_width, this.y+button_height);
+			context.lineTo(this.x, this.y+button_height);
+			context.closePath();
+			context.globalAlpha = 1;
+			context.stroke();
+			context.fill();
+			context.globalAlpha = ALPHA_CHANNEL;
+		}
+	}
+
+	var buttons;
+	function createButtons() {
+		buttons = new Array(9);
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i] = new Button(i);
+			buttons[i].draw(ALPHA_CHANNEL);
+		}
+	}
+
+	var x, y;
+	var num_taps;
+	ontouchstart = function(event) {
+		if (!simon_playing) {
+			x = event.touches[0].clientX;
+			y = event.touches[0].clientY;
+			commonStart();
+		}
+	}
+	ontouchend = function(event) {
+		commonEnd();
+	}
+	ontouchmove = function(event) {
+		event.preventDefault();
+	}
+	onmousedown = function(event) {
+		if (!simon_playing) {
+			x = event.clientX;
+			y = event.clientY;
+			commonStart();
+		}
+	}
+	onmouseup = function(event) {
+		commonEnd();
+	}
+	function commonStart() {
+		for (var i = 0; i < buttons.length; i++) {
+			if (buttons[i].onButton(x, y)) { //If mouse clicks on button i
+				buttons[i].draw(1);
+				num_taps++;
+				if (num_taps <= simon.length) {
+					if (i != simon[num_taps-1]) { //If there is a mistake
+						drawClear();
+						if (confirm("Maximum score: "+(simon.length-1)+"\nTry again from the start?")) {
+							simon = new Array();
+							game();
+						}
+						else
+							simon = new Array();	
+					}
+					else if (num_taps == simon.length) { //If all ok
+						setTimeout(function(){
+							drawClear();
+							game();
+						}, time_to_see);
+					}
+				}
+			}
+		}
+	}
+	function commonEnd() {
+		if (!simon_playing) {
+			for (var i = 0; i < buttons.length; i++) {
+				if (buttons[i].onButton(x, y)) { //If mouse clicks on button i
+					buttons[i].clearButton();
+					buttons[i].draw(ALPHA_CHANNEL);
+				}
+			}
+		}
+	}
+}
+</script>

@@ -1,0 +1,270 @@
+<!-- Copyright (c) Adrián Jiménez Pascual -  All rights reserved -->
+<!-- This page and its content is protected under copyright and intellectual property laws.  -->
+<!-- The content belongs to Adrián Jiménez Pascual, Tokio, Japan -->
+<!-- All rights reserved. -->
+<!--
+  **  Lawbreakers will be reported to competent authorities and sentenced by the law   **
+-->
+<!--Copyright (c) Adrián Jiménez Pascual - http://www.ms.u-tokyo.ac.jp/~adri/ -->
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="shortcut icon" href="../Lasso_logo.ico"/>
+
+<title>Classic Slider</title>
+
+<script>
+
+var size = 3;
+var tile_radius;
+
+var Tile = function(x, y, value, color) {
+	this.x = x;
+	this.y = y;
+	this.value = value;
+	this.color = color;
+	this.real_x = tile_radius*this.x + x_space;
+	this.real_y = tile_radius*this.y + y_space;
+}
+
+Tile.prototype.updateReal = function() {
+	this.real_x = tile_radius*this.x + x_space;
+	this.real_y = tile_radius*this.y + y_space;	
+}
+
+Tile.prototype.move = function(direc_x, direc_y) {
+	this.x += direc_x;
+	this.y += direc_y;
+	this.real_x += tile_radius*direc_x;
+	this.real_y += tile_radius*direc_y;
+}
+
+Tile.prototype.draw = function() {
+	drawSquare(this.real_x, this.real_y, this.color);
+	drawSquareText(this.real_x, this.real_y, this.value);
+}
+
+
+function drawSquare(x, y, color) {
+	context.fillStyle = color;
+	context.fillRect(x, y, tile_radius, tile_radius);
+	context.strokeRect(x, y, tile_radius, tile_radius);
+}
+
+function drawSquareText(x, y, text) {
+	context.fillStyle = "black";
+	context.font = tile_radius/2 + "px courier";
+	context.fillText(text, x+tile_radius/2-context.measureText(text).width/2, y+tile_radius*2/3);
+}
+
+var board;
+var x_space, y_space;
+var background_color, normal_color, good_color, end_color;
+onload = function() {
+    canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    canvas.style.position = "absolute";
+    canvas.style.left = 0;
+    canvas.style.top = 0;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    context = canvas.getContext("2d");
+
+   	startGame();
+}
+
+function startGame() {
+	background_color = "lightcyan";
+	normal_color = "skyblue";
+	good_color = "royalblue";
+	end_color = "turquoise";
+	
+
+    context.lineWidth = 5;
+
+    tile_radius = (Math.min(canvas.width, canvas.height)*25/30)/size;
+    x_space = (canvas.width - tile_radius*size)/2;
+    y_space = (canvas.height - tile_radius*size)/2;
+
+	drawBackground(background_color);
+
+    board = new Array(size); //Initialize the board
+    for (var i = 0; i < board.length; i++) {
+    	board[i] = new Array(size);
+    	for (var j = 0; j < board[i].length; j++) {
+    		board[i][j] = new Tile(i, j, j*size+i+1, normal_color);
+			if (board[i][j].x == i && board[i][j].y == j) {
+    			board[i][j].color = good_color;
+    		}
+    		else
+    			board[i][j].color = normal_color;
+    		if (i == j && i == size-1) {
+    			board[i][j].color = "black";
+    		}
+    		board[i][j].draw();
+    	}
+    }
+
+    randomize(size*size*size*size);
+}
+
+function drawBackground(color) {
+	context.fillStyle = color; //Fill background
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = (color == "black" ? "white" : "black");
+	context.font = canvas.height/32 + "px courier";
+	context.globalAlpha = 0.5;
+	context.fillText("\u00A9 Adr\u00ef", (canvas.width-context.measureText("\u00A9 Adr\u00ef").width)/2, canvas.height-canvas.height/30);
+	context.globalAlpha = 1;
+
+	context.font = "italic " + canvas.height/12 + "px courier";
+	context.fillText("Classic Slider", (canvas.width-context.measureText("Classic Slider").width)/2, (canvas.height-size*tile_radius)/3);
+}
+
+function randomize(steps) {
+	firstX = firstY = 0;
+	for (var k = 0; k < steps; k++) {
+		touchedX = Math.floor(Math.random()*size*10)-Math.floor(size*5);
+		touchedY = Math.floor(Math.random()*size*10)-Math.floor(size*5);
+		var rand = Math.ceil(Math.random()*(size-1));
+		for (var i = 0; i < rand; i++) {
+			sharedMove();
+		}
+	}
+}
+
+var touchedX, touchedY, firstX, firstY;
+var allowedMove; //This is useful to restric the mousemove
+var just_one;
+onmousedown = function(event) {
+	touchedX = event.pageX - x_space;
+	touchedY = event.pageY - y_space;
+	sharedStart();
+	allowedMove = true;
+}
+onmousemove = function(event) {
+	if (allowedMove) {
+		touchedX = event.pageX - x_space;
+		touchedY = event.pageY - y_space;
+		if (just_one) {
+			sharedMove();
+			just_one = false;
+		}
+	}
+}
+onmouseup = function(event) {
+	allowedMove = false;
+	sharedEnd();
+}
+
+ontouchstart = function(event) {
+	touchedX = event.touches[0].pageX - x_space;
+	touchedY = event.touches[0].pageY - y_space;
+	sharedStart();	
+}
+ontouchmove = function(event) {
+	event.preventDefault();
+	touchedX = event.changedTouches[0].pageX - x_space;
+	touchedY = event.changedTouches[0].pageY - y_space;
+	if (just_one) {
+		sharedMove();
+		just_one = false;
+	}
+}
+ontouchend = function(event) {
+	sharedEnd();
+}
+
+onkeydown = function(event) {
+	switch ( event.keyCode ) {
+        case 37: { touchedX = 0; touchedY = 0; firstX = 1; firstY = 0; sharedMove(); break;} //left
+        case 38: { touchedX = 0; touchedY = 0; firstX = 0; firstY = 1; sharedMove(); break;} //up
+        case 39: { touchedX = 0; touchedY = 0; firstX = -1; firstY = 0; sharedMove(); break;} //right
+        case 40: { touchedX = 0; touchedY = 0; firstX = 0; firstY = -1; sharedMove(); break;} //down
+    }
+}
+
+function sharedStart() {
+	firstX = touchedX;
+	firstY = touchedY;
+	just_one = true;
+}
+function sharedMove() {
+	var dif_x = touchedX-firstX;
+	var dif_y = touchedY-firstY;
+	var direc_x = dif_x/Math.abs(dif_x);
+	var direc_y = dif_y/Math.abs(dif_y);
+	var reference_x = board[size-1][size-1].x;
+	var reference_y = board[size-1][size-1].y;
+	if (Math.abs(dif_x) > Math.abs(dif_y)) { //Horizontal slide
+		for (var i = 0; i < board.length; i++) {
+			for (var j = 0; j < board[i].length; j++) {
+				//If the tile is next to the blank
+				if (board[i][j].y == reference_y && board[i][j].x == reference_x - direc_x) {
+					board[i][j].move(direc_x, 0);
+					board[size-1][size-1].move(-direc_x, 0);
+					if (board[i][j].color != "black") {
+						if (board[i][j].x == i && board[i][j].y == j) {
+			    			board[i][j].color = good_color;
+			    		}
+			    		else
+			    			board[i][j].color = normal_color;
+			    	}
+					board[i][j].draw();
+					board[size-1][size-1].draw();
+				}
+			}
+		}
+	}
+	else if (Math.abs(dif_x) < Math.abs(dif_y)) { //Vertical slide
+		for (var i = 0; i < board.length; i++) {
+			for (var j = 0; j < board[i].length; j++) {
+				//If the tile is next to the blank
+				if (board[i][j].x == reference_x && board[i][j].y == reference_y - direc_y) {
+					board[i][j].move(0, direc_y);
+					board[size-1][size-1].move(0, -direc_y);
+					if (board[i][j].color != "black") {
+						if (board[i][j].x == i && board[i][j].y == j) {
+			    			board[i][j].color = good_color;
+			    		}
+			    		else
+			    			board[i][j].color = normal_color;
+			    	}
+					board[i][j].draw();
+					board[size-1][size-1].draw();
+				}
+			}
+		}
+	}
+}
+function sharedEnd() {
+	if (checkEnd()) {
+		drawBackground("black");
+		for (var i = 0; i < board.length; i++) {
+	    	for (var j = 0; j < board[i].length; j++) {
+	    		if (board[i][j].color != "black") {
+	    			board[i][j].color = end_color;
+	    		}
+	    		board[i][j].draw();
+	    	}
+	    }
+		size++;
+		setTimeout(startGame, 1000);
+	}
+}
+
+function checkEnd() { //Checks if the board is ordered
+	var result = true;
+	for (var i = 0; i < board.length; i++) {
+    	for (var j = 0; j < board[i].length; j++) {
+	   		if (board[i][j].x != i || board[i][j].y != j) {
+	   			result = false;
+	   			break;
+	   		}
+	   	}
+    }
+    return result;
+}
+
+</script>

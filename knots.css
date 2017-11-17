@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'KnotFont';
+    src: url("fonts/knots/KnotFont.eot");
+    src: local('KnotFont'),
+       /*url("fonts/knots/knots_stroke.svg#knots") format('svg'),*/
+	   url("fonts/knots/KnotFont.otf") format('opentype');
+}
+
+.knots {
+	color: inherit;
+	font-family: "KnotFont";
+	font-size: 200px;
+	line-height: 0px;
+	vertical-align: middle;
+}
+
+a.knots:hover {
+	color:inherit;
+}
+
+.knots.name:before { content: 'A'; }
+.knots.me:before { content: 'B'; }
+.knots.k0c1:before { content: "k0c1"; }
+.knots.k3c1:before { content: "k3c1"; }
+.knots.k4c1:before { content: "k4c1"; }
+.knots.k5c1:before { content: "k5c1"; }
+.knots.k5c2:before { content: "k5c2"; }
+.knots.k6c1:before { content: "k6c1"; }
+.knots.k6c2:before { content: "k6c2"; }
+.knots.k6c3:before { content: "k6c3"; }
+.knots.k7c1:before { content: "k7c1"; }
+.knots.k7c2:before { content: "k7c2"; }
+.knots.k7c3:before { content: "k7c3"; }
+.knots.k7c4:before { content: "k7c4"; }
+.knots.k7c5:before { content: "k7c5"; }
+.knots.k7c6:before { content: "k7c6"; }
+.knots.k7c7:before { content: "k7c7"; }
