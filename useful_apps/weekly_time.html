@@ -73,7 +73,7 @@
 			count += diff_hour(document.getElementsByTagName('input')[i*2].value, document.getElementsByTagName('input')[i*2 + 1].value);
 		}
 		var h = Math.floor(count);
-		var m = Math.floor((count - Math.floor(count))*60);
+		var m = Math.round((count - Math.floor(count))*60);
 		alert("Trabajo semanal: " + h + " horas y " + m + " minutos.");
 	}
 
