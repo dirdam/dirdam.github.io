@@ -87,7 +87,7 @@ var draw_text = function() {
     context.fillText(texts[menu][2], canvas.width/2 - context.measureText(texts[menu][2]).width/2, canvas.height*2/5 + (canvas.height/6)/2);
 }
 
-var points = [[545, 11], [483, 75], [433, 185] , [398, 147], [383, 343], [319, 366], [311, 449], [363, 475], [384, 366], [360, 600], [494, 624], [632, 583], [625, 534], [489, 571], [377, 549], [380, 502], [496, 514], [616, 486], [589, 314], [491, 330], [395, 322], [398, 277], [489, 281], [582, 264], [553, 32], [478, 204], [441, 199]];
+var points = [[545, 11], [483, 75], [433, 185] , [398, 147], [383, 343], [319, 366], [311, 449], [363, 475], [384, 366], [360, 600], [494, 624], [632, 583], [625, 534], [489, 571], [377, 549], [380, 502], [496, 514], [616, 486], [589, 314], [491, 330], [395, 322], [398, 277], [489, 281], [561, 272], [627, 395], [611, 428], [638, 429], [642, 385], [585, 266], [553, 32], [478, 204], [441, 199]];
 var lim_w = 842; lim_h = 667;
 var draw_points = function() {
 	draw_background("white");
@@ -101,9 +101,9 @@ var draw_points = function() {
 var draw_image = function() {
 	var img = new Image();
 	img.onload = function() {
-		//context.globalAlpha = 0.5;
+		context.globalAlpha = 0.75;
 		context.drawImage(img, 0, 0, canvas.width, canvas.height);
-		//context.globalAlpha = 1;
+		context.globalAlpha = 1;
 	}
 	img.src = "Foto.jpg";
 }
@@ -118,12 +118,10 @@ var draw_convert = function() {
 	context.beginPath();
 	context.arc(canvas.width/4, canvas.height/4, 40, 0, 2*Math.PI);
 	context.fill();
-	context.stroke();
 	context.fillStyle = "red";
 	context.beginPath();
 	context.arc(canvas.width/4, canvas.height/4, 10, 0, 2*Math.PI);
 	context.fill();
-	context.stroke();
 }
 
 ontouchstart = function(event) {
