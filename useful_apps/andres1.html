@@ -32,6 +32,10 @@ Point.prototype.draw = function(number) {
 var menu = 0
 var col1 = "pink"; var col2 = "lightcoral";
 onload = function() {
+	var pass = prompt("Contraseña:");
+	while (pass != 144) {
+		pass = prompt("Contraseña incorrecta. Nuevo intento:");
+	}
 	//Canvas
 	canvas = document.createElement("canvas");
 	document.body.appendChild(canvas);
@@ -40,6 +44,7 @@ onload = function() {
 	context = canvas.getContext("2d");
 
 	draw_background(col1);
+	setTimeout(draw_text, 1000);
 }
 
 var draw_background = function(col) {
@@ -75,20 +80,21 @@ var draw_buttons = function() {
 	context.stroke();
 }
 
+var texts = [["¡Hola Andrés!"],
+		["Toca la flecha de avanzar", "para leer el siguiente mensaje."],
+		["Te he preparado un pequeño juego", "para darte la siguiente pista."],
+		["Toca los puntos en orden,", "y aparecerá lo que tienes que buscar."]];
 var draw_text = function() {
-	var texts = [["Hola Andrés.", "Toca la flecha de avanzar", "para leer el siguiente mensaje."],
-		["Te he preparado un pequeño juego", "para darte la siguiente pista.", ""],
-		["Toca los puntos en orden,", "y aparecerá lo que tienes que buscar.", ""]];
 	draw_buttons();
-    context.font = canvas.height/20 + "px Verdana";
-    context.fillStyle = "black";
-    context.fillText(texts[menu][0], canvas.width/2 - context.measureText(texts[menu][0]).width/2, canvas.height*2/5 - (canvas.height/6)/2);
-    context.fillText(texts[menu][1], canvas.width/2 - context.measureText(texts[menu][1]).width/2, canvas.height*2/5);
-    context.fillText(texts[menu][2], canvas.width/2 - context.measureText(texts[menu][2]).width/2, canvas.height*2/5 + (canvas.height/6)/2);
+	context.font = canvas.height/15 + "px Verdana";
+	context.fillStyle = "black";
+	for (var i = 0; i < texts[menu].length; i++) {
+	    context.fillText(texts[menu][i], canvas.width/2 - context.measureText(texts[menu][i]).width/2, canvas.height*2/5 + (i < (texts[menu].length - 1)/2 ? -1 : 1)*Math.ceil(Math.abs(i - (texts[menu].length - 1)/2))*(canvas.height/6)/2);
+	}
 }
 
-var points = [[545, 11], [483, 75], [433, 185] , [398, 147], [383, 343], [319, 366], [311, 449], [363, 475], [384, 366], [360, 600], [494, 624], [632, 583], [625, 534], [489, 571], [377, 549], [380, 502], [496, 514], [616, 486], [589, 314], [491, 330], [395, 322], [398, 277], [489, 281], [561, 272], [627, 395], [611, 428], [638, 429], [642, 385], [585, 266], [553, 32], [478, 204], [441, 199]];
-var lim_w = 842; lim_h = 667;
+var points = [[545, 11], [483, 75], [433, 185], [398, 147], [383, 343], [319, 366], [311, 449], [360, 475], [368, 459], [324, 445], [333, 370], [384, 366], [360, 600], [494, 624], [632, 583], [625, 534], [489, 571], [377, 549], [380, 502], [496, 514], [616, 486], [593, 337], [580, 314], [491, 330], [395, 322], [398, 277], [489, 281], [561, 272], [627, 395], [619, 428], [638, 429], [642, 385], [590, 287], [585, 266], [553, 32], [478, 204], [441, 199]];
+var lim_w = 842; lim_h = 680;
 var draw_points = function() {
 	draw_background("white");
 	//draw_image();
@@ -140,14 +146,9 @@ onmousedown = function(event) {
 	commonStart(x, y);
 }
 
-var first_click = true;
 var order = 0;
 function commonStart(x, y) {
-	if (first_click) {
-		draw_text();
-		first_click = false;
-	}
-	else if (menu < 3){
+	if (menu < texts.length){
 		if (y > canvas.height*4/5) {
 			if (x < canvas.width/2) {
 				menu = Math.max(0, menu - 1);
@@ -155,7 +156,7 @@ function commonStart(x, y) {
 			else {
 				menu++;
 			}
-			if (menu < 3) {
+			if (menu < texts.length) {
 				draw_text();
 			}
 			else {
@@ -168,7 +169,8 @@ function commonStart(x, y) {
 			var d = distance(x, y, points[order].x, points[order].y);
 			if (d < 15) {
 				if (order == 0) {
-					context.lineWidth = 3;
+					context.lineWidth = 2;
+					context.strokeStyle = "blue";
 					context.beginPath();
 					context.moveTo(points[order].x, points[order].y);
 				}
@@ -180,6 +182,7 @@ function commonStart(x, y) {
 				}
 				order++;
 				if (order == points.length) {
+					context.strokeStyle = "black";
 					draw_convert();
 					order++;
 				}
