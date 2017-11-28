@@ -1,0 +1,199 @@
+<!-- Copyright (c) Adrián Jiménez Pascual -  All rights reserved -->
+<!-- This page and its content is protected under copyright and intellectual property laws.  -->
+<!-- The content belongs to Adrián Jiménez Pascual, Tokio, Japan -->
+<!-- All rights reserved. -->
+<!--
+  **  Lawbreakers will be reported to competent authorities and sentenced by the law   **
+-->
+<!--Copyright (c) Adrián Jiménez Pascual - http://www.ms.u-tokyo.ac.jp/~adri/ -->
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="shortcut icon" href="../Lasso_logo.ico"/>
+
+<title>Rosa</title>
+
+<script>
+var Point = function(x, y) {
+	this.x = x;
+	this.y = y;
+}
+Point.prototype.draw = function(number) {
+	context.fillStyle = "black";
+	var radius = 3;
+	context.beginPath();
+	context.arc(this.x, this.y, radius, 0, 2*Math.PI);
+	context.fill();
+	context.font = radius*4 + "px Verdana";
+	context.fillText(number, this.x - context.measureText(number).width/2, this.y + radius*6);
+}
+
+var menu = 0
+var col1 = "pink"; var col2 = "lightcoral";
+onload = function() {
+	//Canvas
+	canvas = document.createElement("canvas");
+	document.body.appendChild(canvas);
+	canvas.style.position = "absolute"; canvas.style.left = 0; canvas.style.top = 0;
+    canvas.width = innerWidth; canvas.height = innerHeight;
+	context = canvas.getContext("2d");
+
+	draw_background(col1);
+}
+
+var draw_background = function(col) {
+	context.fillStyle = col;
+	context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+var draw_buttons = function() {
+	draw_background(col1)
+	context.fillStyle = col2;
+	context.fillRect(0, canvas.height*4/5, canvas.width, canvas.height/5);
+	context.lineWidth = 10;
+	// Left arrow
+	context.beginPath();
+	context.moveTo(canvas.width*1/6, canvas.height - canvas.height/10);
+	context.lineTo(canvas.width*2/6, canvas.height - canvas.height/10);
+	context.moveTo(canvas.width*5/24, canvas.height - canvas.height/10 - canvas.height/40);
+	context.lineTo(canvas.width*1/6, canvas.height - canvas.height/10);
+	context.lineTo(canvas.width*5/24, canvas.height - canvas.height/10 + canvas.height/40);
+	// Right arrow
+	context.moveTo(canvas.width - canvas.width*1/6, canvas.height - canvas.height/10);
+	context.lineTo(canvas.width - canvas.width*2/6, canvas.height - canvas.height/10);
+	context.moveTo(canvas.width - canvas.width*5/24, canvas.height - canvas.height/10 - canvas.height/40);
+	context.lineTo(canvas.width - canvas.width*1/6, canvas.height - canvas.height/10);
+	context.lineTo(canvas.width - canvas.width*5/24, canvas.height - canvas.height/10 + canvas.height/40);
+	context.stroke();
+	context.beginPath();
+	context.lineWidth = 3;
+	context.moveTo(0, canvas.height*4/5);
+	context.lineTo(canvas.width, canvas.height*4/5);
+	context.moveTo(canvas.width/2, canvas.height*4/5);
+	context.lineTo(canvas.width/2, canvas.height);
+	context.stroke();
+}
+
+var draw_text = function() {
+	var texts = [["Hola Andrés.", "Toca la flecha de avanzar", "para leer el siguiente mensaje."],
+		["Te he preparado un pequeño juego", "para darte la siguiente pista.", ""],
+		["Toca los puntos en orden,", "y aparecerá lo que tienes que buscar.", ""]];
+	draw_buttons();
+    context.font = canvas.height/20 + "px Verdana";
+    context.fillStyle = "black";
+    context.fillText(texts[menu][0], canvas.width/2 - context.measureText(texts[menu][0]).width/2, canvas.height*2/5 - (canvas.height/6)/2);
+    context.fillText(texts[menu][1], canvas.width/2 - context.measureText(texts[menu][1]).width/2, canvas.height*2/5);
+    context.fillText(texts[menu][2], canvas.width/2 - context.measureText(texts[menu][2]).width/2, canvas.height*2/5 + (canvas.height/6)/2);
+}
+
+var points = [[545, 11], [483, 75], [433, 185] , [398, 147], [383, 343], [319, 366], [311, 449], [363, 475], [384, 366], [360, 600], [494, 624], [632, 583], [625, 534], [489, 571], [377, 549], [380, 502], [496, 514], [616, 486], [589, 314], [491, 330], [395, 322], [398, 277], [489, 281], [582, 264], [553, 32], [478, 204], [441, 199]];
+var lim_w = 842; lim_h = 667;
+var draw_points = function() {
+	draw_background("white");
+	//draw_image();
+	for (var i = 0; i < points.length; i++) {
+		points[i] = new Point(points[i][0]*canvas.width/lim_w, points[i][1]*canvas.height/lim_h);
+		points[i].draw(i + 1);
+	}
+}
+
+var draw_image = function() {
+	var img = new Image();
+	img.onload = function() {
+		//context.globalAlpha = 0.5;
+		context.drawImage(img, 0, 0, canvas.width, canvas.height);
+		//context.globalAlpha = 1;
+	}
+	img.src = "Foto.jpg";
+}
+
+var draw_convert = function() {
+	context.fillStyle = col1;
+	context.beginPath();
+	context.arc(canvas.width/4, canvas.height/4, 75, 0, 2*Math.PI);
+	context.fill();
+	context.stroke();
+	context.fillStyle = col2;
+	context.beginPath();
+	context.arc(canvas.width/4, canvas.height/4, 40, 0, 2*Math.PI);
+	context.fill();
+	context.stroke();
+	context.fillStyle = "red";
+	context.beginPath();
+	context.arc(canvas.width/4, canvas.height/4, 10, 0, 2*Math.PI);
+	context.fill();
+	context.stroke();
+}
+
+ontouchstart = function(event) {
+	var x = event.touches[0].clientX;
+	var y = event.touches[0].clientY;
+	commonStart(x, y);
+}
+
+ontouchmove = function(event) {
+	event.preventDefault();
+}
+
+onmousedown = function(event) {
+	var x = event.clientX;
+	var y = event.clientY;
+	commonStart(x, y);
+}
+
+var first_click = true;
+var order = 0;
+function commonStart(x, y) {
+	if (first_click) {
+		draw_text();
+		first_click = false;
+	}
+	else if (menu < 3){
+		if (y > canvas.height*4/5) {
+			if (x < canvas.width/2) {
+				menu = Math.max(0, menu - 1);
+			}
+			else {
+				menu++;
+			}
+			if (menu < 3) {
+				draw_text();
+			}
+			else {
+				draw_points();
+			}
+		}
+	}
+	else {
+		if (order < points.length + 1) {
+			var d = distance(x, y, points[order].x, points[order].y);
+			if (d < 15) {
+				if (order == 0) {
+					context.lineWidth = 3;
+					context.beginPath();
+					context.moveTo(points[order].x, points[order].y);
+				}
+				else {
+					context.lineTo(points[order].x, points[order].y);
+					context.stroke();
+					context.beginPath();
+					context.moveTo(points[order].x, points[order].y);
+				}
+				order++;
+				if (order == points.length) {
+					draw_convert();
+					order++;
+				}
+			}
+		}
+		else if (distance(x, y, canvas.width/4, canvas.height/4) < 75) {
+			draw_image();
+		}
+	}
+}
+
+function distance(x1, y1, x2, y2) {
+	return Math.sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
+}
+</script>
