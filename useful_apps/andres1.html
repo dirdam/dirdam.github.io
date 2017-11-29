@@ -44,7 +44,6 @@ onload = function() {
 	context = canvas.getContext("2d");
 
 	draw_background(col1);
-	setTimeout(draw_text, 1000);
 }
 
 var draw_background = function(col) {
@@ -146,8 +145,13 @@ onmousedown = function(event) {
 }
 
 var order = 0;
+var first = true;
 function commonStart(x, y) {
-	if (menu < texts.length){
+	if (first) {
+		draw_text();
+		first = false;
+	}
+	else if (menu < texts.length){
 		if (y > canvas.height*4/5) {
 			if (x < canvas.width/2) {
 				menu = Math.max(0, menu - 1);
