@@ -1,556 +1,140 @@
-<!-- Copyright (c) Adrián Jiménez Pascual -  All rights reserved -->
-<!-- This page and its content is protected under copyright and intellectual property laws.  -->
-<!-- The content belongs to Adrián Jiménez Pascual, Tokio, Japan -->
-<!-- All rights reserved. -->
+<!DOCTYPE HTML>
 <!--
-  **  Lawbreakers will be reported to competent authorities and sentenced by the law   **
+	Epilogue by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<!--Copyright (c) Adrián Jiménez Pascual - http://www.ms.u-tokyo.ac.jp/~adri/ -->
-
-<!DOCTYPE html>
-<html lang="en" id="top">
+<html>
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-		<meta charset="utf-8">
-		<title>Adrï's page</title>
-		<link href="style.css" media="screen" rel="stylesheet" type="text/css"/>
-		<link href="iconic.css" media="screen" rel="stylesheet" type="text/css"/>
-		<link href="knots.css" media="screen" rel="stylesheet" type="text/css"/>
-		<link href="hover-min.css" media="screen" rel="stylesheet" type="text/css">
-		<link rel="shortcut icon" href="Lasso_logo.ico"/>
-		<script src="prefix-free.js"></script>
-		<script src="sticker.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<title>Adrï</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+	<body>
 
-<body>
-	<div class="wrap">
-	
-	<nav>
-		<ul class="menu">
-			<li><a href="#"><span class="iconic home"></span> Home</a></li>
-			<li><a href="#about"><span class="iconic info"></span> About</a>
-				<ul>
-					<li><a href="#career">Career</a></li>
-					<li><a href="#papers">Papers</a></li>
-					<li><a href="#talks">Talks</a></li>
-					<li><a href="#tv">On TV</a></li>
-				</ul>
-			</li>
-			<li><a href="#maths_apps"><span class="iconic image"></span> Maths apps</a>
-				<ul>
-					<li><a href="#bounded_functions_thumbnail" onclick="showMaths('bounded_functions')">Bounded functions</a></li>
-					<li><a href="#phyllotaxis_thumbnail" onclick="showMaths('phyllotaxis')">Phyllotaxis</a></li>
-					<li><a href="#predator_prey_thumbnail" onclick="showMaths('predator_prey')">Predator-Prey</a></li>
-					<li><a href="#tree_representation_thumbnail" onclick="showMaths('tree_representation')">Tree representation</a></li>
-				</ul>
-			</li>
-			<li><a href="#other_apps"><span class="iconic calendar"></span> Other apps</a>
-				<ul>
-					<li><a href="#embroidery_thumbnail" onclick="showOther('embroidery')">Embroidery</a></li>
-					<li><a href="#genetic_words_thumbnail" onclick="showOther('genetic_words')">Genetic words</a></li>
-					<li><a href="#natural_watch_thumbnail" onclick="showOther('natural_watch')">Natural watch</a></li>
-					<li><a href="#special_watch_thumbnail" onclick="showOther('special_watch')">Special watch</a></li>
-				</ul>
-			</li>
-			<li><a href="#games"><span class="iconic phone"></span> Games</a>
-				<ul>
-					<li><a href="#azi_thumbnail" onclick="showGames('azi')">Azi</a></li>
-					<li><a href="#gyrux_thumbnail" onclick="showGames('gyrux')">Gyrux</a></li>
-					<li><a href="#hexawars_thumbnail" onclick="showGames('hexawars')">HexaWars</a></li>
-					<li><a href="#">Mobile games:</a>
-						<ul>
-							<li><a href="#classic_slider_thumbnail" onclick="showGames('classic_slider')">Classic slider</a>
-							<li><a href="#revert_thumbnail" onclick="showGames('revert')">Revert!</a>
-							<li><a href="#simon_thumbnail" onclick="showGames('simon')">Simon</a>
-							<li><a href="#slizzle_thumbnail" onclick="showGames('slizzle')">Slizzle</a>
+		<!-- Header -->
+			<header id="header" class="alt">
+				<div class="inner">
+					<h1><font id="roll_name" face="KnotFont" style="font-size: 150px">A</font></h1>
+					<p>Knotably clever</p>
+				</div>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Banner -->
+					<section id="intro" class="main">
+						<span><font id="roll_name" face="KnotFont" style="font-size: 100px">B</font></span>
+						<h2>Adrián Jiménez Pascual</h2>
+						<p>Made of ideas.</p>
+                        <!-- <p>As old as the fall of the Berlin Wall.</p> -->
+                        <ul class="actions">
+							<li><a href="about.html" class="button big">About me</a></li>
 						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a href="#"><span class="iconic chat"></span> Languages</a>
-				<ul>
-					<li><a href="#" title="English"><img src="http://lipis.github.io/flag-icon-css/flags/4x3/gb.svg" style="width:30px;height:20px;"></a></li>
-					<li><a href="index_es.html" title="Español"><img src="http://lipis.github.io/flag-icon-css/flags/4x3/es.svg" style="width:30px;height:20px;"></a></li>
-					<li><a href="index_ja.html" title="日本語"><img src="http://lipis.github.io/flag-icon-css/flags/4x3/jp.svg" style="width:30px;height:20px;"></a></li>
-					<!--<li><a href="index_zh.html" title="中文"><img src="http://lipis.github.io/flag-icon-css/flags/4x3/cn.svg" style="width:30px;height:20px;"></a></li>-->
-				</ul>
-			</li>
-			<li><a href="#contact"><span class="iconic mail"></span> Contact</a></li>
-		</ul>
-		<div class="clearfix"></div>
-	</nav>
+					</section>
 
-	<!-- HOME -->
+				<!-- Items -->
+					<section class="main items">
+						<article class="item">
+							<header>
+								<a href="background.html"><img src="images/pic_ginkgo.jpg" alt="" /></a>
+								<h3>Academic background</h3>
+							</header>
+							<p>From undergraduate student to <em>Doctor of Philosophy</em>.<br>
+                            Papers and talks can be found here.</p>
+							<ul class="actions">
+								<li><a href="background.html" class="button">More</a></li>
+							</ul>
+						</article>
+						<article class="item">
+							<header>
+								<a href="work.html"><img src="images/pic_arkmori.jpg" alt="" /></a>
+								<h3>Working experience</h3>
+							</header>
+							<p>Part-time jobs, internship and full-time employment.</p>
+							<ul class="actions">
+								<li><a href="work.html" class="button">More</a></li>
+							</ul>
+						</article>
+						<article class="item" style="margin-left: auto; margin-right: auto;">
+							<header>
+								<a href="squadro.html"><img src="images/pic_squadro_top.png" alt="" /></a>
+								<h3>Squadro</h3>
+							</header>
+							<p><em>Squadro</em> is a boardgame created by myself and published by <a href="">Gigamic</a>. Learn about it and play a digital version of it here.</p>
+							<ul class="actions">
+								<li><a href="squadro.html" class="button">More</a></li>
+							</ul>
+						</article>
+						<!--<article class="item">
+							<header>
+								<a href="#"><img src="images/pic04.jpg" alt="" /></a>
+								<h3>Hobbies</h3>
+							</header>
+							<p>Programming as a hobby. I have created several online apps and games. You can try them and play them here.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">More</a></li>
+							</ul>
+						</article>-->
+					</section>
 
-	<div style="height: 50px"></div>
-	<div id="name" align="center">
-		<span><font id="roll_name" face="KnotFont" style="font-size: 200px">B</font></span>
-	</div>
-	<div style="height: 75px"></div>
-	
-	<div id="slogan" align="center">
-		<div style="float: left; width: 34.5%; line-height: 40px; text-align: right;">
-			<span><font id="roll_knot" face="KnotFont" style="font-size: 200px">k0c1</font></span>
-		</div>
-		<div style="float: right; width: 65%; text-align: left;">
-			<span style="font-size: 75px; vertical-align: middle">ably clever</span>			
-		</div>
-	</div>
+				<!-- Call To Action -->
+					<section id="cta" class="main special">
+						<h2>Want more?</h2>
+						<ul class="actions">
+							<li><a href="contact.html" class="button big">Let me know</a></li>
+						</ul>
+					</section>
 
-	<!-- DIVISION -->
+				<!-- Main -->
+				<!--
+					<section id="main" class="main">
+						<header>
+							<h2>Lorem ipsum dolor</h2>
+						</header>
+						<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+					</section>
+				-->
 
-	<div style="height: 150px" class="one_page"></div>
+				<!-- Footer -->
+					<footer id="footer">
+						<!-- <ul class="icons">
+                            <li><a href="#" class="icon fa-envelope" style="color: rgb(0,0,160);"><span class="label">Email</span></a></li>
+                        </ul>
+                        <ul class="icons">
+                            <li><a href="#footer" class="icon fa-twitter needless" onclick="dont()"><span class="label">Twitter</span></a></li>
+                            <li><a href="#footer" class="icon fa-facebook needless" onclick="dont()"><span class="label">Facebook</span></a></li>
+                            <li><a href="#footer" class="icon fa-instagram needless" onclick="dont()"><span class="label">Instagram</span></a></li>
+                            <li><a href="#footer" class="icon fa-linkedin needless" onclick="dont()"><span class="label">LinkedIn</span></a></li>
+                        </ul> 
+                        <p><img class="networks" src="images/flecha.png" alt="Arrow" style="position: absolute; left: 57.5%; bottom: -278%; max-width: 30%; max-height: 32%; display: none"></p> -->
+                        <!--<p><span id="networks" style="display: none;">I proudly don't use any social network. <br>Just contact me, one-on-one.<br><a href="contact.html" class="icon fa-envelope" style="color: rgb(0,0,160);"><span class="label">Email</span></a></span></p>
+                        <p class="icons needless">&ensp;<a href="#footer" class="icon fa-twitter" onclick="dont()"><span class="label">Twitter</span></a>&emsp;<a href="#footer" class="icon fa-facebook" onclick="dont()"><span class="label">Facebook</span></a>&emsp;<a href="#footer" class="icon fa-instagram" onclick="dont()"><span class="label">Instagram</span></a>&emsp;<a href="#footer" class="icon fa-linkedin" onclick="dont()"><span class="label">LinkedIn</span></a>&ensp;</p>-->
+                        <p class="copyright">&copy; Adrï, 2018. Basic web design by <a href="https://templated.co">TEMPLATED</a>.</p>
+					</footer>
 
-	<!-- ABOUT -->
+			</div>
+        <!-- BOTTOM -->
 
-	<div style="color: white">
-		<p class="h1" id="about">About</p>
-		<div style="height: 25px"></div>
-		<ul style="list-style-type: disc; padding-left: 3em">
-			<li style="font-size: 28px" id="career">Career:
-				<p style="font-size: 20px"><br>- Alma mater: <span style="color: cadetblue">Complutense University of Madrid</span>, 2007-2012.</p>
-				<p style="font-size: 20px"><br>- Master: <span style="color: cadetblue">The University of Tokyo</span>, 2013-2015.</p>
-				<p style="font-size: 20px"><br>- Ph. D.: <span style="color: cadetblue">The University of Tokyo</span>, 2015-<em>present</em>.</p>
-				<p style="font-size: 20px"><br>- Internship: <span style="color: cadetblue">Yahoo! Japan Corporation</span>, January 2016-<em>present</em>.</p>	
-			</li>
-			<br>
-			<li style="font-size: 28px" id="papers">Papers:
-				<p style="font-size: 20px"><br>- A. JIMÉNEZ PASCUAL &amp; M. J. DE LA PUENTE MUÑOZ, <em>Six combinatorial clases of maximal convex tropical polyhedra</em>, <a href="https://arxiv.org/abs/1205.4162" target="_blank">arXiv:1205.4162</a>.</p>
-				<p style="font-size: 20px"><br>- A. JIMÉNEZ PASCUAL, <em>On lassos and the Jones polynomial of satellite knots</em>, <a href="https://arxiv.org/abs/1501.01734" target="_blank">arXiv:1501.01734</a>.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- A. JIMÉNEZ PASCUAL, <em>On lassos and the Jones polynomial of satellite knots</em>, <a href="http://www.worldscientific.com/doi/abs/10.1142/S0218216516500115" target="_blank">J. Knot Theory Ramifications</a>, volume <b>25</b>, issue 2, February 2016.</p>
-				<p style="font-size: 20px"><br>- A. JIMÉNEZ PASCUAL, <em>On wrapping number, adequacy and the crossing number of satellite knots</em>, <a href="https://arxiv.org/abs/1712.05635" target="_blank">arXiv:1712.05635</a>.</p>
-			</li>
-			<br>
-			<li style="font-size: 28px" id="talks">Talks:
-				<p style="font-size: 20px"><br>- <em>On lassos and the Jones polynomial of satellite knots</em> (in Japanese), 結び目の数学 VII, <span style="color: cadetblue">Tokyo Woman's Christian University</span>, Japan, December 2014.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>On lassos and the Jones polynomial of satellite knots</em>, Tenth East Asian School of Knots and Related Topics, <span style="color: cadetblue">East China Normal University</span>, China, January 2015.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>Presenting lassos</em>, Berkeley-Tokyo Winter School, <span style="color: cadetblue">University of California, Berkeley</span>, USA, February 2016.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>Text similarity function based on word embeddings for short text analysis</em>, <span style="color: cadetblue">CICLing Conference on Computational Linguistics and Natural Language Processing</span>, Budapest, Hungary, April 2017.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>On adequacy and the crossing number of satellite knots</em>, Berkeley-Tokyo Summer School, <span style="color: cadetblue">University of California, Berkeley</span>, USA, August 2017.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>On adequacy and the crossing number of satellite knots</em> (in Japanese), Topology and Computer 2017, <span style="color: cadetblue">Osaka University</span>, Japan, October 2017.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>On adequacy and the crossing number of satellite knots</em> (in Japanese), 結び目の数学 X, <span style="color: cadetblue">Tokyo Woman's Christian University</span>, Japan, December 2017.</p>
-				<p style="font-size: 20px; line-height: 120%"><br>- <em>On adequacy and the crossing number of satellite knots</em>, Thirteenth East Asian School of Knots and Related Topics, <span style="color: cadetblue">KAIST</span>, Korea, January 2018.</p>
-			</li>
-			<br>
-			<li style="font-size: 28px" id="tv">On TV:
-				<p style="font-size: 20px"><br>- <em>Madrileños por el mundo</em> (in Spanish), <span style="color: cadetblue">Telemadrid</span>, April 2015.</p>
-				<br>
-				<center>
-					<iframe src="https://www.youtube.com/embed/WS4JLHevtKk" width="640px" height="360px"></iframe>
-					<p style="font-size: 20px"><br>(full video <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">here</a>)</p>
-				</center>
-			</li>
-		</ul>
-	</div>
-
-	<!-- DIVISION -->
-
-	<div style="height: 150px" class="one_page"></div>
-
-	<!-- MATHS APPS -->
-
-	<div style="color: white">
-		<p class="h1" id="maths_apps">Maths apps</p>
-		<div style="height: 25px"></div>
-
-		<div class="thumbnails" style="margin-left: 3em">
-			<a href="#bounded_functions_thumbnail"><img src="maths_apps/bounded_functions_thumbnail.png" alt="Bounded functions" width="20%" onclick="showMaths('bounded_functions')" id="bounded_functions_thumbnail"></a>
-			<a href="#phyllotaxis_thumbnail"><img src="maths_apps/phyllotaxis_thumbnail.png" alt="Phyllotaxis" width="20%" onclick="showMaths('phyllotaxis')" id="phyllotaxis_thumbnail"></a>
-			<a href="#predator_prey_thumbnail"><img src="maths_apps/predator_prey_thumbnail.png" alt="Predator-Prey" width="20%" onclick="showMaths('predator_prey')" id="predator_prey_thumbnail"></a>
-			<a href="#tree_representation_thumbnail"><img src="maths_apps/tree_representation_thumbnail.png" alt="Tree representation" width="20%" onclick="showMaths('tree_representation')" id="tree_representation_thumbnail"></a>
-		</div>
-
-		<ul style="list-style-type: disc; padding-left: 3em">
-			<li style="font-size: 28px; display: none" id="bounded_functions"><span style="color: gold">Bounded functions</span>:
-				<span style="font-size: 20px"><br>Visualize how an ℝ<span class="sup">2</span> function would look like if the plane was to be bounded in a [-1,1] × [-1,1] square.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="phyllotaxis"><span style="color: gold">Phyllotaxis</span>:
-				<span style="font-size: 20px"><br><em>Phyllotaxis</em> is the arrangement of leaves on a plant stem. See a sunflower-like pattern grow!</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="predator_prey"><span style="color: gold">Predator-Prey</span>:
-				<span style="font-size: 20px"><br>Imagine: If the number of lynxes (<em>predator</em>) grow in an area, the number of hares (<em>prey</em>) will decrease. If the hares decrease, less lynxes will have food, therefore they too will decrease in number. If the number of lynxes decrease, the hares will proliferate faster since there are less predators. This will lead to a bigger number of hares, which will stimulate the growth of lynxes too, what takes us to the first step again. Formally, this problem is modelized by the <a href="https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations" target="_blank"><em>Lotka-Volterra equations</em></a>.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="tree_representation"><span style="color: gold">Tree representation</span>:
-				<span style="font-size: 20px"><br>Draw a tree (or forest) graph and obtain its relative <em>area</em>, <em>volume</em> and <em>height</em> based on its cuboidal representation.</span>
-			</li>
-		</ul>
-
-		<div style="padding-right: 3em; display: none" id="maths_apps_div">
-			<center><br><a href="#" class="button hvr-wobble-vertical hvr-shadow-radial" id="maths_apps_button" target="_blank">Launch</a></center>
-		</div>
-	</div>
-
-	<!-- DIVISION -->
-
-	<div style="height: 150px" class="one_page"></div>
-
-	<!-- OTHER APPS -->
-
-	<div style="color: white">
-		<p class="h1" id="other_apps">Other apps</p>
-		<div style="height: 25px"></div>
-
-		<div class="thumbnails" style="margin-left: 3em">
-			<a href="#embroidery_thumbnail"><img src="other_apps/embroidery_thumbnail.png" alt="Embroidery" width="20%" onclick="showOther('embroidery')" id="embroidery_thumbnail"></a>
-			<a href="#genetic_words_thumbnail"><img src="other_apps/genetic_words_thumbnail.png" alt="Genetic words" width="20%" onclick="showOther('genetic_words')" id="genetic_words_thumbnail"></a>
-			<a href="#natural_watch_thumbnail"><img src="other_apps/natural_watch_thumbnail.png" alt="Natural watch" width="20%" onclick="showOther('natural_watch')" id="natural_watch_thumbnail"></a>
-			<a href="#special_watch_thumbnail"><img src="other_apps/special_watch_thumbnail.png" alt="Special watch" width="20%" onclick="showOther('special_watch')" id="special_watch_thumbnail"></a>
-		</div>
-
-		<ul style="list-style-type: disc; padding-left: 3em">
-			<li style="font-size: 28px; display: none" id="embroidery"><span style="color: gold">Embroidery</span>:
-				<span style="font-size: 20px"><br>Design a pattern to embroider, and see which order of sewing will give you the desired design.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="genetic_words"><span style="color: gold">Genetic words</span>:
-				<span style="font-size: 20px"><br>Say goodbye to "Hello world!" creationists! This is the evolution of words from random strands! Write any word or phrase, press <em>&#60;Enter&#62;</em> and see how a randomly generated string evolves into it.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="natural_watch"><span style="color: gold">Natural watch</span>:
-				<span style="font-size: 20px"><br>Simple and beatiful. Natural watch with colors according to the hour and solar and lunar representations. Plus, calendar when clicked.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="special_watch"><span style="color: gold">Special watch</span>:
-				<span style="font-size: 20px"><br>Authentic <em>12 hours and 30 minutes a day</em> watch, with 100 minutes per hour and 100 seconds per minute.<br><br>Equivalence: <span style="color: goldenrod">1</span> second = <span style="color: goldenrod">1.44675926</span> <em>standard</em> seconds.</span>
-			</li>
-		</ul>
-
-		<div style="padding-right: 3em; display: none" id="other_apps_div">
-			<center><br><a href="#" class="button hvr-wobble-vertical hvr-shadow-radial" id="other_apps_button" target="_blank">Launch</a></center>
-		</div>
-	</div>
-
-	<!-- DIVISION -->
-
-	<div style="height: 150px" class="one_page"></div>
-
-	<!-- GAMES -->
-
-	<div style="color: white">
-		<p class="h1" id="games">Games</p>
-		<div style="height: 25px"></div>
-		
-		<div class="thumbnails" style="margin-left: 3em">
-			<a href="#azi_thumbnail"><img src="games/azi_thumbnail.png" alt="Azi" width="20%" onclick="showGames('azi')" id="azi_thumbnail"></a>
-			<a href="#gyrux_thumbnail"><img src="games/gyrux_thumbnail.png" alt="Gyrux" width="20%" onclick="showGames('gyrux')" id="gyrux_thumbnail"></a>
-			<a href="#hexawars_thumbnail"><img src="games/hexawars_thumbnail.png" alt="HexaWars" width="20%" onclick="showGames('hexawars')" id="hexawars_thumbnail"></a>
-		</div>
-
-		<ul style="list-style-type: disc; padding-left: 3em">
-			<li style="font-size: 28px; display: none" id="azi"><span style="color: gold">Azi</span>:
-				<span style="font-size: 20px"><br> The apple of my eye, <a class="meaning" href="#azi_thumbnail" title="&ldquo;Race&rdquo;"><em><strong>Azi</strong></em></a> is a game I came up with during a stay in China, March 2015. The game confronts two players on a square grid. The standard game is played on an 8×8 grid, although it can be played on any arbitrary size. <a href="#azi" onclick="showRules()" id="show_rules">See rules</a>.</span>
-				<ul style="list-style-type: circle; padding-left: 2em; font-size: 18px; line-height: 24px; display: none" id="azi_rules">
-					<li>Pieces only move vertically (in their own column).</li>
-					<li>Pieces advance as much as the value under their starting cell says.</li>
-					<li>When a piece reaches the last row, the player in turn says "<a class="meaning" href="#azi" title="&ldquo;First&rdquo;, for the first race has finished"><em><strong>Fratama!</strong></em></a>" and turns over the piece (so that it shows that it is going back). The new value for the piece to advance is the one written on top of the row. The current direction of advance is always where the triangle points.</li>
-					<li>If a player performs a move and there is an opponent's piece in the way:</li>
-					<ol>
-						<li style="padding-left: 1em"><b>1</b>. The player in turn says "<a class="meaning" href="#azi" title="&ldquo;Stumble&rdquo;, for one piece restarts the race"><em><strong>Spar!</strong></em></a>".</li>
-						<li style="padding-left: 1em"><b>2</b>. The player's piece moves to one cell further than where the opponent's piece was.</li>
-						<li style="padding-left: 1em"><b>3</b>. The opponent's piece moves back to its last staring row (the piece conserves its orientation; there is no turn over).</li>
-						<li style="padding-left: 1em"><b>4</b>. If there is yet another opponent's piece in the new cell, repeat from step <b>1</b>.</li>
-					</ol>
-					<li>When a piece gets back to the row where it started the game, the player in turn says "<a class="meaning" href="#azi" title="&ldquo;Second&rdquo;, for the second race has finished"><em><strong>Bitya!</strong></em></a>" and the piece ends its game. The piece should be left in the row without being turned over.</li>
-					<li>When the last piece of a player reaches the starting row, the player in turn says "<a class="meaning" href="#azi" title="&ldquo;Back home&rdquo;, for all pieces finished the race"><em><strong>Asta!</strong></em></a>" and wins the game. The game is over.</li>
-					<li type="circle">During the game loops can occur (reach to the exact same position in which both players were some states ago). In this case, the player dragged into the loop should say "<a class="meaning" href="#azi" title="&ldquo;Same&rdquo;, for the state is repeated"><em><strong>Hama!</strong></em></a>", and the opponent (who started the loop) should be the one to break it by moving a different piece.</li>
-				</ul>
-			</li>
-			<li style="font-size: 28px; display: none" id="gyrux"><span style="color: gold">Gyrux</span>:
-				<span style="font-size: 20px"><br>Turn the pieces, make them rotate. The goal is to end up with an all-squares design, matching colors properly.</span>
-			</li>
-			<li style="font-size: 28px; display: none" id="hexawars"><span style="color: gold">HexaWars</span>:
-				<span style="font-size: 20px"><br><em>HexaWars</em> is a strategy game I came up with in March 2014. Color conquests in hexagonal grids. Its rules' full understanding will take some practice, but the learning and playing pays back. The rules are explained <a href="games/HexaWars_Manual.pdf">here</a> (PDF).</span>
-			</li>
-		</ul>
-
-		<div style="padding-right: 3em; display: none" id="games_div1">
-			<center><br><a href="#" class="button hvr-wobble-vertical hvr-shadow-radial" id="games_button1" target="_blank">Launch</a></center>
-		</div>
-
-		<div style="height: 25px"></div>
-
-		<div class="thumbnails" style="margin-left: 3em">
-			<a href="#classic_slider_thumbnail"><img src="games/classic_slider_thumbnail.png" alt="Classic slider" width="20%" onclick="showGames('classic_slider')" id="classic_slider_thumbnail"></a>
-			<a href="#revert_thumbnail"><img src="games/revert_thumbnail.png" alt="Revert!" width="20%" onclick="showGames('revert')" id="revert_thumbnail"></a>
-			<a href="#simon_thumbnail"><img src="games/simon_thumbnail.png" alt="Simon" width="20%" onclick="showGames('simon')" id="simon_thumbnail"></a>
-			<a href="#slizzle_thumbnail"><img src="games/slizzle_thumbnail.png" alt="Slizzle" width="20%" onclick="showGames('slizzle')" id="slizzle_thumbnail"></a>
-		</div>
-
-		<ul style="list-style-type: disc; padding-left: 3em">
-			<li style="font-size: 28px; display: none;" id="classic_slider"><span style="color: lawngreen">Classic slider</span>: (optimized for mobile)
-				<span style="font-size: 20px"><br>Order the numbers using the empty cell as auxiliary. When you complete the level, the next will be one row and one column bigger.</span>
-			</li>
-			<li style="font-size: 28px; display: none;" id="revert"><span style="color: lawngreen">Revert!</span>: (optimized for mobile)
-				<span style="font-size: 20px"><br>On and off. A "+" shape around the cell where you click will switch on/off. Unlike the usual game, mind that you are in a torus! What leaves from the left, comes from the right! And so on. When you complete the level, the next will be one row and one column bigger.</span>
-			</li>
-			<li style="font-size: 28px; display: none;" id="simon"><span style="color: lawngreen">Simon</span>: (optimized for mobile)
-				<span style="font-size: 20px"><br>Memory test. What does Simon say?</span>
-			</li>
-			<li style="font-size: 28px; display: none;" id="slizzle"><span style="color: lawngreen">Slizze</span>: (optimized for mobile)
-				<span style="font-size: 20px"><br>This is how the Rubik's Cube would look like if it was a 2D puzzle. Order the numbers. When you complete the level, the next will be one row and one column bigger.</span>
-			</li>
-		</ul>
-
-		<div style="padding-right: 3em; display: none" id="games_div2">
-			<center><br><a href="#" class="button hvr-wobble-vertical hvr-shadow-radial" id="games_button2" target="_blank">Launch</a></center>
-		</div>
-	</div>
-
-	<!-- DIVISION -->
-
-	<div style="height: 150px" class="one_page"></div>
-
-	<!-- CONTACT -->
-
-	<div style="color: white">
-		<p class="h1" id="contact">Contact</p>
-		<div style="height: 25px"></div>
-		<span style="list-style-type: disc; padding-left: 2.5em; font-size: 20px">For any enquiries or comments please refer to: <a href="" target="_top" id="mailto">adri&#60;AT&#62;ms.u-tokyo.ac.jp</a>.</span>
-	</div>
+        <div id="bottom">
+            <span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span>
+            <!--<font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; left: 0.5cm; color: rgb(30,30,40);">B</font>-->
+            <!--<a href="#" title="&copy; Adrián Jiménez Pascual" onclick="changeFace()" id="me_img" style="display: none"><font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; right: 0.5cm; color: rgb(30,30,40);">B</font></a>-->
+        </div>
 
 
-	<!-- CONTACT --
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/sticker.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="assets/js/smooth.js"></script>
 
-	<form name="htmlform" id="contact" method="post" action="send_form.php" style="color: white; font-size: 20px">
-		<p class="h1">Contact</p>
-		<div style="height: 25px"></div>
 
-		<table width="75%">
-			<tr style="height: 2em">
-				<td style="vertical-align: top">
-					<label for="first_name" style="padding-left: 3em">First Name <span style="color: palevioletred">*</span></label>
-				</td>
-				<td style="vertical-align: top">
-					<input  type="text" name="first_name" maxlength="50" size="30">
-				</td>
-			</tr>
-			 
-			<tr style="height: 2em">
-				<td style="vertical-align: top"">
-					<label for="last_name" style="padding-left: 3em">Last Name <span style="color: palevioletred">*</span></label>
-				</td>
-				<td style="vertical-align: top">
-					<input  type="text" name="last_name" maxlength="50" size="30">
-				</td>
-			</tr>
-
-			<tr style="height: 2em">
-				<td style="vertical-align: top">
-					<label for="email" style="padding-left: 3em">Email Address <span style="color: palevioletred">*</span></label>
-				</td>
-				<td style="vertical-align: top">
-					<input  type="text" name="email" maxlength="80" size="30">
-				</td> 
-			</tr>
-
-			<tr style="height: 2em">
-				<td style="vertical-align: top">
-					<label for="telephone" style="padding-left: 3em">Telephone Number</label>
-				</td>
-				<td style="vertical-align: top">
-					<input  type="text" name="telephone" maxlength="30" size="30">
-				</td>
-			</tr>
-			
-			<tr style="height: 2em; border: 1px solid black">
-				<td style="vertical-align: top">
-					<label for="comments" style="padding-left: 3em">Comments <span style="color: palevioletred">*</span></label>
-				</td>
-				<td style="vertical-align: top; text-align: right">
-					<textarea name="comments" maxlength="1000" cols="50" rows="6"></textarea>
-				</td> 
-			</tr>
-
-			<tr style="height: 2em">
-				<td colspan="2" style="text-align:center">
-					<input type="submit" value="Submit">   ( <a href="http://www.freecontactform.com/html_form.php">HTML Form</a> )
-				</td>
-			</tr>
-		</table>
-	</form>
-
-	<!-- BOTTOM -->
-
-	<div id="bottom">
-		<a href="#top" title="&copy; Adrián Jiménez Pascual" onclick="changeFace()" id="lasso_img" style="display: block"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></a>
-		<!--<font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; left: 0.5cm; color: rgb(30,30,40);">B</font>-->
-		<!--<a href="#" title="&copy; Adrián Jiménez Pascual" onclick="changeFace()" id="me_img" style="display: none"><font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; right: 0.5cm; color: rgb(30,30,40);">B</font></a>-->
-	</div>
-
-	<!-- DIVISION -->
-
-	<div style="height: 150px" class="one_page"></div>
-
-	</div>
-</body>
-
+	</body>
 </html>
-
-<script type="text/javascript">
-	Sticker.init('.sticker');
-
-	function showRules() {
-		if (document.getElementById("azi_rules").style.display == "none") {
-			document.getElementById("azi_rules").style.display = "block";
-			document.getElementById("show_rules").textContent = "Hide rules";
-			document.getElementById("show_rules").href = "#azi";
-		}
-		else {
-			document.getElementById("azi_rules").style.display = "none";
-			document.getElementById("show_rules").textContent = "See rules";
-			document.getElementById("show_rules").href = "#azi_thumbnail";
-		}
-	}
-
-	var maths_apps = ["bounded_functions", "phyllotaxis", "predator_prey", "tree_representation"];
-	function showMaths(element) {
-		document.getElementById("maths_apps_div").style.display = "block";
-		for (var i = 0; i < maths_apps.length; i++) {
-			if (element == maths_apps[i]) {
-				document.getElementById(element).style.display = "block";
-				document.getElementById("maths_apps_button").href = "maths_apps/" + element + ".html";
-				document.getElementById(element + "_thumbnail").style.border = "4px solid gold";
-			}
-			else {
-				document.getElementById(maths_apps[i]).style.display = "none";
-				document.getElementById(maths_apps[i] + "_thumbnail").style.border = "4px solid rgba(30,30,60,1)";
-			}
-		}
-	}
-
-	var other_apps = ["embroidery", "genetic_words", "natural_watch", "special_watch"];
-	function showOther(element) {
-		document.getElementById("other_apps_div").style.display = "block";
-		for (var i = 0; i < other_apps.length; i++) {
-			if (element == other_apps[i]) {
-				document.getElementById(element).style.display = "block";
-				document.getElementById("other_apps_button").href = "other_apps/" + element + ".html";
-				document.getElementById(element + "_thumbnail").style.border = "4px solid gold";
-			}
-			else {
-				document.getElementById(other_apps[i]).style.display = "none";
-				document.getElementById(other_apps[i] + "_thumbnail").style.border = "4px solid rgba(30,30,60,1)";
-			}
-		}
-	}
-
-	var games = ["azi", "gyrux", "hexawars", "classic_slider", "revert", "simon", "slizzle"];
-	function showGames(element) {
-		if (games.indexOf(element) < 3) {
-			document.getElementById("games_div1").style.display = "block";
-			document.getElementById("games_div2").style.display = "none";
-		}
-		else {
-			document.getElementById("games_div1").style.display = "none";
-			document.getElementById("games_div2").style.display = "block";
-		}
-		for (var i = 0; i < games.length; i++) {
-			if (element == games[i]) {
-				document.getElementById(element).style.display = "block";
-				document.getElementById(element + "_thumbnail").style.border = "4px solid gold";
-				if (games.indexOf(element) < 3) {
-					document.getElementById("games_button1").href = "games/" + element + ".html";
-				}
-				else {
-					document.getElementById("games_button2").href = "games/" + element + ".html";
-				}	
-			}
-			else {
-				document.getElementById(games[i]).style.display = "none";
-				document.getElementById(games[i] + "_thumbnail").style.border = "4px solid rgba(30,30,60,1)";
-			}
-		}
-	}
-	
-	/*
-	var lasso = true;
-	function changeFace() {
-		if (lasso) {
-			document.getElementById("lasso_img").style.display = "none";
-			document.getElementById("me_img").style.display = "block";
-			lasso = false;
-		}
-		else {
-			document.getElementById("lasso_img").style.display = "block";
-			document.getElementById("me_img").style.display = "none";
-			lasso = true;
-		}
-	}*/
-	
-	//document.getElementById("roll_knot").textContent = "k0c1";
-	
-	var knots = ["k3c1", "k4c1", "k5c1", "k5c2", "k6c1", "k6c2", "k6c3", "k7c1", "k7c2", "k7c3", "k7c4", "k7c5", "k7c6", "k7c7"];
-	var i = -1;
-	var timer = setInterval(function() {
-		//alert("timer");
-		i++;
-		fadeout(document.getElementById("roll_knot"), 50, "roll_knot");
-	}, 2000);
-	
-	setTimeout(function() {
-		fadeout(document.getElementById("roll_name"), 50, "roll_name");
-	}, 2000);
-
-	function fadeout(element, steps, id) {
-	    var op = 1;  // initial opacity
-	    var timer = setInterval(function () {
-	        if (op <= 1/steps){
-	            clearInterval(timer);
-	            element.style.display = 'none';
-	            if (id == "roll_knot") {
-		           	document.getElementById(id).textContent = knots[i%knots.length];
-	            }
-	            else if (id == "roll_name") {
-		           	document.getElementById(id).textContent = "A";
-	            }
-				fadein(document.getElementById(id), 50);        	
-	        }
-	        element.style.opacity = op;
-	        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-	        op -= op * 1/steps;
-	    }, 2);
-	}
-
-	function fadein(element, steps) {
-		var op = 1/steps;  // initial opacity
-		element.style.display = 'block';
-		var timer = setInterval(function () {
-			if (op >= 1){
-				clearInterval(timer);
-		//		alert("opaque");
-			}
-			element.style.opacity = op;
-			element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-			op += op * 1/steps;
-	    }, 1);
-	}
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		// Add smooth scrolling to all links
-		$("a").on('click', function(event) {
-
-		// Make sure this.hash has a value before overriding default behavior
-		if (this.hash !== "") {
-			// Prevent default anchor click behavior
-			event.preventDefault();
-
-			// Store hash
-			var hash = this.hash;
-
-			// Using jQuery's animate() method to add smooth page scroll
-			// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-			$('html, body').animate({
-			scrollTop: $(hash).offset().top
-			}, 800, function(){
-
-			// Add hash (#) to URL when done scrolling (default click behavior)
-			window.location.hash = hash;
-			});
-		} // End if
-		});
-	});
-</script>
-<script type="text/javascript">
-	var user_name = "adri";
-	var host_name = "ms.u-tokyo.ac.jp";
-	document.getElementById("mailto").href = "mail" + "to:" + user_name + "@" + host_name;
-</script>
