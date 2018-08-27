@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style media="screen" type="text/css">
+.col {
+    position: relative;
+    float: left;
+    /*width: 45vw;*/
+    height: 96vh;
+    border: 1px solid #d3d3d3;
+}
+
+.row {
+    border: 1px solid #d3d3d3;
+    margin: 5px;
+}
+
+#left {
+    width: 60vw;
+}
+
+#right {
+    width: 30vw;
+}
+
+#top {
+    height: 30%;
+}
+
+#bottom {
+    height: 63%;
+}
+</style>
+<body>
+
+<div class="container">
+    <div class="col" id="left">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </div>
+    <div class="col" id="right">
+        <div class="row" id="top">
+            <canvas id="stats-canvas" width="150" height="150"></canvas>
+        </div>
+        <div class="row" id="bottom">
+            <button class="btn" type="button" onclick="start()">Start</button>
+            <button class="btn" type="button" onclick="undoLastMove()">Undo last move</button>
+            <button class="btn" type="button" onclick="redoMove()">Redo</button>
+            <button class="btn" type="button" onclick="endGame()">Give up</button>
+            <button class="btn" type="button" onclick="restart()">Restart</button>
+            <!--<form class="form-signin" action="/signUp" method="post" role="form">
+                <h2 class="form-signin-heading">Do math!!!</h2>
+                <input type="number" name="first" class="form-control" placeholder="First number" required autofocus>
+                <input type="number" name="second" class="form-control" placeholder="Second number" required>
+
+                <button class="btn btn-lg btn-primary btn-block" id="but1" "type="button">Register </button>
+            </form>
+            <button class="btn" type="button" onclick="work()">Calculate</button>
+            <p id="para">{{ text }}</p>-->
+        </div>
+    </div>
+</div>
+
+<script>
+var board_size = 9 - 1; // Size of the square board (that's why needs + 1 for frame board)
+var draw_areas = true;
+var players = [0, 1]; // 0: human; 1: bot
+var bot_level = 2; // 
+var response_time = 0; // ms
+
+var turn = 0;
+var game_started = false;
+
+var css_margin = 10;
+var board;
+var playthrough = []; // Array of BOARDS (we want the pieces AND the forbidden spots)
+
+var Piece = function(player, x, y) { // player: 0/1; player -1 is forbidden spot
+    this.player = player;
+    this.x = x;
+    this.y = y;
+    this.same_contour = []; // Pieces of the same player around
+    this.other_contour = []; // Pieces of the other player around
+}
+
+Piece.prototype.draw = function(last=false) {
+    if (this.player >= 0) {
+        if (last) { // Highlight last piece
+            context.fillStyle = 'yellowgreen';
+            context.beginPath();
+            context.arc(margin + this.x*cell_width, (height - min)/2 + this.y*cell_width, cell_width/2, 0, 2*Math.PI);
+            context.closePath();
+            context.fill();
+            context.stroke();            
+        }
+        context.fillStyle = (this.player == 0 ? 'white' : 'black');
+        context.beginPath();
+        context.arc(margin + this.x*cell_width, (height - min)/2 + this.y*cell_width, cell_width/3, 0, 2*Math.PI);
+        context.closePath();
+        context.fill();
+        context.stroke();        
+    }
+    else {
+        context.strokeStyle = 'crimson';
+        context.lineWidth = 3;
+        context.globalAlpha = 0.25;
+        context.beginPath();
+        context.moveTo(margin + this.x*cell_width - cell_width/9, (height - min)/2 + this.y*cell_width - cell_width/9);
+        context.lineTo(margin + this.x*cell_width + cell_width/9, (height - min)/2 + this.y*cell_width + cell_width/9);
+        context.moveTo(margin + this.x*cell_width + cell_width/9, (height - min)/2 + this.y*cell_width - cell_width/9);
+        context.lineTo(margin + this.x*cell_width - cell_width/9, (height - min)/2 + this.y*cell_width + cell_width/9);
+        context.stroke();
+        context.strokeStyle = 'black';
+        context.lineWidth = 1;
+        context.globalAlpha = 1;
+    }
+}
+
+Piece.prototype.updateContour = function() { // Updates contour of this AND sorts it in spiral
+    var min_x = Math.max(0, this.x - 1);
+    var max_x = Math.min(board_size, this.x + 1);
+    var min_y = Math.max(0, this.y - 1);
+    var max_y = Math.min(board_size, this.y + 1);
+    for (var i = min_x; i <= max_x; i++) {
+        for (var j = min_y; j <= max_y; j++) {
+            if (i != this.x || j != this.y) { // If not current piece's position
+                for (var k = 0; k < board.pieces.length; k++) {
+                    if (board.pieces[k].x == i && board.pieces[k].y == j) { // If there is a piece on the spot
+                        if (board.pieces[k].player == turn) {
+                            this.same_contour.push(board.pieces[k]);
+                        }
+                        else {
+                            this.other_contour.push(board.pieces[k])
+                        }
+                    }
+                }
+            }
+        }
+    }
+    this.same_contour = spiral(this.x, this.y, this.same_contour);
+    this.other_contour = spiral(this.x, this.y, this.other_contour);
+    //console.log(this.same_contour);
+    //console.log(this.other_contour);
+
+    function spiral(x, y, array) { // Sorts the arrays in spiral (clockwise)
+        var top = [];
+        var center = [];
+        var buttom = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].y == y - 1) {top.push(array[i]);}
+            else if (array[i].y == y + 1) {buttom.push(array[i]);}
+            else {center.push(array[i]);}
+        }
+        top.sort(function(a, b) {return a.x - b.x;})
+        buttom.sort(function(a, b) {return b.x - a.x;})
+        center.sort(function(a, b) {return b.x - a.x;})
+        var res = top;
+        if (center.length == 2) {res.push(center[1]);}
+        else if (center.length == 1 && center[0].x == x + 1) {res.push(center[0]);}
+        for (var i = 0; i < buttom.length; i++) {
+            res.push(buttom[i]);
+        }
+        if (center.length == 2) {res.push(center[0]);}
+        else if (center.length == 1 && center[0].x == x - 1) {res.push(center[0]);}
+        return res
+    }
+}
+
+Piece.prototype.contourMaxConnected = function(option) { // Returns the maximum connected string length in the option contour. Use AFTER updateContour
+    var contour = (option == this.player ? this.same_contour : this.other_contour);
+    if (contour.length == 0) {
+        return 0;
+    }
+    var res = [1];
+    for (var i = 0; i < contour.length - 1; i++) {
+        if (Math.abs(contour[i].x - contour[i + 1].x) + Math.abs(contour[i].y - contour[i + 1].y) == 1 && !(contour[i].x == this.x - 1 && contour[i].y == this.y - 1 && contour[i + 1].x == this.x - 1 && contour[i + 1].y == this.y)) { // If consecutive (and not only first and last of spiral)
+            res[res.length - 1] += 1;
+        }
+        else {
+            res.push(1);
+        }
+    }
+    if (contour.length > 1 && contour[contour.length - 1].x - contour[0].x == 0 && contour[contour.length - 1].y - contour[0].y == 1 && contour[0].x == this.x - 1) { // If last connected with first
+        res[0] += 1;
+    }
+    return Math.max(...res);
+}
+
+var Board = function(b_size) {
+    this.b_size = b_size;
+    this.pieces = [];
+    this.forbidden_spots = [];
+}
+
+Board.prototype.draw = function() {
+    drawBackground();
+    context.beginPath();
+    context.fillStyle = 'tan';
+    context.rect(margin - cell_width*2/3, (Math.min(width, height) == width ? (height - 2*margin)/2 - min/2 + cell_width : cell_width) - cell_width*2/3, min + cell_width*4/3, min + cell_width*4/3);
+    context.fill();
+    context.stroke();
+    context.beginPath();
+    for (var i = 0; i <= this.b_size; i++) {
+        context.moveTo(margin + i*cell_width, height/2 - min/2);
+        context.lineTo(margin + i*cell_width, height/2 + min/2);
+        context.moveTo(margin, height/2 - min/2 + i*cell_width);
+        context.lineTo(min + margin, height/2 - min/2 + i*cell_width);
+    }
+    context.stroke();    
+}
+
+Board.prototype.drawWithPieces = function() {
+    this.draw();
+    if (draw_areas) {
+        var areas = this.getAreas(); // top-left corners of areas
+        this.drawAreas(areas);
+    }
+    for (var i = 0; i < this.pieces.length; i++) {
+        this.pieces[i].draw(i == this.pieces.length - 1);
+    }
+    for (var i = 0; i < this.forbidden_spots.length; i++) {
+        this.forbidden_spots[i].draw();
+    }
+}
+
+Board.prototype.drawAreas = function(areas) {
+    context.globalAlpha = 0.75;
+    for (var i = 0; i < areas.length; i++) {
+        context.fillStyle = (areas[i].player == 0 ? 'rgb(200,200,200)' : 'rgb(55,55,55)');
+        context.beginPath();
+        context.rect(margin + areas[i].x*cell_width, (height - min)/2 + areas[i].y*cell_width, cell_width, cell_width);
+        context.fill();
+    }
+    context.globalAlpha = 1;
+}
+
+Board.prototype.availableSpots = function() { // Returns list of [x, y] where the pieces in turn can be put
+    var res = [];
+    var all_forbidden = this.pieces.concat(this.forbidden_spots);
+    for (var i = 0; i <= this.b_size; i++) {
+        for (var j = 0; j <= this.b_size; j++) {
+            var empty = true;
+            for (var k = 0; k < all_forbidden.length; k++) {
+                if (i == all_forbidden[k].x && j == all_forbidden[k].y) {
+                    empty = false;
+                    break;
+                }
+            }
+            if (empty) {
+                res.push({'x': i, 'y': j});
+            }
+        }
+    }
+    return res
+}
+
+Board.prototype.isOk = function(piece) { // Returns "true" if the piece can be layed down
+    var av_spots = this.availableSpots();
+    for (var i = 0; i < av_spots.length; i++) {
+        if (piece.x == av_spots[i].x && piece.y == av_spots[i].y) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Board.prototype.setPiece = function(piece) { // Registers the piece and moves (fuki) the proper ones
+    this.pieces.push(piece);
+    this.setForbiddenSpots(piece);
+}
+
+Board.prototype.setForbiddenSpots = function(piece) {
+    this.forbidden_spots = [];
+    var adjacent = this.adjacentPieces(piece.x, piece.y);
+    for (var i = 0; i < adjacent.length; i++) {
+        if (piece.player != adjacent[i].player) { // If adjacent is an opponent's piece
+            var new_adjacent = this.adjacentPieces(adjacent[i].x, adjacent[i].y);
+            var empty = true;
+            for (var j = 0; j < new_adjacent.length; j++) {
+                if (new_adjacent[j].x == adjacent[i].x + adjacent[i].x - piece.x && new_adjacent[j].y == adjacent[i].y + adjacent[i].y - piece.y) {
+                    empty = false;
+                    break;
+                }
+            }
+            if (empty) { // Fuki available
+                this.updatePiece(adjacent[i], piece);
+            }
+        }
+    }
+}
+
+Board.prototype.updatePiece = function(piece, other) { // Registers piece move (fuki) and forbidden_spots
+    for (var i = 0; i < this.pieces.length; i++) {
+        var current = {'x': this.pieces[i].x, 'y': this.pieces[i].y};
+        if (this.pieces[i].x == piece.x && this.pieces[i].y == piece.y) {
+            this.pieces[i].x += this.pieces[i].x - other.x;
+            this.pieces[i].y += this.pieces[i].y - other.y;
+            this.forbidden_spots.push(new Piece(-1, current.x, current.y)); // Registers last position
+            if (this.pieces[i].x < 0 || this.pieces[i].x > this.b_size) {
+                this.pieces[i].x = current.x;
+                this.forbidden_spots.pop(); // If border, remove from forbidden_spots
+            }
+            if (this.pieces[i].y < 0 || this.pieces[i].y > this.b_size) {
+                this.pieces[i].y = current.y;
+                this.forbidden_spots.pop(); // If border, remove from forbidden_spots
+            }
+            break;
+        }
+    }
+}
+
+Board.prototype.adjacentPieces = function(x, y) { // Returns the pieces around x, y
+    var res = [];
+    for (var i = 0; i < this.pieces.length; i++) {
+        if ((this.pieces[i].x == x && this.pieces[i].y == y - 1) || (this.pieces[i].x == x && this.pieces[i].y == y + 1) || (this.pieces[i].x == x - 1 && this.pieces[i].y == y) || (this.pieces[i].x == x + 1 && this.pieces[i].y == y)) {
+            res.push(this.pieces[i]);
+        }
+    }
+    return res;
+}
+
+Board.prototype.getAreas = function() { // Returns the top left corner piece of the areas (this determines the color of the area)
+    var res = [];
+    var sorted_pieces = copyArrayOfPieces(this.pieces);
+    sorted_pieces.sort(function(a, b) {
+        if (a.y == b.y) {
+            return a.x - b.x;
+        }
+        else {
+            return a.y - b.y;
+        }
+    });
+    for (var i = 0; i <= this.b_size; i++) {
+        for (var j = 0; j <= this.b_size; j++) {
+            var pieces = [];
+            var corner;
+            for (var k = 0; k < this.pieces.length; k++) {
+                if ((this.pieces[k].x == i && this.pieces[k].y == j) || (this.pieces[k].x == i + 1 && this.pieces[k].y == j) || (this.pieces[k].x == i && this.pieces[k].y == j + 1) || (this.pieces[k].x == i + 1 && this.pieces[k].y == j + 1)) {
+                    pieces.push(this.pieces[k]);
+                    if (this.pieces[k].x == i && this.pieces[k].y == j) {
+                        corner = this.pieces[k];
+                    }
+                }
+            }
+            if (pieces.length == 4) {
+                var player = pieces[0].player;
+                var good = true
+                for (var k = 1; k < pieces.length; k++) {
+                    if (pieces[k].player != player) {
+                        good = false;
+                    }
+                }
+                if (good) {
+                    res.push(corner);
+                }
+            }
+        }
+    }
+    return res;
+}
+
+Board.prototype.getScore = function() { // Returns {'simple': [score 0, score 1], 'blocks': [[block 0, block 0...], [block 1, block 1...]]}
+    var res = {'simple': [0, 0], 'blocks': [[], []]};
+    var areas = this.getAreas();
+    var blocked = [];
+    while (areas.length > 0) {
+        var block = getBody(areas[0], removePieceFromArea(areas[0], areas));
+        //console.log(block);
+        res.simple[areas[0].player] += block.length;
+        res.blocks[areas[0].player].push(block.length);
+        for (var i = 0; i < block.length; i++) {
+            areas = removePieceFromArea(block[i], areas);
+        }
+    }
+    for (var i = 0; i < res.blocks.length; i++) {
+        res.blocks[i].sort();
+        res.blocks[i].reverse();
+    }
+    return res;
+
+    function getBody(piece, area) {
+        blocked.push(piece);
+        if (area.length == 0) {
+            return [piece];
+        }
+        var body = [piece];
+        for (var i = 0; i < 2; i++) {
+            for (var j = 0; j < 2; j++) {
+                var e = [piece.x + (i*2 - 1)*j, piece.y + (-i*2 + 1)*(1 - j)];
+                var temp = pieceWithCoords(piece.x + (i*2 - 1)*j, piece.y + (-i*2 + 1)*(1 - j), area); // Piece around "piece"
+                var temp2 = pieceWithCoords(piece.x + (i*2 - 1)*j, piece.y + (-i*2 + 1)*(1 - j), blocked); // Check if that piece is already blocked
+                if (temp != null && temp2 == null && temp.player == piece.player) { // If there is piece around and it's not blocked
+                    var aux = getBody(temp, removePieceFromArea(temp, area))
+                    for (var k = 0; k < aux.length; k++) {
+                        body.push(aux[k]);
+                    }
+                }
+            }
+        }
+        return body;
+    }
+
+    function removePieceFromArea(piece, area) {
+        var res = [];
+        for (var i = 0; i < area.length; i++) {
+            if (piece.x != area[i].x || piece.y != area[i].y) {
+                res.push(area[i]);
+            }
+        }
+        return res;
+    }
+
+    function pieceWithCoords(x, y, area) {
+        for (var i = 0; i < area.length; i++) {
+            if (area[i].x == x && area[i].y == y) {
+                return area[i];
+            }
+        }
+        return null;
+    }
+}
+
+Board.prototype.getWinner = function() { // Returns winner at the moment of the call
+    var score = this.getScore();
+    if (score.simple[0] == score.simple[1]) {
+        var i = 0;
+        while (i < Math.min(score.blocks[0].length, score.blocks[1].length)) {
+            if (score.blocks[0][i] != score.blocks[1][i]) {
+                return (score.blocks[0][i] > score.blocks[1][i] ? 0 : 1);
+            }
+            else {
+                i++;
+            }
+        }
+        return -1;
+    }
+    return (score.simple[0] > score.simple[1] ? 0 : 1);
+}
+
+Board.prototype.setBoard = function(pieces, forbidden_spots) {
+    this.pieces = pieces;
+    this.forbidden_spots = forbidden_spots;
+}
+
+function getBestScore(score1, score2) { // Returns best score
+    if (score1.simple[turn] != score2.simple[turn]) {
+        if (score1.simple[turn] > score2.simple[turn]) {
+            return {'simple': score1.simple, 'blocks': score1.blocks};
+        }
+        else {
+            return {'simple': score2.simple, 'blocks': score2.blocks};
+        }
+    }
+    else {
+        if (score1.simple[(turn+1)%2] > score2.simple[(turn+1)%2]) {
+            return {'simple': score2.simple, 'blocks': score2.blocks};
+        }
+        else {
+            return {'simple': score1.simple, 'blocks': score1.blocks};
+        }        
+    }
+}
+
+var bots = new Array(2);
+var Bot = function(level) {
+    this.level = level;
+}
+
+Bot.prototype.move = function() {
+    var available = board.availableSpots();
+    var move_index = this.getMoveIndex(available);
+    setTimeout(function(){
+        commonHandler(available[move_index].x, available[move_index].y, true);
+    }, response_time);
+}
+
+Bot.prototype.getMoveIndex = function(available) {
+    var move_index = 0;
+    switch (this.level) {
+        case 0: // Random pick
+            move_index = Math.floor(Math.random()*available.length);
+            break;
+        case 1: // Maximize own score, minimize opponent's
+            current_score = board.getScore();
+            var best_score = {'simple': current_score.simple, 'blocks': current_score.blocks};
+            for (var i = 0; i < available.length; i++) {
+                var new_piece = new Piece(turn, available[i].x, available[i].y);
+                board.setPiece(new_piece);
+                var score = board.getScore();
+                saveBoard();
+                best_score = getBestScore(best_score, score);
+                if (best_score.simple == score.simple && best_score.blocks == score.blocks) { // If best_score updated
+                    move_index = i;
+                }
+                turn = (turn+1)%2;
+                undoLastMove(false);
+            }
+            break;
+        case 2: // Places where rival's pieces are more dense, or where own are more dense
+            move_index = this.algorithm2(available);
+            break;
+        default:
+            break;
+    }
+    return move_index
+}
+
+Bot.prototype.simulate = function(first_argument) {
+    // body...
+}
+
+Bot.prototype.algorithm2 = function(available) { // Places where rival's pieces are more dense (in proportion), or where own are more dense (in proportion)
+    if (board.pieces.length == 0) { // If first piece, put in center
+        return (board_size%2 == 1 ? Math.floor(available.length/2 - board_size/2) : Math.floor(available.length/2));
+    }
+    var max_potential_same = 0; // Maximum number of pieces connected in same_contour (making a "snake")
+    var max_potential_other = 0; // Maximum number of pieces connected in other_contour (making a "snake")
+    var potential_same = []; // Indices that achieve the max_potential_same
+    var potential_other = []; // Indices that achieve the max_potential_other
+    for (var i = 0; i < available.length; i++) {
+        var temp_piece = new Piece(turn, available[i].x, available[i].y);
+        temp_piece.updateContour();
+        var temp_potential_same = temp_piece.contourMaxConnected(turn); // Get longest "snake" length of same
+        var temp_potential_other = temp_piece.contourMaxConnected((turn+1)%2); // Get longest "snake" length of other
+        if (temp_potential_same >= max_potential_same) {
+            if (temp_potential_same > max_potential_same) {
+                potential_same = [i];
+            }
+            else {
+                potential_same.push(i);
+            }
+            max_potential_same = temp_potential_same; // It's ok to update always because with "==" will not affect, and with ">" is necessary
+        }
+        if (temp_potential_other >= max_potential_other) {
+            if (temp_potential_other > max_potential_other) {
+                potential_other = [i];
+            }
+            else {
+                potential_other.push(i);
+            }
+            max_potential_other = temp_potential_other; // It's ok to update always because with "==" will not affect, and with ">" is necessary
+        }
+    }
+    if (max_potential_other >= max_potential_same) {
+        return potential_other[Math.floor(Math.random()*potential_other.length)]; // Pick random if there are multiple possibilities
+    }
+    else {
+        return potential_same[Math.floor(Math.random()*potential_same.length)]; // Pick random if there are multiple possibilities
+    }
+}
+
+/** CANVAS AND MAIN **/
+
+var canvas = document.querySelector('canvas'),
+    context    = canvas.getContext('2d');
+fitToContainer(canvas);
+
+function fitToContainer(canvas){
+  canvas.style.width='100%';
+  canvas.style.height='100%';
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+
+var width = canvas.width;
+var height = canvas.height;
+var margin = Math.min(width, height)/(board_size + 2);
+var min = Math.min(width, height) - 2*margin;
+if (Math.min(width, height) == height) {
+    margin = (width - min)/2;
+}
+var cell_width = min/board_size;
+
+main();
+
+function main() {
+    board = new Board(board_size);
+    board.draw();
+}
+
+function drawBackground() {
+    context.fillStyle = 'white';
+    context.rect(0, 0, width, height);
+    context.fill();
+}
+
+/* EVENTS */
+canvas.onclick = function(e) {
+    var x = e.pageX;
+    var y = e.pageY;
+    if (game_started && players[turn] == 0) {
+        commonHandler(x, y);
+    }
+}
+
+canvas.ontouchstart = function(e) {
+    var x = e.touches[0].pageX;
+    var y = e.touches[0].pageY;
+    if (game_started && players[turn] == 0) {
+        commonHandler(x, y);
+    }
+}
+
+function commonHandler(x, y, direct=false) {
+    //alert(x + ' ' + y + '\n' + cell_width + ' ' + margin);
+    if (!direct) { // If not direct values, calculate them
+        x = Math.floor((x - (Math.min(width, height) == width ? css_margin + cell_width/2: margin + css_margin - cell_width/2))/cell_width);
+        y = Math.floor(((y - (height - min)/2 + (Math.min(width, height) == width ? margin/2 - css_margin : cell_width/2 - css_margin)))/cell_width);
+    }
+    if (0 <= x && x <= board_size && 0 <= y && y <= board_size) {
+        var new_piece = new Piece(turn, x, y);
+        if (board.isOk(new_piece)) {
+            board.setPiece(new_piece);
+            saveBoard();
+            board.drawWithPieces();
+            drawScore2();
+            if (checkEnd()) { // If end of game
+                //endGame();
+                game_started = false;
+                return;
+            }
+            //console.log(board.getWinner());
+            turn = (turn+1)%2;
+            if (players[turn] == 1) {
+                bots[turn].move();
+            }
+        }
+    }
+}
+
+/* MEMORY/STATS HANDLERS */
+
+function saveBoard(clear_redo=true) {
+    var current_board = new Board(board_size);
+    current_board.setBoard(copyArrayOfPieces(board.pieces), copyArrayOfPieces(board.forbidden_spots));
+    playthrough.push(current_board);
+    if (clear_redo) {
+        redo = new Array(); // When saving new move redo has to be disabled because the game has continued
+    }
+}
+
+function copyArrayOfPieces(array) { // Returns a copy of the array (instead of a reference to it)
+    var res = [];
+    for (var i = 0; i < array.length; i++) {
+        var temp = new Piece(array[i].player, array[i].x, array[i].y);
+        res.push(temp);
+    }
+    return res;
+}
+
+function checkEnd() {
+    return (board.pieces.length%2 == 0 && board.pieces.length >= (board_size + 1)*(board_size + 1) - 1 ? true : false);
+}
+
+var redo = [];
+function undoLastMove(draw=true) {
+    if (playthrough.length <= 1 && draw) {
+        alert('Nothing to be undone!');
+    }
+    else if (playthrough.length > 1) {
+        // Undo
+        last_board = playthrough[playthrough.length - 2];
+        board.setBoard(copyArrayOfPieces(last_board.pieces), copyArrayOfPieces(last_board.forbidden_spots));
+        turn = (turn+1)%2;
+        var current_board = playthrough.pop(); // Removes last movement from saved and catches it
+        // Save for redo
+        var current = new Board(board_size);
+        current.setBoard(copyArrayOfPieces(current_board.pieces), copyArrayOfPieces(current_board.forbidden_spots));
+        redo.push(current);
+        if (draw) {
+            board.drawWithPieces();
+            drawScore2();        
+        }
+    }
+}
+
+function redoMove() {
+    if (redo.length == 0) {
+        alert('Nothing to redo!');
+    }
+    else {
+        var next_board = redo.pop();
+        board.setBoard(copyArrayOfPieces(next_board.pieces), copyArrayOfPieces(next_board.forbidden_spots));
+        turn = (turn+1)%2;
+        board.drawWithPieces();
+        saveBoard(false);        
+        drawScore2();
+    }
+}
+
+function endGame() {
+    var winner = board.getWinner();
+    var score = board.getScore();
+    var score_text = scoreToText(score);
+    if (winner == -1) {
+        alert('Draw\n' + score_text);
+    }
+    else {
+        alert((winner == 0 ? 'Whites' : 'Blacks') + ' win\n' + score_text);
+    }
+
+    function scoreToText(score) {
+        var simple_text = score.simple[0] + ' - ' + score.simple[1];
+        if (score.simple[0] != score.simple[1]) {
+            return simple_text;
+        }
+        var blocks_text = '\n([' + (score.blocks[0].length == 0 ? '0' : '');
+        for (var i = 0; i < score.blocks[0].length; i++) {
+            blocks_text += score.blocks[0][i] + (i < score.blocks[0].length - 1 ? ', ' : '');
+        }
+        blocks_text += '] - [' + (score.blocks[1].length == 0 ? '0' : '');
+        for (var i = 0; i < score.blocks[1].length; i++) {
+            blocks_text += score.blocks[1][i] + (i < score.blocks[1].length - 1 ? ', ' : '');
+        }
+        blocks_text += '])';
+        return simple_text + ' ' + blocks_text;
+    }
+}
+
+function clearAll() {
+    board = new Board(board_size);
+    playthrough = [];
+}
+
+function start() { // Starts the game
+    game_started = true;
+    if (players[1] == 1) {
+        bots[1] = new Bot(bot_level);
+    }
+    if (players[0] == 1) {
+        bots[0] = new Bot(bot_level);
+        bots[0].move();
+    }
+}
+
+function restart() {
+    if (confirm('Do you want to restart the game?')) {
+        clearAll();
+        board.drawWithPieces();
+    }
+}
+
+/** CANVAS AND MAIN **/
+
+var canvas2 = document.getElementById('stats-canvas'),
+    context2    = canvas2.getContext('2d');
+fitToContainer(canvas2);
+
+var width2 = canvas2.width;
+var height2 = canvas2.height;
+
+main2();
+
+function main2() {
+    drawScore2();
+}
+
+function drawBackground2() {
+    context2.fillStyle = 'rgb(230,230,230)';
+    context2.beginPath();
+    context2.rect(0, 0, width2, height2);
+    context2.fill();
+}
+
+function drawScore2() {
+    drawBackground2();
+    horizontalBar2(0);
+    horizontalBar2(1);
+}
+
+function horizontalBar2(elem) {
+    var score = board.getScore();
+    var total_score = Math.max(score.simple[0], score.simple[1]) + 1;
+    var winner = board.getWinner();
+    context2.fillStyle = (elem == 0 ? 'white' : 'black');
+    context2.strokeStyle = (elem == winner ? (elem == 0 ? 'goldenrod' : 'gold') : (elem == 0 ? 'black' : 'white'));
+    for (var i = 0; i < score.blocks[elem].length; i++) {
+        var suma = 0;
+        for (var j = 0; j < i; j++) {
+            suma += score.blocks[elem][j];
+        }
+        context2.beginPath();
+        context2.rect(suma*width2/total_score, height2/12 + elem*height2/2, score.blocks[elem][i]*width2/total_score, height2/3);
+        context2.fill();
+        context2.stroke();
+        context2.rect(suma*width2/total_score + css_margin, height2/12 + elem*height2/2 + css_margin, score.blocks[elem][i]*width2/total_score - 2*css_margin, height2/3 - 2*css_margin);
+        context2.fill();
+        context2.stroke();
+    }
+    for (var i = 1; i < score.simple[elem]; i++) {
+        context2.setLineDash([5]);
+        context2.beginPath();
+        context2.moveTo(width2*i/total_score, height2/12 + elem*height2/2);
+        context2.lineTo(width2*i/total_score, height2/12 + elem*height2/2 + height2/3);
+        context2.stroke();
+        context2.setLineDash([]);
+    }
+    context2.strokeStyle = 'black';
+}
+</script> 
+
+</body>
+</html>
