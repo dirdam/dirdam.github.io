@@ -67,3 +67,16 @@ function dont() {
 	//$('#networks').css('visibility', 'visible');
 	$('.needless').css('text-decoration', 'line-through rgb(160,0,0)');
 }
+
+var languages = ['en', 'es', 'ja'];
+changeLanguage('en');
+function changeLanguage(option) { // Changes language to option
+	for (var i = 0; i < languages.length; i++) {
+		if (languages[i] != option) {
+			$('[lang="' + languages[i] + '"]').hide();
+		}
+		else {
+			$('[lang="' + languages[i] + '"]').show();			
+		}
+	}
+}
