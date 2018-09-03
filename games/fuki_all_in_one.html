@@ -599,7 +599,7 @@ Bot.prototype.algorithm3 = function(available) { // Places where rival's pieces 
         }
         else if (temp_potential_same.length > 0 && !potential_same.corner) {
             if (temp_potential_same[0].pieces.length > max_potential_same) {
-                potential_same = {'pieces': [i], 'corner': true};
+                potential_same = {'pieces': [i], 'corner': temp_potential_same[0].corner};
                 max_potential_same = temp_potential_same[0].pieces.length;
             }
             else if (temp_potential_same[0].pieces.length == max_potential_same) {
@@ -617,15 +617,15 @@ Bot.prototype.algorithm3 = function(available) { // Places where rival's pieces 
         }
         else if (temp_potential_other.length > 0 && !potential_other.corner) {
             if (temp_potential_other[0].pieces.length > max_potential_other) {
-                potential_other = {'pieces': [i], 'corner': true};
+                potential_other = {'pieces': [i], 'corner': temp_potential_other[0].corner};
                 max_potential_other = temp_potential_other[0].pieces.length;
             }
             else if (temp_potential_other[0].pieces.length == max_potential_other) {
-                potential_same.pieces.push(i);
+                potential_other.pieces.push(i);
             }
         }
     }
-    if (max_potential_other >= 2 && max_potential_other > max_potential_same) { // Change 2 by 3
+    if (max_potential_other >= max_potential_same) { // Change 2 by 3
         return potential_other.pieces[Math.floor(Math.random()*potential_other.pieces.length)]; // Pick random if there are multiple possibilities
     }
     else {
