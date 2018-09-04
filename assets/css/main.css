@@ -1588,7 +1588,7 @@
 	margin-bottom: 4em;
 }
 
-#language a:link, a:hover, a:visited, a:active {
+#language a {
 	margin: 0 25px 0 25px;
 	border-bottom: none;
 }
