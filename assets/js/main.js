@@ -69,7 +69,7 @@ function dont() {
 }
 
 var languages = ['en', 'es', 'ja'];
-changeLanguage('en');
+changeLanguage(window.location.hash ? window.location.hash.substr(1) : 'en');
 function changeLanguage(option) { // Changes language to option
 	for (var i = 0; i < languages.length; i++) {
 		if (languages[i] != option) {
