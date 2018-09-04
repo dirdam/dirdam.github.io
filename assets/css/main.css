@@ -1581,3 +1581,19 @@
 				}
 
 		}
+
+/* Languages */
+#language {
+	text-align: center;
+	margin-bottom: 4em;
+}
+
+#language a:link, a:hover, a:visited, a:active {
+	margin: 0 25px 0 25px;
+	border-bottom: none;
+}
+
+#language img {
+	border: 2px solid;
+	border-radius: 25px;
+}
