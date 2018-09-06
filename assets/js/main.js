@@ -68,7 +68,7 @@ function dont() {
 	$('.needless').css('text-decoration', 'line-through rgb(160,0,0)');
 }
 
-var languages = ['en', 'es', 'ja'];
+var languages = ['en', 'es', 'ja', 'zh'];
 changeLanguage(window.location.hash ? window.location.hash.substr(1) : 'en');
 function changeLanguage(option) { // Changes language to option
 	for (var i = 0; i < languages.length; i++) {
