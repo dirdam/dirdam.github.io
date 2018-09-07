@@ -1581,7 +1581,8 @@
 /* Languages */
 #language {
 	text-align: center;
-	margin-bottom: 4em;
+	margin-bottom: 1em;
+	height: 50px;
 }
 
 #language a {
