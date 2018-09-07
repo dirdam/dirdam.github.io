@@ -1,4 +1,3 @@
-@import url(font-awesome.min.css);
 @import url(knots.css);
 @import url("https://fonts.googleapis.com/css?family=Pacifico|Source+Sans+Pro:200,400");
 
@@ -525,9 +524,7 @@
 		.select-wrapper:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
 			font-style: normal;
-			font-weight: normal;
 			text-transform: none !important;
 		}
 
@@ -589,9 +586,8 @@
 			input[type="radio"] + label:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: 'Font Awesome\ 5 Free';
 				font-style: normal;
-				font-weight: normal;
 				text-transform: none !important;
 			}
 
@@ -724,9 +720,8 @@
 		.icon:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: 'Font Awesome\ 5 Free';
 			font-style: normal;
-			font-weight: normal;
 			text-transform: none !important;
 		}
 
