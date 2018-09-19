@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/squadro.css" />
+		<link rel="stylesheet" href="assets/css/csshake.css" />
         <link rel="shortcut icon" href="images/lasso_logo.ico"/>
 	</head>
 	<body>
@@ -237,6 +238,9 @@
 							<div class="column">
 								<img src="images/pic_squadro_setup_bis.jpg" alt="(purplepawn.com)" onclick="expand(this, 3);">
 							</div>
+							<div class="column">
+								<img src="images/pic_squadro_bag.jpg" alt="(geekdad.com)" onclick="expand(this, 4);">
+							</div>
 						</div>
 
 						<div class="container">
@@ -254,7 +258,7 @@
 						<h3 lang="en" style="letter-spacing: 0.2rem;"> <span style="letter-spacing: 0.05rem;font-size: 18px">This implementation of SQUADRO is based on the original design of the game ("AZI"), therefore the aspect differs from the actual aspect of the game. Nevertheless, the rules don't change.<br><br>First screen: choose the size of the board.<br>Second screen: play against another human or a bot.<br>Third screen: in case of playing against a bot, choose its difficulty.<br><br>Enjoy :)</span></h3>
 						<h3 lang="es" style="letter-spacing: 0.2rem;"> <span style="letter-spacing: 0.05rem;font-size: 18px">Esta implementación de SQUADRO se basa en el diseño original del juego (AZI"), y por lo tanto su aspecto difiere del aspecto real del juego. No obstante, las reglas no cambian.<br><br>Primera pantalla: elige el tamaño del tablero.<br>Segunda pantalla: juega contra otro humano o la máquina.<br>Tercera pantalla: en caso de jugar contra la máquina, elige su dificultad.<br><br>Diviértete :)</span></h3>
                         <ul class="actions" style="text-align: center; padding-top: 20px;">
-							<li lang="en"><a href="games/squadro.html" class="button big">Launch game</a></span></li>
+							<li lang="en"><a href="games/squadro.html" class="button big shake-little">Launch game</a></span></li>
 							<li lang="es"><a href="games/squadro.html" class="button big">Comenzar juego</a></li>
 						</ul>
                     </section>
@@ -335,6 +339,7 @@
 				    var imgText = document.getElementById("imgtext");
 				    expandImg.src = imgs.src;
 				    imgText.innerHTML = imgs.alt;
+				    imgtext.style.color = (index == 4 ? 'white' : 'black');
 				    expandImg.parentElement.style.display = (count%2 == 0 ? "none" : "block");
 				    last = index;
 				}
