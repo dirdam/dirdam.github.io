@@ -1627,6 +1627,8 @@
     font-size: 20px;
 }
 
+/* Lists bullets */
+
 .starred:before {
 	float: left;
 	content: "\2605";
