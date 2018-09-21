@@ -1575,3 +1575,14 @@
 				}
 
 		}
+
+/* Embedded videos*/
+
+iframe {
+	border: solid 2px #444;
+    border-radius: 4px;
+}
+
+iframe:hover {
+	border-color: #EF6480;
+}

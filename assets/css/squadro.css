@@ -1595,7 +1595,7 @@
     width: 100%;
 }
 
-.column img:hover {
+.column img:hover, .colmun img:focus {
     opacity: 1;
     border: solid 2px #EF6480;
     border-radius: 4px;
@@ -1634,4 +1634,15 @@
 	content: "\2605";
 	text-indent: -30px;
 	color: darkgoldenrod;
+}
+
+/* Embedded videos*/
+
+iframe {
+	border: solid 2px #444;
+    border-radius: 4px;
+}
+
+iframe:hover {
+	border-color: #EF6480;
 }
