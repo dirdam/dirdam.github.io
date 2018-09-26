@@ -1574,3 +1574,30 @@
 				}
 
 		}
+
+/* Scroll bar */
+
+::-webkit-scrollbar {
+	width: 10px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-track {
+	border: solid 1px #444;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: gray;
+	border-radius: 10px;
+	border: solid 3px transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border: solid 2px transparent;
+}
+
+::-webkit-scrollbar-thumb:active {
+	border: solid 2px #444;
+}
