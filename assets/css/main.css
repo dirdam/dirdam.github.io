@@ -1260,7 +1260,7 @@
 		width: 64em;
 		margin: 0 auto;
 		max-width: calc(100% - 4em);
-		padding: 4em 0 2em 0;
+		padding: 2em 0 2em 0;
 	}
 
 		#wrapper > .main {
@@ -1283,7 +1283,7 @@
 
 			#wrapper {
 				max-width: calc(100% - 2em);
-				padding: 1em 0 0.1em 0;
+				padding: 2em 0 0.1em 0;
 			}
 
 				#wrapper > .main {
