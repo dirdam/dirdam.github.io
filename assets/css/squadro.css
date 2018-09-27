@@ -1650,19 +1650,19 @@ iframe:hover {
 /* Scroll bar */
 
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 12px;
 	background: transparent;
 }
 
 ::-webkit-scrollbar-track {
-	border: solid 1px #444;
-	border-radius: 10px;
+	border: solid 1px #aaa;
+	border-radius: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: gray;
-	border-radius: 10px;
-	border: solid 3px transparent;
+	background: #aaa;
+	border-radius: 12px;
+	border: solid 4px transparent;
 	background-clip: content-box;
 }
 
@@ -1671,5 +1671,5 @@ iframe:hover {
 }
 
 ::-webkit-scrollbar-thumb:active {
-	border: solid 2px #444;
+	border: solid 2px #aaa;
 }
