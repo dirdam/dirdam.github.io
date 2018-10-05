@@ -741,7 +741,13 @@
 				line-height: 2.5em;
 				display: inline-block;
 				border-radius: 100%;
+				-webkit-transition: all 1s; /* Safari */
+			    transition: all 1s;
 				/*color: #666666;*/
+			}
+
+			.icon.major:hover:before {
+				box-shadow: inset 0 0 3px 3px #333333;
 			}
 
 		@media screen and (max-width: 736px) {
