@@ -1495,8 +1495,13 @@
 	.field {
 		padding: 4em 4em 2em 4em;
 		background-color: #ffffff;
+		border: 1px solid transparent;
 		border-radius: 4px;
 		/*text-align: center;*/
+	}
+
+	.field:hover {
+		border: 1px solid #c3c3c3;
 	}
 
 		@media screen and (max-width: 736px) {
