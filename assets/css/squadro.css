@@ -741,7 +741,13 @@
 				line-height: 2.5em;
 				display: inline-block;
 				border-radius: 100%;
+				-webkit-transition: all 1s; /* Safari */
+			    transition: all 1s;
 				/*color: #666666;*/
+			}
+
+			.icon.major:hover:before {
+				box-shadow: inset 0 0 3px 3px #333333;
 			}
 
 		@media screen and (max-width: 736px) {
@@ -1672,4 +1678,19 @@ iframe:hover {
 
 ::-webkit-scrollbar-thumb:active {
 	border: solid 2px #aaa;
+}
+
+/* Gradient colors */
+#lock:before {
+  color: transparent;
+  background-image: linear-gradient(slategray 48%, darkgoldenrod 48%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+#gift:before {
+  color: transparent;
+  background-image: linear-gradient(red 42%, coral 42%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
