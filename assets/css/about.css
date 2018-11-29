@@ -1498,10 +1498,13 @@
 		border: 1px solid transparent;
 		border-radius: 4px;
 		/*text-align: center;*/
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
 	}
 
 	.field:hover {
 		border: 1px solid #c3c3c3;
+		box-shadow: 0 0 10px #666666;
 	}
 
 		@media screen and (max-width: 736px) {
