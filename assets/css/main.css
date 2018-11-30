@@ -1077,8 +1077,16 @@
 	.item {
 		padding: 3em 3em 1em 3em;
 		background-color: #ffffff;
+		border: 1px solid transparent;
 		border-radius: 4px;
 		text-align: center;
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
+	}
+
+	.item:hover {
+		border: 1px solid #c3c3c3;
+		box-shadow: 0 0 10px #666666;
 	}
 
 		.item header {
@@ -1469,7 +1477,15 @@
 	#main {
 		padding: 4em 4em 2em 4em;
 		background-color: #ffffff;
+		border: 1px solid transparent;
 		border-radius: 4px;
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
+	}
+
+	#main:hover {
+		border: 1px solid #c3c3c3;
+		box-shadow: 0 0 10px #666666;
 	}
 
 		#main > header:first-child {
@@ -1497,8 +1513,16 @@
 	#intro {
 		padding: 4em 4em 2em 4em;
 		background-color: #ffffff;
+		border: 1px solid transparent;
 		border-radius: 4px;
 		text-align: center;
+		-webkit-transition: all 1s; /* Safari */
+		transition: all 1s;
+	}
+
+	#intro:hover {
+		border: 1px solid #c3c3c3;
+		box-shadow: 0 0 10px #666666;
 	}
 
 		@media screen and (max-width: 736px) {

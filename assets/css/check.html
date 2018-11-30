@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<form onsubmit="doMath(); return false">
+		<select id="m" onchange="setOpts()">
+			<option value="ub">ub</option>
+			<option value="ek">ek</option>
+			<option value="ga">ga</option>
+			<option value="tu">tu</option>
+			<option value="xa">xa</option>
+			<option value="gl">gl</option>
+			<option value="ok">ok</option>
+			<option value="x">x</option>
+			<option value="ac">ac</option>
+			<option value="re">re</option>
+			<option value="マ">マ</option>
+			<option value="te">te</option>
+			<option value="al">al</option>
+			<option value="ab">ab</option>
+			<option value="tl">tl</option>
+			<option value="ラ">ラ</option>
+			<option value="ry">ry</option>
+		</select>
+		<select id="p">
+		</select>
+		<input type="text" name="code" id="code">
+		<input type="submit" value="Go">
+	</form>
+	<p id="res"></p>
+</body>
+<script type="text/javascript">
+	var ass = {'x': ['tl'], 'ok': ['tl'], 'gl': ['a', 'i', 'l'], 'tl': ['a'], 'te': ['lgl'], 'ub': ['m'], 'ab': ['agl'], 'ek': ['m'], 'マ': ['agl'], 'ga': ['-----'], 'ac': [''], 'al': ['lgl'], 'xa': ['6'], 're': ['agl'], 'ラ': ['agl'], 'tu': [''], 'ry': ['za']};
+	var che = {'x': ['a'], 'ok': ['a'], 'gl': ['a', 'g', 'a'], 'tl': ['a'], 'te': ['a'], 'ub': ['d'], 'ab': ['a'], 'ek': ['d'], 'マ': ['a'], 'ga': ['-----'], 'ac': [''], 'al': ['a'], 'xa': ['5'], 're': ['a'], 'ラ': ['a'], 'tu': [''], 'ry': ['k']};
+	var fin = {'x': ['n@P^p4'], 'ok': ['vsG^x"3'], 'gl': ['U^:Psw', 'jD^`x&', '@K^lc<2'], 'tl': [',yP^fg3#'], 'te': ['trB^l;'], 'ub': ['ijY^xRE'], 'ab': ['s;Y^Pl8'], 'ek': ['|S3s3"25^m(4'], 'マ': ['|s525^#2h'], 'ga': ['|-----'], 'ac': ['|S4296432k^d#0'], 'al': ['|S4296432k^plH'], 'xa': ['|-----'], 're': ['|6238++nN^%dGb'], 'ラ': ['|s525^f$v'], 'tu': ['|S4296432u^pls'], 'ry': ['|??????']};
+	var hi = {'x': 'd', 'ok': 'f', 'gl': 'g', 'tl': 'h', 'te': 'e', 'ub': 'g', 'ab': 'g', 'ek': 'b', 'マ': 'ボ', 'ga': 't', 'ac': 'm', 'al': 'p', 'xa': 'c', 're': 'a.s', 'ラ': 'ビ', 'tu': 'u', 'ry': 'a'};
+	var cons = '"52+368';
+	var per = ['/ot/', '/mr/'];
+	setOpts();
+	function setOpts() {
+		var m = document.getElementById("m");
+		m = m.options[m.selectedIndex].value;
+		var p = document.getElementById("p");
+		p.options.length = 0;
+		for (var i = 0; i < ass[m].length; i++) {
+			var option = document.createElement("option");
+			option.text = ass[m][i];
+			p.add(option);
+		}
+	}
+	function doMath() {
+		var val = document.getElementById("code").value;
+		var m = document.getElementById("m");
+		m = m.options[m.selectedIndex].value;
+		var p = document.getElementById("p");
+		p = p.options[p.selectedIndex].value;
+		document.getElementById("res").innerHTML = hi[m] + "+" + (val != che[m][ass[m].indexOf(p)] ? cons : cons + per[(m == 'gl' && p == 'i' ? 1 : 0)] + fin[m][ass[m].indexOf(p)]);
+	}
+</script>
