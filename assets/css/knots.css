@@ -12,6 +12,7 @@
 	font-size: 200px;
 	line-height: 0px;
 	vertical-align: middle;
+	cursor: default;
 }
 
 a.knots:hover {
@@ -20,6 +21,7 @@ a.knots:hover {
 
 .knots.name:before { content: 'A'; }
 .knots.me:before { content: 'B'; }
+.knots.lasso:before { content: 'C'; }
 .knots.k0c1:before { content: "k0c1"; }
 .knots.k3c1:before { content: "k3c1"; }
 .knots.k4c1:before { content: "k4c1"; }
@@ -35,3 +37,4 @@ a.knots:hover {
 .knots.k7c5:before { content: "k7c5"; }
 .knots.k7c6:before { content: "k7c6"; }
 .knots.k7c7:before { content: "k7c7"; }
+.knots.k8c1:before { content: "k8c1"; }
