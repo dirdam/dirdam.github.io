@@ -9,14 +9,17 @@
 .knots {
 	color: inherit;
 	font-family: "KnotFont";
-	font-size: 200px;
+	font-size: 100px;
 	line-height: 0px;
 	vertical-align: middle;
+	-webkit-transition: all 1s;
+	transition: all 1s;
 	cursor: default;
 }
 
-a.knots:hover {
-	color:inherit;
+.column .knots:hover {
+	color: black;
+	text-shadow: -2px 2px 10px rgb(0,103,104);
 }
 
 .knots.name:before { content: 'A'; }
