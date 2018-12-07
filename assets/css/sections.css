@@ -1716,8 +1716,16 @@ iframe:hover {
 
 /* Return buttons */
 
-@media screen and (max-width: 736px) {
+.space {
+	padding: 10px;
+}
+
+@media screen and (max-width: 480px) {
 	#back h3 .button {
 		padding: 0 10px;
+	}
+
+	.space {
+		padding: 0;
 	}
 }
