@@ -1699,6 +1699,7 @@ iframe:hover {
 }
 
 /* Gradient colors */
+
 #lock:before {
   color: transparent;
   background-image: linear-gradient(slategray 48%, darkgoldenrod 48%);
@@ -1711,4 +1712,12 @@ iframe:hover {
   background-image: linear-gradient(red 42%, coral 42%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* Return buttons */
+
+@media screen and (max-width: 736px) {
+	#back h3 .button {
+		padding: 0 10px;
+	}
 }
