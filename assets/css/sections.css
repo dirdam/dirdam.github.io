@@ -427,7 +427,7 @@
 			opacity: 0.25;
 		}
 
-		@media screen and (max-width: 480px) {
+		/*@media screen and (max-width: 480px) {
 
 			input[type="submit"],
 			input[type="reset"],
@@ -437,7 +437,7 @@
 				padding: 0;
 			}
 
-		}
+		}*/
 
 	input[type="submit"],
 	input[type="reset"],
