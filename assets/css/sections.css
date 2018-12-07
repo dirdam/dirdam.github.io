@@ -1379,6 +1379,7 @@
 		#header .inner {
 			position: relative;
 			z-index: 1;
+			text-shadow: -2px 2px 10px black;
 		}
 
 		#header.alt {
@@ -1411,9 +1412,10 @@
 			#header.alt p {
 				text-transform: uppercase;
 				letter-spacing: 0.325rem;
-				font-weight: 400;
+				font-weight: bold;
 				font-size: 0.8em;
 				padding: 0 1.25em;
+				text-shadow: 2px 0 5px black, -2px 0 5px black, 0 2px 5px black, 0 -2px 5px black;
 			}
 
 			#header.alt .inner {
