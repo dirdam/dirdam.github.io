@@ -1608,7 +1608,7 @@
 /* The grid: Four equal columns that floats next to each other */
 .column {
     float: left;
-    width: 25%;
+    width: 20%;
     padding: 10px;
 }
 
@@ -1658,6 +1658,13 @@
 	content: "\2605";
 	text-indent: -30px;
 	color: darkgoldenrod;
+}
+
+.extra-reviews:before {
+	float: left;
+	content: "\1f7a4";
+	text-indent: -30px;
+	color: #ba2f00;	
 }
 
 /* Embedded videos */
