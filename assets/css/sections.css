@@ -1770,3 +1770,20 @@ iframe:hover {
 #contact {
 	text-align: center;
 }
+
+/* Subtitle */
+#subtitle {
+	letter-spacing: 0.05rem;
+	font-weight: normal;
+	height: 150px;
+	text-align: center;
+}
+
+#quote {
+	letter-spacing: inherit;
+	font-style: italic;
+}
+
+#author {
+	letter-spacing: inherit;
+}
