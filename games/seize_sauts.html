@@ -1,0 +1,235 @@
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<script>
+var size = 4;
+var Cell = function(x, y) {
+	this.x = x;
+	this.y = y;
+}
+
+Cell.prototype.draw = function() {
+	var w_center = (w - min)/2 + cell_width/2 + this.x*cell_width;
+	var h_center = (h - min)/2 + cell_width/2 + this.y*cell_width;
+	context.strokeStyle = "black";
+	context.fillStyle = "rgb(149,79,29)";
+	context.lineWidth = 1;
+	context.beginPath();
+	context.rect(w_center - cell_width/2, h_center - cell_width/2, cell_width, cell_width);
+	context.fill();
+	context.stroke();
+	// Cross
+	drawStar(w_center, h_center, cell_width, "rgb(139,69,19)");
+}
+
+function drawStar(x, y, radius, fillcolor) {
+	context.beginPath();
+	context.moveTo(x, y - radius/3);
+	context.lineTo(x - radius/9, y - radius/9);
+	context.lineTo(x - radius/3, y);
+	context.lineTo(x - radius/9, y + radius/9);
+	context.lineTo(x, y + radius/3);
+	context.lineTo(x + radius/9, y + radius/9);
+	context.lineTo(x + radius/3, y);
+	context.lineTo(x + radius/9, y - radius/9);
+	context.closePath();
+	if (fillcolor) {
+		context.fillStyle = fillcolor;
+		context.fill();
+	}
+	context.stroke();
+}
+
+var Piece = function(x, y) {
+	this.x = x;
+	this.y = y;
+}
+
+Piece.prototype.draw = function(horizontal, value, first=false) {
+	var w_center = (w - min)/2 + cell_width/2 + this.x*cell_width;
+	var h_center = (h - min)/2 + cell_width/2 + this.y*cell_width;
+	drawCompass(w_center, h_center, cell_width, (first ? "rgb(178,34,34)" : "rgb(220,220,220)"), horizontal);
+	var inner_color = (first ? "rgb(168,24,24)" : "rgb(200,200,200)");
+	if (horizontal) {
+		for (var i = 0; i < value; i++) {
+			if (value == 2) {
+				drawStar(w_center - cell_width/3 + (2*i + 2)*cell_width/9, h_center, cell_width/6, inner_color);
+			}
+			if (value == 3) {
+				drawStar(w_center - cell_width/3 + (i + 1)*cell_width/6, h_center, cell_width/6, inner_color);
+			}
+		}
+	}
+	else {
+		for (var i = 0; i < value; i++) {
+			if (value == 2) {
+				drawStar(w_center, h_center - cell_width/3 + (2*i + 2)*cell_width/9, cell_width/6, inner_color);
+			}
+			if (value == 3) {
+				drawStar(w_center, h_center - cell_width/3 + (i + 1)*cell_width/6, cell_width/6, inner_color);
+			}
+		}		
+	}
+}
+
+function drawCompass(x, y, radius, fillcolor, horizontal) {
+	context.beginPath();
+	if (horizontal) {
+		context.moveTo(x, y - radius/6);
+		context.lineTo(x - radius/3, y);
+		context.lineTo(x, y + radius/6);
+		context.lineTo(x + radius/3, y);
+	}
+	else {
+		context.moveTo(x, y - radius/3);
+		context.lineTo(x - radius/6, y);
+		context.lineTo(x, y + radius/3);
+		context.lineTo(x + radius/6, y);
+	}
+	context.closePath();
+	if (fillcolor) {
+		context.fillStyle = fillcolor;
+		context.fill();
+	}
+	context.stroke();
+}
+
+
+var cell_width;
+var cells = new Array();
+onload = function() {
+	document.title = "Seize sauts";
+	canvas = document.createElement("canvas");
+	document.body.appendChild(canvas);
+	canvas.style.position = "absolute"; canvas.style.left = 0; canvas.style.top = 0;
+	context = canvas.getContext("2d");
+	w = window.innerWidth;
+	h = window.innerHeight;
+	context.canvas.width = w;
+	context.canvas.height = h;
+	document.body.appendChild(canvas);
+	min = Math.min(w, h)*size/(size + 2);
+	cell_width = min/size;
+
+	initialize();
+	drawBoard();
+}
+
+function initialize() { // Starts cells and pieces
+	for (var i = 0; i < size; i++) {
+		for (var j = 0; j < size; j++) {
+			cells.push(new Cell(i, j));
+		}
+	}
+	
+}
+
+function drawBackground() {
+	context.fillStyle = "white";
+	context.fillRect(0, 0, w, h);
+}
+
+function drawBoard() {
+	drawBackground();
+	for (var i = 0; i < cells.length; i++) {
+		console.log(cells[i].x, cells[i].y);
+		cells[i].draw();
+	}
+	drawButton();
+}
+
+function drawButton() {
+	context.fillStyle = "rgb(230,230,230)";
+	context.beginPath();
+	context.arc(w/2 + min/2 + (w - min)/4, h/2, cell_width/3, 0, 2*Math.PI);
+	context.fill();
+	context.stroke();
+	context.font = "900 " + cell_width + 'px "Font Awesome 5 Free"';
+	var text = "\uf0e2";
+	context.textBaseline = "middle";
+	context.strokeText(text, w/2 + min/2 + (w - min)/4 - context.measureText(text).width/2, h/2);
+}
+
+//Movements
+ontouchstart = function(event) {
+	var x = event.touches[0].clientX;
+	var y = event.touches[0].clientY;
+	commonStart(x, y);
+}
+ontouchmove = function(event) {
+	event.preventDefault();
+}
+onmousedown = function(event) {
+	var x = event.clientX;
+	var y = event.clientY;
+	commonStart(x, y);
+}
+
+var pieces = new Array();
+pieces.push(new Piece(0, 0));
+function commonStart(x, y) {
+	if (pieces.length > 1 && dist(x, y, w/2 + min/2 + (w - min)/4, h/2) < cell_width/3) { // Back button
+		var remove_piece = pieces.pop();
+		last_piece = pieces[pieces.length - 1];
+		var w_center = (w - min)/2 + cell_width/2 + remove_piece.x*cell_width;
+		var h_center = (h - min)/2 + cell_width/2 + remove_piece.y*cell_width;
+		drawStar(w_center, h_center, cell_width, "rgb(139,69,19)");
+		var w_center = (w - min)/2 + cell_width/2 + last_piece.x*cell_width;
+		var h_center = (h - min)/2 + cell_width/2 + last_piece.y*cell_width;
+		drawStar(w_center, h_center, cell_width, "rgb(139,69,19)");
+		context.globalAlpha = 0.5;
+		if (pieces.length == 1) {
+			drawCompass(w_center, h_center, cell_width, "rgb(178,34,34)", true);
+		}
+		else {
+			drawStar(w_center, h_center, cell_width, "rgb(220,220,220)");
+		}
+		context.globalAlpha = 1;
+	}
+	x = Math.floor((x - (w - min)/2)/cell_width);
+	y = Math.floor((y - (h - min)/2)/cell_width);
+	var last_piece = pieces[pieces.length - 1];
+	if (0 <= x && x < size && 0 <= y && y < size) {
+		if (x == 0 && y == 0 && pieces.length == size*size) { // Back to the origin
+			var w_center = (w - min)/2 + cell_width/2 + last_piece.x*cell_width;
+			var h_center = (h - min)/2 + cell_width/2 + last_piece.y*cell_width;
+			drawStar(w_center, h_center, cell_width, "rgb(139,69,19)");
+			var horizontal = (last_piece.x - x == 0 ? false : true);
+			var value = (horizontal ? Math.abs(last_piece.x - x) : Math.abs(last_piece.y - y));
+			last_piece.draw(horizontal, value, last_piece.x == 0 && last_piece.y == 0);
+			alert("Perfect!!!!");
+			return;
+		}
+		if ((last_piece.x == x || last_piece.y == y) && (Math.abs(last_piece.x - x) >= 2 || Math.abs(last_piece.y - y) >= 2) && notOccupied(x, y)) {
+			var w_center = (w - min)/2 + cell_width/2 + last_piece.x*cell_width;
+			var h_center = (h - min)/2 + cell_width/2 + last_piece.y*cell_width;
+			drawStar(w_center, h_center, cell_width, "rgb(139,69,19)");
+			context.globalAlpha = 0.5;
+			var w_center = (w - min)/2 + cell_width/2 + x*cell_width;
+			var h_center = (h - min)/2 + cell_width/2 + y*cell_width;
+			drawStar(w_center, h_center, cell_width, "rgb(220,220,220)");
+			context.globalAlpha = 1;
+			var horizontal = (last_piece.x - x == 0 ? false : true);
+			var value = (horizontal ? Math.abs(last_piece.x - x) : Math.abs(last_piece.y - y));
+			last_piece.draw(horizontal, value, last_piece.x == 0 && last_piece.y == 0);
+			pieces.push(new Piece(x, y));
+		}
+	}
+}
+
+function notOccupied(x, y) {
+	for (var i = 0; i < pieces.length; i++) {
+		if (pieces[i].x == x && pieces[i].y == y) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function dist(x1, y1, x2, y2) {
+	return Math.sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
+}
+
+</script>
