@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+	Epilogue by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Adrï</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="stylesheet" href="../assets/css/sections.css" />
+        <link rel="shortcut icon" href="../images/lasso_logo.ico"/>
+	</head>
+	<body style="-webkit-transition: all 1s; transition: all 1s">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Banner -->
+			<section id="contact" class="field" onmouseover="document.body.style.backgroundColor='rgba(255,250,240,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
+				<span style="text-align: center; color: rgb(50,50,50); text-shadow: -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black;" class="icon fas fa-undo-alt major"></span>
+				<h2 lang="en">Replay game</h2>
+				<h2 lang="es">Cargar partida</h2>
+				<h2 lang="ja">ゲームロード</h2>
+				<h2 lang="zh">Cargar partida</h2>
+				<p lang="en">Paste the game code you want to replay</p>
+				<p lang="es">Pega el código de la partida que quieres cargar</p>
+				<p lang="ja">ロードしたいゲームのコードを貼り付けてください</p>
+				<p lang="zh">Pega el código de la partida que quieres cargar</p>
+				<form action="https://formspree.io/adrian.jimenez.pascual@gmail.com" method="POST" onsubmit="return validate()">
+					<div class="contact-field" style="display: none;">
+						<input id="subject" type="text" name="_subject" value="Squadro: Game replay">
+					</div>
+					<div class="contact-field" style="display: none;">
+						<input id="email" type="email" name="_replyto" value="unknown@unknown.com">
+					</div>
+					<div class="contact-field code">
+						<h4 lang="en">Your code:</h4>
+						<h4 lang="es">Tu código:</h4>
+						<h4 lang="ja">あなたのコード：</h4>
+						<h4 lang="zh">Tu código:</h4>
+						<span lang="en"><textarea name="message" placeholder="Paste your game code here"></textarea></span>
+						<span lang="es"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
+						<span lang="ja"><textarea name="message" placeholder="ゲームのコードをここに貼り付けてください"></textarea></span>
+						<span lang="zh"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
+					</div>
+					<input type="text" name="_gotcha" style="display:none">
+					<input id="next" type="hidden" name="_next" value="squadro_replay.html">
+					<input lang="en" type="submit" value="Send" style="margin-top: 20px;" onmouseover="update()">
+					<input lang="es" type="submit" value="Enviar" style="margin-top: 20px;" onmouseover="update()">
+					<input lang="ja" type="submit" value="送信する" style="margin-top: 20px;" onmouseover="update()">
+					<input lang="zh" type="submit" value="Send" style="margin-top: 20px;" onmouseover="update()">
+				</form>
+			</section>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<p lang="en" class="copyright">&copy; Adrï, 2018. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+				<p lang="es" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+				<p lang="ja" class="copyright">&copy; Adrï，2018．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．</p>
+				<p lang="zh" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+			</footer>
+
+		</div>
+		<!-- BOTTOM -->
+
+		<div id="bottom">
+			<a lang="en" href="./"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<a lang="es" href="./#es"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<a lang="ja" href="./#ja"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<a lang="zh" href="./#zh"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+		</div>
+
+
+		<!-- Scripts -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/skel.min.js"></script>
+		<script src="../assets/js/sticker.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="../assets/js/smooth.js"></script>
+		<script type="text/javascript">
+			var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
+			findIP.then(ip => $("#email").val(ip + "@ip.address")).catch(e => console.error(e));
+
+
+			function update() {
+				var size = ($(".code textarea").val().indexOf("5") > -1 ? 5 : 3);
+				$("#subject").val("Squadro: Game Replay " + size + "x" + size);
+				$("#next").val("squadro_replay.html?code=" + $(".code textarea").val());
+			}
+
+			function validate() {
+				var fixed_characters = ["l", "b", "1", "2", "3", "4", "5"];
+				var text = $(".code textarea").val();
+				for (var i = 0; i < text.length; i++) {
+					if (i%2 == 0 && (fixed_characters.indexOf(text[i]) < 0 || fixed_characters.indexOf(text[i]) > 1)) {
+						alert("Invalid game code. Please enter a valid code.");
+						return false;
+					}
+					if (i%2 == 1 && (fixed_characters.indexOf(text[i]) < 2 || fixed_characters.indexOf(text[i]) > 6)) {
+						alert("Invalid game code. Please enter a valid code.");
+						return false;
+					}
+				}
+				return true;
+			}
+		</script>
+
+
+	</body>
+</html>
