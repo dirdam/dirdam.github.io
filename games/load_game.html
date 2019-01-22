@@ -30,30 +30,20 @@
 				<p lang="es">Pega el código de la partida que quieres cargar</p>
 				<p lang="ja">ロードしたいゲームのコードを貼り付けてください</p>
 				<p lang="zh">Pega el código de la partida que quieres cargar</p>
-				<form action="" method="POST" onsubmit="return validate()">
-					<div class="contact-field" style="display: none;">
-						<input id="subject" type="text" name="_subject" value="Squadro: Game replay">
-					</div>
-					<div class="contact-field" style="display: none;">
-						<input id="email" type="email" name="_replyto" value="unknown@unknown.com">
-					</div>
-					<div class="contact-field code">
-						<h4 lang="en">Your code:</h4>
-						<h4 lang="es">Tu código:</h4>
-						<h4 lang="ja">あなたのコード：</h4>
-						<h4 lang="zh">Tu código:</h4>
-						<span lang="en"><textarea name="message" placeholder="Paste your game code here"></textarea></span>
-						<span lang="es"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
-						<span lang="ja"><textarea name="message" placeholder="ゲームのコードをここに貼り付けてください"></textarea></span>
-						<span lang="zh"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
-					</div>
-					<input type="text" name="_gotcha" style="display:none">
-					<input id="next" type="hidden" name="_next" value="squadro_replay.html">
-					<input lang="en" type="submit" value="Send" style="margin-top: 20px;" onmouseover="update()">
-					<input lang="es" type="submit" value="Enviar" style="margin-top: 20px;" onmouseover="update()">
-					<input lang="ja" type="submit" value="送信する" style="margin-top: 20px;" onmouseover="update()">
-					<input lang="zh" type="submit" value="Send" style="margin-top: 20px;" onmouseover="update()">
-				</form>
+				<div class="contact-field code">
+					<h4 lang="en">Your code:</h4>
+					<h4 lang="es">Tu código:</h4>
+					<h4 lang="ja">あなたのコード：</h4>
+					<h4 lang="zh">Tu código:</h4>
+					<span lang="en"><textarea name="message" placeholder="Paste your game code here"></textarea></span>
+					<span lang="es"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
+					<span lang="ja"><textarea name="message" placeholder="ゲームのコードをここに貼り付けてください"></textarea></span>
+					<span lang="zh"><textarea name="message" placeholder="Pega el código de tu partida aquí"></textarea></span>
+				</div>
+				<span lang="en" class="button big" style="margin-right: 50px" onclick="goNext()">Send</span>
+				<span lang="es" class="button big" style="margin-right: 50px" onclick="goNext()">Enviar</span>
+				<span lang="ja" class="button big" style="margin-right: 50px" onclick="goNext()">送信する</span>
+				<span lang="zh" class="button big" style="margin-right: 50px" onclick="goNext()">Send</span>
 			</section>
 
 			<!-- Footer -->
@@ -84,30 +74,40 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="../assets/js/smooth.js"></script>
 		<script type="text/javascript">
-			var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
-			findIP.then(ip => $("#email").val(ip + "@ip.address")).catch(e => console.error(e));
+			//var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
+			//findIP.then(ip => $("#email").val(ip + "@ip.address")).catch(e => console.error(e));
 
 
 			function update() {
 				var size = ($(".code textarea").val().indexOf("5") > -1 ? 5 : 3);
-				$("#subject").val("Squadro: Game Replay " + size + "x" + size);
-				$("#next").val("squadro_replay.html?code=" + $(".code textarea").val());
 			}
 
 			function validate() {
-				var fixed_characters = ["l", "b", "1", "2", "3", "4", "5"];
+				var fixed_speeds = ["1", "2", "3", "4", "5"];
 				var text = $(".code textarea").val();
+				var first_hand = (text[0] == "l" ? "l" : "b");
+				var second_hand = (text[0] == "l" ? "b" : "l");
 				for (var i = 0; i < text.length; i++) {
-					if (i%2 == 0 && (fixed_characters.indexOf(text[i]) < 0 || fixed_characters.indexOf(text[i]) > 1)) {
+					if (i%4 == 0 && text[i] != first_hand) {
 						alert("Invalid game code. Please enter a valid code.");
 						return false;
 					}
-					if (i%2 == 1 && (fixed_characters.indexOf(text[i]) < 2 || fixed_characters.indexOf(text[i]) > 6)) {
+					else if (i%4 == 2 && text[i] != second_hand) {
+						alert("Invalid game code. Please enter a valid code.");
+						return false;						
+					}
+					else if (i%2 == 1 && fixed_speeds.indexOf(text[i]) == -1) {
 						alert("Invalid game code. Please enter a valid code.");
 						return false;
 					}
 				}
 				return true;
+			}
+
+			function goNext() {
+				if (validate()) {
+					window.location.replace("squadro_replay.html?code=" + $(".code textarea").val());
+				}
 			}
 		</script>
 
