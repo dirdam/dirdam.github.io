@@ -1660,6 +1660,14 @@
 	color: darkgoldenrod;
 }
 
+.trophy:before {
+	float: left;
+	content: "\1F3C6";
+	text-indent: -30px;
+	font-weight: bold;
+	color: darkgoldenrod;
+}
+
 .extra-reviews:before {
 	float: left;
 	content: "\1f7a4";
@@ -1710,6 +1718,13 @@ iframe:hover {
 #lock:before {
   color: transparent;
   background-image: linear-gradient(slategray 48%, darkgoldenrod 48%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+#accolade:before {
+  color: transparent;
+  background-image: linear-gradient(goldenrod 57%, crimson 57%);
   -webkit-background-clip: text;
   background-clip: text;
 }
