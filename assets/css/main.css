@@ -744,7 +744,7 @@
 				line-height: 2.5em;
 				display: inline-block;
 				border-radius: 100%;
-				color: #666666;
+				/*color: #666666;*/
 				-webkit-transition: all 1s; /* Safari */
 				transition: all 1s;
 			}
