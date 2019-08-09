@@ -46,10 +46,7 @@
 		                    	<h4 lang="es">Email:</h4>
 		                    	<h4 lang="ja">メール：</h4>
 		                    	<h4 lang="zh">Email:</h4>
-		                    	<span lang="en"><input type="email" name="_replyto" placeholder="Your email address"></span>
-		                    	<span lang="es"><input type="email" name="_replyto" placeholder="Tu dirección de correo"></span>
-		                    	<span lang="ja"><input type="email" name="_replyto" placeholder="あなたのメールアドレス"></span>
-		                    	<span lang="zh"><input type="email" name="_replyto" placeholder="Tu dirección de correo"></span>
+		                    	<span><input id="email" type="email" name="_replyto"></span>
 		                    </div>
 		                    <div class="contact-field">
 		                    	<h4 lang="en">Content:</h4>
@@ -103,6 +100,11 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="assets/js/smooth.js"></script>
             <script>
+            	// Languages
+            	var email_placeholders = {"en": "Your email address", "es": "Tu dirección de correo", "ja": "あなたのメールアドレス"};
+            	var emailform = document.getElementById("email");
+            	emailform.setAttribute("placeholder", email_placeholders[chosen_language]);
+            	// Other
             	function add_dot(arr) {
             		res = "";
             		for (var i = 0; i < arr.length; i++) {
