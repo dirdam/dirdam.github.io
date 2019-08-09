@@ -93,3 +93,16 @@ function fillLanguages(fillers) { // Fills all language-dependent fields using t
 		}
 	}
 }
+var languages_flags = {
+	"en": {"en": "English", "es": "inglés", "ja": "英語"},
+	"es": {"en": "Spanish", "es": "español", "ja": "スペイン語"},
+	"ja": {"en": "Japanese", "es": "japonés", "ja": "日本語"},
+	"fr": {"en": "French", "es": "francés", "ja": "フランス語"},
+	"pt": {"en": "Portuguese", "es": "portugués", "ja": "ポルトガル語"},
+	"it": {"en": "Italian", "es": "italiano", "ja": "イタリア語"},
+	"nl": {"en": "Dutch", "es": "holandés", "ja": "オランダ語"}};
+function setTitle(ori, tar) { // Sets language title
+	var prev = (ori == "ja" ? "（" : "(" + (ori == "es" ? "En " : "In "));
+	var post = (ori == "ja" ? "で）" : ")");
+	return prev + languages_flags[tar][ori] + post;
+}
