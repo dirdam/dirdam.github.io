@@ -19,10 +19,7 @@
 		<!-- Header -->
 			<header id="header" class="alt" style="background-image: url('images/lassos.png'); background-size: cover;">
 				<div class="inner">
-					<h1 lang="en">About me</h1>
-					<h1 lang="es">Sobre mí</h1>
-					<h1 lang="ja">私について</h1>
-					<h1 lang="zh">About me</h1>
+					<h1 id="header_title"></h1>
 					<p>Yo</p>
 				</div>
 			</header>
@@ -33,20 +30,11 @@
 				<!-- Main -->
 					<section id="main" class="main">
 						<header>
-							<h2 lang="en">INDEX</h2>
-							<h2 lang="es">ÍNDICE</h2>
-							<h2 lang="ja">目次</h2>
-							<h2 lang="zh">INDEX</h2>
+							<h2 id="main_title"></h2>
 						</header>
 						<div style="text-transform: uppercase; text-align: center">
-							<h5 lang="en"><a href="#bio">Bio</a></h5>
-							<h5 lang="es"><a href="#bio">Bio</a></h5>
-							<h5 lang="ja"><a href="#bio">伝記</a></h5>
-							<h5 lang="zh"><a href="#bio">传记</a></h5>
-							<h5 lang="en"><a href="#media">On media</a></h5>
-							<h5 lang="es"><a href="#media">En los medios</a></h5>
-							<h5 lang="ja"><a href="#media">メディアで</a></h5>
-							<h5 lang="zh"><a href="#media">On media</a></h5>
+							<h5><a id="main_bio" href="#bio"></a></h5>
+							<h5><a id="main_media" href="#media"></a></h5>
 						</div>
 					</section>
 
@@ -54,121 +42,108 @@
 					<section id="bio" class="field" onmouseover="document.body.style.backgroundColor='rgba(0,128,0,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
 						<span style="text-align: center; color: green" class="icon fas fa-leaf major"></span>
 						<ul>
-							<li lang="en"><h3>Who: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual.</span></h3></li>
-							<li lang="es"><h3>Quién: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual.</span></h3></li>
-							<li lang="ja"><h3>誰： <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual （アドリアン ヒメネス パスクアル）．</span></h3></li>
-							<li lang="zh"><h3>Who: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual.</span></h3></li>
-							<li lang="en"><h3>When: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Fall of the Berlin Wall.</span></h3></li>
-							<li lang="es"><h3>Cuándo: <span style="letter-spacing: 0.1rem; font-size: 18px;"> La caída del muro de Berlín.</span></h3></li>
-							<li lang="ja"><h3>いつ： <span style="letter-spacing: 0.1rem; font-size: 18px;"> ベルリンの壁崩壊．</span></h3></li>
-							<li lang="zh"><h3>Cuándo: <span style="letter-spacing: 0.1rem; font-size: 18px;"> La caída del muro de Berlín.</span></h3></li>
-							<li lang="en"><h3>Where: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Geographic center of Spain.</span></h3></li>
-							<li lang="es"><h3>Dónde: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Centro geográfico de España.</span></h3></li>
-							<li lang="ja"><h3>どこ： <span style="letter-spacing: 0.1rem; font-size: 18px;"> スペインの幾何的中心．</span></h3></li>
-							<li lang="zh"><h3>Dónde: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Centro geográfico de España.</span></h3></li>
-							<li lang="en"><h3>What: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Philosophiæ doctor in Mathematicis. General thinker.</span></h3></li>
-							<li lang="es"><h3>Qué: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Philosophiæ doctor in Mathematicis. Pensador general.</span></h3></li>
-							<li lang="ja"><h3>何： <span style="letter-spacing: 0.1rem; font-size: 18px;"> 数理科学博士．一般的思想家．</span></h3></li>
-							<li lang="zh"><h3>Qué: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Philosophiæ doctor in Mathematicis. Pensador general.</span></h3></li>
+							<li><h3 id="bio_who"></h3></li>
+							<li><h3 id="bio_when"></h3></li>
+							<li><h3 id="bio_where"></h3></li>
+							<li><h3 id="bio_what"></h3></li>
 						</ul>
-                    </section>
+					</section>
 					<section id="m1" class="main"></section>
 
 				<!-- Banner -->
 					<section id="media" class="field" onmouseover="document.body.style.backgroundColor='rgba(255,0,0,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
 						<span style="text-align: center; color: red" class="icon far fa-newspaper major"></span>
 						<ul>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_hanayama.jpg" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2013</em> | <a href="http://www.huzzle.jp/masterlist/index.html" target="_blank" style="letter-spacing: 0.1rem;"><em>はずるマスター認定者一覧</em></a> ( <img src="assets/flags/jp.svg" style="vertical-align: -3px; width: 16px" title="(in Japanese)"> ) </span></h3></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_hanayama.jpg" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2013</em> | <a href="http://www.huzzle.jp/masterlist/index.html" target="_blank" style="letter-spacing: 0.1rem;"><em>はずるマスター認定者一覧</em></a> ( <img src="assets/flags/jp.svg" style="vertical-align: -3px; width: 16px" title="(en japonés)"> ) </span></h3></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_hanayama.jpg" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2013</em> | <a href="http://www.huzzle.jp/masterlist/index.html" target="_blank" style="letter-spacing: 0.1rem;"><em>はずるマスター認定者一覧</em></a> ( <img src="assets/flags/jp.svg" style="vertical-align: -3px; width: 16px" title="（日本語）"> ) </span></h3></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_hanayama.jpg" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2013</em> | <a href="http://www.huzzle.jp/masterlist/index.html" target="_blank" style="letter-spacing: 0.1rem;"><em>はずるマスター認定者一覧</em></a> ( <img src="assets/flags/jp.svg" style="vertical-align: -3px; width: 16px" title="(en japonés)"> ) </span></h3></li>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_gengo_bis.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2014</em> | <a href="https://blog.gengo.com/faces-gengo-adrian/" target="_blank" style="letter-spacing: 0.1rem;"><em>Faces of Gengo: Adrián</em></a> ( <img src="assets/flags/en.png" style="vertical-align: -3px; width: 16px" title="(in English)"> ) </span></h3></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_gengo_bis.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2014</em> | <a href="https://blog.gengo.com/faces-gengo-adrian/" target="_blank" style="letter-spacing: 0.1rem;"><em>Faces of Gengo: Adrián</em></a> ( <img src="assets/flags/en.png" style="vertical-align: -3px; width: 16px" title="(en inglés)"> ) </span></h3></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_gengo_bis.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2014</em> | <a href="https://blog.gengo.com/faces-gengo-adrian/" target="_blank" style="letter-spacing: 0.1rem;"><em>Faces of Gengo: Adrián</em></a> ( <img src="assets/flags/en.png" style="vertical-align: -3px; width: 16px" title="（英語）"> ) </span></h3></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_gengo_bis.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2014</em> | <a href="https://blog.gengo.com/faces-gengo-adrian/" target="_blank" style="letter-spacing: 0.1rem;"><em>Faces of Gengo: Adrián</em></a> ( <img src="assets/flags/en.png" style="vertical-align: -3px; width: 16px" title="(en inglés)"> ) </span></h3></li>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://talentojota.com/2018/01/26/adrian-jimenez-pascual/" target="_blank" style="letter-spacing: 0.1rem;"><em>Investigación y tecnología: Adrián Jiménez Pascual</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(in Spanish)"> ) </span></h3></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://talentojota.com/2018/01/26/adrian-jimenez-pascual/" target="_blank" style="letter-spacing: 0.1rem;"><em>Investigación y tecnología: Adrián Jiménez Pascual</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://talentojota.com/2018/01/26/adrian-jimenez-pascual/" target="_blank" style="letter-spacing: 0.1rem;"><em>Investigación y tecnología: Adrián Jiménez Pascual</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="（スペイン語）"> ) </span></h3></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://talentojota.com/2018/01/26/adrian-jimenez-pascual/" target="_blank" style="letter-spacing: 0.1rem;"><em>Investigación y tecnología: Adrián Jiménez Pascual</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_elpais.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://elpais.com/tecnologia/2018/08/15/actualidad/1534355863_712077.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Jóvenes españoles en la meca tecnológica y científica de Japón</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(in Spanish)"> ) </span></h3><br></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_elpais.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://elpais.com/tecnologia/2018/08/15/actualidad/1534355863_712077.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Jóvenes españoles en la meca tecnológica y científica de Japón</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3><br></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_elpais.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://elpais.com/tecnologia/2018/08/15/actualidad/1534355863_712077.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Jóvenes españoles en la meca tecnológica y científica de Japón</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="（スペイン語）"> ) </span></h3><br></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_elpais.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://elpais.com/tecnologia/2018/08/15/actualidad/1534355863_712077.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Jóvenes españoles en la meca tecnológica y científica de Japón</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3><br></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_hanayama.jpg" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2013</em> | <a href="http://www.huzzle.jp/masterlist/index.html" target="_blank" style="letter-spacing: 0.1rem;"><em>はずるマスター認定者一覧</em></a> ( <img id="media_hanayama" src="assets/flags/jp.svg" style="vertical-align: -3px; width: 16px"> ) </span></h3></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_gengo_bis.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2014</em> | <a href="https://blog.gengo.com/faces-gengo-adrian/" target="_blank" style="letter-spacing: 0.1rem;"><em>Faces of Gengo: Adrián</em></a> ( <img id="media_gengo" src="assets/flags/en.png" style="vertical-align: -3px; width: 16px"> ) </span></h3></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://talentojota.com/2018/01/26/adrian-jimenez-pascual/" target="_blank" style="letter-spacing: 0.1rem;"><em>Investigación y tecnología: Adrián Jiménez Pascual</em></a> ( <img id="media_fcej" src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px"> ) </span></h3></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_elpais.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="https://elpais.com/tecnologia/2018/08/15/actualidad/1534355863_712077.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Jóvenes españoles en la meca tecnológica y científica de Japón</em></a> ( <img id="media_elpais" src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px"> ) </span></h3><br></li>
 						</ul>
 						<span style="text-align: center; color: red; font-weight: 400;" class="icon fab fa-youtube major"></span>
 						<ul>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_telemadrid.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2015</em> | <a href="http://www.telemadrid.es/programas/madrilenos-por-el-mundo/Adrian-matematico-madrileno-Tokyo-2-1678652137--20150428102131.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Adrián, un matemático madrileño en Tokyo</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(in Spanish)"> ) </span></h3></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_telemadrid.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2015</em> | <a href="http://www.telemadrid.es/programas/madrilenos-por-el-mundo/Adrian-matematico-madrileno-Tokyo-2-1678652137--20150428102131.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Adrián, un matemático madrileño en Tokyo</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_telemadrid.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2015</em> | <a href="http://www.telemadrid.es/programas/madrilenos-por-el-mundo/Adrian-matematico-madrileno-Tokyo-2-1678652137--20150428102131.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Adrián, un matemático madrileño en Tokyo</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="（スペイン語）(en español)"> ) </span></h3></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_telemadrid.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2015</em> | <a href="http://www.telemadrid.es/programas/madrilenos-por-el-mundo/Adrian-matematico-madrileno-Tokyo-2-1678652137--20150428102131.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Adrián, un matemático madrileño en Tokyo</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_telemadrid.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2015</em> | <a href="http://www.telemadrid.es/programas/madrilenos-por-el-mundo/Adrian-matematico-madrileno-Tokyo-2-1678652137--20150428102131.html" target="_blank" style="letter-spacing: 0.1rem;"><em>Adrián, un matemático madrileño en Tokyo</em></a> ( <img id="media_mxm" src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px"> ) </span></h3></li>
 							<center>
 								<iframe src="https://www.youtube.com/embed/WS4JLHevtKk" width="640px" height="360px"></iframe>
-								<p lang="en">(full video <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">here</a>)</p>
-								<p lang="es">(vídeo completo <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">aquí</a>)</p>
-								<p lang="ja">（フルバージョンは<a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">こちら</a>）</p>
-								<p lang="zh">(vídeo completo <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">aquí</a>)</p>
+								<p id="media_mxm_youtube"></p>
 							</center>
-							<li lang="en"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="http://www.spainjapanfoundation.com/en/article/descubre-como-es-la-investigacion-cientifica-en-japon-segun-talento-j" target="_blank" style="letter-spacing: 0.1rem;"><em>Descubre cómo es la investigación científica en Japón según Talento J</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(in Spanish)"> ) </span></h3></li>
-							<li lang="es"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="http://www.spainjapanfoundation.com/en/article/descubre-como-es-la-investigacion-cientifica-en-japon-segun-talento-j" target="_blank" style="letter-spacing: 0.1rem;"><em>Descubre cómo es la investigación científica en Japón según Talento J</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
-							<li lang="ja"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="http://www.spainjapanfoundation.com/en/article/descubre-como-es-la-investigacion-cientifica-en-japon-segun-talento-j" target="_blank" style="letter-spacing: 0.1rem;"><em>Descubre cómo es la investigación científica en Japón según Talento J</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="（スペイン語）(en español)"> ) </span></h3></li>
-							<li lang="zh"><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="http://www.spainjapanfoundation.com/en/article/descubre-como-es-la-investigacion-cientifica-en-japon-segun-talento-j" target="_blank" style="letter-spacing: 0.1rem;"><em>Descubre cómo es la investigación científica en Japón según Talento J</em></a> ( <img src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px" title="(en español)"> ) </span></h3></li>
+							<li><h3 style="letter-spacing: 0.2rem;"><img src="images/logo_fcej.png" style="vertical-align: middle; width: 150px;"> <span style="font-size: 18px"> | <em>2018</em> | <a href="http://www.spainjapanfoundation.com/en/article/descubre-como-es-la-investigacion-cientifica-en-japon-segun-talento-j" target="_blank" style="letter-spacing: 0.1rem;"><em>Descubre cómo es la investigación científica en Japón según Talento J</em></a> ( <img id="media_fcej2" src="assets/flags/es.svg" style="vertical-align: -3px; width: 16px"> ) </span></h3></li>
 							<center>
 								<iframe src="https://www.youtube.com/embed/Ucs3W68-rmM" width="640px" height="360px"></iframe>
 							</center>
 						</ul>
-                    </section>
+					</section>
 					<section id="m4" class="main"></section>
 
 				<!-- Banner -->
 					<section id="back" class="main">
 						<header style="text-align: center;">
-							<h3 lang="en">Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a></h3>
-							<h3 lang="es">Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a></h3>
-							<h3 lang="ja">もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a></h3>
-							<h3 lang="zh">Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#zh" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a></h3>
+							<h3 id="back_text"></h3>
 						</header>
 					</section>
 
 				<!-- Call To Action -->
 					<section id="cta" class="main special">
-						<h2 lang="en">Want more?</h2>
-						<h2 lang="es">¿Quieres más?</h2>
-						<h2 lang="ja">もっと知りたい？</h2>
-						<h2 lang="zh">¿Quieres más?</h2>
+						<h2 id="cta_title"></h2>
 						<ul class="actions">
-							<li lang="en"><a href="contact.html" class="button big">Let me know</a></li>
-							<li lang="es"><a href="contact.html#es" class="button big">Házmelo saber</a></li>
-							<li lang="ja"><a href="contact.html#ja" class="button big">教えてください</a></li>
-							<li lang="zh"><a href="contact.html#zh" class="button big">Házmelo saber</a></li>
+							<li><a id="cta_actions" class="button big"></a></li>
 						</ul>
 					</section>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p lang="en" class="copyright">&copy; Adrï, 2018. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-						<p lang="es" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-						<p lang="ja" class="copyright">&copy; Adrï, 2018．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．</p>
-						<p lang="zh" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+						<p id="footer_text" class="copyright"></p>
 					</footer>
 
 			</div>
 		<!-- BOTTOM -->
 
 		<div id="bottom">
-			<a lang="en" href="./"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="es" href="./#es"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="ja" href="./#ja"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="zh" href="./#zh"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
 		</div>
 
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
-            <script src="assets/js/sticker.min.js"></script>
+			<script src="assets/js/sticker.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 			<script src="assets/js/smooth.js"></script>
+			<script>
+				// Languages
+				var fillers = {
+					"header_title": {"type": "text", "en": "About me", "es": "Sobre mí", "ja": "私について"},
+					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
+					"main_bio": {"type": "text", "en": "Bio", "es": "Bio", "ja": "伝記"},
+					"main_media": {"type": "text", "en": "On media", "es": "En los medios", "ja": "メディアで"},
+					"bio_who": {"type": "html", "en": 'Who: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual.</span>', "es": 'Quién: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual.</span>', "ja": '誰： <span style="letter-spacing: 0.1rem; font-size: 18px;"> Adrián Jiménez Pascual （アドリアン ヒメネス パスクアル）．</span>'},
+					"bio_when": {"type": "html", "en": 'When: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Fall of the Berlin Wall.</span>', "es": 'Cuándo: <span style="letter-spacing: 0.1rem; font-size: 18px;"> La caída del muro de Berlín.</span>', "ja": 'いつ： <span style="letter-spacing: 0.1rem; font-size: 18px;"> ベルリンの壁崩壊．</span>'},
+					"bio_where": {"type": "html", "en": 'Where: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Geographic center of Spain.</span>', "es": 'Dónde: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Centro geográfico de España.</span>', "ja": 'どこ： <span style="letter-spacing: 0.1rem; font-size: 18px;"> スペインの幾何的中心．</span>'},
+					"bio_what": {"type": "html", "en": 'What: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Philosophiæ doctor in Mathematicis. General thinker.</span>', "es": 'Qué: <span style="letter-spacing: 0.1rem; font-size: 18px;"> Philosophiæ doctor in Mathematicis. Pensador general.</span>', "ja": '何： <span style="letter-spacing: 0.1rem; font-size: 18px;"> 数理科学博士．一般的思想家．</span>'},
+					"media_mxm_youtube": {"type": "html", "en": '(full video <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">here</a>)', "es": '(vídeo completo <a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">aquí</a>)', "ja": '（フルバージョンは<a href="https://www.youtube.com/watch?v=RXHdQQNGJfc" target="_blank">こちら</a>）'},
+					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
+					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
+					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
+					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
+					"footer_text": {"type": "html", "en": '&copy; Adrï, 2018. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2018．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+				};
+				fillLanguages(fillers);
+				// Others
+				var others = { // Necessary to avoid overlap
+					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
+				};
+				fillLanguages(others);
+				// Languages flags
+				var flags = {
+					"media_hanayama": {"type": "title", "en": setTitle("en", "ja"), "es": setTitle("es", "ja"), "ja": setTitle("ja", "ja")},
+					"media_gengo": {"type": "title", "en": setTitle("en", "en"), "es": setTitle("es", "en"), "ja": setTitle("ja", "en")},
+					"media_fcej": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
+					"media_elpais": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
+					"media_mxm": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
+					"media_fcej2": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")}
+				}
+				fillLanguages(flags);
+			</script>
 	</body>
 </html>
