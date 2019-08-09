@@ -30,7 +30,7 @@
 						<p lang="es">Comentarios, solicitudes, preguntas...</p>
 						<p lang="ja">コメント・依頼・質問等</p>
 						<p lang="zh">Comentarios, solicitudes, preguntas...</p>
-		                <form action="https://formspree.io/adrian.jimenez.pascual@gmail.com" method="POST">
+		                <form id="contactform" method="POST">
 		                    <div class="contact-field">
 		                    	<h4 lang="en">Subject:</h4>
 		                    	<h4 lang="es">Asunto:</h4>
@@ -102,6 +102,17 @@
 			<script src="assets/js/main.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="assets/js/smooth.js"></script>
+            <script>
+            	function add_dot(arr) {
+            		res = "";
+            		for (var i = 0; i < arr.length; i++) {
+            			res += arr[i] + (i == arr.length - 1 ? "" : ".");
+            		}
+            		return res;
+            	}
+            	var contactform = document.getElementById("contactform");
+            	contactform.setAttribute("action", "https://formspree.io/" + add_dot(["adrian", "jimenez", "pascual@gmail", "com"]));
+            </script>>
 
 
 	</body>
