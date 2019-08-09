@@ -22,70 +22,37 @@
 				<!-- Banner -->
 					<section id="contact" class="field" onmouseover="document.body.style.backgroundColor='rgba(255,250,240,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
 						<span style="text-align: center; color: floralwhite; text-shadow: -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black;" class="icon fas fa-envelope major"></span>
-						<h2 lang="en">Contact form</h2>
-						<h2 lang="es">Formulario de contacto</h2>
-						<h2 lang="ja">連絡フォーム</h2>
-						<h2 lang="zh">Formulario de contacto</h2>
-						<p lang="en">Comments, requests, questions...</p>
-						<p lang="es">Comentarios, solicitudes, preguntas...</p>
-						<p lang="ja">コメント・依頼・質問等</p>
-						<p lang="zh">Comentarios, solicitudes, preguntas...</p>
-		                <form id="contactform" method="POST">
+						<h2 id="contact_title"></h2>
+						<p id="contact_subtitle"></p>
+		                <form id="contact_form" method="POST">
 		                    <div class="contact-field">
-		                    	<h4 lang="en">Subject:</h4>
-		                    	<h4 lang="es">Asunto:</h4>
-		                    	<h4 lang="ja">題目：</h4>
-		                    	<h4 lang="zh">Asunto:</h4>
-		                    	<span lang="en"><input type="text" name="_subject" placeholder="Title"></span>
-		                    	<span lang="es"><input type="text" name="_subject" placeholder="Título"></span>
-		                    	<span lang="ja"><input type="text" name="_subject" placeholder="タイトル"></span>
-		                    	<span lang="zh"><input type="text" name="_subject" placeholder="Título"></span>
+		                    	<h4 id="contact_subject"></h4>
+		                    	<span><input id="contact_subject_input" type="text" name="_subject"></span> <!--"placeholder" in js-->
 		                    </div>
 		                    <div class="contact-field">
-		                    	<h4 lang="en">Email:</h4>
-		                    	<h4 lang="es">Email:</h4>
-		                    	<h4 lang="ja">メール：</h4>
-		                    	<h4 lang="zh">Email:</h4>
-		                    	<span><input id="email" type="email" name="_replyto"></span>
+		                    	<h4 id="contact_email"></h4>
+		                    	<span><input id="contact_email_input" type="email" name="_replyto"></span> <!--"placeholder" in js-->
 		                    </div>
 		                    <div class="contact-field">
-		                    	<h4 lang="en">Content:</h4>
-		                    	<h4 lang="es">Contenido:</h4>
-		                    	<h4 lang="ja">内容：</h4>
-		                    	<h4 lang="zh">Contenido:</h4>
-		                    	<span lang="en"><textarea name="message" placeholder="Please describe you inquiry here"></textarea></span>
-		                    	<span lang="es"><textarea name="message" placeholder="Por favor describe tu consulta aquí"></textarea></span>
-		                    	<span lang="ja"><textarea name="message" placeholder="詳細を描写してください"></textarea></span>
-		                    	<span lang="zh"><textarea name="message" placeholder="Por favor describe tu consulta aquí"></textarea></span>
+		                    	<h4 id="contact_message"></h4>
+		                    	<span><textarea id="contact_message_input" name="message"></textarea></span> <!--"placeholder" in js-->
 		                    </div>
 		                    <input type="text" name="_gotcha" style="display:none">
-		                    <input lang="en" type="hidden" name="_next" value="thanks.html" />
-		                    <input lang="es" type="hidden" name="_next" value="thanks.html#es" />
-		                    <input lang="ja" type="hidden" name="_next" value="thanks.html#ja" />
-		                    <input lang="zh" type="hidden" name="_next" value="thanks.html#zh" />
-		                    <input lang="en" type="submit" value="Send" style="margin-top: 20px;">
-		                    <input lang="es" type="submit" value="Enviar" style="margin-top: 20px;">
-		                    <input lang="ja" type="submit" value="送信する" style="margin-top: 20px;">
-		                    <input lang="zh" type="submit" value="Send" style="margin-top: 20px;">
+		                    <input id="contact_next" type="hidden" name="_next" /> <!--"value" in js-->
+		                    <input id="contact_send" type="submit" value="Send" style="margin-top: 20px;"> <!--"value" in js-->
 		                </form>
 					</section>
 
 				<!-- Footer -->
 					<footer id="footer">
-                        <p lang="en" class="copyright">&copy; Adrï, 2018. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-                        <p lang="es" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-                        <p lang="ja" class="copyright">&copy; Adrï，2018．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．</p>
-                        <p lang="zh" class="copyright">&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+                        <p id="footer_text" class="copyright"></p>
 					</footer>
 
 			</div>
         <!-- BOTTOM -->
 
         <div id="bottom">
-            <a lang="en" href="./"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-            <a lang="es" href="./#es"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-            <a lang="ja" href="./#ja"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-            <a lang="zh" href="./#zh"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+            <a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
             <!--<font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; left: 0.5cm; color: rgb(30,30,40);">B</font>-->
             <!--<a href="#" title="&copy; Adrián Jiménez Pascual" onclick="changeFace()" id="me_img" style="display: none"><font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; right: 0.5cm; color: rgb(30,30,40);">B</font></a>-->
         </div>
@@ -101,10 +68,22 @@
             <script src="assets/js/smooth.js"></script>
             <script>
             	// Languages
-            	var email_placeholders = {"en": "Your email address", "es": "Tu dirección de correo", "ja": "あなたのメールアドレス"};
-            	var emailform = document.getElementById("email");
-            	emailform.setAttribute("placeholder", email_placeholders[chosen_language]);
-            	// Other
+            	var fillers = {
+            		"contact_title": {"type": "text", "en": "Contact form", "es": "Formulario de contacto", "ja": "連絡フォーム"},
+					"contact_subtitle": {"type": "text", "en": "Comments, requests, questions...", "es": "Comentarios, solicitudes, preguntas...", "ja": "コメント・依頼・質問等"},
+					"contact_subject": {"type": "text", "en": "Subject:", "es": "Asunto:", "ja": "題目："},
+            		"contact_subject_input": {"type": "placeholder", "en": "Title", "es": "Título", "ja": "タイトル"},
+					"contact_email": {"type": "text", "en": "Email:", "es": "Email:", "ja": "メール："},
+            		"contact_email_input": {"type": "placeholder", "en": "Your email address", "es": "Tu dirección de correo", "ja": "あなたのメールアドレス"},
+					"contact_message": {"type": "text", "en": "Content:", "es": "Contenido:", "ja": "内容："},
+            		"contact_message_input": {"type": "placeholder", "en": "Please describe you inquiry here", "es": "Por favor describe tu consulta aquí", "ja": "詳細を描写してください"},
+            		"contact_next": {"type": "value", "en": "thanks.html", "es": "thanks.html#es", "ja": "thanks.html#ja"},
+            		"contact_send": {"type": "value", "en": "Send", "es": "Enviar", "ja": "送信する"},
+            		"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
+            		"footer_text": {"type": "html", "en": '&copy; Adrï, 2018. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2018. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2018．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+            	};
+            	fillLanguages(fillers);
+            	// Others
             	function add_dot(arr) {
             		res = "";
             		for (var i = 0; i < arr.length; i++) {
@@ -112,8 +91,7 @@
             		}
             		return res;
             	}
-            	var contactform = document.getElementById("contactform");
-            	contactform.setAttribute("action", "https://formspree.io/" + add_dot(["adrian", "jimenez", "pascual@gmail", "com"]));
+            	$("#" + "contact_form").attr("action", "https://formspree.io/" + add_dot(["adrian", "jimenez", "pascual@gmail", "com"]));
             </script>>
 
 
