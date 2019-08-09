@@ -83,3 +83,13 @@ function changeLanguage(option) { // Changes language to option
 		}
 	}
 }
+function fillLanguages(fillers) { // Fills all language-dependent fields using the fillers
+	var keys = Object.keys(fillers);
+	for (var i = 0; i < keys.length; i++) {
+		switch (fillers[keys[i]]["type"]) {
+			case "text": $("#" + keys[i]).text(fillers[keys[i]][chosen_language]); break;
+			case "html": $("#" + keys[i]).html(fillers[keys[i]][chosen_language]); break;
+			default: $("#" + keys[i]).attr(fillers[keys[i]]["type"], fillers[keys[i]][chosen_language]);
+		}
+	}
+}
