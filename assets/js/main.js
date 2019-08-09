@@ -69,6 +69,7 @@ function dont() {
 }
 
 var languages = ['en', 'es', 'ja', 'zh'];
+var chosen_language = 'en';
 changeLanguage(window.location.hash ? window.location.hash.substr(1) : 'en');
 function changeLanguage(option) { // Changes language to option
 	option = (languages.includes(option) ? option : 'en'); // If reload with non-language hash, load English page
@@ -77,6 +78,7 @@ function changeLanguage(option) { // Changes language to option
 			$('[lang="' + languages[i] + '"]').hide();
 		}
 		else {
+			chosen_language = languages[i];
 			$('[lang="' + languages[i] + '"]').show();			
 		}
 	}
