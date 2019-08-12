@@ -1,4 +1,4 @@
-var es_dict = {
+var us_dict = {
 	"SMITH": 2501922,
 	"JOHNSON": 2014470,
 	"WILLIAMS": 1738413,
