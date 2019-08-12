@@ -19,14 +19,8 @@
 		<!-- Header -->
 			<header id="header" class="alt" style="background-image: url('images/pic_experiments.jpg'); background-position: center bottom;">
 				<div class="inner">
-					<h1 lang="en">Exploring</h1>
-					<h1 lang="es">Explorar</h1>
-					<h1 lang="ja">探検</h1>
-					<h1 lang="zh">Exploring</h1>
-					<p lang="en">For the sake of it</p>
-					<p lang="es">Porque sí</p>
-					<p lang="ja">世界を拓く</p>
-					<p lang="zh">For the sake of it</p>
+					<h1 id="header_title"></h1>
+					<p id="header_subtitle"></p>
 				</div>
 			</header>
 
@@ -42,64 +36,41 @@
 					<section class="main items">
 						<article class="item" style="margin-left: auto; margin-right: auto;">
 							<header>
-								<a lang="en" href="games/projects/evo/evo_us.html"><img src="images/own_surnames.png" alt=""></a>
-								<a lang="es" href="games/projects/evo/evo_es.html"><img src="images/own_surnames.png" alt=""></a>
-								<a lang="ja" href="games/projects/evo/evo_us.html"><img src="images/own_surnames.png" alt=""></a>
-								<h3 lang="en">Surnames evolution</h3>
-								<h3 lang="es">Evolución de apellidos</h3>
-								<h3 lang="ja">名字の進化</h3>
+								<a id="proj_evo"><img src="images/own_surnames.png" alt=""></a>
+								<h3 id="proj_evo_title"></h3>
 							</header>
-							<p lang="en">Starting with the current surnames ranking (in the US), it simulates how they would evolve over time. Each simulation throws different results.</p>
-							<p lang="es">Empezando con la lista de apellidos más comunes (en España) simula cómo evolucionarían a lo largo del tiempo. Cada simulación da resultados diferentes.</p>
-							<p lang="ja">現在の（アメリカ合衆国の）名字ランキングに基づき，名字の進化をシミュレーションします．各シミュレーションは違う結果を導きます．</p>
+							<p id="proj_evo_subtitle"></p>
 							<ul class="actions">
-								<li lang="en"><a href="games/projects/evo/evo_us.html" class="button">Launch</a></li>
-								<li lang="es"><a href="games/projects/evo/evo_es.html" class="button">Abrir</a></li>
-								<li lang="ja"><a href="games/projects/evo/evo_us.html" class="button">開く</a></li>
+								<li><a id="proj_evo_button" class="button"></a></li>
 							</ul>
 						</article>
 					</section>
 
+				<!-- Banner -->
+					<section id="back" class="main">
+						<header style="text-align: center;">
+							<h3 id="back_text"></h3>
+						</header>
+					</section>
+
 				<!-- Call To Action -->
 					<section id="cta" class="main special">
-						<h2 lang="en">Want more?</h2>
-						<h2 lang="es">¿Quieres más?</h2>
-						<h2 lang="ja">もっと知りたい？</h2>
-						<h2 lang="zh">¿Quieres más?</h2>
+						<h2 id="cta_title"></h2>
 						<ul class="actions">
-							<li lang="en"><a href="contact.html" class="button big">Let me know</a></li>
-							<li lang="es"><a href="contact.html#es" class="button big">Házmelo saber</a></li>
-							<li lang="ja"><a href="contact.html#ja" class="button big">教えてください</a></li>
-							<li lang="zh"><a href="contact.html#es" class="button big">Házmelo saber</a></li>
+							<li><a id="cta_actions" class="button big"></a></li>
 						</ul>
 					</section>
 
-				<!-- Main -->
-				<!--
-					<section id="main" class="main">
-						<header>
-							<h2>Lorem ipsum dolor</h2>
-						</header>
-						<p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-					</section>
-				-->
-
 				<!-- Footer -->
 					<footer id="footer">
-						<p lang="en" class="copyright">&copy; Adrï, 2019. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-						<p lang="es" class="copyright">&copy; Adrï, 2019. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
-						<p lang="ja" class="copyright">&copy; Adrï, 2019．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．</p>
-						<p lang="zh" class="copyright">&copy; Adrï, 2019. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+						<p id="footer_text" class="copyright"></p>
 					</footer>
 
 			</div>
 		<!-- BOTTOM -->
 
 		<div id="bottom">
-			<a lang="en" href="./"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="es" href="./#es"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="ja" href="./#ja"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-			<a lang="zh" href="./#zh"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
 		</div>
 
 
@@ -111,7 +82,29 @@
 			<script src="assets/js/main.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="assets/js/smooth.js"></script>
-
-
+			<script>
+				// Languages
+				var fillers = {
+					"header_title": {"type": "text", "en": "Exploring", "es": "Explorar", "ja": "探検"},
+					"header_subtitle": {"type": "text", "en": "For the sake of it", "es": "Porque sí", "ja": "世界を拓く"},
+					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
+					"proj_evo": {"type": "href", "en": "projects/evo/evo_us.html", "es": "projects/evo/evo_es.html", "ja": "projects/evo/evo_us.html"},
+					"proj_evo_title": {"type": "text", "en": "Surnames evolution", "es": "Evolución de apellidos", "ja": "名字の進化"},
+					"proj_evo_subtitle": {"type": "text", "en": "Starting with the current surnames ranking (in the US), it simulates how they would evolve over time. Each simulation throws different results.", "es": "Empezando con la lista de apellidos más comunes (en España) simula cómo evolucionarían a lo largo del tiempo. Cada simulación da resultados diferentes.", "ja": "現在の（アメリカ合衆国の）名字ランキングに基づき，名字の進化をシミュレーションします．各シミュレーションは違う結果を導きます．"},
+					"proj_evo_button": {"type": "text", "en": "Launch", "es": "Abrir", "ja": "開く"},
+					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
+					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
+					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
+					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
+					"footer_text": {"type": "html", "en": '&copy; Adrï, 2019. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2019. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2019．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+				};
+				fillLanguages(fillers);
+				// Others
+				var others = { // Necessary to avoid overlap
+					"proj_evo_button": {"type": "href", "en": "projects/evo/evo_us.html", "es": "projects/evo/evo_es.html", "ja": "projects/evo/evo_us.html"},
+					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
+				};
+				fillLanguages(others);
+			</script>
 	</body>
 </html>
