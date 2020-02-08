@@ -1,0 +1,257 @@
+<!-- Copyright (c) Adrián Jiménez Pascual -  All rights reserved -->
+<!-- This page and its content is protected under copyright and intellectual property laws.  -->
+<!-- The content belongs to Adrián Jiménez Pascual, Tokio, Japan -->
+<!-- All rights reserved. -->
+<!--
+  **  Lawbreakers will be reported to competent authorities and sentenced by the law   **
+-->
+<!--Copyright (c) Adrián Jiménez Pascual - http://www.ms.u-tokyo.ac.jp/~adri/ -->
+
+<button id="info" onclick="infoAlert()">Info</button>
+<button id="start" onclick="run()">Start</button>
+<input type="checkbox" id="check">
+<input type="checkbox" id="timeless">
+<input type="number" id="numberPrey" value="100" min="0" max="250">
+<input type="Ynumber" id="numberPredator" value="50" min="0" max="250">
+<input type="Xnumber" id="numberAlpha" value="0.5" min="0" max="1">
+<input type="number" id="numberBeta" value="0.01" min="0" max="1">
+<input type="number" id="numberGamma" value="0.8" min="0" max="1">
+<input type="number" id="numberDelta" value="0.01" min="0" max="1">
+<input type="number" id="discriminant" value="0.05" min="0" max="1">
+<form id="formCheck"></form>
+<form id="formTimeless"></form>
+<form id="formPrey"></form>
+<form id="formPredator"></form>
+<form id="formAlpha"></form>
+<form id="formBeta"></form>
+<form id="formGamma"></form>
+<form id="formDelta"></form>
+<form id="formH"></form>
+<link rel="shortcut icon" href="../Lasso_logo.ico"/>
+
+<title>Predator-Prey</title>
+
+<script>
+var h; //Derivate constant
+var timer;
+var form, number;
+onload = function() {
+	//Canvas
+    canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    canvas.style.position = "absolute";
+    canvas.style.left = 0;
+    canvas.style.top = 0;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight*4/5;
+    context = canvas.getContext("2d");
+
+    position(formCheck, innerWidth*(3/4)-100, innerHeight*(1-1/6));
+    formCheck.innerHTML = "Discretization: ";
+    position(formTimeless, innerWidth*(7/8)-100, innerHeight*(1-1/6));
+    formTimeless.innerHTML = "Timeless: ";
+    position(formPrey, innerWidth*(1/3-1/16)-100, innerHeight*(1-1/8));
+    formPrey.innerHTML = "Prey number: ";
+    position(formPredator, innerWidth*(2/3-1/16)-120, innerHeight*(1-1/8));
+    formPredator.innerHTML = "Predator number: ";
+    position(formAlpha, innerWidth*(1/8-1/12), innerHeight*(1-1/12));
+    formAlpha.innerHTML = "a: ";
+    position(formBeta, innerWidth*(3/8-1/12), innerHeight*(1-1/12));
+    formBeta.innerHTML = "b: ";
+    position(formGamma, innerWidth*(5/8-1/12), innerHeight*(1-1/12));
+    formGamma.innerHTML = "c: ";
+    position(formDelta, innerWidth*(7/8-1/12), innerHeight*(1-1/12));
+    formDelta.innerHTML = "d: ";
+    position(formH, innerWidth*(1/2-1/16)-170, innerHeight*(1-1/24));
+    formH.innerHTML = "Differential increment width: ";
+
+    position(numberAlpha, innerWidth*(1/8-1/16), innerHeight*(1-1/12));
+    position(numberBeta, innerWidth*(3/8-1/16), innerHeight*(1-1/12));
+    position(numberGamma, innerWidth*(5/8-1/16), innerHeight*(1-1/12));
+    position(numberDelta, innerWidth*(7/8-1/16), innerHeight*(1-1/12));
+    position(numberPrey, innerWidth*(1/3-1/16), innerHeight*(1-1/8));
+	position(numberPredator, innerWidth*(2/3-1/16), innerHeight*(1-1/8));
+	position(discriminant, innerWidth*(1/2-1/32), innerHeight*(1-1/24));
+
+	position(info, innerWidth*(1/4), innerHeight*(1-1/6));
+	position(start, innerWidth*(1/2-1/32), innerHeight*(1-1/6));
+	position(check, innerWidth*(3/4), innerHeight*(1-1/6));
+	position(timeless, innerWidth*(7/8), innerHeight*(1-1/6));
+
+    clearCanvas();
+}
+
+function position(name, left, top) {
+    name.style.position = "absolute";
+    name.style.left = left;
+    name.style.top = top;	
+}
+
+function clearCanvas() {
+	context.fillStyle = "rgb(240,240,240)";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	context.font = "15px Verdana";
+	context.fillStyle = "rgb(127,127,127)";
+	context.fillText("\u00A9Adr\u00ef", canvas.width*18/20, canvas.height*(1-1/24));
+
+	drawAxis();
+}
+
+var graphx, graphy1, graphy2;
+function drawAxis(value) {
+	graphx = canvas.width*1/4;
+	graphy1 = canvas.height*7/16;
+	graphy2 = canvas.height*14/16;
+	context.strokeStyle = "black";
+	context.lineWidth = 3;
+	//Graph 1
+	context.beginPath();
+	context.moveTo(graphx, graphy1);
+	context.lineTo(graphx, graphy1 - canvas.height/3);
+	context.stroke();
+	context.beginPath();
+	context.moveTo(graphx, graphy1);
+	context.lineTo(graphx + canvas.width/2, graphy1);
+	context.stroke();
+	context.font = "10px Verdana";
+	context.fillStyle = "black";
+	for (var i = 0; i < 5; i++) {
+		context.fillText(i*50, graphx-30, graphy1-(i/4)*canvas.height/3);
+	}/*
+	for (var i = 1; i < 11; i++) {
+		context.fillText(i*400, graphx+5+(i/11)*canvas.width/2, graphy1+20);
+	}*/
+	context.font = "20px Verdana";
+	context.fillStyle = "green";
+	context.fillText("Prey", canvas.width*1/12, graphy1-canvas.height*2/9);
+	context.fillStyle = "red";
+	context.fillText("Predator", canvas.width*1/12, graphy1-canvas.height*1/9);
+	
+	//Graph 2
+	context.beginPath();
+	context.moveTo(graphx, graphy2);
+	context.lineTo(graphx, graphy2 - canvas.height/3);
+	context.stroke();
+	context.beginPath();
+	context.moveTo(graphx, graphy2);
+	context.lineTo(graphx + canvas.width/2, graphy2);
+	context.stroke();
+	context.font = "10px Verdana";
+	context.fillStyle = "black";
+	for (var i = 0; i < 5; i++) {
+		context.fillText(i*50, graphx-30, graphy2-(i/4)*canvas.height/3);
+	}
+	for (var i = 0; i < 7; i++) {
+		context.fillText(i*50, graphx+(i/6)*canvas.width/2, graphy2+20);
+	}
+	context.font = "20px Verdana";
+	context.fillStyle = "blue";
+	context.fillText("Prey", canvas.width*1/2, graphy2+canvas.height/10);
+	context.fillText("Predator", canvas.width*1/12, graphy2-canvas.height*1.5/9);
+
+	context.font = "20px Verdana";
+	context.fillStyle = "black";
+	context.fillText("Lotka-Volterra:", canvas.width*10/12, graphy1-canvas.height/3);
+	context.fillText("x' = x(a-by)", canvas.width*10/12, graphy1-canvas.height*7/36);
+	context.fillText("y' = -y(c-dx)", canvas.width*10/12, graphy1-canvas.height*5/36);
+}
+
+function takeValues() {
+	alpha = parseInt(numberAlpha.value*1000)/1000;
+	beta = parseInt(numberBeta.value*1000)/1000;
+	gamma = parseInt(numberGamma.value*1000)/1000;
+	delta = parseInt(numberDelta.value*1000)/1000;
+	orX = parseInt(numberPrey.value);
+	orY = parseInt(numberPredator.value);
+	h = parseInt(discriminant.value*1000)/1000;
+}
+
+var t, x, y;
+var alpha, beta, gamma, delta;
+function run() {
+	clearInterval(timer);
+	clearCanvas();
+	t = 0;
+	/*x = 50; //VARX VARY innitial population input
+	y = 200;
+	alpha = 0.8; //Predator dependance on food
+	beta = 0.005; //Predator death by hunger
+	gamma = 0.2; //Prey natural growth
+	delta = 0.005; //Prey death by hunt
+	*/
+	takeValues();
+	x = orX;
+	y = orY;
+    timer = setInterval(draw, 5);
+}
+function draw() {
+	var ra = 1;
+	context.fillStyle = "rgb(240,240,240)";
+	context.fillRect(graphx - 60, 0, 20, canvas.height);
+	context.fillRect(0, graphy2 + 30, canvas.width, 20);
+	//Independently
+	context.fillStyle = "green";
+	context.beginPath();
+	context.arc(graphx + t*(h*canvas.width/2.1)/40, graphy1 - x*(canvas.height/3)/200, ra, 0, 2*Math.PI);
+	context.fill();
+	context.beginPath();
+	context.arc(graphx - 50, graphy1 - x*(canvas.height/3)/200, ra*3, 0, 2*Math.PI);
+	context.fill();
+
+	context.fillStyle = "red";
+	context.beginPath();
+	context.arc(graphx + t*(h*canvas.width/2.1)/40, graphy1 - y*(canvas.height/3)/200, ra, 0, 2*Math.PI);
+	context.fill();
+	context.beginPath();
+	context.arc(graphx - 50, graphy1 - y*(canvas.height/3)/200, ra*3, 0, 2*Math.PI);
+	context.fill();
+
+	//Dependently
+	context.fillStyle = "blue";
+	context.beginPath();
+	context.arc(graphx + y*(canvas.width/2)/300, graphy2 - x*(canvas.height/3)/200, ra, 0, 2*Math.PI);
+	context.fill();
+	context.beginPath();
+	context.arc(graphx - 50, graphy2 - x*(canvas.height/3)/200, ra*3, 0, 2*Math.PI);
+	context.fill();
+	context.beginPath();
+	context.arc(graphx + y*(canvas.width/2)/300, graphy2 + 40, ra*3, 0, 2*Math.PI);
+	context.fill();
+
+	//End
+	if (!timeless.checked && t > 40/h) {
+		clearInterval(timer);
+	}
+
+	//Next generation (Lotka-Volterra)
+	t++;
+	if (!check.checked) {
+		x = x + x*(alpha-beta*y)*h;
+		y = y - y*(gamma-delta*x)*h;
+	}
+	else {
+		x = Math.floor((x + x*(alpha-beta*y)*h)*10)/10;
+		y = Math.floor((y - y*(gamma-delta*x)*h)*10)/10;
+	}
+
+	//Cycle limit
+	/*if (Math.abs(x-orX) < 1 && Math.abs(y-orY) < 1) {
+		context.lineWidth = 1;
+		context.beginPath();
+		context.moveTo(graphx + t*(h*canvas.width/2.1)/40, graphy1);
+		context.lineTo(graphx + t*(h*canvas.width/2.1)/40, graphy1 - canvas.height/3);
+		context.stroke();
+	}*/
+}
+
+function infoAlert() {
+	alert("a: natural growth of 'prey' without 'predator'.\nb: interaction between 'prey' and 'predator'.\nc: natural death rate of 'predator' without 'prey'.\nd: growth of 'predator' with 'prey'.");
+}
+
+onkeydown = function(event){
+	if (event.keyCode == 13) {
+		run();
+	}
+}
+</script>
