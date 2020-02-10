@@ -105,8 +105,12 @@ function position(name, left, top) {
 }
 
 function clearCanvas(center_x, center_y) { //Clears all and draws axis
-	context.fillStyle = "rgb(240,240,240)";
+	context.fillStyle = "white";
 	context.fillRect(0, 0, canvas.width, canvas.height);
+	context.fillStyle = "rgb(240,240,240)";
+	context.fillRect(canvas.width/2, 0, canvas.width/2, canvas.height);
+	context.fillStyle = "white";
+	context.fillRect(canvas.width*3/4 - side/2, canvas.height/2 - side/2, side, side);
 
 	context.font = "15px Verdana";
 	context.fillStyle = "rgb(127,127,127)";
@@ -122,6 +126,12 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 	context.strokeStyle = "black";
 	context.moveTo(canvas.width/2, 0);
 	context.lineTo(canvas.width/2, canvas.height);
+	context.stroke();
+	//Lower line
+	context.beginPath();
+	context.lineWidth *= 2;
+	context.moveTo(0, canvas.height);
+	context.lineTo(canvas.width, canvas.height);
 	context.stroke();
 
 	//First canvas (real canvas)
