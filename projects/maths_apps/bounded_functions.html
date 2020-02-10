@@ -111,6 +111,7 @@ function position(name, left, top) {
     name.style.top = top;	
 }
 
+var font_size = 15;
 function clearCanvas(center_x, center_y) { //Clears all and draws axis
 	context.fillStyle = "white";
 	context.fillRect(0, 0, canvas.width, canvas.height);
@@ -119,7 +120,7 @@ function clearCanvas(center_x, center_y) { //Clears all and draws axis
 	context.fillStyle = "white";
 	context.fillRect(canvas.width*3/4 - side/2, canvas.height/2 - side/2, side, side);
 
-	context.font = "15px Verdana";
+	context.font = font_size + "px Verdana";
 	context.fillStyle = "rgb(127,127,127)";
 	context.fillText("\u00A9Adr\u00ef"/*"\xA9 WiDo"/*Adr\u00ef"/*+"i\xE1n Jim\xE9nez Pascual"*/, canvas.width - context.measureText("ORWiDo ").width, canvas.height - 15);
 
@@ -161,6 +162,10 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 	context.moveTo(0, (canvas.height/2)*(1 + 1/axis_height));
 	context.lineTo(canvas.width/2, (canvas.height/2)*(1 + 1/axis_height));
 	context.stroke();
+	//context.fillText(1, (canvas.width/4)*(1 + 1/axis_width) + 3, canvas.height/2 + font_size);
+	//context.fillText(-1, (canvas.width/4)*(1 - 1/axis_width) + 3, canvas.height/2 + font_size);
+	//context.fillText(1, canvas.width/4 - font_size, (canvas.height/2)*(1 - 1/axis_height) - 3);
+	//context.fillText(-1, canvas.width/4 - font_size - 3, (canvas.height/2)*(1 + 1/axis_height) - 3);
 	context.globalAlpha = 1;
 
 	context.beginPath(); //Centered axis
@@ -185,10 +190,11 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 		context.strokeStyle = "black";
 	}
 
-	//Second canvas (reduced canvas)
+	//Second canvas (bounded canvas)
 	context.beginPath(); //Bound
-	context.lineWidth = 4;
-	context.strokeRect(canvas.width*3/4 - side/2, canvas.height/2 - side/2, side, side);
+	var lin_wid = 4;
+	context.lineWidth = lin_wid;
+	context.strokeRect(canvas.width*3/4 - (side + lin_wid)/2, canvas.height/2 - (side + lin_wid)/2, side + lin_wid, side + lin_wid);
 	context.lineWidth = 2; //Distance 1
 	context.globalAlpha = 0.1;
 	context.moveTo(canvas.width*3/4 - side/4, canvas.height/2 - side/2);
