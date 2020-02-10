@@ -12,7 +12,7 @@
 <label id="function_ref"> <a href="https://www.w3schools.com/js/js_math.asp" target="_blank">See reference</a></label>
 <form id="width_form">Zoom: </form>
 <input type="number" id="values_width" value="100" min="1" step="10">
-<button id="runButton">Draw</button>
+<button id="runButton">Draw (↵)</button>
 <button id="recenterButton">Recenter</button>
 <form id="check_form"><u>M</u>etafunction</form>
 <input type="checkbox" id="frame_check">
@@ -85,7 +85,7 @@ function locateHTML() { //Sets HTML environment
 	focus_form_x.appendChild(focus_x); //Value x
 	position(focus_form_y, focus_left + context.measureText("Focus on: XXXXX").width + 100, innerHeight*(1-3/20)); //Focus y
 	focus_form_y.appendChild(focus_y); //Value y
-	position(runButton, innerWidth/2 - context.measureText("Draw").width, innerHeight*(1-3/20)); //Run button
+	position(runButton, innerWidth/2 - context.measureText("Draw (↵)").width, innerHeight*(1-3/20)); //Run button
 	position(recenterButton, innerWidth*(1-2/20) - context.measureText("Recenter").width, innerHeight*(1-3/20)); //Run button
 	position(check_form, innerWidth/2 - context.measureText("Extensio").width, innerHeight*(1-1.7/20)); //Frame checkbox
 	check_form.appendChild(frame_check);
@@ -353,8 +353,10 @@ onkeydown = function(event){
 		runButton.click();
 	}
 	if (event.keyCode == 77) { // m
-		frame_check.checked = (frame_check.checked ? false : true);
-		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000);
+		if (!event.shiftKey) { // Not shift
+			frame_check.checked = (frame_check.checked ? false : true);
+			run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000);
+		}
 	}
 }
 </script>
