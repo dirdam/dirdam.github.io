@@ -14,13 +14,13 @@
 <input type="number" id="values_width" value="100" min="1" step="10">
 <button id="runButton">Draw</button>
 <button id="recenterButton">Recenter</button>
-<form id="check_form">Extensio </form>
+<form id="check_form"><u>M</u>etafunction</form>
 <input type="checkbox" id="frame_check">
-<form id="focus_form1">Focus on: </form>
-<form id="focus_form2">x=</form>
-<form id="focus_form3">y=</form>
-<input type="number" id="focus_x" value="0">
-<input type="number" id="focus_y" value="0">
+<form id="focus_form_text">Focus on: </form>
+<form id="focus_form_x">x=</form>
+<input type="number" id="focus_x" value="0" style="width: 60px">
+<form id="focus_form_y">y=</form>
+<input type="number" id="focus_y" value="0" style="width: 60px">
 <form id="steps_form">Points to plot: </form>
 <input type="number" id="number_steps" value="1000" min="0" step="1000">
 <link rel="shortcut icon" href="../Lasso_logo.ico"/>
@@ -80,11 +80,11 @@ function locateHTML() { //Sets HTML environment
 	position(width_form, canvas.width/8, innerHeight*(1-1.7/20)); //Function text
 	width_form.appendChild(values_width); //Function input
 	var focus_left = canvas.width*5/8;
-	position(focus_form1, focus_left, innerHeight*(1-3/20)); //Focus text
-	position(focus_form2, focus_left + context.measureText("Focus on: XXXXX").width, innerHeight*(1-3/20)); //Focus x
-	focus_form2.appendChild(focus_x); //Value x
-	focus_form2.appendChild(focus_form3); //Focus y
-	focus_form3.appendChild(focus_y); //Value y
+	position(focus_form_text, focus_left, innerHeight*(1-3/20)); //Focus text
+	position(focus_form_x, focus_left + context.measureText("Focus on: XXXXX").width, innerHeight*(1-3/20)); //Focus x
+	focus_form_x.appendChild(focus_x); //Value x
+	position(focus_form_y, focus_left + context.measureText("Focus on: XXXXX").width + 100, innerHeight*(1-3/20)); //Focus y
+	focus_form_y.appendChild(focus_y); //Value y
 	position(runButton, innerWidth/2 - context.measureText("Draw").width, innerHeight*(1-3/20)); //Run button
 	position(recenterButton, innerWidth*(1-2/20) - context.measureText("Recenter").width, innerHeight*(1-3/20)); //Run button
 	position(check_form, innerWidth/2 - context.measureText("Extensio").width, innerHeight*(1-1.7/20)); //Frame checkbox
@@ -259,7 +259,6 @@ function trans1(x) { //Transforms a number from [-1,1] to (-inf,inf)
 
 function funct(x) { //Function to be applied
 	//This function has to interpret the text in the "function_text"
-	var symbols = ["+", "-", "/", "*", "log", "sin", "cos"]
 	return eval(function_text.value);
 }
 
@@ -288,7 +287,7 @@ var original_steps_value; //During move the number of steps is reduced for calcu
 ontouchstart = function(event) {
 	first_x = event.touches[0].clientX;
 	first_y = event.touches[0].clientY;
-	if (first_y < canvas.height && first_x < canvas.width/2) {
+	if (first_y < canvas.height && first_x < canvas.width/2 && !frame_check.checked) { // Block if metafunction active
 		mouse_move_activated = true;
 		original_steps_value = number_steps.value;
 		number_steps.value = 1000;	
@@ -305,7 +304,7 @@ ontouchmove = function(event) {
 ontouchend = function(event) {
 	var x = event.touches[0].clientX;
 	var y = event.touches[0].clientY;
-	if (y < canvas.height && x < canvas.width/2) {
+	if (y < canvas.height && x < canvas.width/2 && !frame_check.checkedv) {
 		focus_x.value = parseInt(final_x*1000)/1000;
 		focus_y.value = parseInt(final_y*1000)/1000;
 		number_steps.value = original_steps_value;
@@ -316,7 +315,7 @@ ontouchend = function(event) {
 onmousedown = function(event) {
 	first_x = event.clientX;
 	first_y = event.clientY;
-	if (first_y < canvas.height && first_x < canvas.width/2) {
+	if (first_y < canvas.height && first_x < canvas.width/2 && !frame_check.checked) { // Block if metafunction active
 		mouse_move_activated = true;
 		original_steps_value = number_steps.value;
 		number_steps.value = 1000;	
@@ -332,7 +331,7 @@ onmousemove = function(event) {
 onmouseup = function(event) {
 	var x = event.clientX;
 	var y = event.clientY;
-	if (y < canvas.height && x < canvas.width/2) {
+	if (y < canvas.height && x < canvas.width/2 && !frame_check.checked) {
 		focus_x.value = parseInt(final_x*1000)/1000;
 		focus_y.value = parseInt(final_y*1000)/1000;
 		number_steps.value = original_steps_value;
@@ -350,6 +349,11 @@ function commonStart(x, y) {
 
 onkeydown = function(event){
 	if (event.keyCode == 13) { // Enter
+		runButton.focus();
+		runButton.click();
+	}
+	if (event.keyCode == 77) { // m
+		frame_check.checked = (frame_check.checked ? false : true);
 		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000);
 	}
 }
