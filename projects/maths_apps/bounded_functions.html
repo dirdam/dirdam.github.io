@@ -13,6 +13,7 @@
 <form id="width_form">Zoom: </form>
 <input type="number" id="values_width" value="100" min="1" step="10">
 <button id="runButton">Draw</button>
+<button id="recenterButton">Recenter</button>
 <form id="check_form">Extensio </form>
 <input type="checkbox" id="frame_check">
 <form id="focus_form1">Focus on: </form>
@@ -75,6 +76,7 @@ function locateHTML() { //Sets HTML environment
 	position(function_form, canvas.width/8, innerHeight*(1-3/20)); //Function text
 	function_form.appendChild(function_text); //Function input
 	function_form.appendChild(function_ref); //Function reference
+	function_ref.setAttribute("title", help_text);
 	position(width_form, canvas.width/8, innerHeight*(1-1.7/20)); //Function text
 	width_form.appendChild(values_width); //Function input
 	var focus_left = canvas.width*5/8;
@@ -84,6 +86,7 @@ function locateHTML() { //Sets HTML environment
 	focus_form2.appendChild(focus_form3); //Focus y
 	focus_form3.appendChild(focus_y); //Value y
 	position(runButton, innerWidth/2 - context.measureText("Draw").width, innerHeight*(1-3/20)); //Run button
+	position(recenterButton, innerWidth*(1-2/20) - context.measureText("Recenter").width, innerHeight*(1-3/20)); //Run button
 	position(check_form, innerWidth/2 - context.measureText("Extensio").width, innerHeight*(1-1.7/20)); //Frame checkbox
 	check_form.appendChild(frame_check);
 	position(steps_form, focus_left, innerHeight*(1-1.7/20)); //Steps
@@ -92,10 +95,14 @@ function locateHTML() { //Sets HTML environment
 	runButton.onclick = function() {
 		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
 	}
+	recenterButton.onclick = function() {
+		focus_x.value = 0;
+		focus_y.value = 0;
+		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
+	}
 	frame_check.onchange = function() {
 		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
 	}
-	function_ref.setAttribute("title", help_text);
 }
 
 function position(name, left, top) {
