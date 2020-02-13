@@ -300,7 +300,7 @@ function composite(x, a, b) { //Composite function
 }
 
 function checkRevSym(center_x, center_y) { // Checks whether the function is revolvable or branch-revolvable and symmetrical
-	var precission = 0.000001; // Precission to check distances
+	var precision = 0.000001; // Precission to check distances
 	var points = [[-0.5, 0.5], [0, 0.5], [0.5, 0.5], [-0.5, 0], [0, 0], [0.5, 0], [-0.5, -0.5], [0, -0.5], [0.5, -0.5]];
 	var x_sample = [];
 	for (var i = 1; i < 41; i=i+2) { // Check at 20 points (left and right). No point goes through "points". No point is symmetrical with other
@@ -318,7 +318,7 @@ function checkRevSym(center_x, center_y) { // Checks whether the function is rev
 		}
 		for (var j = 0; j < x_subset.length; j++) {
 			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y)))
-			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) - angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precission) { // Different angle
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) - angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precision) { // Different angle
 				revolvable = false;
 				break;
 			}
@@ -329,7 +329,7 @@ function checkRevSym(center_x, center_y) { // Checks whether the function is rev
 		}
 		for (var j = 0; j < x_subset.length; j++) {
 			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y)))
-			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) + angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precission) { // Not opposite angle
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) + angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precision) { // Not opposite angle
 				symmetrical = false;
 				break;
 			}
