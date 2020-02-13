@@ -10,17 +10,19 @@
 <form id="function_form">Function: f(x)=</form>
 <input type="text" id="function_text" value="Math.pow(x,2)">
 <label id="function_ref"> <a href="https://www.w3schools.com/js/js_math.asp" target="_blank">See reference</a></label>
-<form id="width_form">Zoom: </form>
-<input type="number" id="values_width" value="100" min="1" step="10">
 <button id="runButton">Draw (↵)</button>
-<button id="recenterButton">Recenter</button>
-<form id="check_form"><u>M</u>etafunction</form>
-<input type="checkbox" id="frame_check">
 <form id="focus_form_text">Focus on: </form>
 <form id="focus_form_x">x=</form>
 <input type="number" id="focus_x" value="0" style="width: 60px">
 <form id="focus_form_y">y=</form>
 <input type="number" id="focus_y" value="0" style="width: 60px">
+<button id="recenterButton">Recenter</button>
+<form id="width_form">Zoom: </form>
+<input type="number" id="values_width" value="100" min="1" step="10">
+<form id="check_form">Metafunction</form>
+<input type="checkbox" id="frame_check">
+<form id="check_rev_sym">Symmetries</form>
+<input type="checkbox" id="rev_sym_check">
 <form id="steps_form">Points to plot: </form>
 <input type="number" id="number_steps" value="1000" min="0" step="1000">
 <link rel="shortcut icon" href="../Lasso_logo.ico"/>
@@ -87,8 +89,10 @@ function locateHTML() { //Sets HTML environment
 	focus_form_y.appendChild(focus_y); //Value y
 	position(runButton, innerWidth/2 - context.measureText("Draw (↵)").width, innerHeight*(1-3/20)); //Run button
 	position(recenterButton, innerWidth*(1-2/20) - context.measureText("Recenter").width, innerHeight*(1-3/20)); //Run button
-	position(check_form, innerWidth/2 - context.measureText("Extensio").width, innerHeight*(1-1.7/20)); //Frame checkbox
+	position(check_form, innerWidth/2 - context.measureText("Metafunction").width - innerWidth/16, innerHeight*(1-1.7/20)); //Frame checkbox
 	check_form.appendChild(frame_check);
+	position(check_rev_sym, innerWidth/2 - context.measureText("Symmetries").width + innerWidth/16, innerHeight*(1-1.7/20)); //Frame checkbox
+	check_rev_sym.appendChild(rev_sym_check);
 	position(steps_form, focus_left, innerHeight*(1-1.7/20)); //Steps
 	steps_form.appendChild(number_steps);
 
@@ -101,6 +105,9 @@ function locateHTML() { //Sets HTML environment
 		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
 	}
 	frame_check.onchange = function() {
+		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
+	}
+	rev_sym_check.onchange = function() {
 		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000); //Run acording to focus
 	}
 }
@@ -177,10 +184,7 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 	context.stroke();
 	context.globalAlpha = 1;
 
-	context.fillStyle = "blue";
-	context.beginPath();
-	context.arc(canvas.width/4, canvas.height/2, 3, 0, Math.PI*2);
-	context.fill();
+	//plot(canvas.width/4, canvas.height/2, 3, "blue");
 
 	if (frame_check.checked && (canvas.width/4 - center_x*canvas.width/(4*axis_width) - (canvas.width/4)/axis_width < canvas.width/2)) {
 		context.beginPath(); //Distance 1 axis
@@ -225,10 +229,7 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 	context.stroke();
 	context.globalAlpha = 1;
 	
-	context.fillStyle = "blue";
-	context.beginPath();
-	context.arc(canvas.width*3/4, canvas.height/2, 3, 0, Math.PI*2);
-	context.fill();
+	//plot(canvas.width*3/4, canvas.height/2, 3, "blue");
 
 	if (frame_check.checked) {
 		context.beginPath(); //Distance 1 axis
@@ -249,15 +250,36 @@ function run(center_x, center_y) { //Calculate and plot
 	for (var i = 0; i < steps; i++) {
 		var x = axis_width*(- 1 + 2*i/steps) + center_x;
 		var y = (!frame_check.checked ? funct(x) : trans2(funct(trans1(x) + center_x) - center_y));
-		plot(canvas.width/4 + ((x - center_x)/axis_width)*canvas.width/4, canvas.height/2 - ((y - center_y)/axis_height)*canvas.height/2);
+		plot(canvas.width/4 + ((x - center_x)/axis_width)*canvas.width/4, canvas.height/2 - ((y - center_y)/axis_height)*canvas.height/2, 0.5, "red");
 	}
 	//Bounded
 	for (var i = 1; i < steps; i++) {
 		var x = - 1 + 2*i/steps;
 		var y = (!frame_check.checked ? trans2(funct(trans1(x) + center_x) - center_y) : trans2(composite(trans1(x) + center_x, center_x, center_y) - center_y));
-		plot(canvas.width*3/4 + x*side/2, canvas.height/2 - y*side/2);
+		plot(canvas.width*3/4 + x*side/2, canvas.height/2 - y*side/2, 0.5, "red");
 	}
-	console.log(checkRevSym(funct(x)));
+	// Revolvability and symmetry
+	if (rev_sym_check.checked) {
+		var rev_sym = checkRevSym(center_x, center_y);
+		if (rev_sym[0].length > 0) { // Revolvability
+			for (var i = 0; i < rev_sym[0].length; i++) {
+				plot(canvas.width*3/4 + rev_sym[0][i][0]*side/2, canvas.height/2 - rev_sym[0][i][1]*side/2, 3, "green");
+				plot(canvas.width*3/4 + rev_sym[0][i][0]*side/2, canvas.height/2 - rev_sym[0][i][1]*side/2, 1.5, "lime");
+				if (rev_sym[0].length > 1 && Math.abs(rev_sym[0][i][0]) == 0.5) { // If multiple revolutions and not centered
+					plot(canvas.width*3/4 + rev_sym[0][i][0]*side/2, canvas.height/2 - rev_sym[0][i][1]*side/2, 3, "blue");
+					plot(canvas.width*3/4 + rev_sym[0][i][0]*side/2, canvas.height/2 - rev_sym[0][i][1]*side/2, 1.5, "cyan");
+				}
+			}
+		}
+		if (rev_sym[1].length > 0) { // Symmetry
+			context.strokeStyle = "green";
+			context.lineWidth = 2;
+			context.beginPath();
+			context.moveTo(canvas.width*3/4 + rev_sym[1][0][0]*side/2, canvas.height/2 - side/2);
+			context.lineTo(canvas.width*3/4 + rev_sym[1][0][0]*side/2, canvas.height/2 + side/2);
+			context.stroke();
+		}
+	}
 }
 
 function trans1(x) { //Transforms a number from [-1,1] to (-inf,inf)
@@ -277,9 +299,9 @@ function composite(x, a, b) { //Composite function
 	return trans2(funct(trans1(x) + a) - b);
 }
 
-function checkRevSym(f) { // Checks whether the function is revolvable or branch-revolvable and symmetrical
+function checkRevSym(center_x, center_y) { // Checks whether the function is revolvable or branch-revolvable and symmetrical
 	var precission = 0.000001; // Precission to check distances
-	var points = [[-1/2, 1/2], [0, 1/2], [1/2, 1/2], [-1/2, 0], [0, 0], [1/2, 0], [-1/2, -1/2], [0, -1/2], [1/2, -1/2]];
+	var points = [[-0.5, 0.5], [0, 0.5], [0.5, 0.5], [-0.5, 0], [0, 0], [0.5, 0], [-0.5, -0.5], [0, -0.5], [0.5, -0.5]];
 	var x_sample = [];
 	for (var i = 1; i < 41; i=i+2) { // Check at 20 points (left and right). No point goes through "points". No point is symmetrical with other
 		x_sample.push(-1 + i*2/41);
@@ -291,27 +313,30 @@ function checkRevSym(f) { // Checks whether the function is revolvable or branch
 	for (var i = 0; i < points.length; i++) {
 		x_subset = generateSubset(x_sample, points[i][0]); // Subset with restricted domain
 		//console.log(points[i][0], points[i][1]);
+		if (isNaN(Math.abs(angFromTan(points[i][0], points[i][1], x_subset[0], composite(x_subset[0], center_x, center_y)))) || isNaN(angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[0]), composite(points[i][0] + (points[i][0] - x_subset[0]), center_x, center_y)))) { // If any is NaN, pass
+			continue;
+		}
 		for (var j = 0; j < x_subset.length; j++) {
-			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0)))
-			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)) - angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0))) > precission) { // Different angle
+			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y)))
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) - angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precission) { // Different angle
 				revolvable = false;
 				break;
 			}
 		}
 		if (revolvable) { // Revolvable
 			res_revolvable.push(points[i]);
-			console.log("Revolvable around " + points[i]);
+			//console.log("Revolvable around " + points[i]);
 		}
 		for (var j = 0; j < x_subset.length; j++) {
-			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0)))
-			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)) + angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0))) > precission) { // Not opposite angle
+			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y)))
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], center_x, center_y)) + angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), center_x, center_y))) > precission) { // Not opposite angle
 				symmetrical = false;
 				break;
 			}
 		}
 		if (symmetrical) { // Symmetrical
 			res_symmetrical.push(points[i]);
-			console.log("Symmetrical around " + points[i]);
+			//console.log("Symmetrical around " + points[i]);
 		}
 		revolvable = true;
 		symmetrical = true;
@@ -338,12 +363,10 @@ function angFromTan(x0, y0, x1, y1) { // Angle from tangent
 	return (x1 - x0)/(y1 - y0);
 }
 
-var plot_color = "red";
-var plot_radius = 0.5;
-function plot(x, y) { //Plots a point
-	context.fillStyle = plot_color;
+function plot(x, y, radius, color) { //Plots a point
+	context.fillStyle = color;
 	context.beginPath();
-	context.arc(x, y, plot_radius, 0, Math.PI*2);
+	context.arc(x, y, radius, 0, Math.PI*2);
 	context.fill();
 }
 
@@ -420,11 +443,14 @@ onkeydown = function(event){
 		runButton.focus();
 		runButton.click();
 	}
-	if (event.keyCode == 77) { // m
-		if (!event.shiftKey) { // Not shift
+	if (event.keyCode == 27) { // Esc
+		if (event.shiftKey) { // Shift pressed
 			frame_check.checked = (frame_check.checked ? false : true);
-			run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000);
 		}
+		else {
+			rev_sym_check.checked = (rev_sym_check.checked ? false : true);
+		}
+		run(parseInt(focus_x.value*1000)/1000, parseInt(focus_y.value*1000)/1000);
 	}
 }
 </script>
