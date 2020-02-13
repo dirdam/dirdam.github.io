@@ -254,9 +254,10 @@ function run(center_x, center_y) { //Calculate and plot
 	//Bounded
 	for (var i = 1; i < steps; i++) {
 		var x = - 1 + 2*i/steps;
-		var y = (!frame_check.checked ? trans2(funct(trans1(x) + center_x) - center_y) : trans2(funct2(trans1(x) + center_x, center_x, center_y) - center_y));
+		var y = (!frame_check.checked ? trans2(funct(trans1(x) + center_x) - center_y) : trans2(composite(trans1(x) + center_x, center_x, center_y) - center_y));
 		plot(canvas.width*3/4 + x*side/2, canvas.height/2 - y*side/2);
 	}
+	console.log(checkRevSym(funct(x)));
 }
 
 function trans1(x) { //Transforms a number from [-1,1] to (-inf,inf)
@@ -272,8 +273,69 @@ function trans2(x) { //Transforms a number from (-inf,inf) to [-1,1]
 	return x/(1 + Math.abs(x));
 }
 
-function funct2(x, a, b) {
+function composite(x, a, b) { //Composite function
 	return trans2(funct(trans1(x) + a) - b);
+}
+
+function checkRevSym(f) { // Checks whether the function is revolvable or branch-revolvable and symmetrical
+	var precission = 0.000001; // Precission to check distances
+	var points = [[-1/2, 1/2], [0, 1/2], [1/2, 1/2], [-1/2, 0], [0, 0], [1/2, 0], [-1/2, -1/2], [0, -1/2], [1/2, -1/2]];
+	var x_sample = [];
+	for (var i = 1; i < 41; i=i+2) { // Check at 20 points (left and right). No point goes through "points". No point is symmetrical with other
+		x_sample.push(-1 + i*2/41);
+	}
+	var res_revolvable = [];
+	var res_symmetrical = [];
+	var revolvable = true; // Revolvability
+	var symmetrical = true; // Symmetry
+	for (var i = 0; i < points.length; i++) {
+		x_subset = generateSubset(x_sample, points[i][0]); // Subset with restricted domain
+		//console.log(points[i][0], points[i][1]);
+		for (var j = 0; j < x_subset.length; j++) {
+			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0)))
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)) - angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0))) > precission) { // Different angle
+				revolvable = false;
+				break;
+			}
+		}
+		if (revolvable) { // Revolvable
+			res_revolvable.push(points[i]);
+			console.log("Revolvable around " + points[i]);
+		}
+		for (var j = 0; j < x_subset.length; j++) {
+			//console.log(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)), angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0)))
+			if (Math.abs(angFromTan(points[i][0], points[i][1], x_subset[j], composite(x_subset[j], 0, 0)) + angFromTan(points[i][0], points[i][1], points[i][0] + (points[i][0] - x_subset[j]), composite(points[i][0] + (points[i][0] - x_subset[j]), 0, 0))) > precission) { // Not opposite angle
+				symmetrical = false;
+				break;
+			}
+		}
+		if (symmetrical) { // Symmetrical
+			res_symmetrical.push(points[i]);
+			console.log("Symmetrical around " + points[i]);
+		}
+		revolvable = true;
+		symmetrical = true;
+	}
+	return [res_revolvable, res_symmetrical];
+
+	function generateSubset(arr, p0) {
+		var res = [];
+		var limit_width = 1 - Math.abs(p0); // Maximum domain width to analyze
+		for (var i = 0; i < arr.length; i++) {
+			if (p0 - limit_width < arr[i] && arr[i] < p0 + limit_width) {
+				res.push(arr[i]);
+			}
+		}
+		return res;
+	}
+}
+
+function sqDist(x0, y0, x1, y1) { // Squared distance
+	return (x1 - x0)*(x1 - x0) + (y1 - y0)*(y1 - y0);
+}
+
+function angFromTan(x0, y0, x1, y1) { // Angle from tangent
+	return (x1 - x0)/(y1 - y0);
 }
 
 var plot_color = "red";
