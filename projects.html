@@ -13,6 +13,12 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/sections.css">
         <link rel="shortcut icon" href="images/lasso_logo.ico">
+        <script type="text/x-mathjax-config">
+        	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+		</script>
+		<script type="text/javascript"
+			src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
 	</head>
 	<body style="-webkit-transition: all 1s; transition: all 1s">
 
@@ -34,6 +40,9 @@
 						</header>
 						<div style="text-transform: uppercase; text-align: center">
 							<h5><a id="main_evo" href="#evo"></a></h5>
+						</div>
+						<div style="text-transform: uppercase; text-align: center">
+							<h5><a id="main_fenced" href="#fenced"></a></h5>
 						</div>
 					</section>
 
@@ -67,7 +76,47 @@
 							<li><a id="evo_button" class="button" target="_blank"></a></li>
 						</ul>
 					</section>
-					<section id="m1" class="main"></section>
+					<section class="main"></section>
+
+				<!-- Banner -->
+					<section id="fenced" class="field" onmouseover="document.body.style.backgroundColor='rgba(166,23,23,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
+						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
+							<header class="explore_thumbnail" style="width: 50%; margin: auto; --box-shadow-color: rgb(166,23,23);">
+								<a href="projects/maths_apps/fenced_functions.html" target="_blank"><img src="images/own_fenced.png" alt=""></a>
+								<h3 id="fenced_title"></h3>
+							</header>
+						</article>
+						<ul>
+							<li><h3 id="fenced_description"></h3></li>
+							<li><h3 id="fenced_how"></h3>
+								<ul>
+									<li><h3><span id="fenced_how0" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3></li>
+									<figure>
+										<img src="images/own_fenced_ref1.png" alt="" style="width: 100%">
+										<figcaption style="text-align: center; letter-spacing: 0.1rem; font-size: 18px;">Parabola $x^2$ on the left and its fenced representation on the right.</figcaption>
+									</figure>
+									<li><h3><span id="fenced_how1" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3></li>
+									$$\tau : \mathbb{R} \rightarrow (-1, 1)\qquad\qquad \tau(x)=\frac{x}{1+\mid x \mid}$$
+									<h3><span id="fenced_how15" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3>
+									<li><h3><span id="fenced_how2" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3></li>
+									<li><h3><span id="fenced_how3" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3></li>
+									<figure>
+										<img src="images/own_fenced_ref2.png" alt="" style="width: 100%">
+										<figcaption style="text-align: center; letter-spacing: 0.1rem; font-size: 18px;">The parabola $x^2$ has one axial symmetry and two branch symmetrie about a point.</figcaption>
+									</figure>
+									<li><h3><span id="fenced_how4" style="letter-spacing: 0.1rem; font-size: 18px;"></span></h3></li>
+									<figure>
+										<img src="images/own_fenced_ref3.png" alt="" style="width: 100%">
+										<figcaption style="text-align: center; letter-spacing: 0.1rem; font-size: 18px;">Left: Fenced representation of the parabola $x^2$ interpreted as the input function.<br>Right: Fenced representation of it.</figcaption>
+									</figure>
+								</ul>
+							</li>
+						</ul>
+						<ul class="actions item" style="margin: 0; padding: 0;">
+							<li><a id="fenced_button" class="button" href="projects/maths_apps/fenced_functions.html" target="_blank"></a></li>
+						</ul>
+					</section>
+					<section class="main"></section>
 
 				<!-- Banner -->
 					<section id="back" class="main">
@@ -127,6 +176,17 @@
 					"evo_conclusion": {"type": "html", "en": 'Conclusion: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>No matter how many surnames there are, if it always is the father\'s (or always the mother\'s) surname the one which gets passed down it will always come a day when only one surname remains.', "es": 'Conclusión: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>No importa cuántos apellidos haya, si siempre se hereda el apellido paterno (o siempre el materno) siempre llegará un día en que sólo quede un apellido.</span>', "ja": '結論： <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>どんなに名字があっても父親のみ（又は母親のみ）の名字が引き継ぐ場合，結局一つの名字しか残りません．</span>'},
 					"evo_conclusion2": {"type": "html", "en": 'Conclusion: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>No matter how many surnames there are, it will always come a day when only one remains. Therefore, the current surname system is destined to disappear or be changed, even if it is in a far future. Otherwise, having a surname—system which originated to identify people—will be meaningless.', "es": 'Conclusión: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>No importa cuánto apellidos haya, siempre llegará un día en que sólo quede uno. Por lo tanto, el sistema actual de apellidos está destinado a desaparecer o ser sustituido, incluso si falta mucho tiempo para que esto ocurra. De lo contrario, tener apellidos (sistema que se originó para identificar a las personas) dejará de tener sentido.</span> ////// Proponer (y mostrar con programa) qué pasaría si los apellidos se alternaran aleatoriamente, y qué pasaría si siempre se eligiera el apellido menos común.', "ja": '結論： <span style="letter-spacing: 0.1rem; font-size: 18px;"><br></span>'},
 					"evo_button": {"type": "text", "en": "Launch", "es": "Abrir", "ja": "開く"},
+					"main_fenced": {"type": "text", "en": "Fenced functions", "es": "Funciones cercadas", "ja": "囲い関数"},
+					"fenced_title": {"type": "text", "en": "Fenced functions", "es": "Funciones cercadas", "ja": "囲い関数"},
+					"fenced_description": {"type": "html", "en": 'Description: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Write a function using JavaScript syntax---reference included in the app--- and see how it would look like in a confined space.</span>', "es": 'Descripción: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Empezando con la lista de apellidos más comunes (en España) simula cómo evolucionarían a lo largo del tiempo. Cada simulación da resultados diferentes.</span>', "ja": '描写： <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>現在の（日本の）名字ランキングに基づき，名字の進化をシミュレーションします．各シミュレーションは違う結果を導きます．</span>'},
+					"fenced_how": {"type": "text", "en": "How it works:", "es": "Cómo funciona:", "ja": "働き方："},
+					"fenced_how0": {"type": "html", "en": "You input a real function formula on the variable <i>x</i> and the app generates a graph for that function on the usual plane (left) and a graph where the domain and the image of the function have been shrunk to <i>(-1, 1)x(-1, 1)</i> (right).", "es": "Empieza con una población de 1000 personas donde el número de personas con un apellido determinado es proporcional a la realidad basándose en los 200 apellidos más comunes.", "ja": "1000人の人口で始まります．名字の割合はランキングの上位200名字と対応しています．"},
+					"fenced_how1": {"type": "text", "en": "The shrinkage is done through this formula:", "es": "Cada miembro de la población tiene género, edad y un apellido.", "ja": "各人は性別・年齢・名字があります．"},
+					"fenced_how15": {"type": "html", "en": "$\\hspace{8px}$Note that $\\pm \\infty$ get mapped to $\\pm 1$, $\\pm 1$ get mapped to $\\pm 1/2$ and $0$ is mapped to $0$.", "es": "Cada miembro de la población tiene género, edad y un apellido.", "ja": "各人は性別・年齢・名字があります．"},
+					"fenced_how2": {"type": "text", "en": 'You can modify the zoom of the left-side graph, translate the graph ("Focus on"), or change the number of points to plot---the drawing of the graphs are not continuous but discrete. To improve the accuracy increase the number of points to plot. You can also translate the graph by dragging it.', "es": "Con cada año que pasa las personas envejecen un año.", "ja": "年が去ると皆は1年分年を取ります．"},
+					"fenced_how3": {"type": "text", "en": 'You can calculate the symmetries of the fenced function by checking "Symmetries". Green lines will mean "symmetry axis", green points will mean "symmetry about a point", and blue points will be marked for "branch symmetry about a point"---local symmetry of just a branch of the graph, not the whole graph.', "es": "Aquellas personas entre 15 y 35 años están en edad de «aparearse» y pueden encontrar a una persona del sexo opuesto y casarse. Las parejas pueden tener hijos teniendo en cuenta que cuantos más hijos tengas menos probable será que sigan teniendo hijos. Los hijos heredarán los apellidos de los padres.", "ja": "15歳から35歳の人は「交配期間」にいます．異性の相手を見つけ、結婚する時期になります．夫婦は子供を生むことができます．但し，子供が多ければ多いほど子供を生む確率が減ります．子供が家族の名字を取ります．"},
+					"fenced_how4": {"type": "text", "en": 'By checking "Metafunction" you can see how the fenced function would look like if unfenced. Furthermore, on the right side you will see the fenced version of it was it considered as the input function.', "es": "Cada persona tiene una posibilidad de morir que se basa en datos reales de tasas de muerte por edad.", "ja": "一人ひとりの死亡率は実データの年齢に依存する死亡率に基づき計算されます。"},
+					"fenced_button": {"type": "text", "en": "Launch", "es": "Abrir", "ja": "開く"},
 					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
 					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
 					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},

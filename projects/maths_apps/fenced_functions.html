@@ -27,11 +27,11 @@
 <input type="number" id="number_steps" value="1000" min="0" step="1000">
 <link rel="shortcut icon" href="../Lasso_logo.ico"/>
 
-<title>Bounded functions</title>
+<title>Fenced functions</title>
 
 <script>
 var min;
-var side; //Side length of the bounded canvas
+var side; //Side length of the fenced canvas
 var help_text = "Functions allowed: (all Javascript functions)\n\
 	・ Math.abs(x): Returns the absolute value of x\n\
 	・ Math.acos(x): Returns the arccosine of x, in radians\n\
@@ -129,7 +129,7 @@ function clearCanvas(center_x, center_y) { //Clears all and draws axis
 
 	context.font = font_size + "px Verdana";
 	context.fillStyle = "rgb(127,127,127)";
-	context.fillText("\u00A9Adr\u00ef"/*"\xA9 WiDo"/*Adr\u00ef"/*+"i\xE1n Jim\xE9nez Pascual"*/, canvas.width - context.measureText("ORWiDo ").width, canvas.height - 15);
+	context.fillText("\u00A9Adri\xE1n Jim\xE9nez Pascual", canvas.width - context.measureText("\u00A9Adri\xE1n Jim\xE9nez Pascual ").width, canvas.height - 15);
 
 	drawAxis(center_x, center_y);
 }
@@ -194,8 +194,8 @@ function drawAxis(center_x, center_y) { //Draws both axis in the canvas
 		context.strokeStyle = "black";
 	}
 
-	//Second canvas (bounded canvas)
-	context.beginPath(); //Bound
+	//Second canvas (fenced canvas)
+	context.beginPath(); //Fence
 	var lin_wid = 4;
 	context.lineWidth = lin_wid;
 	context.strokeRect(canvas.width*3/4 - (side + lin_wid)/2, canvas.height/2 - (side + lin_wid)/2, side + lin_wid, side + lin_wid);
@@ -252,11 +252,14 @@ function run(center_x, center_y) { //Calculate and plot
 		var y = (!frame_check.checked ? funct(x) : trans2(funct(trans1(x) + center_x) - center_y));
 		plot(canvas.width/4 + ((x - center_x)/axis_width)*canvas.width/4, canvas.height/2 - ((y - center_y)/axis_height)*canvas.height/2, 0.5, "red");
 	}
-	//Bounded
+	//Fenced
 	for (var i = 1; i < steps; i++) {
 		var x = - 1 + 2*i/steps;
 		var y = (!frame_check.checked ? trans2(funct(trans1(x) + center_x) - center_y) : trans2(composite(trans1(x) + center_x, center_x, center_y) - center_y));
 		plot(canvas.width*3/4 + x*side/2, canvas.height/2 - y*side/2, 0.5, "red");
+	}
+	if (frame_check.checked) {
+		rev_sym_check.checked = false;
 	}
 	// Revolvability and symmetry
 	if (rev_sym_check.checked) {
