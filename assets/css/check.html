@@ -8,6 +8,7 @@
 		<select id="m" onchange="setOpts()">
 			<option value="ub">ub</option>
 			<option value="ek">ek</option>
+			<option value="pe">pe</option>
 			<option value="ga">ga</option>
 			<option value="tu">tu</option>
 			<option value="xa">xa</option>
@@ -21,6 +22,7 @@
 			<option value="at">at</option>
 			<option value="te">te</option>
 			<option value="al">al</option>
+			<option value="ud">ud</option>
 			<option value="os">os</option>
 			<option value="ab">ab</option>
 			<option value="tl">tl</option>
@@ -37,10 +39,10 @@
 	<p id="res"></p>
 </body>
 <script type="text/javascript">
-	var ass = {'x': ['tl'], 'ok': ['tl'], 'gl': ['a', 'i', 'l'], 'in': ['.lgl'], 'tl': ['a'], 'te': ['lgl'], 'ub': ['m', 'r'], 'ab': ['agl'], 'ek': ['m'], 'マ': ['agl'], 'at': ['+...06'], 'ga': ['-----'], 'ac': [''], 'al': ['lgl'], 'xa': ['6'], 're': ['agl'], 'ラ': ['agl'], 'tu': [''], 'up': ['agl'], 'ア': ['agl'], 'ry': ['za'], 'os': ['lgl']};
-	var che = {'x': ['a'], 'ok': ['a'], 'gl': ['a', 'g', 'a'], 'in': ['a'], 'tl': ['a'], 'te': ['a'], 'ub': ['d', 'l'], 'ab': ['a'], 'ek': ['d'], 'マ': ['a'], 'at': ['81'], 'ga': ['-----'], 'ac': [''], 'al': ['a'], 'xa': ['5'], 're': ['a'], 'ラ': ['a'], 'tu': [''], 'up': ['a'], 'ア': ['a'], 'ry': ['k'], 'os': ['a']};
-	var fin = {'x': ['n@P^p4'], 'ok': ['vsG^x"3'], 'gl': ['U^:Psw', 'jD^`x&', '@K^lc<2'], 'in': ['ofR^dM2'], 'tl': [',yP^fg3#'], 'te': ['trB^l;'], 'ub': ['ijY^xRE', '|fpmwiocpyr"2^D3g'], 'ab': ['s;Y^Pl8'], 'ek': ['|S3s3"25^m(4'], 'マ': ['|s525^#2h'], 'at': ['|S3s3"25|js@@u_stnp;'], 'ga': ['|-----'], 'ac': ['|S4296432k^d#0'], 'al': ['|S4296432k^plH'], 'xa': ['|-----'], 're': ['|6238++nN^%dGb'], 'ラ': ['|s525^f$v'], 'tu': ['|S4296432u^pls'], 'up': ['<^sPO#'], 'ア': ['|S3s325^od2'], 'ry': ['|??????'], 'os': [',dR^ll1']};
-	var hi = {'x': 'd', 'ok': 'f', 'gl': 'g', 'in': 'l', 'tl': 'h', 'te': 'e', 'ub': 'g', 'ab': 'g', 'ek': 'b', 'マ': 'ボ', 'at': 'we', 'ga': 't', 'ac': 'm', 'al': 'p', 'xa': 'c', 're': 'a.s', 'ラ': 'ビ', 'tu': 'u', 'up': 'm', 'ア': 'チ', 'ry': 'a', 'os': 'd'};
+	var ass = {'x': ['tl'], 'ok': ['tl'], 'gl': ['a', 'i', 'l'], 'in': ['.lgl'], 'tl': ['a'], 'te': ['lgl'], 'ub': ['m', 'r'], 'ab': ['agl'], 'ek': ['m'], 'マ': ['agl'], 'at': ['+...06'], 'ga': ['-----'], 'ac': [''], 'al': ['lgl'], 'xa': ['6'], 're': ['agl'], 'ラ': ['agl'], 'tu': [''], 'up': ['agl'], 'ア': ['agl'], 'ry': ['za'], 'os': ['lgl'], 'pe': ['tl'], 'ud': ['agl', 'acc']};
+	var che = {'x': ['a'], 'ok': ['a'], 'gl': ['a', 'g', 'a'], 'in': ['a'], 'tl': ['a'], 'te': ['a'], 'ub': ['d', 'l'], 'ab': ['a'], 'ek': ['d'], 'マ': ['a'], 'at': ['81'], 'ga': ['-----'], 'ac': [''], 'al': ['a'], 'xa': ['5'], 're': ['a'], 'ラ': ['a'], 'tu': [''], 'up': ['a'], 'ア': ['a'], 'ry': ['k'], 'os': ['a'], 'pe': ['a'], 'ud': ['a', 'a']};
+	var fin = {'x': ['n@P^p4'], 'ok': ['vsG^x"3'], 'gl': ['U^:Psw', 'jD^`x&', '@K^lc<2'], 'in': ['ofR^dM2'], 'tl': ['s,Y^fg3#'], 'te': ['trB^l;'], 'ub': ['ijY^xRE', '|fpmwiocpyr"2^D3g'], 'ab': ['s;Y^Pl8'], 'ek': ['|S3s3"25^m(4'], 'マ': ['|s525^#2h'], 'at': ['|S3s3"25|js@@u_stnp;'], 'ga': ['|-----'], 'ac': ['|S4296432k^d#0'], 'al': ['|S4296432k^plH'], 'xa': ['|-----'], 're': ['|6238++nN^%dGb'], 'ラ': ['|s525^f$v'], 'tu': ['|S4296432u^pls'], 'up': ['<^sPO#'], 'ア': ['|S3s325^od2'], 'ry': ['|??????'], 'os': [',dR^ll1'], 'pe': ['uL^iO3c'], 'ud': ['|6238++nN^oo-', '|22926+.9Ss^2xf']};
+	var hi = {'x': 'd', 'ok': 'f', 'gl': 'g', 'in': 'l', 'tl': 'h', 'te': 'e', 'ub': 'g', 'ab': 'g', 'ek': 'b', 'マ': 'ボ', 'at': 'we', 'ga': 't', 'ac': 'm', 'al': 'p', 'xa': 'c', 're': 'a.s', 'ラ': 'ビ', 'tu': 'u', 'up': 'm', 'ア': 'チ', 'ry': 'a', 'os': 'd', 'pe': 's', 'ud': 'i'};
 	var cons = '"52+368';
 	var per = ['/ot/', '/mr/'];
 	setOpts();
