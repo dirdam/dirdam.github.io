@@ -1,0 +1,40 @@
+.board {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*background-color: black;*/
+	z-index: -2;
+}
+
+.tile {
+	position: absolute;
+	/*border: 1px solid black;*/
+}
+
+.button {
+	position: absolute;
+	border: 1px solid black;
+	background-color: lightyellow;
+	border-radius: 40%;
+	cursor: pointer;
+}
+
+i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.piece {
+	position: absolute;
+	/*border: 1px solid black;*/
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+.goal {
+	position: absolute;
+	border: 1px solid black;
+}
