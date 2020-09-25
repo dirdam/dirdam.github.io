@@ -125,13 +125,13 @@ Board.prototype.action = function(button_id) { // Rotates proper lane
 	for (var i = 0; i < this.pieces.length; i++) {
 		if (["left", "right"].includes(side)) { // Horizontal
 			if (this.pieces[i].y == Math.floor(order)) { // Upper row
-				if (modulo_included(this.pieces[i].sticks, 2)) { // Stick to push
+				if (convert_modulo(this.pieces[i].sticks).includes(2)) { // Stick to push
 					rotating_pieces.push(this.pieces[i]);
 					direction.push(side == "left" ? -1 : 1);
 				}
 			}
 			else if (this.pieces[i].y == Math.ceil(order)) { // Lower row
-				if (modulo_included(this.pieces[i].sticks, 0)) { // Stick to push
+				if (convert_modulo(this.pieces[i].sticks).includes(0)) { // Stick to push
 					rotating_pieces.push(this.pieces[i]);
 					direction.push(side == "left" ? 1 : -1);
 				}
@@ -139,13 +139,13 @@ Board.prototype.action = function(button_id) { // Rotates proper lane
 		}
 		else if (["top", "bottom"].includes(side)) { // Vertical
 			if (this.pieces[i].x == Math.floor(order)) { // Left column
-				if (modulo_included(this.pieces[i].sticks, 1)) { // Stick to push
+				if (convert_modulo(this.pieces[i].sticks).includes(1)) { // Stick to push
 					rotating_pieces.push(this.pieces[i]);
 					direction.push(side == "top" ? 1 : -1);
 				}
 			}
 			else if (this.pieces[i].x == Math.ceil(order)) { // Right column
-				if (modulo_included(this.pieces[i].sticks, 3)) { // Stick to push
+				if (convert_modulo(this.pieces[i].sticks).includes(3)) { // Stick to push
 					rotating_pieces.push(this.pieces[i]);
 					direction.push(side == "top" ? -1 : 1);
 				}
@@ -154,15 +154,6 @@ Board.prototype.action = function(button_id) { // Rotates proper lane
 	}
 	for (var i = 0; i < rotating_pieces.length; i++) {
 		rotating_pieces[i].rotate(direction[i]);
-	}
-
-	function modulo_included(array, number) { // Checks if any number in "array" is part of "number" modulo
-		for (var i = 0; i < array.length; i++) {
-			if ((array[i]%4 + 4)%4 == number) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
 Board.prototype.randomize = function(steps) {
@@ -173,6 +164,13 @@ Board.prototype.randomize = function(steps) {
 }
 
 /* ============= Common methods ============= */
+function preloadImages(array) {
+	for (var i = 0; i < array.length; i++) {
+		var img = new Image();
+		img.src = array[i];
+	}
+}
+
 function checkEnd() {
 	var result = true;
 	for (var i = 0; i < board.pieces.length; i++) {
@@ -181,14 +179,14 @@ function checkEnd() {
 		}
 	}
 	return true;
+}
 
-	function convert_modulo(array) {
-		var result = [];
-		for (var i = 0; i < array.length; i++) {
-			result.push(((array[i]%4) + 4)%4);
-		}
-		return result;
+function convert_modulo(array) {
+	var result = [];
+	for (var i = 0; i < array.length; i++) {
+		result.push(((array[i]%4) + 4)%4);
 	}
+	return result;
 }
 
 function addGoal() {
@@ -204,6 +202,9 @@ function addGoal() {
 }
 
 /* ============= Initialization ============= */
+// Preload images
+preloadImages(['doa.png', 'doa-end.png', 'pattern2.png']);
+
 // Table and pieces
 var board = new Board();
 board.initialize();
