@@ -4,12 +4,14 @@ var center_y = window.innerHeight/2;
 var board_width = Math.min(window.innerWidth, window.innerHeight)*5/7; // 5/7 of min
 var cell_width = board_width/5;
 var button_width = cell_width*3/5;
-// Pattern 1
-//var sticks = [[3, 0], [3, 0, 1], [3, 0, 1], [0, 1], [2, 3, 0], [1, 2], [2, 3], [0, 1, 2], [2, 3, 0], [0, 1], [3, 0], [0, 1, 2], [2, 3], [1, 2, 3], [1, 2, 3], [1, 2]];
-// Pattern 2 (corners inwards)
-var sticks = [[1, 2], [3, 0, 1], [3, 0, 1], [2, 3], [2, 3, 0], [1, 2], [2, 3], [0, 1, 2], [2, 3, 0], [0, 1], [3, 0], [0, 1, 2], [0, 1], [1, 2, 3], [1, 2, 3], [3, 0]];
-// Pattern 3 (squares)
-//var sticks = [[1, 2], [1, 2, 3], [1, 2, 3], [2, 3], [0, 1, 2], [3, 0], [0, 1], [2, 3, 0], [0, 1, 2], [2, 3], [1, 2], [2, 3, 0], [0, 1], [3, 0, 1], [3, 0, 1], [3, 0]];
+
+var target = "tri";
+var patterns = {
+	"point-out": [[1, 2], [3, 0, 1], [3, 0, 1], [2, 3], [2, 3, 0], [1, 2], [2, 3], [0, 1, 2], [2, 3, 0], [0, 1], [3, 0], [0, 1, 2], [0, 1], [1, 2, 3], [1, 2, 3], [3, 0]],
+	"shuriken": [[1, 2], [1, 2, 3], [0, 1, 2], [2, 3], [3, 0, 1], [3, 0], [0, 1], [2, 3, 0], [0, 1, 2], [2, 3], [1, 2], [1, 2, 3], [0, 1], [2, 3, 0], [3, 0, 1], [3, 0]],
+	"squares": [[1, 2], [1, 2, 3], [1, 2, 3], [2, 3], [0, 1, 2], [3, 0], [0, 1], [2, 3, 0], [0, 1, 2], [2, 3], [1, 2], [2, 3, 0], [0, 1], [3, 0, 1], [3, 0, 1], [3, 0]],
+	"tri": [[1, 2, 3], [2, 3, 0], [1, 2, 3], [2, 3, 0], [0, 1, 2], [3, 0, 1], [0, 1, 2], [3, 0, 1], [1, 2, 3], [2, 3, 0], [1, 2, 3], [2, 3, 0], [0, 1, 2], [3, 0, 1], [0, 1, 2], [3, 0, 1]]
+};
 
 /* ============= Objects definitions ============= */
 
@@ -77,10 +79,10 @@ var Board = function() {
 	this.pieces = []; // Array of pieces
 	this.buttons = []; // Array of buttons
 }
-Board.prototype.initialize = function() {
+Board.prototype.initialize = function(target) {
 	this.generateTiles();
 	this.generateButtons();
-	this.generatePieces();
+	this.generatePieces(target);
 }
 Board.prototype.generateTiles = function() {
 	for (var i = 0; i < 5; i++) {
@@ -107,12 +109,12 @@ Board.prototype.generateButtons = function() {
 		this.buttons.push(new Button(html_button, 5, 0.5 + i, 3));
 	}
 }
-Board.prototype.generatePieces = function() {
+Board.prototype.generatePieces = function(target) {
 	for (var i = 0; i < 4; i++) {
 		for (var j = 0; j < 4; j++) {
 			var html_piece = document.createElement("div");
 			html_piece.classList.add("piece"); // Add "piece" as class
-			this.pieces.push(new Piece(html_piece, j + 1, i + 1, sticks[i*4 + j]));
+			this.pieces.push(new Piece(html_piece, j + 1, i + 1, patterns[target][i*4 + j])); // It could be any
 		}
 	}
 }
@@ -167,14 +169,14 @@ Board.prototype.randomize = function(steps) {
 function preloadImages(array) {
 	for (var i = 0; i < array.length; i++) {
 		var img = new Image();
-		img.src = array[i];
+		img.src = array[i] + ".png";
 	}
 }
 
-function checkEnd() {
+function checkEnd(pattern) {
 	var result = true;
 	for (var i = 0; i < board.pieces.length; i++) {
-		if (JSON.stringify(convert_modulo(board.pieces[i].sticks)) != JSON.stringify(sticks[i])) {
+		if (JSON.stringify(convert_modulo(board.pieces[i].sticks)) != JSON.stringify(patterns[pattern][i])) {
 			return false;
 		}
 	}
@@ -189,30 +191,54 @@ function convert_modulo(array) {
 	return result;
 }
 
-function addGoal() {
+function addGoal(height, name) {
 	var html_goal = document.createElement("div");
+	html_goal.id = name;
 	html_goal.classList.add("goal"); // Add "goal" as class
+	html_goal.classList.add(name);
 	html_goal.style.width = cell_width + "px";
 	html_goal.style.height = cell_width + "px";
-	html_goal.style.top = "0px";
-	html_goal.style.left = window.innerWidth - cell_width + "px";
-	html_goal.style["background-image"] = "url('pattern2.png')";
+	html_goal.style.top = height*cell_width + 2 + "px"; // "2" because border has width 1px
+	html_goal.style.left = window.innerWidth - cell_width - 2 + "px";
+	html_goal.style["background-image"] = "url('" + name + (name == target ? "-selected" : "") + ".png')";
 	html_goal.style["background-size"] = "contain";
 	html_board.appendChild(html_goal);
 }
 
+function addRandomize() {
+	var html_random = document.createElement("div");
+	html_random.id = "random";
+	html_random.classList.add("random"); // Add "random" as class
+	html_random.style.width = cell_width + "px";
+	html_random.style.height = cell_width + "px";
+	html_random.style.top = window.innerHeight - cell_width - 2 + "px";
+	html_random.style.left = window.innerWidth - cell_width - 2 + "px";
+	html_board.appendChild(html_random);
+	var icon = document.createElement("i");
+	icon.classList.add("random");
+	icon.classList.add("fas");
+	icon.classList.add("fa-random");
+	icon.style["font-size"] = cell_width/2 + "px";
+	html_random.appendChild(icon);
+}
+
 /* ============= Initialization ============= */
 // Preload images
-preloadImages(['doa.png', 'doa-end.png', 'pattern2.png']);
+preloadImages(["doa", "doa-end"]);
+preloadImages(Object.keys(patterns));
 
 // Table and pieces
 var board = new Board();
-board.initialize();
-board.randomize(100);
+board.initialize(target);
 
-// Add goal
-addGoal();
+// Add goals
+addGoal(0, "tri");
+addGoal(1, "squares");
+addGoal(2, "point-out");
+addGoal(3, "shuriken");
 
+// Add randomize
+addRandomize();
 
 /* ============= Events ============= */
 
@@ -225,8 +251,23 @@ document.addEventListener("click", function (e) {
 			board.action(button.id);
 		}
 	}
+	// Goal clicked
+	if (classes[0] == "goal") {
+		target = classes[classes.length - 1];
+		for (var i = 0; i < Object.keys(patterns).length; i++) {
+			id = Object.keys(patterns)[i];
+			document.getElementById(id).style["background-image"] = "url('" + id + ".png')";
+		}
+		document.getElementById(target).style["background-image"] = "url('" + target + "-selected.png')";
+		board = new Board();
+		board.initialize(target);
+	}
+	// Random clicked
+	if (classes[0] == "random") {
+		board.randomize(200);
+	}
 	// End
-	if (checkEnd()) {
+	if (checkEnd(target)) {
 		for (var i = 0; i < board.pieces.length; i++) {
 			board.pieces[i].setImage("doa-end.png");
 		}
@@ -235,10 +276,5 @@ document.addEventListener("click", function (e) {
 		for (var i = 0; i < board.pieces.length; i++) {
 			board.pieces[i].setImage("doa.png");
 		}
-	}
-	// Goal clicked
-	if (classes[0] == "goal") {
-		board = new Board();
-		board.initialize();
 	}
 })
