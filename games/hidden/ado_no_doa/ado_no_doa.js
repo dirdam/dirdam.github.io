@@ -170,6 +170,10 @@ function preloadImages(array) {
 	for (var i = 0; i < array.length; i++) {
 		var img = new Image();
 		img.src = array[i] + ".png";
+		if (!array[i].includes("doa")) {
+			var img = new Image();
+			img.src = array[i] + "-selected.png";			
+		}
 	}
 }
 
