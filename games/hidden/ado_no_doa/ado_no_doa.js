@@ -19,6 +19,7 @@ var Piece = function(html, x, y, sticks) {
 	this.html = html;
 	this.x = x;
 	this.y = y;
+	this.color = (x <= 2 ? (y <= 2 ? "red" : "blue") : (y <= 2 ? "green" : "yellow"));
 	this.sticks = sticks.slice(); // Array of sticks. [0, 1, 2, 3] for 0, 3, 6, 9 in clock. "slice" needed to copy, not to reference
 	this.setHTML();
 }
@@ -28,7 +29,7 @@ Piece.prototype.setHTML = function() {
 	html_board.appendChild(this.html);
 	this.html.style.top = center_y - board_width/2 + this.y*cell_width - cell_width/2 + "px";
 	this.html.style.left = center_x - board_width/2 + this.x*cell_width - cell_width/2 + "px";
-	this.html.style["background-image"] = "url('doa.png')";
+	this.html.style["background-image"] = "url('doa-" + this.color + ".png')";
 	this.html.style["background-size"] = "cover";
 	this.html.style["background-position"] = "-" + (this.sticks.length == 2 ? 0 : cell_width) + "px 0px";
 	this.html.style.transform = "rotate(" + this.sticks[0]*90 + "deg)";
@@ -228,7 +229,7 @@ function addRandomize() {
 
 /* ============= Initialization ============= */
 // Preload images
-preloadImages(["doa", "doa-end"]);
+preloadImages(["doa-blue", "doa-blue-end", "doa-green", "doa-green-end", "doa-red", "doa-red-end", "doa-yellow", "doa-yellow-end"]);
 preloadImages(Object.keys(patterns));
 
 // Table and pieces
@@ -273,12 +274,12 @@ document.addEventListener("click", function (e) {
 	// End
 	if (checkEnd(target)) {
 		for (var i = 0; i < board.pieces.length; i++) {
-			board.pieces[i].setImage("doa-end.png");
+			board.pieces[i].setImage("doa-" + board.pieces[i].color + "-end.png");
 		}
 	}
 	else {
 		for (var i = 0; i < board.pieces.length; i++) {
-			board.pieces[i].setImage("doa.png");
+			board.pieces[i].setImage("doa-" + board.pieces[i].color + ".png");
 		}
 	}
 })
