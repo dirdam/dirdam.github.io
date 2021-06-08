@@ -227,6 +227,16 @@ function addRandomize() {
 	html_random.appendChild(icon);
 }
 
+function addCopyright(height, name) {
+	var html_copyright = document.createElement("div");
+	html_copyright.id = "copyright";
+	html_copyright.style.top = window.innerHeight - 50 + "px";
+	html_copyright.style.left = 30 + "px";
+	html_copyright.style.width = window.innerWidth/2 + "px";
+	html_copyright.innerText = "CONFIDENTIAL \xA92021 Adri\xE1n Jim\xE9nez Pascual";
+	html_board.appendChild(html_copyright);
+}
+
 /* ============= Initialization ============= */
 // Preload images
 preloadImages(["doa-blue", "doa-blue-end", "doa-green", "doa-green-end", "doa-red", "doa-red-end", "doa-yellow", "doa-yellow-end"]);
@@ -241,6 +251,9 @@ addGoal(0, "tri");
 //addGoal(1, "squares");
 //addGoal(2, "point-out");
 //addGoal(3, "shuriken");
+
+// Add copyright
+addCopyright();
 
 // Add randomize
 addRandomize();
