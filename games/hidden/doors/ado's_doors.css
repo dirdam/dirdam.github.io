@@ -41,6 +41,10 @@ i {
 	cursor: pointer;
 }
 
+#copyright {
+	position: absolute;
+}
+
 #random {
 	position: absolute;
 	border: 1px solid black;
