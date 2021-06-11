@@ -1,0 +1,74 @@
+<style>
+	body {
+		display: grid;
+		text-align: center;
+		margin: 0;
+		min-height: 100vh;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 4fr 1fr;
+		grid-template-areas: 
+			'i1 i2 i3 i4'
+			'c c c c'
+			'l l l l';
+	}
+	div {
+		margin: auto;
+	}
+	#barcode-div {
+		grid-area: i1;
+	}
+	#discount-div {
+		grid-area: i2;
+	}
+	#security-div {
+		grid-area: i3;
+	}
+	#button-div {
+		grid-area: i4;
+	}
+	#code {
+		grid-area: c;
+	}
+/*	#code-img {
+		width: 200px;
+	}
+*/	#link {
+		grid-area: l;
+	}
+</style>
+<div id="barcode-div">
+	Barcode<br>
+	<input id='barcode' type="number" name="barcode">
+</div>
+<div id="discount-div">
+	Discount (%)<br>
+	<input id='discount' type="number" name="discount" step="10" min="0" max="100" value="20">
+</div>
+<div id="security-div">
+	Security<br>
+	<input id='security' type="number" name="security">
+</div>
+<div id="button-div">
+	<input id="button" type="submit" name="button" onclick="generateBarcode()">
+</div>
+<div id="code">
+	<!-- insert your custom barcode setting your data in the GET parameter "data" -->
+	<img id="code-img" alt='Barcode Generator TEC-IT'
+		src='https://barcode.tec-it.com/barcode.ashx?data=0&code=Code128&multiplebarcodes=false&translate-esc=true&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&codepage=Default&qunit=Mm&quiet=0&hidehrt=False'/>
+</div>
+<div id="link">
+	<!-- back-linking to www.tec-it.com is required -->
+	<a href='https://www.tec-it.com' title='Barcode Software by TEC-IT' target='_blank'>TEC-IT Barcode Generator<br/></a>
+</div>
+<script>
+	const prefix = 'https://barcode.tec-it.com/barcode.ashx?data=';
+	const suffix = '&code=Code128&multiplebarcodes=false&translate-esc=true&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&codepage=Default&qunit=Mm&quiet=0&hidehrt=False';
+	function generateBarcode() {
+		var barcode = document.getElementById('barcode').value;
+		var discount = document.getElementById('discount').value;
+		var security = document.getElementById('security').value;
+		code = '0' + barcode + '1000' + discount + security;
+		console.log(code)
+		document.getElementById('code-img').src = prefix + code + suffix;
+	}
+</script>
