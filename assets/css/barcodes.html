@@ -4,11 +4,10 @@
 		text-align: center;
 		margin: 0;
 		min-height: 100vh;
-		grid-template-rows: 1fr 1fr 1fr 1fr 4fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
 		grid-template-areas: 
 			'i1'
 			'i2'
-			'i3'
 			'i4'
 			'c'
 			'l';
@@ -21,9 +20,6 @@
 	}
 	#discount-div {
 		grid-area: i2;
-	}
-	#security-div {
-		grid-area: i3;
 	}
 	#button-div {
 		grid-area: i4;
@@ -46,10 +42,6 @@
 	Discount (%)<br>
 	<input id='discount' type="number" name="discount" step="10" min="0" max="100" value="20">
 </div>
-<div id="security-div">
-	Security<br>
-	<input id='security' type="number" name="security">
-</div>
 <div id="button-div">
 	<input id="button" type="submit" name="button" onclick="generateBarcode()">
 </div>
@@ -66,11 +58,17 @@
 	const prefix = 'https://barcode.tec-it.com/barcode.ashx?data=';
 	const suffix = '&code=Code128&multiplebarcodes=false&translate-esc=true&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&codepage=Default&qunit=Mm&quiet=0&hidehrt=False';
 	function generateBarcode() {
+		function sum_code(c) {
+			var res = 0;
+			for (var i = 0; i < c.length; i++) {
+				res += parseInt(c[i]);
+			}
+			return res%10;
+		}
 		var barcode = document.getElementById('barcode').value;
-		var discount = document.getElementById('discount').value;
-		var security = document.getElementById('security').value;
-		code = barcode + '1000' + discount + security;
-		console.log(code)
+		var discount_code = '1000' + document.getElementById('discount').value;
+		var security = (10 + sum_code(barcode) - sum_code(discount_code))%10; // (Sum of barcode) - (Sum of discount code) mod 10
+		code = barcode + discount_code + security;
 		document.getElementById('code-img').src = prefix + code + suffix;
 	}
 </script>
