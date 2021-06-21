@@ -5,26 +5,34 @@
 		text-align: center;
 		margin: 0;
 		min-height: 100vh;
-		grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr 4fr 1fr;
 		grid-template-areas: 
-			'i1'
-			'i2'
-			'i4'
+			'icode'
+			'idrop'
+			'idiscount'
+			'ibutton'
 			'c'
 			'l';
 	}
 	div {
-		margin: auto;
+		margin: auto;/* 0 auto 0;*/
 	}
 	#barcode-div {
-		grid-area: i1;
+		grid-area: icode;
+	}
+	#drop-div {
+		grid-area: idrop;
 	}
 	#discount-div {
-		grid-area: i2;
+		grid-area: idiscount;
 	}
 	#button-div {
-		grid-area: i4;
+		grid-area: ibutton;
 	}
+/*	#button {
+		display: block;
+		width: 100%;
+	}*/
 	#code {
 		grid-area: c;
 	}
@@ -37,10 +45,18 @@
 </style>
 <div id="barcode-div">
 	Barcode<br>
-	<input id='barcode' type="number" name="barcode">
+	<input id='barcode' type="number" name="barcode" onchange="checkNumber()">
+</div>
+<div id="drop-div">
+	Discount type<br>
+	<select id='discounttype' name="disc_type" onchange="updateText()">
+		<option value="1">1 (-%)</option>
+		<option value="2">2 (-円)</option>
+		<option value="3">3 (円)</option>
+	</select>
 </div>
 <div id="discount-div">
-	Discount (%)<br>
+	<span id="discount-text"></span><br>
 	<input id='discount' type="number" name="discount" step="10" min="0" max="100" value="20">
 </div>
 <div id="button-div">
@@ -67,9 +83,19 @@
 			return res%10;
 		}
 		var barcode = document.getElementById('barcode').value;
-		var discount_code = '1000' + document.getElementById('discount').value;
+		var discount_type = document.getElementById('discounttype').value;
+		var discount_code = discount_type + '0'.repeat(5 - document.getElementById('discount').value.length) + document.getElementById('discount').value;
 		var security = (10 + sum_code(barcode) - sum_code(discount_code))%10; // (Sum of barcode) - (Sum of discount code) mod 10
 		code = barcode + discount_code + security;
 		document.getElementById('code-img').src = prefix + code + suffix;
+	}
+	function checkNumber() { // Checks number. Adds 0 (prefix) if shorter than 13; removes tail if longer
+		var barcode = document.getElementById('barcode').value;
+		document.getElementById('barcode').value = (barcode.length >= 13 ? barcode.slice(0, 13) : '0'.repeat(13 - barcode.length) + barcode);
+		updateText();
+	}
+	function updateText() {
+		var texts = {'1': 'Percentage to substract', '2': 'Amount to substract (本体)', '3': 'Set final amount (本体)'};
+		document.getElementById('discount-text').innerText = texts[document.getElementById('discounttype').value];
 	}
 </script>
