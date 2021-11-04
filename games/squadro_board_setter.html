@@ -793,11 +793,11 @@ function drawReplayBoard() { //Draws replay board
 	drawButton(x, y, radius, "antiquewhite", "black", 1, text, players_colors[winner], players_border_colors[winner]);
 
 	//Code button
-	var radius = sq_length/3;
-	var x = canvas.width - (margin_x + 2*sq_length - radius);
-	var y = canvas.height - (margin_y + 2*sq_length - radius);
-	var text = "\uf121"; //Code
-	drawButton(x, y, radius, "antiquewhite", "black", 1, text, board_color, "black");
+	// var radius = sq_length/3;
+	// var x = canvas.width - (margin_x + 2*sq_length - radius);
+	// var y = canvas.height - (margin_y + 2*sq_length - radius);
+	// var text = "\uf121"; //Code
+	// drawButton(x, y, radius, "antiquewhite", "black", 1, text, board_color, "black");
 
 	//Write pieces
 	drawPieces();
@@ -811,7 +811,7 @@ function drawStatistics(x, y, w, h) { //Draws statistics chart
 	//Fixed values
 	context.fillStyle = "black";
 	loadBoard(0);
-	var max = calculateMovesToFinish()[0];
+	var max = Math.max(calculateMovesToFinish()[0], calculateMovesToFinish()[1]);
 	font_size = min/20;
 	context.font = font_size + "px Helvetica";
 	context.textBaseline = "middle";
@@ -1190,7 +1190,7 @@ function drawExitButton(position) { //Draws exit button. Position = 0 (centered)
 	var radius = (position == 0 ? side : sq_width)/2;
 	var x = (position == 0 ? canvas.width/2 : (position == 1 ? canvas.width - margin_x - 2*sq_length : margin_x + sq_length) + radius);
 	var y = (position == 0 ? canvas.height/10 : margin_y + 2*sq_length - radius);
-	var text = "\uf015"; //House
+	var text = "\uf2ea"; //House
 	drawButton(x, y, radius, "antiquewhite", "black", (position == 0 ? 3 : 1), text, board_color, null);
 }
 
@@ -1563,7 +1563,7 @@ function commonStart(x, y) { //Manage touch functions
 			best_player = turn;
 			createPieces();
 			board_record = new Array();
-			saveThisBoard(); //Storage
+			//saveThisBoard(); //Storage
 			drawRival();
 			menu = 1;
 			break;
@@ -1628,8 +1628,8 @@ function commonStart(x, y) { //Manage touch functions
 		case 3: //Board
 			if (exitClicked()) { //Main menu
 				setTimeout(function() {
-					if (confirm("Exit?")) {
-						window.location.replace("load_game.html");
+					if (confirm("Reload?")) {
+						window.location.reload();
 						menu = 0;
 					}
 				}, 0);
@@ -1722,8 +1722,8 @@ function commonStart(x, y) { //Manage touch functions
 		case 5: //Replay
 			if (exitClicked()) { //Main menu
 				setTimeout(function() {
-					if (confirm("Exit?")) {
-						window.location.replace("load_game.html");
+					if (confirm("Reload?")) {
+						window.location.reload();
 						menu = 0;
 						show_advantage = false;
 						players_colors = [colors_before_replay[0], colors_before_replay[1]]; //Restores colors' choice
@@ -2024,16 +2024,16 @@ function decodeBoard() {
 			direction = (position[0] == "l" ? 1 : -1); // l or L
 			value = (i == 0 || i == 4 ? 1 : (i == 2 ? 2 : 3));
 			second_value = (i == 0 || i == 4 ? 3 : (i == 2 ? 2 : 1));
-			next_advance = (position[0] == "l" ? value : second_value);
+			if (position[0] == "L") {value = second_value; next_advance = value};
 			end = (direction == -1 && x == 0 ? true : false);
 		}
 		else { // Right
 			x = (i%5 + 1);
 			y = 6 - parseInt(position[1]);
 			direction = (position[0] == "r" ? 1 : -1); // r or R
-			value = (i == 0 || i == 4 ? 3 : (i == 2 ? 2 : 1));
-			second_value = (i == 0 || i == 4 ? 1 : (i == 2 ? 2 : 3));
-			next_advance = (position[0] == "r" ? value : second_value);			
+			value = (i%5 == 0 || i%5 == 4 ? 3 : (i%5 == 2 ? 2 : 1));
+			second_value = (i%5 == 0 || i%5 == 4 ? 1 : (i%5 == 2 ? 2 : 3));
+			if (position[0] == "R") {value = second_value; next_advance = value};
 			end = (direction == -1 && y == 6 ? true : false);
 		}
 		player[Math.floor(i/5)][(Math.floor(i/5) == 0 ? 4 - i%5 : i%5)].x = x;
@@ -2044,6 +2044,7 @@ function decodeBoard() {
 		player[Math.floor(i/5)][(Math.floor(i/5) == 0 ? 4 - i%5 : i%5)].next_advance = next_advance;
 		player[Math.floor(i/5)][(Math.floor(i/5) == 0 ? 4 - i%5 : i%5)].end = end;
 	}
+	saveThisBoard();
 	drawBoard();
 
 	turn = (urlParams.get('turn') == "l" ? 0 : 1);
