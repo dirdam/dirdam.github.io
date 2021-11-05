@@ -1628,9 +1628,15 @@ function commonStart(x, y) { //Manage touch functions
 		case 3: //Board
 			if (exitClicked()) { //Main menu
 				setTimeout(function() {
-					if (confirm("Reload?")) {
+					if (end() && confirm("Reload?")) {
 						window.location.reload();
 						menu = 0;
+					}
+					else {
+						var code = prompt("Code and turn (space in between)\nEx.: l0l0l0l0l0r0r0r0r0r0 l");
+						if (code.length > 0) { // If code input, then load new page
+							window.location.replace("squadro_board_setter.html?code=" + code.split(" ")[0] + "&turn=" + code.split(" ")[1]);
+						}
 					}
 				}, 0);
 			}
@@ -1996,6 +2002,9 @@ function encodeBoard() { //Board to code
 function decodeBoard() {
 	const urlParams = new URLSearchParams(window.location.search);
 	var code = urlParams.get('code');
+	if (!code) { // If code not introduced, set original game
+		window.location.replace("squadro_board_setter.html?code=l0l0l0l0l0r0r0r0r0r0&turn=l");
+	}
 	//Choose size
 	var size = 5;
 	commonStart(canvas.width*2/3, canvas.height/2);
