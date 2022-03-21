@@ -1978,15 +1978,9 @@ function commonStart(x, y) { //Manage touch functions
 			break;
 		case 5: //Replay
 			if (exitClicked()) { //Main menu
-				setTimeout(function() {
-					if (confirm("Reload?")) {
-						window.location.reload();
-						menu = 0;
-						show_advantage = false;
-						players_colors = [colors_before_replay[0], colors_before_replay[1]]; //Restores colors' choice
-						replay = null;
-					}
-				}, 0);
+				if (confirm("Reset board?")) {
+					window.location.replace("squadro_board_setter.html");
+				}
 			}
 			if (menu == 0) {
 				break;
