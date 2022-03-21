@@ -295,6 +295,8 @@ var exit_margin = 10;
 var exit_font_size = innerHeight/20;
 var adv_button_width; //Width of the advance and go back buttons
 
+var board_margin = 0; // Proportion with respect to sq_length for board external margin // RESIZE
+
 //Global variables
 var menu = 0; //0: sizes; 1: rival; 2: level; 3: board; 4: settings; 5: replay; 6: help; 7: notice
 var board_size; //Size of the board
@@ -354,8 +356,8 @@ Piece.prototype.draw = function(bot) {
 	context.lineWidth = 1;
 	var ori_hv = (agent_id == "left" ? 1 : -1);
 	if (agent_id == "bottom") y = size + 1 - y;
-	x = w/2 - board_length/2 + (x+1.5)*tile_length - (agent_id == "left" ? 1 : 0)*tile_length;
-	y = h/2 - board_length/2 + (y+1.5)*tile_length - (agent_id == "left" ? 0 : 1)*tile_length;;
+	x = w/2 - board_length/2 + (x+0.5)*tile_length - (agent_id == "left" ? 1 : 0)*tile_length; // RESIZE
+	y = h/2 - board_length/2 + (y+0.5)*tile_length - (agent_id == "left" ? 0 : 1)*tile_length;; // RESIZE
 	// Body
 	if (bot) {
 		context.strokeStyle = "antiquewhite";
@@ -834,7 +836,7 @@ function drawTurn(option) {
 function drawBoard() { //Draws normal board
 	var w = canvas.width;
 	var h = canvas.height;
-	var board_length = min - 2*sq_length;
+	var board_length = min - board_margin*sq_length; // RESIZE
 	var tile_length = sq_length;
 	var size = board_size;
 	context.lineWidth = 1;
@@ -1000,7 +1002,7 @@ function drawBoard() { //Draws normal board
 	//calculateMovesToFinish(); //Updates best_player
 	////drawColorCircle(margin_x + sq_length*1.5 + sq_length/6, margin_y + (board_size + 2.5)*sq_length - sq_length/6, sq_length/3, 1, (best_player == turn ? adv_green : adv_red));
 	var text = (turn == 0 ? "\uf337" : "\uf338");
-	drawButton(margin_x + sq_length*1.5 + sq_length/6, margin_y + (board_size + 2.5)*sq_length - sq_length/6, sq_length/3, players_colors[turn], "black", 1, text, players_backbone_colors[turn], players_border_colors[turn]);
+	drawButton(margin_x + sq_length*0.5 + sq_length/6, margin_y + (board_size + 1.5)*sq_length - sq_length/6, sq_length/3, players_colors[turn], "black", 1, text, players_backbone_colors[turn], players_border_colors[turn]);
 
 	if (show_advantage) {
 		context.fillStyle = "black";
@@ -1048,7 +1050,7 @@ function drawReplayBoard() { //Draws replay board
 	var y = margin_y + 2*sq_length - radius;
 	var winner = replay[replay.length - 1];
 	var text = "\uf1fe"; //Chart
-	drawButton(x, y, radius, "antiquewhite", "black", 1, text, players_colors[winner], players_border_colors[winner]);
+	drawButton(x - sq_length*1, y - sq_length*1, radius, "antiquewhite", "black", 1, text, players_colors[winner], players_border_colors[winner]); // RESIZE
 
 	//Code button
 	// var radius = sq_length/3;
@@ -1449,7 +1451,7 @@ function drawExitButton(position) { //Draws exit button. Position = 0 (centered)
 	var x = (position == 0 ? canvas.width/2 : (position == 1 ? canvas.width - margin_x - 2*sq_length : margin_x + sq_length) + radius);
 	var y = (position == 0 ? canvas.height/10 : margin_y + 2*sq_length - radius);
 	var text = "\uf1de"; //Sliders (adjust)
-	drawButton(x, y, radius, "antiquewhite", "black", (position == 0 ? 3 : 1), text, board_color, null);
+	drawButton(x + sq_length*1, y - sq_length*1, radius, "antiquewhite", "black", (position == 0 ? 3 : 1), text, board_color, null); // RESIZE
 }
 
 function drawButton(x, y, radius, fill_color, stroke_color, width, text, text_fill, text_stroke) {
@@ -1815,7 +1817,7 @@ function commonStart(x, y) { //Manage touch functions
 	switch (menu) {
 		case 0: //Sizes
 			board_size = 5;
-			sq_length = min/(board_size + 4); //Square length
+			sq_length = min/(board_size + 2 + board_margin); //Square length // RESIZE
 			exit_margin = sq_length/12;
 			turn = (chosen_turn == 2 ? Math.floor(Math.random()*2) : chosen_turn); //According to chosen_turn
 			best_player = turn;
@@ -1893,8 +1895,8 @@ function commonStart(x, y) { //Manage touch functions
 				break;
 			}
 			//Discretization
-			x = Math.floor((x - margin_x)/sq_length) - 1;
-			y = Math.floor((y - margin_y)/sq_length) - 1;
+			x = Math.floor((x - margin_x)/sq_length); // RESIZE (-1)
+			y = Math.floor((y - margin_y)/sq_length); // RESIZE (-1)
 			//Select appropiate piece and move it
 			var chosen_piece = pieceOn(x, y);
 			if (chosen_piece != null && chosen_piece.player == turn && !chosen_piece.end) { //If clicked ok, and correct player and not end
@@ -1932,8 +1934,8 @@ function commonStart(x, y) { //Manage touch functions
 					turn = (turn + 1)%2;
 					calculateMovesToFinish();
 					drawBoard();
-					// drawPieces();
-					allow_back = true;
+					drawPieces();
+					// allow_back = true;
 					board_record.pop();					
 				}
 			}
@@ -2013,21 +2015,21 @@ function commonStart(x, y) { //Manage touch functions
 				loadBoard(replay_step); //Load state
 				drawReplayBoard();
 			}
-			if (distance(x, y, margin_x + 2*sq_length - sq_length/3, margin_y + 2*sq_length - sq_length/3) <= sq_length/3) { //Statistics button
+			if (distance(x + sq_length*1, y + sq_length*1, margin_x + 2*sq_length - sq_length/3, margin_y + 2*sq_length - sq_length/3) <= sq_length/3) { //Statistics button // RESIZE
 				var x = canvas.width/4; var y = canvas.height/3; var w = canvas.width - 2*x; var h = canvas.height/2;
 				drawStatistics(x, y, w, h);
 				menu = 8;
 			}
-			if (distance(x, y, canvas.width - (margin_x + 2*sq_length - sq_length/3), canvas.height - (margin_y + 2*sq_length - sq_length/3)) <= sq_length/3) { //Statistics button
-				var code = encodeBoard();
-				try {
-					copyToClipboard(code);
-					var successful = document.execCommand('copy');
-					alert("Board code copied to clipboard.");
-				} catch (err) {
-					alert("Sorry, couldn't copy it. Here you have it raw:\n" + code);
-				}
-			}
+			// if (distance(x + sq_length*1, y + sq_length*1, canvas.width - (margin_x + 2*sq_length - sq_length/3), canvas.height - (margin_y + 2*sq_length - sq_length/3)) <= sq_length/3) { //Code button
+			// 	var code = encodeBoard();
+			// 	try {
+			// 		copyToClipboard(code);
+			// 		var successful = document.execCommand('copy');
+			// 		alert("Board code copied to clipboard.");
+			// 	} catch (err) {
+			// 		alert("Sorry, couldn't copy it. Here you have it raw:\n" + code);
+			// 	}
+			// }
 			break;
 		case 6: //Help
 			if (exitClicked()) { //Main menu
@@ -2096,7 +2098,7 @@ function commonStart(x, y) { //Manage touch functions
 		if ((menu == 1 || menu == 2 || menu == 4 || menu == 6 || menu == 7 || menu == 9 || menu == 10) && distance(x, y, canvas.width/2, canvas.height/10) <= side/2) { //Non-board
 			return true;
 		}
-		else if ((menu == 3 || menu == 5) && distance(x, y, canvas.width - margin_x - 2*sq_length + sq_width/2, margin_y + 2*sq_length - sq_width/2) <= sq_width/2) { //Board
+		else if ((menu == 3 || menu == 5) && distance(x - sq_length*1, y + sq_length*1, canvas.width - margin_x - 2*sq_length + sq_width/2, margin_y + 2*sq_length - sq_width/2) <= sq_width/2) { //Board // RESIZE
 			return true;
 		}
 		else {
