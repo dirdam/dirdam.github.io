@@ -10,6 +10,7 @@ table {
   border: 1px solid black;
   background-color: rgb(250, 250, 250);
   padding: 10px;
+  min-width: 300px; 
 }
 
 td {
@@ -126,7 +127,7 @@ input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: white;
-  margin: 0 5px;
+  margin: 0 1px;
 
   font: inherit;
   color: currentColor;
