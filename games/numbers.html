@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Canvas Plotting</title>
+	</head>
+	<body>
+		<div>
+			<label for="inputNumber">Enter crescent numbers (separate by space):</label>
+			<input type="text" id="inputNumber">
+			<button id="plotButton" onclick="drawNumber()">Plot</button>
+		</div>
+		<canvas id="plotCanvas"></canvas>
+	</body>
+</html>
+<script>
+const inputNumber = document.getElementById("inputNumber");
+const plotButton = document.getElementById("plotButton");
+const plotCanvas = document.getElementById("plotCanvas");
+const ctx = plotCanvas.getContext("2d");
+
+const char_width = 20;
+const prop = 10 + 2; // Times height greater than width
+const char_height = prop*char_width;
+const char_space = char_width; // Space between characters
+
+function numToGlyphs(n) { // Number in base 2
+	res = [];
+	i = 1;
+	glyph = n[0];
+	while (i < n.length) {
+		if (n[i] == "0") {
+			glyph += "0";
+		} else {
+			res.push(glyph);
+			glyph = n[i];
+		}
+		i += 1;
+	}
+	res.push(glyph);
+	return res;
+}
+
+function drawChar(n, x) {
+	if (n == "0") {
+		ctx.fillRect(x, char_height/2 - char_width/2, 3*char_width, char_width);		
+	} else  if (n == "1") {
+		ctx.fillRect(x, 0, char_width, char_height); // Vertical bar
+	} else {
+		ctx.fillRect(x + char_width, 0, char_width, char_height); // Vertical bar
+		var y = (char_height - 2*char_width)/(n.length); // Height of bar in body (connection parts excluded)
+		var bar_height = Math.min(char_width, (char_height - 2*char_width)/(n.length + 1)); // Height of the bar. Reduced if too many bars
+		for (var i = 0; i < n.length - 1; i++) { // Horizontal bars
+			ctx.fillRect(x, char_width + (i+1)*y - bar_height/2, 3*char_width, bar_height);
+		}
+	}
+}
+
+function charWidth(n) {
+	return (n == "1" ? char_width : 3*char_width);
+}
+
+function glyphWidth(n, char_width) {
+	var res = 0;
+	for (var i = 0; i < n.length; i++) {
+		res += charWidth(n[i]);
+		res += char_width
+	}
+	return res - char_width;
+}
+
+function drawConnector(j, x, len) {
+	ctx.fillRect(x, (j%2 == 0 ? char_height - char_width : 0), len*char_width, char_width);
+}
+
+function drawNumber() {
+	// Get the value of the input field
+	const numbers = inputNumber.value.split(" ");
+	const glyphs = [];
+	var canvas_width = 0;
+	for (var i = 0; i < numbers.length; i++) {
+		var aux = (numbers[i] >>> 0).toString(2);
+		glyph = numToGlyphs(aux);
+		glyphs.push(glyph);
+		canvas_width += glyphWidth(glyph, char_width); // Glyph space
+		canvas_width += char_space; // Post-char space
+	}
+	canvas_width -= char_space; // Remove last post-char space
+
+	// Update the canvas size
+	plotCanvas.width = canvas_width;
+	plotCanvas.height = char_height;
+
+	// Plot figures based on the glyphs
+	var x = 0;
+	for (var i = 0; i < glyphs.length; i++) {
+		for (var j = 0; j < glyphs[i].length; j++) {
+			var temp_width = charWidth(glyphs[i][j]);
+			drawChar(glyphs[i][j], x);
+			var reduce_dist = 0;
+			if (j < glyphs[i].length - 1) {
+				var next_temp_width = charWidth(glyphs[i][j+1]);
+				reduce_dist = (next_temp_width == temp_width) && (next_temp_width == 3*char_width) ? 1 : 0; // If this and next have length 3, reduce distance by 1 (visual correction)
+				drawConnector(j, x + (temp_width == char_width ? 0 : char_width), (temp_width == char_width ? 1 : 2 - reduce_dist) + next_temp_width/char_width);
+			}
+			x += temp_width + char_width - reduce_dist*char_width;
+		}
+		x += char_space - char_width;
+	}
+	// ctx.strokeRect(0, 0, canvas_width, char_height);
+}
+
+const input = document.querySelector("input");
+input.addEventListener("keyup", (event) => {
+	if (event.key === "Enter") {
+		drawNumber();
+	}
+});
+</script>
