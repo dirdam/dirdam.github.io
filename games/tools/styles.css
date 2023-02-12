@@ -1,0 +1,162 @@
+body {
+  font-family: Verdana, sans-serif;
+}
+
+table {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  background-color: rgb(250, 250, 250);
+  padding: 10px;
+  min-width: 300px; 
+}
+
+td {
+  text-align: center;
+}
+
+label {
+  vertical-align: middle;
+}
+
+.direction {
+  padding: 0 10px;
+}
+
+.header {
+  padding-top: 5px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider.red {
+  background-color: rgba(140, 0, 0, 0.5);
+}
+input:checked + .slider.yellow {
+  background-color: rgba(255, 160, 0, 0.5);
+}
+input:checked + .slider.turn {
+  background-color: rgba(255, 160, 0, 1);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.red {
+  background-color: rgba(140, 0, 0, 0.25);
+}
+.yellow {
+  background-color: rgba(255, 160, 0, 0.25);
+}
+.turn {
+  background-color: rgba(140, 0, 0, 1);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Button */
+button {
+  background-color: white;
+  color: rgb(50,50,50);
+  border: 1px solid rgb(50,50,50);
+  border-radius: 12px;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Radios */
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  margin: 0 1px;
+
+  font: inherit;
+  color: currentColor;
+  width: 15px;
+  height: 15px;
+  border: 1px solid currentColor;
+  border-radius: 10%;
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 10%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1px 1px var(--form-control-color);
+}
+
+input[type="radio"].red::before {
+  background-color: rgb(140, 0, 0);
+}
+input[type="radio"].yellow::before {
+  background-color: rgb(255, 160, 0);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
