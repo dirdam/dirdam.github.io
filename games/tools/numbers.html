@@ -112,7 +112,7 @@ function drawNumber() {
 	const canvas = document.querySelector("canvas");
 	const link = document.querySelector("#downloadLink");
 	link.href = canvas.toDataURL();
-	link.download = "crescent_" + inputNumber.value.replace(" ", "_") + ".png";
+	link.download = "crescent_" + numbers.join("_") + ".png";
 }
 
 const input = document.querySelector("input");
