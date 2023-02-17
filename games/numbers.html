@@ -9,7 +9,9 @@
 			<input type="text" id="inputNumber">
 			<button id="plotButton" onclick="drawNumber()">Plot</button>
 		</div>
-		<canvas id="plotCanvas"></canvas>
+		<a id="downloadLink">
+			<canvas id="plotCanvas"></canvas>
+		</a>
 	</body>
 </html>
 <script>
@@ -61,9 +63,15 @@ function charWidth(n) {
 
 function glyphWidth(n, char_width) {
 	var res = 0;
+	var last_char_width = 0;
 	for (var i = 0; i < n.length; i++) {
-		res += charWidth(n[i]);
-		res += char_width
+		var this_width = charWidth(n[i]);
+		if (last_char_width == 3*char_width && this_width == 3*char_width) {
+			res -= char_width;
+		}
+		res += this_width;
+		last_char_width = this_width;
+		res += char_width;
 	}
 	return res - char_width;
 }
@@ -107,6 +115,10 @@ function drawNumber() {
 		x += char_space - char_width;
 	}
 	// ctx.strokeRect(0, 0, canvas_width, char_height);
+	const canvas = document.querySelector("canvas");
+	const link = document.querySelector("#downloadLink");
+	link.href = canvas.toDataURL();
+	link.download = "crescent_" + numbers.join("_") + ".png";
 }
 
 const input = document.querySelector("input");
