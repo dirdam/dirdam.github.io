@@ -1814,3 +1814,9 @@ iframe:hover {
 .explore_thumbnail:hover {
 	box-shadow: 0 0 16px var(--box-shadow-color);
 }
+
+.font_mask {
+	-webkit-transition: all 1s;
+	transition: all 1s;
+	cursor: default;
+}
