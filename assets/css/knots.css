@@ -5,6 +5,24 @@
        /*url("fonts/knots/knots_stroke.svg#knots") format('svg'),*/
 	   url("./fonts/KnotFont.otf") format('opentype');
 }
+@font-face {
+  font-family: 'Tunic';
+    src: url("./fonts/Tunic.eot");
+    src: local('Tunic'),
+	   url("./fonts/Tunic.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Sheikah';
+    src: url("./fonts/Sheikah.eot");
+    src: local('Sheikah'),
+	   url("./fonts/Sheikah.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Fez';
+    src: url("./fonts/Fez.eot");
+    src: local('Fez'),
+	   url("./fonts/Fez.otf") format('opentype');
+}
 
 .knots {
 	color: inherit;
@@ -15,6 +33,22 @@
 	-webkit-transition: all 1s;
 	transition: all 1s;
 	cursor: default;
+}
+
+.tunic {
+	color: inherit;
+	font-family: "Tunic";
+	vertical-align: middle;
+}
+.sheikah {
+	color: inherit;
+	font-family: "Sheikah";
+	vertical-align: middle;
+}
+.fez {
+	color: inherit;
+	font-family: "Fez";
+	vertical-align: middle;
 }
 
 .column .knots {
