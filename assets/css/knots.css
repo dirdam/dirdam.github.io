@@ -18,6 +18,18 @@
 	   url("./fonts/Sheikah.otf") format('opentype');
 }
 @font-face {
+  font-family: 'Hylian';
+    src: url("./fonts/Hylian.eot");
+    src: local('Hylian'),
+	   url("./fonts/Hylian.otf") format('opentype');
+}
+@font-face {
+  font-family: 'Gerudo';
+    src: url("./fonts/Gerudo.eot");
+    src: local('Gerudo'),
+	   url("./fonts/Gerudo.otf") format('opentype');
+}
+@font-face {
   font-family: 'Fez';
     src: url("./fonts/Fez.eot");
     src: local('Fez'),
@@ -43,6 +55,16 @@
 .sheikah {
 	color: inherit;
 	font-family: "Sheikah";
+	vertical-align: middle;
+}
+.hylian {
+	color: inherit;
+	font-family: "Hylian";
+	vertical-align: middle;
+}
+.gerudo {
+	color: inherit;
+	font-family: "Gerudo";
 	vertical-align: middle;
 }
 .fez {
