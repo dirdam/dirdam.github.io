@@ -1004,6 +1004,10 @@ function drawBoard() { //Draws normal board
 	var text = (turn == 0 ? "\uf337" : "\uf338");
 	drawButton(margin_x + sq_length*0.5 + sq_length/6, margin_y + (board_size + 1.5)*sq_length - sq_length/6, sq_length/3, players_colors[turn], "black", 1, text, players_backbone_colors[turn], players_border_colors[turn]);
 
+	//Code button
+	var text = "\uf121"; //Code
+	drawButton(margin_x + (board_size + 1.5)*sq_length - sq_length/6, margin_y + (board_size + 1.5)*sq_length - sq_length/6, sq_length/3, "antiquewhite", "black", 1, text, board_color, "black");
+
 	if (show_advantage) {
 		context.fillStyle = "black";
 		var font_size = sq_length*2/5;
@@ -1939,6 +1943,16 @@ function commonStart(x, y) { //Manage touch functions
 					board_record.pop();					
 				}
 			}
+			if (x == board_size + 1 && y == board_size + 1) { //If code ball clicked
+				var code = encodeBoard(false);
+				try {
+					copyToClipboard(code);
+					var successful = document.execCommand('copy');
+					alert("Board code copied to clipboard.");
+				} catch (err) {
+					alert("Sorry, couldn't copy the code to the clipboard. Here you have it raw:\n" + code);
+				}
+			}
 			break;
 		case 4: //Settings
 			if (exitClicked()) { //Main menu
@@ -2020,16 +2034,16 @@ function commonStart(x, y) { //Manage touch functions
 				drawStatistics(x, y, w, h);
 				menu = 8;
 			}
-			// if (distance(x + sq_length*1, y + sq_length*1, canvas.width - (margin_x + 2*sq_length - sq_length/3), canvas.height - (margin_y + 2*sq_length - sq_length/3)) <= sq_length/3) { //Code button
-			// 	var code = encodeBoard();
-			// 	try {
-			// 		copyToClipboard(code);
-			// 		var successful = document.execCommand('copy');
-			// 		alert("Board code copied to clipboard.");
-			// 	} catch (err) {
-			// 		alert("Sorry, couldn't copy it. Here you have it raw:\n" + code);
-			// 	}
-			// }
+			if (distance(x - sq_length*1, y - sq_length*1, canvas.width - (margin_x + 2*sq_length - sq_length/3), canvas.height - (margin_y + 2*sq_length - sq_length/3)) <= sq_length/3) { //Code button
+				var code = encodeBoard();
+				try {
+					copyToClipboard(code);
+					var successful = document.execCommand('copy');
+					alert("Board code copied to clipboard.");
+				} catch (err) {
+					alert("Sorry, couldn't copy the code to the clipboard. Here you have it raw:\n" + code);
+				}
+			}
 			break;
 		case 6: //Help
 			if (exitClicked()) { //Main menu
@@ -2235,10 +2249,10 @@ function loadBoard(step) { //Loads board from replay
 	}
 }
 
-function encodeBoard() { //Board to code
+function encodeBoard(end=true) { //Board to code
 	var names = ["l", "b"]; //Left, bottom
 	var code = "";
-	for (var i = 0; i < board_record.length - 2; i++) {
+	for (var i = 0; i < board_record.length - (end ? 2 : 1); i++) {
 		replay_step = i;
 		var piece_moved = pieceMoved(board_record);
 		code += names[piece_moved.player] + (piece_moved.player == 0 ? piece_moved.y : piece_moved.x);
