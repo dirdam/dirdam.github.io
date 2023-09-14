@@ -1817,13 +1817,13 @@ iframe:hover {
 
 header.explore_thumbnail {
 	width: 50%;
-	margin: auto;
+	margin: 0 auto;
+	padding: 10px;
 }
 
 @media screen and (max-width: 768px) {
 	header.explore_thumbnail {
 		width: 100%;
-		margin: auto;
 	}
 }
 
