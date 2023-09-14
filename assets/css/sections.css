@@ -1808,11 +1808,22 @@ iframe:hover {
 	-moz-transition: box-shadow 0.2s ease;
 	-webkit-transition: box-shadow 0.2s ease;
 	-ms-transition: box-shadow 0.2s ease;
-	transition: box-shadow 0.2s ease;	
+	transition: box-shadow 0.2s ease;
 }
 
 .explore_thumbnail:hover {
 	box-shadow: 0 0 16px var(--box-shadow-color);
+}
+
+header.explore_thumbnail {
+	width: 50%;
+	margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+	header.explore_thumbnail {
+		width: 100%;
+	}
 }
 
 .font_mask {
