@@ -1823,6 +1823,7 @@ header.explore_thumbnail {
 @media screen and (max-width: 768px) {
 	header.explore_thumbnail {
 		width: 100%;
+		margin: auto;
 	}
 }
 
