@@ -51,7 +51,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-			    width: 50%; /* Width with respect to the container */
+			    width: 75%; /* Width with respect to the container */
 				margin-bottom: 25px;
 			}
 
@@ -63,6 +63,16 @@
 				border-radius: 25%;
 				border: 1px solid #333;
 				opacity: 0.2;
+			}
+		
+			@media (max-width: 600px) {
+				#map-legend .legend-item {
+					width: 100%; /* Adjust width for smaller screens */
+
+				}
+				#map-legend .legend-color {
+					margin-right: 5px; /* Reduced spacing for smaller screens */
+				}
 			}
 
 			#map-legend .legend-color:hover {
@@ -915,11 +925,10 @@
 									</pattern>
 								</defs>
 								<defs>
-									<pattern id="dark_green-red-white-orange-yellow" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+									<pattern id="dark_green-red-white-yellow" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
 										<rect x="0" y="0" width="4" height="20" style="fill: #496e2d ;stroke: none;" />
 										<rect x="4" y="0" width="4" height="20" style="fill: #d80027 ;stroke: none;" />
 										<rect x="8" y="0" width="4" height="20" style="fill: #eeeeee ;stroke: none;" />
-										<rect x="12" y="0" width="4" height="20" style="fill: #ff9811 ;stroke: none;" />
 										<rect x="16" y="0" width="4" height="20" style="fill: #ffda44 ;stroke: none;" />
 									</pattern>
 								</defs>
@@ -2754,7 +2763,7 @@
 				"green": ["ga","sr","gw","st","vu","gf","bo","lt","bj","bf","cg","ml","gn","gt","kw","jo","sy","ps","ng","py","sc","cf","km","dj","uz","az","gq","sv","br","tj","mm","pt","in","mv","mg","bi","lb","om","it","ir","hu","by","ls","mu","et","ci","ne","ie","bz","ht","ae","cy","ni","me","za","zw","gy","kn","vc","tz","lk","mx","sm","sl","jm","er"],
 				"dark_red": ["ss","sr","ke","iq","gd","by","nl","bz","ht","ae","ag","sz","lv","me","mn","lk","na","mz","pg","gm"],
 				"gray": ["gt","mt","va"],
-				"orange": ["gq","in","ci","ne","ie","ad","md","zm","tg","mh","am","tm","lk","mx","bt","eg","es"],
+				"orange": ["gq","in","ci","ne","ie","ad","md","zm","mh","am","tm","lk","mx","bt","eg","es"],
 				"dark_blue": ["td"],
 				"dark_pink": ["mx","qa"]};
 
@@ -2917,7 +2926,7 @@
 				"ag": ["blue", "black", "dark_red", "white", "yellow"],
 				"sz": ["blue", "black", "dark_red", "white", "yellow"],
 				"zm": ["black", "dark_green", "red", "orange"],
-				"tg": ["dark_green", "red", "white", "orange", "yellow"],
+				"tg": ["dark_green", "red", "white", "yellow"],
 				"cy": ["green", "white", "yellow"],
 				"af": ["black", "dark_green", "red", "yellow"],
 				"gh": ["black", "dark_green", "red", "yellow"],
