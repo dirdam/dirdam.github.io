@@ -39,12 +39,32 @@
 							<h2 id="main_title"></h2>
 						</header>
 						<div style="text-transform: uppercase; text-align: center">
+							<h5><a id="main_flags" href="#flags"></a></h5>
+						</div>
+						<div style="text-transform: uppercase; text-align: center">
 							<h5><a id="main_evo" href="#evo"></a></h5>
 						</div>
 						<div style="text-transform: uppercase; text-align: center">
 							<h5><a id="main_fenced" href="#fenced"></a></h5>
 						</div>
 					</section>
+
+				<!-- Banner -->
+				<section id="flags" class="field" onmouseover="document.body.style.backgroundColor='rgba(255,192,0,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
+					<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
+						<header class="explore_thumbnail" style="--box-shadow-color: rgb(88,23,166)">
+							<a id="flags_header" target="_blank"><img src="images/projects/flags/pic_flags.jpg" alt=""></a>
+							<h3 id="flags_title"></h3>
+						</header>
+					</article>
+					<ul>
+						<li><h3 id="flags_description"></h3></li>
+					</ul>
+					<ul class="actions item" style="margin: 0; padding: 0;">
+						<li><a id="flags_button" class="button" target="_blank"></a></li>
+					</ul>
+				</section>
+				<section class="main"></section>
 
 				<!-- Banner -->
 					<section id="evo" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
@@ -161,7 +181,12 @@
 					"header_title": {"type": "text", "en": "Exploring", "es": "Explorar", "ja": "探検"},
 					"header_subtitle": {"type": "text", "en": "For the sake of it", "es": "Porque sí", "ja": "世界を拓く"},
 					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
+					"main_flags": {"type": "text", "en": "Flags' colors", "es": "Colores de banderas", "ja": "国旗の色"},
 					"main_evo": {"type": "text", "en": "Surnames evolution", "es": "Evolución de apellidos", "ja": "名字の進化"},
+					"flags_header": {"type": "href", "en": "flags.html", "es": "flags.html#es", "ja": "flags.html#ja"},
+					"flags_title": {"type": "text", "en": "Flags' colors", "es": "Colores de banderas", "ja": "国旗の色"},
+					"flags_description": {"type": "html", "en": 'Description: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Check the colors of all countries\' flags and see the coincidences with other countries\'.</span>', "es": 'Descripción: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Comprueba los colores de las banderas de todos los países y ve las coincidencias con las de otros países.</span>', "ja": '描写： <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>全ての国の国旗の色を確認し、同じ色を使う国々も可視化されます．</span>'},
+					"flags_button": {"type": "text", "en": "Launch", "es": "Abrir", "ja": "開く"},
 					"evo_header": {"type": "href", "en": "projects/evo/evo.html", "es": "projects/evo/evo.html#es", "ja": "projects/evo/evo.html#ja"},
 					"evo_title": {"type": "text", "en": "Surnames evolution", "es": "Evolución de apellidos", "ja": "名字の進化"},
 					"evo_description": {"type": "html", "en": 'Description: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Starting with the current surnames ranking (in the US), it simulates how they would evolve over time. Each simulation throws different results.</span>', "es": 'Descripción: <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>Empezando con la lista de apellidos más comunes (en España) simula cómo evolucionarían a lo largo del tiempo. Cada simulación da resultados diferentes.</span>', "ja": '描写： <span style="letter-spacing: 0.1rem; font-size: 18px;"><br>現在の（日本の）名字ランキングに基づき，名字の進化をシミュレーションします．各シミュレーションは違う結果を導きます．</span>'},

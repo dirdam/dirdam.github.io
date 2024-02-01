@@ -1,0 +1,503 @@
+#world-map g#hn *,
+#world-map g#fm *,
+#world-map g#aq *,
+#world-map path#so {
+	fill: url(#light_blue-white);
+}
+
+#world-map g#dm * {
+	fill: url(#black-dark_green-red-white-yellow);
+}
+
+#world-map g#fr *,
+#world-map g#gb *,
+#world-map g#ru *,
+#world-map path#kp,
+#world-map path#lr,
+#world-map g#nz *,
+#world-map g#au *,
+#world-map g#ck *,
+#world-map g#tw *,
+#world-map g#us *,
+#world-map g#no *,
+#world-map g#cl *,
+#world-map path#cz,
+#world-map path#la,
+#world-map path#np,
+#world-map g#ws *,
+#world-map g#th *,
+#world-map path#cr,
+#world-map g#pa *,
+#world-map g#kh *,
+#world-map path#sk,
+#world-map path#is,
+#world-map g#pr *,
+#world-map path#si,
+#world-map g#cu * {
+	fill: url(#blue-red-white);
+}
+
+#world-map path#dz,
+#world-map path#bg {
+	fill: url(#dark_green-red-white);
+}
+
+#world-map g#ga path {
+	fill: url(#blue-green-yellow);
+}
+
+#world-map path#al {
+	fill: url(#black-red);
+}
+
+#world-map g#ph *,
+#world-map g#rs *,
+#world-map g#rs *,
+#world-map g#cv *,
+#world-map g#my *,
+#world-map g#nu *,
+#world-map g#ve *,
+#world-map g#ki *,
+#world-map g#pf * {
+	fill: url(#blue-red-white-yellow);
+}
+
+#world-map path#ss {
+	fill: url(#blue-black-dark_green-dark_red-white-yellow);
+}
+
+#world-map path#rw {
+	fill: url(#light_blue-dark_green-yellow);
+}
+
+#world-map path#sd,
+#world-map g#eh *,
+#world-map path#xs,
+#world-map path#ly {
+	fill: url(#black-dark_green-red-white);
+}
+
+#world-map g#jp *,
+#world-map g#sg *,
+#world-map g#dk *,
+#world-map g#hk *,
+#world-map path#pl,
+#world-map path#ge,
+#world-map path#at,
+#world-map path#ch,
+#world-map g#mc *,
+#world-map g#id *,
+#world-map g#bh *,
+#world-map g#tr *,
+#world-map g#ca *,
+#world-map g#to *,
+#world-map g#tn *,
+#world-map path#pe {
+	fill: url(#red-white);
+}
+
+#world-map g#se * {
+	fill: url(#blue-yellow);
+}
+
+#world-map path#sr {
+	fill: url(#green-dark_red-white-yellow);
+}
+
+#world-map g#lc * {
+	fill: url(#black-light_blue-white-yellow);
+}
+
+#world-map g#gw *,
+#world-map g#st *,
+#world-map g#vu * {
+	fill: url(#black-green-red-yellow);
+}
+
+#world-map g#gi * {
+	fill: url(#red-white-yellow);
+}
+
+#world-map g#pk *,
+#world-map g#sa * {
+	fill: url(#dark_green-white);
+}
+
+#world-map g#bo *,
+#world-map path#lt,
+#world-map path#bj,
+#world-map path#bf,
+#world-map path#cg,
+#world-map path#ml,
+#world-map g#gn * {
+	fill: url(#green-red-yellow);
+}
+
+#world-map g#do * {
+	fill: url(#blue-dark_green-red-white);
+}
+
+#world-map path#gt {
+	fill: url(#light_blue-green-gray-white);
+}
+
+#world-map g#kw *,
+#world-map path#jo,
+#world-map path#sy,
+#world-map g#ps * {
+	fill: url(#black-green-red-white);
+}
+
+#world-map path#kg,
+#world-map g#vn *,
+#world-map g#cn *,
+#world-map path#mk {
+	fill: url(#red-yellow);
+}
+
+#world-map g#il *,
+#world-map g#gr *,
+#world-map g#fi * {
+	fill: url(#blue-white);
+}
+
+#world-map g#ng * {
+	fill: url(#green-white);
+}
+
+#world-map g#sb * {
+	fill: url(#blue-dark_green-white-yellow);
+}
+
+#world-map path#py,
+#world-map g#sc *,
+#world-map path#cf,
+#world-map g#km * {
+	fill: url(#blue-green-red-white-yellow);
+}
+
+#world-map path#dj,
+#world-map path#uz,
+#world-map g#az * {
+	fill: url(#light_blue-green-red-white);
+}
+
+#world-map g#gq * {
+	fill: url(#blue-green-red-white-orange);
+}
+
+#world-map g#kr * {
+	fill: url(#blue-black-red-white);
+}
+
+#world-map path#ke,
+#world-map path#iq {
+	fill: url(#black-dark_green-dark_red-white);
+}
+
+#world-map g#gd * {
+	fill: url(#dark_green-dark_red-yellow);
+}
+
+#world-map path#co,
+#world-map g#li *,
+#world-map path#ro {
+	fill: url(#blue-red-yellow);
+}
+
+#world-map path#sv,
+#world-map g#br * {
+	fill: url(#blue-green-white-yellow);
+}
+
+#world-map path#tj,
+#world-map g#mm *,
+#world-map g#pt * {
+	fill: url(#green-red-white-yellow);
+}
+
+#world-map g#in * {
+	fill: url(#blue-green-white-orange);
+}
+
+#world-map g#mv *,
+#world-map g#mg *,
+#world-map path#bi,
+#world-map g#lb *,
+#world-map g#om *,
+#world-map g#it *,
+#world-map g#ir *,
+#world-map path#hu {
+	fill: url(#green-red-white);
+}
+
+#world-map path#ma,
+#world-map g#bd * {
+	fill: url(#dark_green-red);
+}
+
+#world-map g#bn *,
+#world-map path#ug,
+#world-map g#tl * {
+	fill: url(#black-red-white-yellow);
+}
+
+#world-map path#by {
+	fill: url(#green-dark_red-white);
+}
+
+#world-map g#tt *,
+#world-map g#ye * {
+	fill: url(#black-red-white);
+}
+
+#world-map path#ls {
+	fill: url(#blue-black-green-white);
+}
+
+#world-map path#mw {
+	fill: url(#black-dark_green-red);
+}
+
+#world-map g#nl * {
+	fill: url(#blue-dark_red-white);
+}
+
+#world-map g#mu *,
+#world-map path#et {
+	fill: url(#blue-green-red-yellow);
+}
+
+#world-map path#ci,
+#world-map path#ne,
+#world-map g#ie * {
+	fill: url(#green-white-orange);
+}
+
+#world-map g#bz *,
+#world-map g#ht * {
+	fill: url(#blue-green-dark_red-white-yellow);
+}
+
+#world-map g#tv * {
+	fill: url(#blue-light_blue-red-white-yellow);
+}
+
+#world-map g#aw * {
+	fill: url(#light_blue-red-white-yellow);
+}
+
+#world-map g#mt * {
+	fill: url(#gray-red-white);
+}
+
+#world-map g#ad *,
+#world-map path#md {
+	fill: url(#blue-red-orange-yellow);
+}
+
+#world-map path#ua,
+#world-map g#pw *,
+#world-map g#kz * {
+	fill: url(#light_blue-yellow);
+}
+
+#world-map g#lu * {
+	fill: url(#light_blue-red-white);
+}
+
+#world-map path#td {
+	fill: url(#dark_blue-red-yellow);
+}
+
+#world-map g#ar *,
+#world-map path#uy {
+	fill: url(#light_blue-white-yellow);
+}
+
+#world-map path#cm,
+#world-map path#sn {
+	fill: url(#dark_green-red-yellow);
+}
+
+#world-map g#ae * {
+	fill: url(#black-green-dark_red-white);
+}
+
+#world-map g#ag *,
+#world-map g#sz * {
+	fill: url(#blue-black-dark_red-white-yellow);
+}
+
+#world-map path#zm {
+	fill: url(#black-dark_green-red-orange);
+}
+
+#world-map path#tg {
+	fill: url(#dark_green-red-white-orange-yellow);
+}
+
+#world-map g#cy * {
+	fill: url(#green-white-yellow);
+}
+
+#world-map path#af,
+#world-map path#gh {
+	fill: url(#black-dark_green-red-yellow);
+}
+
+#world-map path#lv {
+	fill: url(#dark_red-white);
+}
+
+#world-map g#mr * {
+	fill: url(#dark_green-yellow);
+}
+
+#world-map path#ni {
+	fill: url(#blue-light_blue-green-white-yellow);
+}
+
+#world-map g#me * {
+	fill: url(#blue-green-dark_red-yellow);
+}
+
+#world-map g#mh * {
+	fill: url(#blue-white-orange);
+}
+
+#world-map path#za {
+	fill: url(#blue-black-green-red-white-yellow);
+}
+
+#world-map path#zw,
+#world-map path#gy,
+#world-map g#kn * {
+	fill: url(#black-green-red-white-yellow);
+}
+
+#world-map g#vc * {
+	fill: url(#light_blue-green-yellow);
+}
+
+#world-map g#nr *,
+#world-map g#cw *,
+#world-map g#xk *,
+#world-map path#ba {
+	fill: url(#blue-white-yellow);
+}
+
+#world-map g#bs * {
+	fill: url(#black-light_blue-yellow);
+}
+
+#world-map g#va * {
+	fill: url(#gray-white-yellow);
+}
+
+#world-map path#be,
+#world-map g#ao *,
+#world-map g#de * {
+	fill: url(#black-red-yellow);
+}
+
+#world-map path#mn {
+	fill: url(#blue-dark_red-yellow);
+}
+
+#world-map path#am {
+	fill: url(#blue-red-orange);
+}
+
+#world-map path#tm {
+	fill: url(#dark_green-red-white-orange);
+}
+
+#world-map g#tz * {
+	fill: url(#black-light_blue-green-yellow);
+}
+
+#world-map path#bw {
+	fill: url(#black-light_blue-white);
+}
+
+#world-map path#cd {
+	fill: url(#light_blue-red-yellow);
+}
+
+#world-map g#lk * {
+	fill: url(#green-dark_red-orange-yellow);
+}
+
+#world-map g#mo * {
+	fill: url(#dark_green-white-yellow);
+}
+
+#world-map g#mx * {
+	fill: url(#light_blue-dark_green-green-dark_pink-red-white-orange-yellow);
+}
+
+#world-map path#na {
+	fill: url(#blue-dark_green-dark_red-white-yellow);
+}
+
+#world-map g#mz * {
+	fill: url(#black-dark_green-dark_red-white-yellow);
+}
+
+#world-map g#bb * {
+	fill: url(#blue-black-yellow);
+}
+
+#world-map path#bt {
+	fill: url(#white-orange-yellow);
+}
+
+#world-map g#sm * {
+	fill: url(#light_blue-green-white-yellow);
+}
+
+#world-map g#hr *,
+#world-map g#fj * {
+	fill: url(#blue-light_blue-red-white);
+}
+
+#world-map g#sl * {
+	fill: url(#light_blue-green-white);
+}
+
+#world-map g#ec * {
+	fill: url(#blue-black-light_blue-red-yellow);
+}
+
+#world-map g#jm * {
+	fill: url(#black-green-yellow);
+}
+
+#world-map g#pg * {
+	fill: url(#black-dark_red-white-yellow);
+}
+
+#world-map path#eg {
+	fill: url(#black-red-white-orange);
+}
+
+#world-map g#ee * {
+	fill: url(#blue-black-white);
+}
+
+#world-map g#er * {
+	fill: url(#light_blue-green-red-yellow);
+}
+
+#world-map g#gm * {
+	fill: url(#blue-dark_green-dark_red-white);
+}
+
+#world-map g#qa * {
+	fill: url(#dark_pink-white);
+}
+
+#world-map g#es * {
+	fill: url(#light_blue-red-white-orange-yellow);
+}
