@@ -24,6 +24,7 @@
 				stroke-width: 1;
 			}
 
+			/* Live */
 			#world-map path.Japan,
 			#world-map path#ES {
 				fill: red;
@@ -31,6 +32,7 @@
 				stroke-width: 3;
 			}
 
+			/* Visit */
 			#world-map path#TH,
 			#world-map path#FR,
 			#world-map path#DE,
@@ -42,22 +44,28 @@
 				fill: orange;
 			}
 
+			/* Visit (other region) */
 			#world-map path.France {
 				fill: rgba(255,165,0,0.25);
 			}
 
+			/* Business */
 			#world-map path#PH,
 			#world-map path#ID,
-			#world-map path#US {
+			#world-map path#US,
+			#world-map path#BR,
+			#world-map path#MX {
 				fill: blueviolet;
 			}
 
+			/* Business (other region) */
 			#world-map path.United.States, 
 			#world-map path.Philippines, 
 			#world-map path.Indonesia {
 				fill: rgba(138,43,226,0.25);
 			}
 
+			/* Transit */
 			#world-map path#QA,
 			#world-map path#AE,
 			#world-map path#NL,
@@ -1204,8 +1212,14 @@
 					document.querySelectorAll('#svg_map path').forEach(path => {
 						path.addEventListener('mouseover', function(event) {
 							const countryName = this.getAttribute('name');
-							let countryList = ["Spain", "France", "Germany", "China", "Netherlands", "United States", "Portugal", "Republic of Korea", "Japan", "Philippines", "Indonesia", "Hainan (China)", "Taiwan", "Turkey", "United Arab Emirates", "Qatar", "Switzerland", "Thailand"];
-							let countryCodes = {"Spain": "es", "France": "fr", "Germany": "de", "China": "cn", "Netherlands": "nl", "United States": "us", "Portugal": "pt", "Republic of Korea": "ko", "Japan": "jp", "Philippines": "ph", "Indonesia": "id", "Hainan (China)": "cn", "Taiwan": "tw", "Turkey": "tr", "United Arab Emirates": "ae", "Qatar": "qa", "Switzerland": "ch", "Thailand": "th"}; //https://github.com/lipis/flag-icons/tree/main/flags/1x1
+							// Names for "name" identification
+							let countryList = ["Spain", "France", "Germany", "China", "Netherlands", "United States", 
+							"Portugal", "Republic of Korea", "Japan", "Philippines", "Indonesia", "Hainan (China)", "Taiwan", 
+							"Turkey", "United Arab Emirates", "Qatar", "Switzerland", "Thailand", "Brazil", "Mexico"];
+							// Codes for flags
+							let countryCodes = {"Spain": "es", "France": "fr", "Germany": "de", "China": "cn", "Netherlands": "nl", "United States": "us", 
+							"Portugal": "pt", "Republic of Korea": "ko", "Japan": "jp", "Philippines": "ph", "Indonesia": "id", "Hainan (China)": "cn", "Taiwan": "tw", 
+							"Turkey": "tr", "United Arab Emirates": "ae", "Qatar": "qa", "Switzerland": "ch", "Thailand": "th", "Brazil": "br", "Mexico": "mx"}; //https://github.com/lipis/flag-icons/tree/main/flags/1x1
 							if (countryName in countryCodes) { // If country is in the list
 								if (!["Spain", "Japan"].includes(countryName)) { // And not Spain or Japan, highlight
 									this.style.stroke = "red";
