@@ -409,6 +409,7 @@
 			padding: 0 2.5em 0 2.875em;
 			height: 3.75em;
 			line-height: 3.75em;
+			background-color: white;
 		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,

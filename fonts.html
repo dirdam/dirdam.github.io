@@ -1,195 +1,758 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Epilogue by TEMPLATED
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<html>
-	<head>
-		<title>Adrï</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-		<link rel="stylesheet" href="assets/css/sections.css">
-        <link rel="shortcut icon" href="images/lasso_logo.ico">
-        <script type="text/x-mathjax-config">
-        	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-		</script>
-		<script type="text/javascript"
-			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-		</script>
-	</head>
-	<body style="-webkit-transition: all 1s; transition: all 1s">
+<head>
+    <title>Adrï</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="shortcut icon" href="images/lasso_logo.ico">
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 90%;
+            margin: auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
 
-		<!-- Header -->
-			<header id="header" class="alt" style="background-image: url('images/pic_fonts.png'); background-position: center top; background-size: auto;">
-				<div class="inner">
-					<h1 id="header_title"></h1>
-					<font id="header_subtitle" face="Tunic" size="30" class="tunic"></font>
-				</div>
-			</header>
+        .carousel-inner {
+            display: flex;
+            width: 500%; /* Ensuring this is 500% to accommodate 5 items */
+            transition: transform 1s ease-in-out;
+            margin-top: 20px;
+            /* border: 1px solid #ccc; */
+            border-radius: 20px;
+            /* background-color: pink; */
+            background: 
+                repeating-linear-gradient(
+                    135deg,
+                    /* Colors for Sheikah */
+                    rgba(112, 128, 144, 0.25) 0%, rgba(112, 128, 144, 0.25) 4%, 
+                    rgba(220, 20, 60, 0.25) 4%, rgba(220, 20, 60, 0.25) 8%,
+                    rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.25) 12%, 
+                    rgba(255, 250, 250, 0.25) 12%, rgba(255, 250, 250, 0.25) 16%, 
+                    rgba(0, 71, 171, 0.25) 16%, rgba(0, 71, 171, 0.25) 20%,
+                    /* Colors for Hylian */
+                    rgba(135, 206, 250, 0.25) 20%, rgba(135, 206, 250, 0.25) 24%, 
+                    rgba(85, 107, 47, 0.25) 24%, rgba(85, 107, 47, 0.25) 28%,
+                    rgba(101, 67, 33, 0.25) 28%, rgba(101, 67, 33, 0.25) 32%, 
+                    rgba(250, 250, 210, 0.25) 32%, rgba(250, 250, 210, 0.25) 36%, 
+                    rgba(245, 245, 220, 0.25) 36%, rgba(245, 245, 220, 0.25) 40%,
+                    /* Colors for Gerudo */
+                    rgba(237, 201, 175, 0.25) 40%, rgba(237, 201, 175, 0.25) 44%, 
+                    rgba(210, 105, 30, 0.25) 44%, rgba(210, 105, 30, 0.25) 48%,
+                    rgba(255, 223, 0, 0.25) 48%, rgba(255, 223, 0, 0.25) 52%, 
+                    rgba(178, 34, 34, 0.25) 52%, rgba(178, 34, 34, 0.25) 56%, 
+                    rgba(0, 128, 0, 0.25) 56%, rgba(0, 128, 0, 0.25) 60%,
+                    /* Colors for Fez */
+                    rgba(255, 255, 0, 0.25) 60%, rgba(255, 255, 0, 0.25) 64%, 
+                    rgba(135, 240, 235, 0.25) 64%, rgba(135, 240, 235, 0.25) 68%,
+                    rgba(50, 205, 50, 0.25) 68%, rgba(50, 205, 50, 0.25) 72%, 
+                    rgba(255, 0, 0, 0.25) 72%, rgba(255, 0, 0, 0.25) 76%, 
+                    rgba(255, 255, 255, 0.25) 76%, rgba(255, 255, 255, 0.25) 80%,
+                    /* Colors for Tunic */
+                    rgba(34, 139, 34, 0.25) 80%, rgba(34, 139, 34, 0.25) 84%,
+                    rgba(255, 215, 0, 0.25) 84%, rgba(255, 215, 0, 0.25) 88%,
+                    rgba(0, 0, 139, 0.25) 88%, rgba(0, 0, 139, 0.25) 92%,
+                    rgba(178, 34, 34, 0.25) 92%, rgba(178, 34, 34, 0.25) 96%,
+                    rgba(135, 206, 250, 0.25) 96%, rgba(135, 206, 250, 0.25) 100%
+                );
+            background-size: 100% 100%;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        .carousel-item {
+            position: relative; /* Ensure overlay is positioned relative to the carousel item */
+            min-width: 20%; /* Each item takes up 1/5 of the container */
+            box-sizing: border-box;
+        }
 
-				<!-- Main -->
-					<section id="main" class="main">
-						<header>
-							<h2 id="main_title"></h2>
-						</header>
-						<div style="text-transform: uppercase; text-align: center">
-							<h5><a href="#sheikah">Sheikah</a></h5>
-						</div>
-						<div style="text-transform: uppercase; text-align: center">
-							<h5><a href="#hylian">Hylian</a></h5>
-						</div>
-						<div style="text-transform: uppercase; text-align: center">
-							<h5><a href="#gerudo">Gerudo</a></h5>
-						</div>
-						<div style="text-transform: uppercase; text-align: center">
-							<h5><a href="#fez">Fez</a></h5>
-						</div>
-						<div style="text-transform: uppercase; text-align: center">
-							<h5><a href="#tunic">Tunic</a></h5>
-						</div>
-					</section>
+        .carousel-item:hover .pause-overlay {
+            opacity: 1; /* Show the overlay on hover */
+        }
 
-				<!-- Banner -->
-					<section id="sheikah" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
-						<center><font class="font_mask" face="Sheikah" class="sheikah" style="font-size: 100px" onmouseover="style.color='rgba(185,160,102,255)'" onmouseout="style.color='inherit'">sheikah</font></center>
-						<h3 id="sheikah_description1" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank"><img src="images/font_botw.webp" style="display: block; margin-left: auto; margin-right: auto; height: 200px"></a>
-						<br>
-						<h3 id="sheikah_description2" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<ul class="actions item" style="margin: 0; padding: 0;">
-							<li><a id="sheikah_button" class="button" href="https://github.com/dirdam/fonts/raw/main/zelda/Sheikah.otf" target="_blank"></a></li>
-						</ul>
-					</section>
-					<section class="main"></section>
+        .pause-overlay i {
+            color: white;
+            font-size: 24px; /* Size of the pause icon */
+        }
 
-				<!-- Banner -->
-					<section id="hylian" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
-						<center><font class="font_mask" face="Hylian" class="hylian" style="font-size: 100px" onmouseover="style.color='rgba(185,160,102,255)'" onmouseout="style.color='inherit'">hylian</font></center>
-						<h3 id="hylian_description1" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank"><img src="images/font_botw.webp" style="display: block; margin-left: auto; margin-right: auto; height: 200px"></a>
-						<br>
-						<h3 id="hylian_description2" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<ul class="actions item" style="margin: 0; padding: 0;">
-							<li><a id="hylian_button" class="button" href="https://github.com/dirdam/fonts/raw/main/zelda/Hylian.otf" target="_blank"></a></li>
-						</ul>
-					</section>
-					<section class="main"></section>
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            align-items: center;
+            height: 300px;
+        }
 
-				<!-- Banner -->
-					<section id="gerudo" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
-						<center><font class="font_mask" face="Gerudo" class="gerudo" style="font-size: 100px" onmouseover="style.color='rgba(185,160,102,255)'" onmouseout="style.color='inherit'">gerudo</font></center>
-						<h3 id="gerudo_description1" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank"><img src="images/font_botw.webp" style="display: block; margin-left: auto; margin-right: auto; height: 200px"></a>
-						<br>
-						<h3 id="gerudo_description2" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<ul class="actions item" style="margin: 0; padding: 0;">
-							<li><a id="gerudo_button" class="button" href="https://github.com/dirdam/fonts/raw/main/zelda/Gerudo.otf" target="_blank"></a></li>
-						</ul>
-					</section>
-					<section class="main"></section>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
 
-				<!-- Banner -->
-					<section id="fez" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
-						<center><font class="font_mask" face="Fez" class="fez" style="font-size: 100px" onmouseover="style.color='rgba(0,0,0,255)'" onmouseout="style.color='inherit'">FEZ</font></center>
-						<h3 id="fez_description1" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<a href="https://fezgame.com/" target="_blank"><img src="images/font_fez.png" style="display: block; margin-left: auto; margin-right: auto; height: 200px"></a>
-						<br>
-						<h3 id="fez_description2" style="letter-spacing: 0.1rem; font-size: 18px;">Read the details on how to type here (contains spoilers).</h3>
-						<ul class="actions item" style="margin: 0; padding: 0;">
-							<li><a id="fez_button" class="button" href="https://github.com/dirdam/fonts/raw/main/fez/Fez.otf" target="_blank"></a></li>
-						</ul>
-					</section>
-					<section class="main"></section>
+        .image-container a {
+            text-decoration: none; /* Remove underline from link */
+            border: none; /* Ensure no border is applied to the link */
+        }
 
-				<!-- Banner -->
-					<section id="tunic" class="field" onmouseover="document.body.style.backgroundColor='rgba(88,23,166,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
-						<center><font class="font_mask" face="Tunic" class="tunic" style="font-size: 100px" onmouseover="style.color='rgba(0,0,0,255)'" onmouseout="style.color='inherit'">tunik</font></center>
-						<h3 id="tunic_description1" style="letter-spacing: 0.1rem; font-size: 18px;"></h3>
-						<a href="https://tunicgame.com/" target="_blank"><img src="images/font_tunic.png" style="display: block; margin-left: auto; margin-right: auto; height: 200px"></a>
-						<br>
-						<h3 id="tunic_description2" style="letter-spacing: 0.1rem; font-size: 18px;">Read the details on how to type here (contains spoilers).</h3>
-						<ul class="actions item" style="margin: 0; padding: 0;">
-							<li><a id="tunic_button" class="button" href="https://github.com/dirdam/fonts/raw/main/tunic/Tunic.otf" target="_blank"></a></li>
-						</ul>
-					</section>
-					<section class="main"></section>
+        .bordered-image {
+            max-height: 250px;
+            max-width: 350px;
+            padding: 20px;
+            border-radius: 20px; /* Rounded corners */
+            background: white;
+        }
 
-				<!-- Banner -->
-					<section id="back" class="main">
-						<header style="text-align: center;">
-							<h3 id="back_text"></h3>
-						</header>
-					</section>
+        .description {
+            display: flex;
+            flex-direction: column; /* Ensure text is arranged in a column */
+            justify-content: center; /* Center content vertically */
+            flex: 1; /* Allow flex growth */
+            padding: 10px;
+        }
 
-				<!-- Call To Action -->
-					<section id="cta" class="main special">
-						<h2 id="cta_title"></h2>
-						<ul class="actions">
-							<li><a id="cta_actions" class="button big"></a></li>
-						</ul>
-					</section>
+        .donate-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Ensure the container spans the full width */
+            margin-top: 20px; /* Adjust as needed */
+        }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p id="footer_text" class="copyright"></p>
-					</footer>
+        .button.donate {
+            background-color: rgb(252 187 50);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex; /* Change to inline-flex to use flex properties */
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+            line-height: 1; /* Ensure line-height does not affect vertical alignment */
+        }
 
-			</div>
-		<!-- BOTTOM -->
+        .button.donate:hover {
+            background-color: rgb(255, 219, 112);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            border: solid 1px;
+        }
 
-		<div id="bottom" style="z-index: 1;">
-			<a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
-		</div>
+        .button.download {
+            background-color: white;
+        }
 
+        .button-container {
+            text-align: center; /* Center the content inside this container */
+            margin: 30px; /* Add space above the button */
+        }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-            <script src="assets/js/sticker.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="assets/js/smooth.js"></script>
-			<script>
-				// Languages
-				var fillers = {
-					"header_title": {"type": "text", "en": "Fonts", "es": "Fuentes", "ja": "フォント"},
-					"header_subtitle": {"type": "text", "en": "disaifxrngi_ dha wxrld", "es": "desthifrando le_ mundo", "ja": "sekaci co fukugo"},
-					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
-					"sheikah_description1": {"type": "html", "en": 'This language appears in:', "es": 'Este idioma aparece en:', "ja": 'この言語はここに出てきます：'},
-					"sheikah_description2": {"type": "html", "en": 'Read the details on how to type in this language <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">here</a> (contains spoilers).', "es": 'Lee los detalles sobre cómo escribir en este idioma <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">aquí</a> (contiene spoilers).', "ja": '<a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">こちら</a>でこの言語での書き方について学べます．(スポイラーを含む)'},
-					"sheikah_button": {"type": "text", "en": "Download font", "es": "Descargar fuente", "ja": "フォントをダウンロード"},
-					"hylian_description1": {"type": "html", "en": 'This language appears in:', "es": 'Este idioma aparece en:', "ja": 'この言語はここに出てきます：'},
-					"hylian_description2": {"type": "html", "en": 'Read the details on how to type in this language <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">here</a> (contains spoilers).', "es": 'Lee los detalles sobre cómo escribir en este idioma <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">aquí</a> (contiene spoilers).', "ja": '<a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">こちら</a>でこの言語での書き方について学べます．(スポイラーを含む)'},
-					"hylian_button": {"type": "text", "en": "Download font", "es": "Descargar fuente", "ja": "フォントをダウンロード"},
-					"gerudo_description1": {"type": "html", "en": 'This language appears in:', "es": 'Este idioma aparece en:', "ja": 'この言語はここに出てきます：'},
-					"gerudo_description2": {"type": "html", "en": 'Read the details on how to type in this language <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">here</a> (contains spoilers).', "es": 'Lee los detalles sobre cómo escribir en este idioma <a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">aquí</a> (contiene spoilers).', "ja": '<a href="https://github.com/dirdam/fonts/tree/main/zelda" target="_blank">こちら</a>でこの言語での書き方について学べます．(スポイラーを含む)'},
-					"gerudo_button": {"type": "text", "en": "Download font", "es": "Descargar fuente", "ja": "フォントをダウンロード"},
-					"fez_description1": {"type": "html", "en": 'This language appears in:', "es": 'Este idioma aparece en:', "ja": 'この言語はここに出てきます：'},
-					"fez_description2": {"type": "html", "en": 'Read the details on how to type in this language <a href="https://github.com/dirdam/fonts/tree/main/fez" target="_blank">here</a> (contains spoilers).', "es": 'Lee los detalles sobre cómo escribir en este idioma <a href="https://github.com/dirdam/fonts/tree/main/fez" target="_blank">aquí</a> (contiene spoilers).', "ja": '<a href="https://github.com/dirdam/fonts/tree/main/fez" target="_blank">こちら</a>でこの言語での書き方について学べます．(スポイラーを含む)'},
-					"fez_button": {"type": "text", "en": "Download font", "es": "Descargar fuente", "ja": "フォントをダウンロード"},
-					"tunic_description1": {"type": "html", "en": 'This language appears in:', "es": 'Este idioma aparece en:', "ja": 'この言語はここに出てきます：'},
-					"tunic_description2": {"type": "html", "en": 'Read the details on how to type in this language <a href="https://github.com/dirdam/fonts/tree/main/tunic" target="_blank">here</a> (contains spoilers).', "es": 'Lee los detalles sobre cómo escribir en este idioma <a href="https://github.com/dirdam/fonts/tree/main/tunic" target="_blank">aquí</a> (contiene spoilers).', "ja": '<a href="https://github.com/dirdam/fonts/tree/main/tunic" target="_blank">こちら</a>でこの言語での書き方について学べます．(スポイラーを含む)'},
-					"tunic_button": {"type": "text", "en": "Download font", "es": "Descargar fuente", "ja": "フォントをダウンロード"},
-					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
-					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
-					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
-					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
-					"footer_text": {"type": "html", "en": '&copy; Adrï, 2019. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2019. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2019．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
-				};
-				fillLanguages(fillers);
-				// Others
-				var others = { // Necessary to avoid overlap
-					"evo_button": {"type": "href", "en": "projects/evo/evo.html", "es": "projects/evo/evo.html#es", "ja": "projects/evo/evo.html#ja"},
-					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
-				};
-				fillLanguages(others);
-			</script>
-	</body>
+        .button.request {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Subtle gradient background */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex; /* Change to inline-flex to use flex properties */
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+            line-height: 1; /* Ensure line-height does not affect vertical alignment */
+        }
+
+        .button.request:hover {
+            background: linear-gradient(135deg, #d4e3ff, #e6f6fe); /* Slightly different gradient on hover */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            border: solid 1px;
+        }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .carousel-dot-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .carousel-dot {
+            display: inline-block;
+            padding: 5px 20px;
+            background-color: #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 24px; /* Font size for the text */
+            color: white; /* Color of the text */
+            text-align: center;
+            vertical-align: middle; /* Ensures the buttons are vertically aligned */
+            line-height: 1.5; /* Adjusts the spacing to align text vertically */
+            transition: all 1s; /* Add transition for the properties */
+        }
+
+        .carousel-dot.active {
+            background-color: #444444;
+            text-shadow: 0px 0px 5px rgba(185,160,102,1);
+            box-shadow: 0 0 5px 5px rgba(185,160,102,0.5);
+        }
+
+        .carousel-dot:not(.active):hover {
+            background-color: #888888;
+            text-shadow: 0px 0px 5px rgba(185,160,102,1);
+            box-shadow: 0 0 5px 5px rgba(185,160,102,0.5);
+        }
+
+        .carousel-dot-container .pause-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease; /* Smooth transition */
+            pointer-events: none; /* Allow interaction with underlying content */
+        }
+
+        .carousel-dot-container.pause .pause-overlay {
+            opacity: 1; /* Show the overlay when paused */
+        }
+
+        /* Ensure ligatures are enabled */
+        .description {
+            font-variant-ligatures: common-ligatures discretionary-ligatures;
+            font-feature-settings: "liga" 1, "dlig" 1;
+            text-shadow: 2px 0px 15px rgb(255, 255, 255), -2px 0px 15px rgb(255, 255, 255), 0px 2px 15px rgb(255, 255, 255), 0px -2px 15px rgb(255, 255, 255);
+        }
+
+        .description .button {
+            text-shadow: none;
+        }
+
+        .bullet-container {
+            display: grid;
+            grid-template-columns: 40px 1fr; /* Set a fixed width for the icons */
+            align-items: center;
+            gap: 10px;
+            margin-left: 10px; /* Space to the left */
+            margin-bottom: 10px; /* Space between items */
+            font-size: 18px;
+        }
+        .bullet-container i {
+            font-size: 28px; /* Increase the icon size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bullet-container span {
+            display: flex;
+            align-items: center;
+        }
+
+        .note {
+            background-color: rgb(245 245 245);
+            border: solid 1px rgb(200 200 200);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .image-sample-frame {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 30px;
+            border: 1px solid rgb(0,0,0);
+            height: 500px; /* Set your desired fixed height here */
+            width: 100%;
+            overflow: hidden;
+        }
+        .image-sample-container {
+            position: relative;
+            width: 50%; /* Each image container takes up half the width */
+            height: 50%; /* Each image container takes up half the height */
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+        .image-sample-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .image-sample-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background for better readability */
+            padding: 5px 0;
+            box-sizing: border-box;
+            letter-spacing: 0.05rem;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        .image-sample-overlay {
+            position: absolute;
+            top: 0; /* Adjust to match the height of the title */
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(220, 220, 220, 0.1); /* Semi-transparent background */
+            border: solid 0.1px black;
+            z-index: 1;
+        }
+
+        /* Adjust carousel items for mobile */
+        @media (max-width: 767px) {
+            .content-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .image-container {
+                margin-bottom: 20px;
+            }
+
+            .bordered-image {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .description {
+                padding: 10px;
+            }
+
+            .donate-button-container {
+                padding-bottom: 20px; /* Ensure there's always some space below the button on mobile */
+            }
+            .button-container {
+                padding-bottom: 20px; /* Ensure there's always some space below the button on mobile */
+                width: 100%; /* Ensure full width on mobile */
+                margin: 0; /* Reset margins on mobile */
+                display: flex; /* Use flexbox for centering */
+                justify-content: center; /* Center horizontally */
+            }
+        }
+    </style>
+</head>
+<body style="-webkit-transition: all 1s; transition: all 1s">
+    <!-- Header -->
+    <header id="header" class="alt" style="background-image: url('images/pic_fonts.png'); background-position: center top; background-size: auto;">
+        <div class="inner">
+            <h1 id="header_title"></h1>
+            <p id="header_subtitle"></p>
+        </div>
+    </header>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!--Main-->
+        <section id="main" class="main" data-aos="fade-up" data-aos-duration="1500">
+            <header>
+                <h2 id="main_title"></h2>
+            </header>
+            <span id="main_text" style="letter-spacing: 0.05rem;font-size: 18px"></span>
+            <div class="carousel" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="carousel-dots" id="carouselDots">
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot sheikah" onclick="currentSlide(0)">sheikah</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot hylian" onclick="currentSlide(1)">hylian</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot gerudo" onclick="currentSlide(2)">gerudo</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot fez" onclick="currentSlide(3)">fez</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot tunic" onclick="currentSlide(4)">tunik</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
+                </div>
+                <div class="carousel-inner" id="carouselInner">
+                    <div class="carousel-item">
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">
+                                    <img src="images/font_botw.webp" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(185,160,102);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="sheikah_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="sheikah_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="sheikah" style="letter-spacing: 0.1rem;">the quick brown fox jumps over the lazy dog.</h3>
+                                <a id="sheikah_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/zelda/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">
+                                    <img src="images/font_botw.webp" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(185,160,102);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="hylian_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="hylian_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="hylian" style="letter-spacing: 0.1rem;">the quick brown fox jumps over the lazy dog.</h3>
+                                <a id="hylian_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/zelda/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">
+                                    <img src="images/font_botw.webp" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(185,160,102);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="gerudo_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="gerudo_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="gerudo" style="letter-spacing: 0.1rem;">the quick brown fox jumps over the lazy dog.</h3>
+                                <a id="gerudo_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/zelda/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://fezgame.com/" target="_blank">
+                                    <img src="images/font_fez.png" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(10,3,20);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="fez_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="fez_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="fez" style="letter-spacing: 0.1rem;">the quick brown fox jumps over the lazy dog.</h3>
+                                <a id="fez_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/fez/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://tunicgame.com/" target="_blank">
+                                    <img src="images/font_tunic.png" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(0,0,0);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="tunic_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="tunic_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="tunic" style="letter-spacing: 0rem;">dha kwik braun foks djamps vou_cxr dha leizii dog.</h3>
+                                <a id="tunic_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/tunic/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span style="text-align: center; color: rgb(13 54 133)" class="icon fab fa-paypal major"></span>
+            <div class="donate-button-container" data-aos="zoom-in" data-aos-duration="1000">
+                <a id="donate_button" class="button donate" href="https://www.paypal.com/donate/?business=EAJPW5BWKGRP6&no_recurring=0&item_name=All+this%2C+for+free.+You+deserve+a+tip%21+Keep+up+the+good+work%21&currency_code=EUR"></a>
+            </div>
+        </section>
+        <section id="request" class="field" data-aos="fade-up" data-aos-duration="1500">
+            <header>
+                <h2 id="requests_title" style="text-align: center"></h2>
+            </header>
+            <span id="requests_text1" style="letter-spacing: 0.05rem;font-size: 18px;"></span>
+            <span style="letter-spacing: 0.05rem;font-size: 18px; display: block; margin-top: 10px;">
+                <div class="bullet-container">
+                    <i class="fas fa-gamepad"></i>
+                    <span id="requests_bullet1"></span>
+                </div>
+                <div class="bullet-container">
+                    <i class="fas fa-feather"></i>
+                    <span id="requests_bullet2"></span>
+                </div>
+                <div class="bullet-container">
+                    <i class="fas fa-lightbulb"></i>
+                    <span id="requests_bullet3"></span>
+                </div>
+            </span>
+            <span id="requests_text2" style="letter-spacing: 0.05rem;font-size: 18px; display: block; margin-top: 30px;"></span>
+            <div class="button-container" data-aos="zoom-in" data-aos-duration="1000">
+                <a id="requests_button" class="button big request"></a>
+            </div>
+            <div class="note">
+                <span id="requests_text3" style="letter-spacing: 0.05rem;font-size: 18px;"></span>
+            </div>
+
+            <header>
+                <h2 id="requests_samples" style="text-align: center"></h2>
+            </header>
+
+            <div class="image-sample-frame">
+                <div class="image-sample-container">
+                    <div id="requests_sample_1" class="image-sample-title">Letters</div>
+                    <div class="image-sample-overlay"></div>
+                    <img src="images/fonts_letters.png" data-aos="zoom-in" data-aos-duration="1500">
+                </div>
+                <div class="image-sample-container">
+                    <div id="requests_sample_2" class="image-sample-title">Diacritics</div>
+                    <div class="image-sample-overlay"></div>
+                    <img src="images/fonts_diacritics.png" data-aos="zoom-in" data-aos-duration="1500">
+                </div>
+                <div class="image-sample-container">
+                    <div id="requests_sample_3" class="image-sample-title">Icons</div>
+                    <div class="image-sample-overlay"></div>
+                    <img src="images/fonts_icons.png" data-aos="zoom-in" data-aos-duration="1500">
+                </div>
+                <div class="image-sample-container">
+                    <div id="requests_sample_4" class="image-sample-title">Other features</div>
+                    <div class="image-sample-overlay"></div>
+                    <img src="images/fonts_features.png" data-aos="zoom-in" data-aos-duration="1500">
+                </div>
+            </div>
+
+            <header>
+                <h2 id="requests_deliverables" style="text-align: center"></h2>
+            </header>
+
+            <span id="requests_text4" style="letter-spacing: 0.05rem;font-size: 18px;"></span>
+            <ul style="letter-spacing: 0.05rem;font-size: 18px;">
+                <li id="requests_deliverable1"></li>
+                <li id="requests_deliverable2"></li>
+                <li id="requests_deliverable3"></li>
+            </ul>
+
+            <div class="button-container" data-aos="zoom-in" data-aos-duration="500">
+                <a id="requests_button2" class="button big request"></a>
+            </div>
+
+        </section>
+        <section class="main"></section>
+
+        <!-- Banner -->
+        <section id="back" class="main">
+            <header style="text-align: center;">
+                <h3 id="back_text"></h3>
+            </header>
+        </section>
+
+       <!-- Call To Action -->
+        <section id="cta" class="main special">
+            <h2 id="cta_title"></h2>
+            <ul class="actions">
+                <li><a id="cta_actions" class="button big"></a></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p id="footer_text" class="copyright"></p>
+        </footer>
+    </div>
+
+        <!-- BOTTOM -->
+    <div id="bottom" style="z-index: 1;">
+        <a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        const dots = document.querySelectorAll('.carousel-dot');
+        let interval;
+        let intervalTime = 5000;
+    
+        // Swipe functionality for mobile
+        function addSwipeListener(element, callback) {
+            let touchstartX = 0;
+            let touchendX = 0;
+
+            element.addEventListener('touchstart', function (event) {
+                touchstartX = event.changedTouches[0].screenX;
+            }, false);
+
+            element.addEventListener('touchend', function (event) {
+                touchendX = event.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                if (touchendX < touchstartX) callback('left');
+                if (touchendX > touchstartX) callback('right');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            AOS.init();
+            updateDots();
+            interval = setInterval(showNextItem, intervalTime);
+
+            // Add swipe listeners to carousel
+            const carousel = document.querySelector('.carousel-inner');
+            addSwipeListener(carousel, function (direction) {
+                if (direction === 'left') {
+                    showNextItem();
+                } else if (direction === 'right') {
+                    showPrevItem();
+                }
+            });
+
+            // Add event listeners to pause and resume the carousel on hover for desktop
+            items.forEach((item, index) => {
+                item.addEventListener('mouseover', pauseCarousel);
+                item.addEventListener('mouseout', resumeCarousel);
+            });
+
+            // Add event listeners to pause and resume the carousel on touch for mobile
+            items.forEach((item, index) => {
+                item.addEventListener('touchstart', pauseCarousel);
+                item.addEventListener('touchend', resumeCarousel);
+            });
+        });
+
+        function showPrevItem() {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            document.getElementById('carouselInner').style.transform = `translateX(-${currentIndex * 100 / totalItems}%)`;
+            updateDots();
+            resetTimer();
+        }
+
+        function showNextItem() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            document.getElementById('carouselInner').style.transform = `translateX(-${currentIndex * 100 / totalItems}%)`;
+            updateDots();
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            document.getElementById('carouselInner').style.transform = `translateX(-${currentIndex * 100 / totalItems}%)`;
+            updateDots();
+            resetTimer();
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            interval = setInterval(showNextItem, intervalTime);
+        }
+
+        function pauseCarousel() {
+            clearInterval(interval);
+            const dotContainer = document.querySelectorAll('.carousel-dot-container')[currentIndex];
+            dotContainer.classList.add('pause');
+        }
+
+        function resumeCarousel() {
+            resetTimer();
+            const dotContainer = document.querySelectorAll('.carousel-dot-container')[currentIndex];
+            dotContainer.classList.remove('pause');
+        }
+
+    </script>    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/sticker.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/smooth.js"></script>
+    <script>
+        // Languages
+        var fillers = {
+            "header_title": {"type": "text", "en": "Fonts", "es": "Fuentes", "ja": "フォント"},
+            "header_subtitle": {"type": "text", "en": "Freedom to create", "es": "Libertad de crear", "ja": "製作の自由"},
+            "main_title": {"type": "text", "en": 'Free Fonts', "es": 'Fuentes gratuitas', "ja": '無料フォント'},
+            "main_text": {"type": "html", "en": "Because I loved what I played, I decided to recreate the following scripts from video games.<br>Please bear in mind that I am <u>not</u> the original creator of these fonts, but just a fan with some designing skills.<br>Feel free to download my fonts but always remember to <i><b>give credit</b></i> as specified in the links.", 
+                "es": "Porque me encantó lo que jugué, decidí recrear las siguientes escrituras de videojuegos.<br>Por favor ten en cuenta que yo <u>no</u> soy el creador original de estas fuentes, sino simplemente un fan con ciertas habilidades de diseño.<br>Siéntete libre de descargar mis fuentes pero siempre recuerda <i><b>dar crédito</b></i> como se especifica en los enlaces.", 
+                "ja": "やったゲームが大好きだったので，ゲーム内に現れる表記を再現しようと思いました．<br>私はそれぞれのフォントの<u>考案者ではない</u>ことをご認識ください．私はあくまでデザインの特技を持ったファンです．<br>無料でダウンロードいただけますが，リンク先に指定する通りに<i><b>クレジット</b></i>をお願いします．"},
+            "sheikah_text1": {"type": "html", "en": 'Sheikah script', "es": 'Escritura sheikah', "ja": 'シーカー表記'},
+            "sheikah_text2": {"type": "html", "en": '(Appears in <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "es": '(Aparece en <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "ja": '(<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">ゼルダの伝説: ブレス オブ ザ ワイルド</a>に登場)'},
+            "sheikah_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "hylian_text1": {"type": "html", "en": 'Hylian script', "es": 'Escritura hyliana', "ja": 'ハイリア表記'},
+            "hylian_text2": {"type": "html", "en": '(Appears in <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "es": '(Aparece en <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "ja": '(<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">ゼルダの伝説: ブレス オブ ザ ワイルド</a>に登場)'},
+            "hylian_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "gerudo_text1": {"type": "html", "en": 'Gerudo script', "es": 'Escritura gerudo', "ja": 'ゲルド表記'},
+            "gerudo_text2": {"type": "html", "en": '(Appears in <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "es": '(Aparece en <a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breadth of the Wild</a>)', "ja": '(<a href="https://www.zelda.com/breath-of-the-wild/" target="_blank">ゼルダの伝説: ブレス オブ ザ ワイルド</a>に登場)'},
+            "gerudo_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "fez_text1": {"type": "html", "en": 'Fez script', "es": 'Escritura de Fez', "ja": 'Fez表記'},
+            "fez_text2": {"type": "html", "en": '(Appears in <a href="https://fezgame.com/" target="_blank">Fez</a>)', "es": '(Aparece en <a href="https://fezgame.com/" target="_blank">Fez</a>)', "ja": '(<a href="https://fezgame.com/" target="_blank">Fez</a>に登場)'},
+            "fez_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "tunic_text1": {"type": "html", "en": 'Tunic script', "es": 'Escritura de Tunic', "ja": 'Tunic表記'},
+            "tunic_text2": {"type": "html", "en": '(Appears in <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "es": '(Aparece en <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "ja": '(<a href="https://tunicgame.com/" target="_blank">Tunic</a>に登場)'},
+            "tunic_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "donate_button": {"type": "html", "en": 'Donate to support', "es": 'Dona para apoyarme', "ja": '寄付で支援'},
+            "requests_title": {"type": "text", "en": "Requests", "es": "Encargos", "ja": "リクエスト"},
+            "requests_text1": {"type": "html", "en": "<b>You</b> are:", "es": "<b>Eres</b>:", "ja": "<b>あなた</b>は:"},
+            "requests_bullet1": {"type": "html", "en": "A game designer with an idea for a special language but cannot implement it.", "es": "Un diseñador de juegos con una idea para un idioma especial pero no puedes implementarla.", "ja": "特別な言語のアイデアがあるが実装できないゲームデザイナー．"},
+            "requests_bullet2": {"type": "html", "en": "A conlang creator but cannot make your script digital.", "es": "Un creador de conlangs pero no puedes digitalizar tu escritura.", "ja": "言語を創作したが，それをデジタル化できない人工言語創作者．"},
+            "requests_bullet3": {"type": "html", "en": "A language enthusiast with a revolutionary idea for a writing system you would love to type in.", "es": "Un entusiasta de los idiomas con un idea revolucionaria para un sistema de escritura en el que te encantaría poder escribir.", "ja": "革新的な書記体系のアイデアを持ち，それで書きたいと思っている言語愛好家．"},
+            "requests_text2": {"type": "html", "en": "If any of these rings a bell, please <b>contact me</b> with the details of your request and I will give you a quote.", "es": "Si alguno de estos problemas te es familiar, <b>contacta conmigo</b> con los detalles de tu encargo y te daré un presupuesto.", "ja": "いずれかに心当たりがあれば，詳細を記載の上<b>ご連絡ください</b>．お見積りをお伝えします．"},
+            "requests_text3": {"type": "html", "en": "I only accept requests for completely <b>original</b> and/or <b>challenging</b> scripts, regardless of whether they are alphabets, syllabaries, or other systems. Please <i>do <b>not</b> contact me</i> if your script is a wide-spread script (Latin, Cyrillic, Hangul, etc.) with some modifications or additions.", 
+                "es": "Sólo acepto solicitudes para escrituras completamente <b>originales</b> y/o que supongan un <b>reto</b>, independientemente de si se tratan de alfabetos, silabarios y otros sistemas. Por favor <i><b>not</b> contactes conmigo</i> si tu escritura es una escritura común (latín, cirílico, hangul, etc.) con algunas modificaciones o elementos añadidos.", 
+                "ja": "完全に<b>オリジナル</b>であるか，または<b>挑戦的</b>な書記体系（アルファベット，音節文字，その他のシステム問わず）のリクエスト<b>のみ</b>受け付けます．広く普及している書記体系（ラテン文字，キリル文字，ハングルなど）にいくつかの修正や追加を加えただけのものについては，<i><b>ご連絡しないでください</b></i>．"},
+            "requests_button": {"type": "text", "en": "Get a quote", "es": "Obtén un presupuesto", "ja": "見積もりを依頼"},
+            "requests_sample_1": {"type": "text", "en": "Letters", "es": "Letras", "ja": "文字"},
+            "requests_sample_2": {"type": "text", "en": "Diacritics", "es": "Diacríticos", "ja": "符号"},
+            "requests_sample_3": {"type": "text", "en": "Icons", "es": "Iconos", "ja": "アイコン"},
+            "requests_sample_4": {"type": "text", "en": "Other features", "es": "Otras características", "ja": "その他の特徴"},
+            "requests_samples": {"type": "text", "en": "Possibilities", "es": "Posibilidades", "ja": "可能性"},
+            "requests_deliverables": {"type": "text", "en": "What to expect", "es": "¿Qué esperar?", "ja": "納品物"},
+            "requests_text4": {"type": "html", "en": "Upon completion, you will get the following deliverables:", "es": "Una vez completado el encargo, se te entregarán los siguientes archivos:", "ja": "完了後，以下の納品物をお渡しします:"},
+            "requests_deliverable1": {"type": "html", "en": "A typable, fully functional <b>font</b> file.", "es": "Un archivo de <b>fuente</b> completamente funcional listo para usarse.", "ja": "すぐ使える，完全に機能する<b>フォント</b>ファイル．"},
+            "requests_deliverable2": {"type": "html", "en": "A <b>user manual</b> explaining how to type using your brand new font.", "es": "Un <b>manual de uso</b> explicando cómo escribir con tu nueva fuente.", "ja": "新しいフォントの使用方法を説明する<b>ユーザーマニュアル</b>．"},
+            "requests_deliverable3": {"type": "html", "en": "A <b>license agreement</b> explaining how to legally use the font, including usage limitations or how to give credit.", "es": "Un <b>acuerdo de licencia</b> explicando cómo usar la fuente legalmente, incluyendo las limitaciones de uso o cómo dar crédito.", "ja": "フォントの法的使用方法，使用制限やクレジットの方法を説明する<b>ライセンス契約</b>．"},
+            "requests_button2": {"type": "text", "en": "Definitely get a quote now", "es": "Definitivamente obtén un presupuesto ahora", "ja": "今すぐ見積もりを依頼"},
+            "back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
+			"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
+            "cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
+            "lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
+            "footer_text": {"type": "html", "en": '&copy; Adrï, 2024. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2024. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2024．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+        };
+        fillLanguages(fillers);
+        // Others
+        var others = { // Necessary to avoid overlap
+            "cta_actions": {"type": "href", "en": "contact_fonts.html", "es": "contact_fonts.html#es", "ja": "contact_fonts.html#ja"}
+        };
+        fillLanguages(others);        
+    </script>
+</body>
 </html>

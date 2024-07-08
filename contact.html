@@ -14,6 +14,16 @@
 		<link rel="stylesheet" href="assets/css/sections.css" />
 		<link rel="shortcut icon" href="images/lasso_logo.ico"/>
 	</head>
+	<style>
+		h4 {
+			letter-spacing: 0.05rem;
+			font-size: 20px;
+		}
+		
+		.contact-field {
+			margin-bottom: 10px;
+		}
+	</style>
 	<body style="-webkit-transition: all 1s; transition: all 1s">
 
 		<!-- Wrapper -->
@@ -39,7 +49,7 @@
 							</div>
 							<input type="text" name="_gotcha" style="display:none">
 							<input id="contact_next" type="hidden" name="_next" /> <!--"value" in js-->
-							<input id="contact_send" type="submit" value="Send" style="margin-top: 20px;"> <!--"value" in js-->
+							<input id="contact_send" class="button big" type="submit" value="Send" style="margin-top: 20px;"> <!--"value" in js-->
 						</form>
 					</section>
 
@@ -80,7 +90,7 @@
 					"contact_next": {"type": "value", "en": "thanks.html", "es": "thanks.html#es", "ja": "thanks.html#ja"},
 					"contact_send": {"type": "value", "en": "Send", "es": "Enviar", "ja": "送信する"},
 					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
-					"footer_text": {"type": "html", "en": '&copy; Adrï, 2019. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2019. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2019．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+					"footer_text": {"type": "html", "en": '&copy; Adrï, 2024. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2024. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2024．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
 				};
 				fillLanguages(fillers);
 				// Others

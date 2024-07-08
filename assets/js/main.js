@@ -70,7 +70,7 @@ function dont() {
 
 var languages = ['en', 'es', 'ja', 'zh'];
 var chosen_language = 'en';
-changeLanguage(window.location.hash ? window.location.hash.substr(1) : 'en');
+
 function changeLanguage(option) { // Changes language to option
 	option = (languages.includes(option) ? option : 'en'); // If reload with non-language hash, load English page
 	for (var i = 0; i < languages.length; i++) {
@@ -79,19 +79,27 @@ function changeLanguage(option) { // Changes language to option
 		}
 		else {
 			chosen_language = languages[i];
-			$('[lang="' + languages[i] + '"]').show();			
+			$('[lang="' + languages[i] + '"]').show();
 		}
 	}
 }
+
+changeLanguage(window.location.hash ? window.location.hash.substring(1) : 'en');
+
 function fillLanguages(fillers) { // Fills all language-dependent fields using the fillers
-	var keys = Object.keys(fillers);
-	for (var i = 0; i < keys.length; i++) {
-		switch (fillers[keys[i]]["type"]) {
-			case "text": $("#" + keys[i]).text(fillers[keys[i]][chosen_language]); break;
-			case "html": $("#" + keys[i]).html(fillers[keys[i]][chosen_language]); break;
-			default: $("#" + keys[i]).attr(fillers[keys[i]]["type"], fillers[keys[i]][chosen_language]);
-		}
-	}
+    var keys = Object.keys(fillers);
+    for (var i = 0; i < keys.length; i++) {
+        var element = $("#" + keys[i]);
+        if (element.length) {
+            switch (fillers[keys[i]]["type"]) {
+                case "text": element.text(fillers[keys[i]][chosen_language]); break;
+                case "html": element.html(fillers[keys[i]][chosen_language]); break;
+                default: element.attr(fillers[keys[i]]["type"], fillers[keys[i]][chosen_language]);
+            }
+        } else {
+            console.warn(`Element with id=${keys[i]} not found`);
+        }
+    }
 }
 var languages_flags = {
 	"en": {"en": "English", "es": "inglés", "ja": "英語"},

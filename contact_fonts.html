@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Epilogue by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Adrï</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/sections.css" />
+		<link rel="shortcut icon" href="images/lasso_logo.ico"/>
+	</head>
+	<style>
+		.contact-field {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		.contact-field h4 {
+			flex: 0 0 220px; /* Adjust the width as needed */
+			padding-right: 10px; /* Space between label and input */
+			letter-spacing: 0.05rem;
+			font-size: 24px;
+		}
+
+		.contact-field span {
+			flex: 1;
+		}
+	</style>
+	<body style="-webkit-transition: all 1s; transition: all 1s">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Banner -->
+					<section id="contact" class="field" onmouseover="document.body.style.backgroundColor='rgba(212,227,255,0.5)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">
+						<span style="text-align: center; color: floralwhite; text-shadow: -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black;" class="icon fas fa-envelope major"></span>
+						<h2 id="contact_title"></h2>
+						<form id="contact_form" method="POST">
+							<div class="contact-field">
+								<h4 id="contact_subject"></h4>
+								<span><input id="contact_subject_input" type="text" name="_subject"></span> <!--"placeholder" in js-->
+							</div>
+							<div class="contact-field">
+								<h4 id="contact_user_name"></h4>
+								<span><input id="contact_user_name_input" type="text" name="user_name"></span> <!--"placeholder" in js-->
+							</div>
+							<div class="contact-field">
+								<h4 id="contact_email"></h4>
+								<span><input id="contact_email_input" type="email" name="_replyto"></span> <!--"placeholder" in js-->
+							</div>
+							<div class="contact-field">
+								<h4 id="contact_company"></h4>
+								<span><input id="contact_company_input" type="text" name="company"></span> <!--"placeholder" in js-->
+							</div>
+							<div class="contact-field">
+								<h4 id="contact_message"></h4>
+								<span><textarea id="contact_message_input" name="message"></textarea></span> <!--"placeholder" in js-->
+							</div>
+							<input type="text" name="_gotcha" style="display:none">
+							<input id="contact_next" type="hidden" name="_next" /> <!--"value" in js-->
+							<p id="contact_remark" style="text-align: left; margin-top: 10px; font-size: 24px;"></p>
+							<input id="contact_send" class="button big" type="submit" value="Send"> <!--"value" in js-->
+						</form>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p id="footer_text" class="copyright"></p>
+					</footer>
+
+			</div>
+		<!-- BOTTOM -->
+
+		<div id="bottom" style="z-index: 1;">
+			<a id="lasso_link"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+			<!--<font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; left: 0.5cm; color: rgb(30,30,40);">B</font>-->
+			<!--<a href="#" title="&copy; Adrián Jiménez Pascual" onclick="changeFace()" id="me_img" style="display: none"><font face="KnotFont" style="font-size: 150px; position: fixed; bottom: 0.5cm; right: 0.5cm; color: rgb(30,30,40);">B</font></a>-->
+		</div>
+
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/sticker.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="assets/js/smooth.js"></script>
+		<script>
+			// Languages
+			var fillers = {
+				"contact_title": {"type": "text", "en": "Get your quote", "es": "Obtén tu presupuesto", "ja": "連絡フォーム"},
+				"contact_subject": {"type": "text", "en": "Subject:", "es": "Asunto:", "ja": "題目："},
+				"contact_subject_input": {"type": "placeholder", "en": "Title", "es": "Título", "ja": "タイトル"},
+				"contact_user_name": {"type": "text", "en": "Name:", "es": "Nombre:", "ja": "名前："},
+				"contact_user_name_input": {"type": "placeholder", "en": "Your name", "es": "Tu nombre", "ja": "あなたの名前"},
+				"contact_email": {"type": "text", "en": "Email:", "es": "Email:", "ja": "メール："},
+				"contact_email_input": {"type": "placeholder", "en": "Your email address", "es": "Tu dirección de correo electrónico", "ja": "あなたのメールアドレス"},
+				"contact_company": {"type": "text", "en": "Company:", "es": "Empresa:", "ja": "会社："},
+				"contact_company_input": {"type": "placeholder", "en": "Your company name (if applies)", "es": "Nombre de tu empresa (si aplica)", "ja": "あなたが所属する会社名（もし該当すれば）"},
+				"contact_message": {"type": "text", "en": "About your font:", "es": "Sobre tu fuente:", "ja": "あなたのフォントについて："},
+				"contact_message_input": {"type": "placeholder", "en": "Please briefly describe the purpose of your font", "es": "Por favor describe brevemente el propósito de tu fuente", "ja": "あなたのフォントの用途について簡単にご紹介ください"},
+				"contact_next": {"type": "value", "en": "thanks.html", "es": "thanks.html#es", "ja": "thanks.html#ja"},
+				"contact_remark": {"type": "html", "en": "Once I receive your form I will write you back with a <i>Non-Disclosure Agreement</i> asking for more details about your font to give you a precise quote.", 
+					"es": "Una vez reciba tu formulario te escribiré con un <i>Acuerdo de confidencialidad</i> preguntándote por más detalles acerca de tu fuente para darte un presupuesto preciso.", 
+					"ja": "フォームを受け取り次第，フォントに関する詳細をお伺いするための<i>秘密保持契約書</i>を送付し，正確なお見積りをお伝えいたします．"},
+				"contact_send": {"type": "value", "en": "Send", "es": "Enviar", "ja": "送信する"},
+				"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
+				"footer_text": {"type": "html", "en": '&copy; Adrï, 2024. Basic web design by <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "es": '&copy; Adrï, 2024. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.', "ja": '&copy; Adrï，2024．基本ウェブデザインは<a href="https://templated.co" target="_blank">TEMPLATED</a>から．'}
+			};
+			fillLanguages(fillers);
+			// Others
+			function add_dot(arr) {
+				res = "";
+				for (var i = 0; i < arr.length; i++) {
+					res += arr[i] + (i == arr.length - 1 ? "" : ".");
+				}
+				return res;
+			}
+			$("#" + "contact_form").attr("action", "https://formspree.io/" + add_dot(["adrian", "jimenez", "pascual@gmail", "com"]));
+		</script>
+
+	</body>
+</html>
