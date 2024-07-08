@@ -350,13 +350,33 @@
 
         /* Adjust carousel items for mobile */
         @media (max-width: 767px) {
+            .carousel-item {
+                width: 100%;
+                overflow: hidden; /* Prevent overflowing content */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .carousel-dot-container {
+                margin: 5px; /* Add margin around each button container */
+            }
+
             .content-container {
                 flex-direction: column;
                 height: auto;
+                padding: 10px; /* Add padding to ensure content doesn't touch edges */
+                box-sizing: border-box; /* Include padding in element's total width and height */
+                max-width: 100%; /* Ensure content-container does not exceed 100% width */
             }
 
             .image-container {
                 margin-bottom: 20px;
+                width: 100%; /* Ensure the image container takes full width */
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .bordered-image {
@@ -366,17 +386,29 @@
 
             .description {
                 padding: 10px;
+                word-wrap: break-word; /* Ensure text wraps correctly */
+                text-align: center; /* Center text for better appearance */
+                max-width: 100%; /* Ensure description does not exceed 100% width */
+                box-sizing: border-box; /* Include padding in element's total width */
             }
 
             .donate-button-container {
                 padding-bottom: 20px; /* Ensure there's always some space below the button on mobile */
             }
+
             .button-container {
                 padding-bottom: 20px; /* Ensure there's always some space below the button on mobile */
                 width: 100%; /* Ensure full width on mobile */
                 margin: 0; /* Reset margins on mobile */
                 display: flex; /* Use flexbox for centering */
                 justify-content: center; /* Center horizontally */
+            }
+
+            .button.download {
+                max-width: 100%; /* Ensure button does not exceed 100% width */
+                overflow: hidden; /* Prevent overflowing content */
+                white-space: nowrap; /* Prevent text from wrapping */
+                text-overflow: ellipsis; /* Add ellipsis for overflowing text */
             }
         }
     </style>
@@ -523,7 +555,7 @@
                     <span id="requests_bullet3"></span>
                 </div>
             </span>
-            <span id="requests_text2" style="letter-spacing: 0.05rem;font-size: 18px; display: block; margin-top: 30px;"></span>
+            <span id="requests_text2" style="letter-spacing: 0.05rem;font-size: 18px; display: block; margin-top: 20px; margin-bottom: 20px;"></span>
             <div class="button-container" data-aos="zoom-in" data-aos-duration="1000">
                 <a id="requests_button" class="button big request"></a>
             </div>
@@ -656,6 +688,9 @@
                 item.addEventListener('touchstart', pauseCarousel);
                 item.addEventListener('touchend', resumeCarousel);
             });
+
+            // Update text on window resize
+            updateButtonText();
         });
 
         function showPrevItem() {
@@ -700,6 +735,30 @@
             const dotContainer = document.querySelectorAll('.carousel-dot-container')[currentIndex];
             dotContainer.classList.remove('pause');
         }
+
+        function updateButtonText() {
+            replacements = {"Font download & User manual": "Download & Manual", "Descargar fuente y manual de uso": "Descarga y manual", "フォントダウンロード & ユーザーマニュアル": "ダウンロード & マニュアル"};
+            if (window.innerWidth <= 767) {
+                for (const key in replacements) {
+                    document.getElementById('sheikah_button').textContent = document.getElementById('sheikah_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('hylian_button').textContent = document.getElementById('hylian_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(key, replacements[key]);
+                }
+            } else {
+                for (const key in replacements) {
+                    document.getElementById('sheikah_button').textContent = document.getElementById('sheikah_button').textContent.replace(replacements[key], key);
+                    document.getElementById('hylian_button').textContent = document.getElementById('hylian_button').textContent.replace(replacements[key], key);
+                    document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(replacements[key], key);
+                    document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(replacements[key], key);
+                    document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(replacements[key], key);
+                }
+            }
+        }
+
+        // Update text on window resize
+        window.addEventListener('resize', updateButtonText);
 
     </script>    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
