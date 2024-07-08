@@ -18,6 +18,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        #header {
+            background-image: url('images/pic_fonts.png');
+            background-position: center top;
+            background-size: auto;
+        }
+
         .carousel {
             position: relative;
             width: 100%;
@@ -350,6 +356,12 @@
 
         /* Adjust carousel items for mobile */
         @media (max-width: 767px) {
+            #header {
+                background-image: url('images/pic_fonts_mobile.png'); /* Replace with the path to your slim screen background image */
+                background-position: center top;
+                background-size: cover; /* Adjust as needed */
+            }
+
             .carousel-item {
                 width: 100%;
                 overflow: hidden; /* Prevent overflowing content */
@@ -415,7 +427,7 @@
 </head>
 <body style="-webkit-transition: all 1s; transition: all 1s">
     <!-- Header -->
-    <header id="header" class="alt" style="background-image: url('images/pic_fonts.png'); background-position: center top; background-size: auto;">
+    <header id="header" class="alt">
         <div class="inner">
             <h1 id="header_title"></h1>
             <p id="header_subtitle"></p>
