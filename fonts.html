@@ -282,7 +282,7 @@
         }
 
         .note {
-            background-color: rgb(245 245 245);
+            background-color: rgba(194,233,251,0.2);
             border: solid 1px rgb(200 200 200);
             border-radius: 10px;
             padding: 20px;
@@ -292,10 +292,10 @@
         .image-sample-frame {
             display: flex;
             flex-wrap: wrap;
-            margin: 20px auto; /* Center horizontally */
+            margin: 20px auto;
             border-radius: 30px;
             border: 1px solid rgb(0,0,0);
-            height: 600px; /* Set your desired fixed height here */
+            height: 600px;
             width: 80%;
             overflow: hidden;
             position: relative;
@@ -303,12 +303,12 @@
 
         .image-sample-container {
             position: relative;
-            width: 50%; /* Each image container takes up half the width */
-            height: 50%; /* Each image container takes up half the height */
+            width: 50%;
+            height: 50%;
             display: flex;
-            flex-wrap: nowrap;
+            flex-direction: column; /* Align title and image vertically */
+            box-sizing: border-box;
             overflow: hidden;
-            box-sizing: border-box; /* Ensure padding and border are included in the width and height */
         }
 
         .image-sample-container:nth-child(1) {
@@ -324,34 +324,20 @@
             border-right: 1px solid rgb(0,0,0);
         }
 
-        .image-sample-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
         .image-sample-title {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
             text-align: center;
             color: white;
-            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background for better readability */
+            background: rgba(0, 0, 0, 0.3);
             padding: 5px 0;
-            box-sizing: border-box;
             letter-spacing: 0.05rem;
             font-size: 24px;
             font-weight: bold;
-            z-index: 2;
         }
-        .image-sample-overlay {
-            position: absolute;
-            top: 0; /* Adjust to match the height of the title */
-            left: 0;
+
+        .image-sample-container img {
             width: 100%;
-            height: 100%;
-            background: rgba(220, 220, 220, 0.1); /* Semi-transparent background */
-            z-index: 1;
+            height: 80%; /* Adjust based on the height of the title */
+            object-fit: contain;
         }
 
         /* Adjust carousel items for mobile */
@@ -437,7 +423,7 @@
     <!-- Wrapper -->
     <div id="wrapper">
         <!--Main-->
-        <section id="main" class="main" data-aos="fade-up" data-aos-duration="1500">
+        <section id="main" class="main" onmouseover="document.body.style.backgroundColor='rgba(255,244,212,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'" data-aos="fade-up" data-aos-duration="1500">
             <header>
                 <h2 id="main_title"></h2>
             </header>
@@ -544,11 +530,11 @@
                 </div>
             </div>
             <span style="text-align: center; color: rgb(13 54 133)" class="icon fab fa-paypal major"></span>
-            <div class="donate-button-container" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="donate-button-container" data-aos="zoom-in" data-aos-duration="500">
                 <a id="donate_button" class="button donate" href="https://www.paypal.com/donate/?business=EAJPW5BWKGRP6&no_recurring=0&item_name=All+this%2C+for+free.+You+deserve+a+tip%21+Keep+up+the+good+work%21&currency_code=EUR"></a>
             </div>
         </section>
-        <section id="request" class="field" data-aos="fade-up" data-aos-duration="1500">
+        <section id="request" class="field" onmouseover="document.body.style.backgroundColor='rgba(212,227,255,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'" data-aos="fade-up" data-aos-duration="1500">
             <header>
                 <h2 id="requests_title" style="text-align: center"></h2>
             </header>
@@ -568,7 +554,7 @@
                 </div>
             </span>
             <span id="requests_text2" style="letter-spacing: 0.05rem;font-size: 18px; display: block; margin-top: 20px; margin-bottom: 20px;"></span>
-            <div class="button-container" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="button-container" data-aos="zoom-in" data-aos-duration="500">
                 <a id="requests_button" class="button big request"></a>
             </div>
             <div class="note">
@@ -581,23 +567,19 @@
 
             <div class="image-sample-frame">
                 <div class="image-sample-container">
-                    <div id="requests_sample_1" class="image-sample-title">Letters</div>
-                    <div class="image-sample-overlay"></div>
+                    <div id="requests_sample_1" class="image-sample-title"></div>
                     <img src="images/fonts_letters.png" data-aos="zoom-in" data-aos-duration="1500">
                 </div>
                 <div class="image-sample-container">
-                    <div id="requests_sample_2" class="image-sample-title">Diacritics</div>
-                    <div class="image-sample-overlay"></div>
+                    <div id="requests_sample_2" class="image-sample-title"></div>
                     <img src="images/fonts_diacritics.png" data-aos="zoom-in" data-aos-duration="1500">
                 </div>
                 <div class="image-sample-container">
-                    <div id="requests_sample_3" class="image-sample-title">Icons</div>
-                    <div class="image-sample-overlay"></div>
+                    <div id="requests_sample_3" class="image-sample-title"></div>
                     <img src="images/fonts_icons.png" data-aos="zoom-in" data-aos-duration="1500">
                 </div>
                 <div class="image-sample-container">
-                    <div id="requests_sample_4" class="image-sample-title">Other features</div>
-                    <div class="image-sample-overlay"></div>
+                    <div id="requests_sample_4" class="image-sample-title"></div>
                     <img src="images/fonts_features.png" data-aos="zoom-in" data-aos-duration="1500">
                 </div>
             </div>
@@ -748,8 +730,9 @@
             dotContainer.classList.remove('pause');
         }
 
-        function updateButtonText() {
-            replacements = {"Font download & User manual": "Download & Manual", "Descargar fuente y manual de uso": "Descarga y manual", "フォントダウンロード & ユーザーマニュアル": "ダウンロード & マニュアル"};
+        function updateButtonText() {            
+            replacements = {"Font download & User manual": "Download & Manual", "Descargar fuente y manual de uso": "Descarga y manual", "フォントダウンロード & ユーザーマニュアル": "ダウンロード & マニュアル",
+                "Definitely get a quote now": "Get a quote now", "Definitivamente obtén un presupuesto ahora": "Obtén un presupuesto ahora", "今すぐ見積もりを依頼": "見積もりを依頼"};
             if (window.innerWidth <= 767) {
                 for (const key in replacements) {
                     document.getElementById('sheikah_button').textContent = document.getElementById('sheikah_button').textContent.replace(key, replacements[key]);
@@ -757,6 +740,7 @@
                     document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(key, replacements[key]);
                     document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(key, replacements[key]);
                     document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('requests_button2').textContent = document.getElementById('requests_button2').textContent.replace(key, replacements[key]);
                 }
             } else {
                 for (const key in replacements) {
@@ -765,6 +749,7 @@
                     document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(replacements[key], key);
                     document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(replacements[key], key);
                     document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(replacements[key], key);
+                    document.getElementById('requests_button2').textContent = document.getElementById('requests_button2').textContent.replace(replacements[key], key);
                 }
             }
         }
@@ -806,15 +791,15 @@
             "tunic_text2": {"type": "html", "en": '(Appears in <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "es": '(Aparece en <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "ja": '(<a href="https://tunicgame.com/" target="_blank">Tunic</a>に登場)'},
             "tunic_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
             "donate_button": {"type": "html", "en": 'Donate to support', "es": 'Dona para apoyarme', "ja": '寄付で支援'},
-            "requests_title": {"type": "text", "en": "Requests", "es": "Encargos", "ja": "リクエスト"},
+            "requests_title": {"type": "html", "en": "<i>Your</i> Font", "es": "<i>Tu</i> fuente", "ja": "<i>あなた</i>のフォント"},
             "requests_text1": {"type": "html", "en": "<b>You</b> are:", "es": "<b>Eres</b>:", "ja": "<b>あなた</b>は:"},
             "requests_bullet1": {"type": "html", "en": "A game designer with an idea for a special language but cannot implement it.", "es": "Un diseñador de juegos con una idea para un idioma especial pero no puedes implementarla.", "ja": "特別な言語のアイデアがあるが実装できないゲームデザイナー．"},
             "requests_bullet2": {"type": "html", "en": "A conlang creator but cannot make your script digital.", "es": "Un creador de conlangs pero no puedes digitalizar tu escritura.", "ja": "言語を創作したが，それをデジタル化できない人工言語創作者．"},
-            "requests_bullet3": {"type": "html", "en": "A language enthusiast with a revolutionary idea for a writing system you would love to type in.", "es": "Un entusiasta de los idiomas con un idea revolucionaria para un sistema de escritura en el que te encantaría poder escribir.", "ja": "革新的な書記体系のアイデアを持ち，それで書きたいと思っている言語愛好家．"},
+            "requests_bullet3": {"type": "html", "en": "A language enthusiast with a revolutionary idea for a writing system you would love to type in.", "es": "Un entusiasta de los idiomas con un idea revolucionaria para un sistema de escritura en el que te encantaría poder escribir.", "ja": "革新的な表記体系のアイデアを持ち，それで書きたいと思っている言語愛好家．"},
             "requests_text2": {"type": "html", "en": "If any of these rings a bell, please <b>contact me</b> with the details of your request and I will give you a quote.", "es": "Si alguno de estos problemas te es familiar, <b>contacta conmigo</b> con los detalles de tu encargo y te daré un presupuesto.", "ja": "いずれかに心当たりがあれば，詳細を記載の上<b>ご連絡ください</b>．お見積りをお伝えします．"},
-            "requests_text3": {"type": "html", "en": "I only accept requests for completely <b>original</b> and/or <b>challenging</b> scripts, regardless of whether they are alphabets, syllabaries, or other systems. Please <i>do <b>not</b> contact me</i> if your script is a wide-spread script (Latin, Cyrillic, Hangul, etc.) with some modifications or additions.", 
-                "es": "Sólo acepto solicitudes para escrituras completamente <b>originales</b> y/o que supongan un <b>reto</b>, independientemente de si se tratan de alfabetos, silabarios y otros sistemas. Por favor <i><b>not</b> contactes conmigo</i> si tu escritura es una escritura común (latín, cirílico, hangul, etc.) con algunas modificaciones o elementos añadidos.", 
-                "ja": "完全に<b>オリジナル</b>であるか，または<b>挑戦的</b>な書記体系（アルファベット，音節文字，その他のシステム問わず）のリクエスト<b>のみ</b>受け付けます．広く普及している書記体系（ラテン文字，キリル文字，ハングルなど）にいくつかの修正や追加を加えただけのものについては，<i><b>ご連絡しないでください</b></i>．"},
+            "requests_text3": {"type": "html", "en": "I only accept requests for completely <b>original</b>, <b>unique</b> and/or <b>challenging</b> scripts, regardless of whether they are alphabets, syllabaries, hieroglyphics or other writing systems. Please <i>do <b>not</b> contact me</i> if your script is simply a common one (Latin, Cyrillic, Hangul, etc.) with <i>minor</i> modifications or additions.", 
+                "es": "Sólo acepto solicitudes para escrituras completamente <b>originales</b>, <b>únicos</b> y/o que supongan un <b>reto</b>, independientemente de si se tratan de alfabetos, silabarios, jeroglíficos u otros sistemas de escritura. Por favor <i><b>not</b> contactes conmigo</i> si tu escritura es una común (latín, cirílico, hangul, etc.) con algunas modificaciones o adiciones <i>menores</i>.", 
+                "ja": "完全に<b>オリジナル</b>，<b>ユニーク</b>，または<b>挑戦的</b>な表記体系（アルファベット，音節文字，ヒエログリフやその他の表記システム問わず）のリクエスト<b>のみ</b>受け付けます．広く普及している表記体系（ラテン文字，キリル文字，ハングルなど）にいくつかの微修正や追加を加えただけのものについては，<i>ご連絡を<b>お控え</b>ください</i>．"},
             "requests_button": {"type": "text", "en": "Get a quote", "es": "Obtén un presupuesto", "ja": "見積もりを依頼"},
             "requests_sample_1": {"type": "text", "en": "Letters", "es": "Letras", "ja": "文字"},
             "requests_sample_2": {"type": "text", "en": "Diacritics", "es": "Diacríticos", "ja": "符号"},
