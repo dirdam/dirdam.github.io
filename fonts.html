@@ -36,52 +36,58 @@
 
         .carousel-inner {
             display: flex;
-            width: 500%; /* Ensuring this is 500% to accommodate 5 items */
+            width: 600%; /* Ensuring this is 600% to accommodate 6 items. MODIFIABLE */
             transition: transform 1s ease-in-out;
             margin-top: 20px;
             /* border: 1px solid #ccc; */
             border-radius: 20px;
             /* background-color: pink; */
             background: 
-                repeating-linear-gradient(
+                repeating-linear-gradient( /* Repeating linear gradient. MODIFIABLE */
                     135deg,
                     /* Colors for Sheikah */
-                    rgba(112, 128, 144, 0.25) 0%, rgba(112, 128, 144, 0.25) 4%, 
-                    rgba(220, 20, 60, 0.25) 4%, rgba(220, 20, 60, 0.25) 8%,
-                    rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.25) 12%, 
-                    rgba(255, 250, 250, 0.25) 12%, rgba(255, 250, 250, 0.25) 16%, 
-                    rgba(0, 71, 171, 0.25) 16%, rgba(0, 71, 171, 0.25) 20%,
+                    rgba(112, 128, 144, 0.25) 0%, rgba(112, 128, 144, 0.25) 3%, 
+                    rgba(220, 20, 60, 0.25) 3%, rgba(220, 20, 60, 0.25) 6%,
+                    rgba(0, 0, 0, 0.25) 6%, rgba(0, 0, 0, 0.25) 10%, 
+                    rgba(255, 250, 250, 0.25) 10%, rgba(255, 250, 250, 0.25) 13%, 
+                    rgba(0, 71, 171, 0.25) 13%, rgba(0, 71, 171, 0.25) 16%,
                     /* Colors for Hylian */
-                    rgba(135, 206, 250, 0.25) 20%, rgba(135, 206, 250, 0.25) 24%, 
-                    rgba(85, 107, 47, 0.25) 24%, rgba(85, 107, 47, 0.25) 28%,
-                    rgba(101, 67, 33, 0.25) 28%, rgba(101, 67, 33, 0.25) 32%, 
-                    rgba(250, 250, 210, 0.25) 32%, rgba(250, 250, 210, 0.25) 36%, 
-                    rgba(245, 245, 220, 0.25) 36%, rgba(245, 245, 220, 0.25) 40%,
+                    rgba(135, 206, 250, 0.25) 16%, rgba(135, 206, 250, 0.25) 20%, 
+                    rgba(85, 107, 47, 0.25) 20%, rgba(85, 107, 47, 0.25) 23%,
+                    rgba(101, 67, 33, 0.25) 23%, rgba(101, 67, 33, 0.25) 26%, 
+                    rgba(250, 250, 210, 0.25) 26%, rgba(250, 250, 210, 0.25) 30%, 
+                    rgba(245, 245, 220, 0.25) 30%, rgba(245, 245, 220, 0.25) 33%,
                     /* Colors for Gerudo */
-                    rgba(237, 201, 175, 0.25) 40%, rgba(237, 201, 175, 0.25) 44%, 
-                    rgba(210, 105, 30, 0.25) 44%, rgba(210, 105, 30, 0.25) 48%,
-                    rgba(255, 223, 0, 0.25) 48%, rgba(255, 223, 0, 0.25) 52%, 
-                    rgba(178, 34, 34, 0.25) 52%, rgba(178, 34, 34, 0.25) 56%, 
-                    rgba(0, 128, 0, 0.25) 56%, rgba(0, 128, 0, 0.25) 60%,
+                    rgba(237, 201, 175, 0.25) 33%, rgba(237, 201, 175, 0.25) 36%, 
+                    rgba(210, 105, 30, 0.25) 36%, rgba(210, 105, 30, 0.25) 40%,
+                    rgba(255, 223, 0, 0.25) 40%, rgba(255, 223, 0, 0.25) 43%, 
+                    rgba(178, 34, 34, 0.25) 43%, rgba(178, 34, 34, 0.25) 46%, 
+                    rgba(0, 128, 0, 0.25) 46%, rgba(0, 128, 0, 0.25) 50%,
                     /* Colors for Fez */
-                    rgba(255, 255, 0, 0.25) 60%, rgba(255, 255, 0, 0.25) 64%, 
-                    rgba(135, 240, 235, 0.25) 64%, rgba(135, 240, 235, 0.25) 68%,
-                    rgba(50, 205, 50, 0.25) 68%, rgba(50, 205, 50, 0.25) 72%, 
-                    rgba(255, 0, 0, 0.25) 72%, rgba(255, 0, 0, 0.25) 76%, 
-                    rgba(255, 255, 255, 0.25) 76%, rgba(255, 255, 255, 0.25) 80%,
+                    rgba(255, 255, 0, 0.25) 50%, rgba(255, 255, 0, 0.25) 53%, 
+                    rgba(135, 240, 235, 0.25) 53%, rgba(135, 240, 235, 0.25) 56%,
+                    rgba(50, 205, 50, 0.25) 56%, rgba(50, 205, 50, 0.25) 60%, 
+                    rgba(255, 0, 0, 0.25) 60%, rgba(255, 0, 0, 0.25) 63%, 
+                    rgba(255, 255, 255, 0.25) 63%, rgba(255, 255, 255, 0.25) 66%,
                     /* Colors for Tunic */
-                    rgba(34, 139, 34, 0.25) 80%, rgba(34, 139, 34, 0.25) 84%,
-                    rgba(255, 215, 0, 0.25) 84%, rgba(255, 215, 0, 0.25) 88%,
-                    rgba(0, 0, 139, 0.25) 88%, rgba(0, 0, 139, 0.25) 92%,
-                    rgba(178, 34, 34, 0.25) 92%, rgba(178, 34, 34, 0.25) 96%,
-                    rgba(135, 206, 250, 0.25) 96%, rgba(135, 206, 250, 0.25) 100%
+                    rgba(34, 139, 34, 0.25) 66%, rgba(34, 139, 34, 0.25) 70%,
+                    rgba(255, 215, 0, 0.25) 70%, rgba(255, 215, 0, 0.25) 73%,
+                    rgba(0, 0, 139, 0.25) 73%, rgba(0, 0, 139, 0.25) 76%,
+                    rgba(178, 34, 34, 0.25) 76%, rgba(178, 34, 34, 0.25) 80%,
+                    rgba(135, 206, 250, 0.25) 80%, rgba(135, 206, 250, 0.25) 83%,
+                    /* Colors for Pokémon Legends: Arceus */
+                    rgba(169, 169, 169, 0.25) 83%, rgba(169, 169, 169, 0.25) 86%,
+                    rgba(135, 206, 235, 0.25) 86%, rgba(135, 206, 235, 0.25) 90%,
+                    rgba(85, 107, 47, 0.25) 90%, rgba(85, 107, 47, 0.25) 93%, 
+                    rgba(176, 196, 222, 0.25) 93%, rgba(176, 196, 222, 0.25) 96%, 
+                    rgba(255, 223, 0, 0.25) 96%, rgba(255, 223, 0, 0.25) 100%
                 );
             background-size: 100% 100%;
         }
 
         .carousel-item {
             position: relative; /* Ensure overlay is positioned relative to the carousel item */
-            min-width: 20%; /* Each item takes up 1/5 of the container */
+            min-width: 16.66%; /* Each item takes up 1/6 of the container. MODIFIABLE */
             box-sizing: border-box;
         }
 
@@ -450,6 +456,10 @@
                         <span class="carousel-dot tunic" onclick="currentSlide(4)">tunik</span>
                         <div class="pause-overlay"><i class="fas fa-lock"></i></div>
                     </div>
+                    <div class="carousel-dot-container">
+                        <span class="carousel-dot unown" onclick="currentSlide(5)">UNOWN</span>
+                        <div class="pause-overlay"><i class="fas fa-lock"></i></div>
+                    </div>
                 </div>
                 <div class="carousel-inner" id="carouselInner">
                     <div class="carousel-item">
@@ -524,6 +534,21 @@
                                 <p id="tunic_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
                                 <h3 class="tunic" style="letter-spacing: 0rem;">dha kwik braun foks djamps vou_cxr dha leizii dog.</h3>
                                 <a id="tunic_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/tunic/README.md" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item"> <!-- If a new item is added, font must be added in knots.css -->
+                        <div class="content-container">
+                            <div class="image-container">
+                                <a href="https://legends.arceus.pokemon.com/en-us/" target="_blank">
+                                    <img src="images/font_unown.png" class="bordered-image" style="box-shadow: 0 0 5px 10px rgb(0,0,0);">
+                                </a>
+                            </div>
+                            <div class="description">
+                                <h3 id="unown_text1" style="letter-spacing: 0.1rem; margin-bottom: 0;"></h3>
+                                <p id="unown_text2" style="letter-spacing: 0.1rem; font-size: 16px; margin-bottom: 0;"></p>
+                                <h3 class="unown" style="letter-spacing: 0rem;">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</h3>
+                                <a id="unown_button" class="button download" href="https://github.com/dirdam/fonts/blob/main/unown/README.md" target="_blank"></a>
                             </div>
                         </div>
                     </div>
@@ -740,6 +765,7 @@
                     document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(key, replacements[key]);
                     document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(key, replacements[key]);
                     document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(key, replacements[key]);
+                    document.getElementById('unown_button').textContent = document.getElementById('unown_button').textContent.replace(key, replacements[key]);
                     document.getElementById('requests_button2').textContent = document.getElementById('requests_button2').textContent.replace(key, replacements[key]);
                 }
             } else {
@@ -749,6 +775,7 @@
                     document.getElementById('gerudo_button').textContent = document.getElementById('gerudo_button').textContent.replace(replacements[key], key);
                     document.getElementById('fez_button').textContent = document.getElementById('fez_button').textContent.replace(replacements[key], key);
                     document.getElementById('tunic_button').textContent = document.getElementById('tunic_button').textContent.replace(replacements[key], key);
+                    document.getElementById('unown_button').textContent = document.getElementById('unown_button').textContent.replace(replacements[key], key);
                     document.getElementById('requests_button2').textContent = document.getElementById('requests_button2').textContent.replace(replacements[key], key);
                 }
             }
@@ -790,6 +817,9 @@
             "tunic_text1": {"type": "html", "en": 'Tunic script', "es": 'Escritura de Tunic', "ja": 'Tunic表記'},
             "tunic_text2": {"type": "html", "en": '(Appears in <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "es": '(Aparece en <a href="https://tunicgame.com/" target="_blank">Tunic</a>)', "ja": '(<a href="https://tunicgame.com/" target="_blank">Tunic</a>に登場)'},
             "tunic_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
+            "unown_text1": {"type": "html", "en": 'Unown', "es": 'Unown', "ja": 'アンノーン'},
+            "unown_text2": {"type": "html", "en": '(Appears as a Pokémon variation in <a href="https://legends.arceus.pokemon.com/en-us/" target="_blank">Pokémon Legends: Arceus</a>)', "es": '(Aparece como variaciones de un Pokémon en <a href="https://legends.arceus.pokemon.com/en-us/" target="_blank">Leyendas Pokémon: Arceus</a>)', "ja": '(<a href="https://legends.arceus.pokemon.com/en-us/" target="_blank">Pokémon Legends: アルセウス</a>にポケモンの変形として登場)'},
+            "unown_button": {"type": "text", "en": "Font download & User manual", "es": "Descargar fuente y manual de uso", "ja": "フォントダウンロード & ユーザーマニュアル"},
             "donate_button": {"type": "html", "en": 'Donate to support', "es": 'Dona para apoyarme', "ja": '寄付で支援'},
             "requests_title": {"type": "html", "en": "<i>Your</i> Font", "es": "<i>Tu</i> fuente", "ja": "<i>あなた</i>のフォント"},
             "requests_text1": {"type": "html", "en": "<b>You</b> are:", "es": "<b>Eres</b>:", "ja": "<b>あなた</b>は:"},

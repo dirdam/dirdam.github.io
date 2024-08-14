@@ -30,12 +30,18 @@
 	   url("./fonts/Gerudo.otf") format('opentype');
 }
 @font-face {
-  font-family: 'Fez';
-    src: url("./fonts/Fez.eot");
-    src: local('Fez'),
-	   url("./fonts/Fez.otf") format('opentype');
+	font-family: 'Fez';
+	  src: url("./fonts/Fez.eot");
+	  src: local('Fez'),
+		 url("./fonts/Fez.otf") format('opentype');
 }
-
+@font-face {
+font-family: 'Unown';
+	src: url("./fonts/Unown.eot");
+	src: local('Unown'),
+		url("./fonts/Unown.otf") format('opentype');
+}
+	
 .knots {
 	color: inherit;
 	font-family: "KnotFont";
@@ -47,11 +53,6 @@
 	cursor: default;
 }
 
-.tunic {
-	color: inherit;
-	font-family: "Tunic";
-	vertical-align: middle;
-}
 .sheikah {
 	color: inherit;
 	font-family: "Sheikah";
@@ -70,6 +71,16 @@
 .fez {
 	color: inherit;
 	font-family: "Fez";
+	vertical-align: middle;
+}
+.tunic {
+	color: inherit;
+	font-family: "Tunic";
+	vertical-align: middle;
+}
+.unown {
+	color: inherit;
+	font-family: "Unown";
 	vertical-align: middle;
 }
 
