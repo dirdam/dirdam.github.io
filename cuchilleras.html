@@ -60,12 +60,38 @@
             background-repeat: no-repeat; /* Prevent the image from repeating */
             background-position: center center; /* Center the background image */
             background-attachment: fixed; /* Keep the image fixed during scroll */
-            transition: background 2s ease-in-out, opacity 2s ease-in-out;
+            transition: background 2s ease-in-out, opacity 0s ease-in-out;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px; /* Space between buttons */
+        }
+
+        .download-buttons a {
+            text-align: center;
         }
 
         @media only screen and (max-width: 768px) {
             body {
                 background-image: url("images/pic_cuchilleras_background_mobile.png");
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0px; /* Space between buttons */
+            }
+
+            .download-buttons a {
+                width: 100%; /* Ensure the buttons take up the full width of the container */
+                margin-bottom: 10px; /* Add some space between the buttons */
+            }
+
+            .download-buttons a:last-child {
+                margin-bottom: 0; /* Remove margin from the last button */
             }
         }
 
@@ -140,8 +166,9 @@
     <div id="wrapper">
         <img src="images/logo_cuchilleras.png" alt="">
 
-        <div style="align-items: center; display: flex; justify-content: center;">
-            <a href="assets/others/cuchilleras.zip" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a> <span class="space"></span><span class="space"></span><span class="space"></span> <a href="assets/others/Cuchilleras.pdf" class="button big"><span class="icon fas fa-file"></span> Descargar ensayo (PDF)</a>
+        <div class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
+            <a href="assets/others/cuchilleras.zip" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a>
+            <a href="assets/others/Cuchilleras.pdf" class="button big"><span class="icon fas fa-file"></span> Descargar ensayo (PDF)</a>
         </div>
         <section class="main"></section>
 
@@ -313,6 +340,8 @@
             </ul>
         </section>
 
+        <div style="padding-bottom: 500px;"></div>
+
         <!-- Footer -->
         <footer id="footer">
             <p class="copyright">&copy; Adrï, 2024. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
@@ -340,7 +369,7 @@
             var maxScroll = document.documentElement.scrollHeight - window.innerHeight; // The point at which the overlay is fully transparent (end of the document)
 
             // Calculate the opacity based on scroll position (from 1 to 0)
-            var opacity = 1 - (Math.max(scrollPosition - noEffect, 0) / (maxScroll - noEffect))/4; // Maximum 1 - 0.25
+            var opacity = 1 - (Math.max(scrollPosition - noEffect, 0) / (maxScroll - noEffect))/2; // Maximum 1 - 0.5
 
             // Apply the opacity to the overlay
             document.getElementById('overlay').style.opacity = opacity;
