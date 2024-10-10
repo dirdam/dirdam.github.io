@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<head>
+    <title>Cuchilleras</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="shortcut icon" href="images/lasso_logo.ico">
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'CuchillerasSans';
+            src: url('assets/css/fonts/CuchillerasSansVF.ttf') format('truetype');
+            font-weight: thin;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'CuchillerasSans';
+            src: url('assets/css/fonts/CuchillerasSansItalicVF.ttf') format('truetype');
+            font-weight: thin;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Cuchilleras';
+            src: url('assets/css/fonts/CuchillerasVF.ttf') format('truetype');
+            font-weight: thin;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Cuchilleras';
+            src: url('assets/css/fonts/CuchillerasItalicVF.ttf') format('truetype');
+            font-weight: thin;
+            font-style: italic;
+        }
+
+        /* Apply the custom font to the whole body of this page */
+        body {
+            font-family: 'CuchillerasSans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: normal;
+        }
+
+        em, i {
+            font-style: italic;
+        }
+
+        body {
+            background-image: url("images/pic_cuchilleras_background.png");
+            background-size: contain; /* Ensure the image covers the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-position: center center; /* Center the background image */
+            background-attachment: fixed; /* Keep the image fixed during scroll */
+            transition: background 2s ease-in-out, opacity 2s ease-in-out;
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                background-image: url("images/pic_cuchilleras_background_mobile.png");
+            }
+        }
+
+        .field {
+            background-color: rgba(255, 255, 255, 0.75) !important;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Make the overlay cover the whole page */
+            background-color: #f4f4f4; /* Set the solid background color */
+            z-index: 1;
+            transition: 2s ease-in-out; /* Smooth fading transition */
+            opacity: 1; /* Initially fully opaque */
+        }
+
+        header, #wrapper {
+            z-index: 2; /* Ensure the header is on top */
+            position: relative; /* Make the header stack above the overlay */
+        }
+
+        div img {
+            width: 100%;
+            height: auto;
+        }
+
+        .table-container {
+            overflow-x: auto; /* Enables horizontal scrolling */
+            width: 100%; /* Ensure it spans the available width */
+        }
+
+        table {
+            border-collapse: collapse; /* Optional: removes spacing between table cells */
+            table-layout: auto; /* Allows columns to adjust based on their content */
+            width: 100%; /* Allows the table to grow and shrink based on content */
+        }
+
+        td {
+            border: 1px solid #ddd; /* Optional: table borders */
+            padding: 8px;
+            text-align: left;
+            white-space: nowrap; /* Prevents text from wrapping, so columns expand based on content */
+            text-align: center;
+        }
+
+        /* Style for the first column (both header and body) */
+        td:first-child {
+            background-color: #f4f4f4; /* First column background color */
+            font-weight: 500; /* Bold text for the first column */
+        }
+
+        /* Style for the rest of the columns */
+        td:not(:first-child) {
+            background-color: white; /* Rest of the columns background color */
+        }
+</style>
+</head>
+<body style="-webkit-transition: all 1s; transition: all 1s">
+    <!-- Header -->
+    <header id="header" class="alt" style="background-image: url('images/pic_cuchilleras.jpg'); background-size: cover;">
+        <div class="inner">
+            <h1>Cuchilleras</h1>
+            <p style="font-weight: 400;">Innovación en la escritura del español</p>
+        </div>
+    </header>
+
+    <!-- Wrapper -->
+    <div id="overlay"></div>
+    <div id="wrapper">
+        <img src="images/logo_cuchilleras.png" alt="">
+
+        <div style="align-items: center; display: flex; justify-content: center;">
+            <a href="assets/others/cuchilleras.zip" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a> <span class="space"></span><span class="space"></span><span class="space"></span> <a href="assets/others/Cuchilleras.pdf" class="button big"><span class="icon fas fa-file"></span> Descargar ensayo (PDF)</a>
+        </div>
+        <section class="main"></section>
+
+        <!-- Banner -->
+        <section class="field" onmouseover="document.getElementById('overlay').style.backgroundColor='rgb(254,248,219)'" onmouseout="document.getElementById('overlay').style.backgroundColor='#f4f4f4'">
+            <h2 style="text-align: center">La fuente que el español se merece</h2>
+            <p>La fuente busca ser un nuevo estándar para la escritura del español. Se basa en <a href="https://fonts.google.com/noto" target="_blank"><b>Noto</b></a>, la fuente de código abierto de Google, e <b>incorpora <i>tres</i> nuevas letras</b> que buscan sustituir los tres dígrafos consonánticos del español (<i><b>c'h</b></i>, <i><b>l'l</b></i>, <i><b>r'r</b></i>), a la par que <b>raya las <i>zetas</i> y el <i>siete</i></b>, como tradicionalmente se hace en nuestro idioma.</p>
+            <h3 style="text-align: center">Abecedario</h3>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr style="font-size: larger;">
+                            <td style="font-size: medium;">Mayúscula</td>
+                            <td>A</td>
+                            <td>B</td>
+                            <td>C</td>
+                            <td style="font-weight: 500;">CH</td>
+                            <td>D</td>
+                            <td>E</td>
+                            <td>F</td>
+                            <td>G</td>
+                            <td>H</td>
+                            <td>I</td>
+                            <td>J</td>
+                            <td>K</td>
+                            <td>L</td>
+                            <td style="font-weight: 500;">LL</td>
+                            <td>M</td>
+                            <td>N</td>
+                            <td>Ñ</td>
+                            <td>O</td>
+                            <td>P</td>
+                            <td>Q</td>
+                            <td>R</td>
+                            <td style="font-weight: 500;">RR</td>
+                            <td>S</td>
+                            <td>T</td>
+                            <td>U</td>
+                            <td>V</td>
+                            <td>W</td>
+                            <td>X</td>
+                            <td>Y</td>
+                            <td style="font-weight: 500;">Z</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td style="font-size: medium;">Minúscula</td>
+                            <td>a</td>
+                            <td>b</td>
+                            <td>c</td>
+                            <td style="font-weight: 500;">ch</td>
+                            <td>d</td>
+                            <td>e</td>
+                            <td>f</td>
+                            <td>g</td>
+                            <td>h</td>
+                            <td>i</td>
+                            <td>j</td>
+                            <td>k</td>
+                            <td>l</td>
+                            <td style="font-weight: 500;">ll</td>
+                            <td>m</td>
+                            <td>n</td>
+                            <td>ñ</td>
+                            <td>o</td>
+                            <td>p</td>
+                            <td>q</td>
+                            <td>r</td>
+                            <td style="font-weight: 500;">rr</td>
+                            <td>s</td>
+                            <td>t</td>
+                            <td>u</td>
+                            <td>v</td>
+                            <td>w</td>
+                            <td>x</td>
+                            <td>y</td>
+                            <td style="font-weight: 500;">z</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td><i>a</i></td>
+                            <td><i>be</i></td>
+                            <td><i>ce</i></td>
+                            <td style="font-weight: 500;"><i>c'he</i></td>
+                            <td><i>de</i></td>
+                            <td><i>e</i></td>
+                            <td><i>efe</i></td>
+                            <td><i>ge</i></td>
+                            <td><i>hache</i></td>
+                            <td><i>i</i></td>
+                            <td><i>jota</i></td>
+                            <td><i>ka</i></td>
+                            <td><i>ele</i></td>
+                            <td style="font-weight: 500;"><i>el'le</i></td>
+                            <td><i>eme</i></td>
+                            <td><i>ene</i></td>
+                            <td><i>eñe</i></td>
+                            <td><i>o</i></td>
+                            <td><i>pe</i></td>
+                            <td><i>cu</i></td>
+                            <td style="font-weight: 500;"><i>ere</i></td>
+                            <td style="font-weight: 500;"><i>er're</i></td>
+                            <td><i>ese</i></td>
+                            <td><i>te</i></td>
+                            <td><i>u</i></td>
+                            <td><i>uve</i></td>
+                            <td><i>uve doble</u></i></td>
+                            <td><i>equis</i></td>
+                            <td><i>ye</i></td>
+                            <td><i>zeta</i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p></p>
+            <h3 style="text-align: center">Números</h3>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr style="font-size: larger;">
+                            <td style="font-size: medium;">Número</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td style="font-weight: 500;">7</td>
+                            <td>8</td>
+                            <td>9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            Todos estos caracteres están incorporados en la fuente y aparecerán automáticamente al escribir en español como de costumbre. En caso de necesitar partir una de las nuevas letras en dígrafo, basta escribir un apóstrofo entre ambas letras:
+            <p style="text-align: center; font-size: large;">c'h = c ' h &emsp;&emsp;&emsp; l'l = l ' l &emsp;&emsp;&emsp; r'r = r ' r</p>
+        </section>
+        <section class="main"></section>
+
+        <!-- Banner -->
+        <section class="field" onmouseover="document.getElementById('overlay').style.backgroundColor='rgb(229,241,231)'" onmouseout="document.getElementById('overlay').style.backgroundColor='#f4f4f4'">
+            <h2 style="text-align: center">Texto de ejemplo</h2>
+            <p style="font-family: Cuchilleras; font-weight: 300; font-size: x-large;">«<i style="font-weight: 500;">Las Cuchilleras</i> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <span style="font-weight: 500;">Dehesa de Valgallego</span> (Área Recreativa), en el término municipal de <span style="font-weight: 500;">Torrelaguna</span>. Alrededor de <i style="font-weight: 500;">Las Cuchilleras</i> podemos encontrar otros lugares de interés para senderistas como el <span style="font-weight: 500;">Arroyo de San Vicente</span>, la <span style="font-weight: 500;">Atalaya de Arrebatacapas</span> o la chopera».</p>
+            <img src="images/pic_cuchilleras2.jpg" alt="">
+        </section>
+        <section class="main"></section>
+
+        <!-- Banner -->
+        <section class="field">
+            <h2 style="text-align: center">Último escollo del español</h2>
+            <p>La adopción de esta escritura a través de <i>Cuchilleras</i> u otra fuente que la siga, implica que la única frase del español no representable por escrito debido a la existencia de dígrafos ahora sí se puede escribir:</p>
+            <p style="font-family: Cuchilleras; font-weight: 300; font-size: x-large; text-align: center;">Sal'le al paso / Sal'le al encuentro</p>
+            <p>Esto se leería como se espera, ya que en este sistema se distingue en la escritura entre <i><b>sal'le</b></i> (<i>ele geminada</i>) y <i><b>salle</b></i> (<i>elle</i>).</p>
+        </section>
+        <section class="main"></section>
+
+        <!-- Banner -->
+        <section id="back" class="main">
+            <header style="text-align: center;">
+                <h3>Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a></h3>
+            </header>
+        </section>
+
+       <!-- Call To Action -->
+        <section id="cta" class="main special">
+            <h2>¿Quieres más?</h2>
+            <ul class="actions">
+                <li><a class="button big" href="contact.html#es">Házmelo saber</a></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Adrï, 2024. Diseño web básico de <a href="https://templated.co" target="_blank">TEMPLATED</a>.</p>
+        </footer>
+
+    </div>
+
+        <!-- BOTTOM -->
+    <div id="bottom" style="z-index: 3;">
+        <a href="./#es"><span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;"><div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div></span></a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/sticker.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/js/smooth.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.scrollY || window.pageYOffset;
+            var noEffect = 300; // Point at which opacity starts to change
+            var maxScroll = document.documentElement.scrollHeight - window.innerHeight; // The point at which the overlay is fully transparent (end of the document)
+
+            // Calculate the opacity based on scroll position (from 1 to 0)
+            var opacity = 1 - (Math.max(scrollPosition - noEffect, 0) / (maxScroll - noEffect))/4; // Maximum 1 - 0.25
+
+            // Apply the opacity to the overlay
+            document.getElementById('overlay').style.opacity = opacity;
+        });
+    </script>    
+</body>
+</html>
