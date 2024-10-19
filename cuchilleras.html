@@ -108,7 +108,7 @@
         }
 
         .field {
-            background-color: rgba(255, 255, 255, 0.75) !important;
+            background-color: rgba(255, 255, 255, 0.85) !important;
         }
 
         #overlay {
@@ -138,13 +138,13 @@
             width: 100%; /* Ensure it spans the available width */
         }
 
-        table {
+        .alphabet-table {
             border-collapse: collapse; /* Optional: removes spacing between table cells */
             table-layout: auto; /* Allows columns to adjust based on their content */
             width: 100%; /* Allows the table to grow and shrink based on content */
         }
 
-        td {
+        .alphabet-table td {
             border: 1px solid #ddd; /* Optional: table borders */
             padding: 8px;
             text-align: left;
@@ -153,14 +153,39 @@
         }
 
         /* Style for the first column (both header and body) */
-        td:first-child {
+        .alphabet-table td:first-child {
             background-color: #f4f4f4; /* First column background color */
             font-weight: 500; /* Bold text for the first column */
         }
 
         /* Style for the rest of the columns */
-        td:not(:first-child) {
+        .alphabet-table td:not(:first-child) {
             background-color: white; /* Rest of the columns background color */
+        }
+
+        .transparent-table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 0 auto; /* Centers the table horizontally in the container */
+        }
+
+        @media only screen and (max-width: 768px) {
+            .transparent-table {
+                width: 100%; /* Ensure the table takes up the full width of the container */
+            }
+        }
+
+        .transparent-table tr, td {
+            text-align: center;
+            font-size: large;
+            vertical-align: middle;
+            padding: 10px; /* Optional: Adds some space inside cells */
+            background-color: transparent !important; /* Ensures no background color */
+            border: none; /* Ensures no borders around cells */
+        }
+
+        .no-ligatures {
+            font-variant-ligatures: none; /* Disable ligatures for the text */
         }
 </style>
 </head>
@@ -190,7 +215,7 @@
             <p>La fuente busca ser un nuevo estándar para la escritura del español. Se basa en <a href="https://fonts.google.com/noto" target="_blank"><b>Noto</b></a>, la fuente de código abierto de Google, e <b>incorpora <i>tres</i> nuevas letras</b> que buscan sustituir los tres dígrafos consonánticos del español (<i><b>c'h</b></i>, <i><b>l'l</b></i>, <i><b>r'r</b></i>), a la par que <b>raya las <i>zetas</i> y el <i>siete</i></b>, como tradicionalmente se hace en nuestro idioma.</p>
             <h3 style="text-align: center">Abecedario</h3>
             <div class="table-container">
-                <table>
+                <table class="alphabet-table">
                     <tbody>
                         <tr style="font-size: larger;">
                             <td style="font-size: medium;">Mayúscula</td>
@@ -297,7 +322,7 @@
             <p></p>
             <h3 style="text-align: center">Números</h3>
             <div class="table-container">
-                <table>
+                <table class="alphabet-table">
                     <tbody>
                         <tr style="font-size: larger;">
                             <td style="font-size: medium;">Número</td>
@@ -315,8 +340,22 @@
                     </tbody>
                 </table>
             </div>
-            Todos estos caracteres están incorporados en la fuente y aparecerán automáticamente al escribir en español como de costumbre. En caso de necesitar partir una de las nuevas letras en dígrafo, basta escribir un apóstrofo entre ambas letras:
-            <p style="text-align: center; font-size: large;">c'h = c ' h &emsp;&emsp;&emsp; l'l = l ' l &emsp;&emsp;&emsp; r'r = r ' r</p>
+            Todos estos caracteres están incorporados en la fuente y <b>aparecerán <i>automáticamente</i></b> al escribir en español como de costumbre.<br>
+            En caso de necesitar partir una de las nuevas letras en dígrafo, basta escribir un <i>apóstrofo</i> (<b>'</b>) entre ambas letras.
+            <table class="transparent-table">
+                <tr>
+                    <td><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
+                    <td class="no-ligatures"><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
+                </tr>
+                <tr>
+                    <td><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
+                    <td class="no-ligatures"><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
+                </tr>
+                <tr>
+                    <td><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
+                    <td class="no-ligatures"><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
+                </tr>
+            </table>
         </section>
         <section class="main"></section>
 
@@ -331,9 +370,9 @@
         <!-- Banner -->
         <section class="field">
             <h2 style="text-align: center">Último escollo del español</h2>
-            <p>La adopción de esta escritura a través de <i>Cuchilleras</i> u otra fuente que la siga, implica que la única frase del español no representable por escrito debido a la existencia de dígrafos ahora sí se puede escribir:</p>
+            <p>La adopción de esta escritura a través de <i>Cuchilleras</i> u otra fuente que la siga, implica que <a href="https://static.ow.ly/docs/imperativo%20de%20salir%20con%20cl%C3%ADtico_4REK.pdf">la única frase del español no representable por escrito</a> debido a la existencia de dígrafos ahora sí se puede escribir:</p>
             <p style="font-family: Cuchilleras; font-weight: 300; font-size: x-large; text-align: center;">Sal'le al paso / Sal'le al encuentro</p>
-            <p>Esto se leería como se espera, ya que en este sistema se distingue en la escritura entre <i><b>sal'le</b></i> (<i>ele geminada</i>) y <i><b>salle</b></i> (<i>elle</i>).</p>
+            <p>Esto se leería como se espera, ya que en este sistema se distingue en la escritura entre <i><b>sal'le</b></i> (<i>ele geminada</i>) y <i><b>salle</b></i> (<i>el'le</i>).</p>
         </section>
         <section class="main"></section>
 
