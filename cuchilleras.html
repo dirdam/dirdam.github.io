@@ -145,26 +145,25 @@
         }
 
         .alphabet-table td {
-            border: 1px solid #ddd; /* Optional: table borders */
+            border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
             white-space: nowrap; /* Prevents text from wrapping, so columns expand based on content */
             text-align: center;
         }
 
         /* Style for the first column (both header and body) */
         .alphabet-table td:first-child {
-            background-color: #f4f4f4; /* First column background color */
+            background-color: #f4f4f4 !important; /* First column background color */
             font-weight: 500; /* Bold text for the first column */
         }
 
         /* Style for the rest of the columns */
         .alphabet-table td:not(:first-child) {
-            background-color: white; /* Rest of the columns background color */
+            background-color: white !important; /* Rest of the columns background color */
         }
 
         .transparent-table {
-            width: 50%;
+            width: 75%;
             border-collapse: collapse;
             margin: 0 auto; /* Centers the table horizontally in the container */
         }
@@ -212,7 +211,7 @@
         <!-- Banner -->
         <section class="field" onmouseover="document.getElementById('overlay').style.backgroundColor='rgb(254,248,219)'" onmouseout="document.getElementById('overlay').style.backgroundColor='#f4f4f4'">
             <h2 style="text-align: center">La fuente que el español se merece</h2>
-            <p>La fuente busca ser un nuevo estándar para la escritura del español. Se basa en <a href="https://fonts.google.com/noto" target="_blank"><b>Noto</b></a>, la fuente de código abierto de Google, e <b>incorpora <i>tres</i> nuevas letras</b> que buscan sustituir los tres dígrafos consonánticos del español (<i><b>c'h</b></i>, <i><b>l'l</b></i>, <i><b>r'r</b></i>), a la par que <b>raya las <i>zetas</i> y el <i>siete</i></b>, como tradicionalmente se hace en nuestro idioma.</p>
+            La fuente busca ser un nuevo estándar para la escritura del español. Se basa en <a href="https://fonts.google.com/noto" target="_blank"><b>Noto</b></a>, la fuente de código abierto de Google, e <b>incorpora <i>tres</i> nuevas letras</b> que buscan sustituir los tres dígrafos consonánticos del español (<i><b>c'h</b></i>, <i><b>l'l</b></i>, <i><b>r'r</b></i>), a la par que <b>raya las <i>zetas</i> y el <i>siete</i></b>, como tradicionalmente se hace en nuestro idioma.</p>
             <h3 style="text-align: center">Abecedario</h3>
             <div class="table-container">
                 <table class="alphabet-table">
@@ -284,7 +283,7 @@
                             <td style="font-weight: 500;">z</td>
                         </tr>
                         <tr>
-                            <td>Nombre</td>
+                            <td style="font-size: medium;">Nombre</td>
                             <td><i>a</i></td>
                             <td><i>be</i></td>
                             <td><i>ce</i></td>
@@ -293,7 +292,7 @@
                             <td><i>e</i></td>
                             <td><i>efe</i></td>
                             <td><i>ge</i></td>
-                            <td><i>hache</i></td>
+                            <td><i>hac'he</i></td>
                             <td><i>i</i></td>
                             <td><i>jota</i></td>
                             <td><i>ka</i></td>
@@ -345,17 +344,19 @@
             <table class="transparent-table">
                 <tr>
                     <td><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
-                    <td class="no-ligatures"><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
-                </tr>
-                <tr>
                     <td><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
-                    <td class="no-ligatures"><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
+                    <td><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
                 </tr>
                 <tr>
-                    <td><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
+                    <td class="no-ligatures"><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
+                    <td class="no-ligatures"><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
                     <td class="no-ligatures"><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
                 </tr>
             </table>
+            <p>Por supuesto, la fuente es <b>gratuita</b> y de <b>código abierto</b>, por lo que puede ser descargada, utilizada y modificada por cualquiera.</p>
+            <div class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
+                <a href="assets/others/cuchilleras.zip" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a>
+            </div>
         </section>
         <section class="main"></section>
 
