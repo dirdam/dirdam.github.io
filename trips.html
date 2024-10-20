@@ -38,6 +38,7 @@
 			#world-map path#DE,
 			#world-map path#TW,
 			#world-map path#PT,
+			#world-map path#HU,
 			#world-map path#KR,
 			#world-map path.China,
 			#world-map path.Spain {
@@ -81,6 +82,7 @@
 				padding: 10px;
 				display: none;
 				border-radius: 8px;
+				text-align: center;
 				box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 				z-index: 100; /* To ensure it's on top of other elements */
 			}
@@ -99,8 +101,11 @@
 			#map-legend .legend-color {
 				width: 20px;
 				height: 20px;
-				display: inline-block;
+				display: inline-flex;
 				margin-right: 10px;
+				text-align: center;
+				align-items: center; /* Centers content vertically */
+				justify-content: center; /* Centers content horizontally */
 			}
 
 			#map-legend .mixed-purple {
@@ -1129,23 +1134,23 @@
 						<div id="info-box"></div>
 						<div id="map-legend">
 							<div class="legend-item">
-								<span class="legend-color" style="background-color: red;"></span>
+								<span class="legend-color" style="background-color: red;"><b style="color: white; text-shadow: 0 0 2px black, 0 0 2px black;">2</b></span>
 								<span class="legend-text" id="legend_1"></span>
 							</div>
 							<div class="legend-item">
-								<span class="legend-color mixed-orange"></span>
+								<span class="legend-color mixed-orange"><b style="color: black; text-shadow: 0 0 2px white, 0 0 2px white;">8</b></span>
 								<span class="legend-text" id="legend_2"></span>
 							</div>
 							<div class="legend-item">
-								<span class="legend-color mixed-purple"></span>
+								<span class="legend-color mixed-purple"><b style="color: white; text-shadow: 0 0 2px black, 0 0 2px black;">5</b></span>
 								<span class="legend-text" id="legend_3"></span>
 							</div>
 							<div class="legend-item">
-								<span class="legend-color striped"></span>
+								<span class="legend-color striped"><b style="color: black; text-shadow: 0 0 2px white, 0 0 2px white;">5</b></span>
 								<span class="legend-text" id="legend_4"></span>
 							</div>
 							<!-- Add more legend items as needed -->
-						</div>						
+						</div>
 					</section>
 					<section id="m3" class="main"></section>
 
@@ -1223,14 +1228,21 @@
 							// Codes for flags
 							let countryCodes = {"Spain": "es", "France": "fr", "Germany": "de", "China": "cn", "Netherlands": "nl", "United States": "us", 
 							"Portugal": "pt", "Republic of Korea": "ko", "Japan": "jp", "Philippines": "ph", "Indonesia": "id", "Hainan (China)": "cn", "Taiwan": "tw", 
-							"Turkey": "tr", "United Arab Emirates": "ae", "Qatar": "qa", "Switzerland": "ch", "Thailand": "th", "Brazil": "br", "Mexico": "mx"}; //https://github.com/lipis/flag-icons/tree/main/flags/1x1
+							"Turkey": "tr", "United Arab Emirates": "ae", "Qatar": "qa", "Switzerland": "ch", "Hungary": "hu", "Thailand": "th", 
+							"Brazil": "br", "Mexico": "mx"}; //https://github.com/lipis/flag-icons/tree/main/flags/1x1
+							let countryTime = {"Spain": "Y: 24", "France": "D: 3", "Germany": "D: 5", "China": "M: 5", "Netherlands": "", "United States": "M: 5", 
+							"Portugal": "D: 2", "Republic of Korea": "D: 12", "Japan": "Y: 11", "Philippines": "D: 5", "Indonesia": "D: 5", "Hainan (China)": "M: 5", "Taiwan": "D: 5", 
+							"Turkey": "", "United Arab Emirates": "", "Qatar": "", "Switzerland": "", "Hungary": "D: 7", "Thailand": "D: 6", 
+							"Brazil": "D: 4", "Mexico": "D: 8"};
 							if (countryName in countryCodes) { // If country is in the list
 								if (!["Spain", "Japan"].includes(countryName)) { // And not Spain or Japan, highlight
 									this.style.stroke = "red";
 									this.style.strokeWidth = "3px";	
 								}
 								//infoBox.textContent = countryName;
-								infoBox.innerHTML = '<img src="assets/flags/' + countryCodes[countryName] + '.svg" alt="' + countryName + '">';
+								let times = {"D": {"en": "Days", "es": "Días", "ja": "日"}, "M": {"en": "Months", "es": "Meses", "ja": "ヶ月"}, "Y": {"en": "Years", "es": "Años", "ja": "年"}};
+								let time = countryTime[countryName].replace("D", times["D"][chosen_language]).replace("M", times["M"][chosen_language]).replace("Y", times["Y"][chosen_language]);
+								infoBox.innerHTML = '<b>' + time + '</b>' + (time == "" ? '' : '<br>') + '<img src="assets/flags/' + countryCodes[countryName] + '.svg" alt="' + countryName + '">';
 								infoBox.style.display = 'block';
 								infoBox.style.left = event.pageX + 10 + 'px'; // 10 pixels right from the cursor
 								infoBox.style.top = event.pageY + 10 + 'px'; // 10 pixels below the cursor
