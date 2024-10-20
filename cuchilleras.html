@@ -168,9 +168,25 @@
             margin: 0 auto; /* Centers the table horizontally in the container */
         }
 
+        .table-desktop {
+            display: table;
+        }
+
+        .table-mobile {
+            display: none;
+        }
+
         @media only screen and (max-width: 768px) {
             .transparent-table {
                 width: 100%; /* Ensure the table takes up the full width of the container */
+            }
+
+            .table-desktop {
+                display: none; /* Hide the desktop table on mobile */
+            }
+
+            .table-mobile {
+                display: table; /* Show the mobile table on mobile */
             }
         }
 
@@ -178,7 +194,7 @@
             text-align: center;
             font-size: large;
             vertical-align: middle;
-            padding: 10px; /* Optional: Adds some space inside cells */
+            padding: 2px 10px !important; /* Optional: Adds some space inside cells */
             background-color: transparent !important; /* Ensures no background color */
             border: none; /* Ensures no borders around cells */
         }
@@ -339,9 +355,9 @@
                     </tbody>
                 </table>
             </div>
-            Todos estos caracteres están incorporados en la fuente y <b>aparecerán <i>automáticamente</i></b> al escribir en español como de costumbre.<br>
-            En caso de necesitar partir una de las nuevas letras en dígrafo, basta escribir un <i>apóstrofo</i> (<b>'</b>) entre ambas letras.
-            <table class="transparent-table">
+            <p style="margin-bottom: 10px;">Todos estos caracteres están incorporados en la fuente y <b>aparecerán <i>automáticamente</i></b> al escribir en español como de costumbre.<br>
+            En caso de necesitar partir una de las nuevas letras en dígrafo, basta escribir un <i>apóstrofo</i> (<b>'</b>) entre ambas letras.</p>
+            <table class="transparent-table table-desktop">
                 <tr>
                     <td><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
                     <td><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
@@ -353,6 +369,21 @@
                     <td class="no-ligatures"><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
                 </tr>
             </table>
+            <table class="transparent-table table-mobile">
+                <tr>
+                    <td><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
+                    <td class="no-ligatures"><b>ch</b> <span style="font-size: medium;">se escribe</span> <b>c'h</b></td>
+                </tr>
+                <tr>
+                    <td><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
+                    <td class="no-ligatures"><b>ll</b> <span style="font-size: medium;">se escribe</span> <b>l'l</b></td>
+                </tr>
+                <tr>
+                    <td><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
+                    <td class="no-ligatures"><b>rr</b> <span style="font-size: medium;">se escribe</span> <b>r'r</b></td>
+                </tr>
+            </table>
+            <br>
             <p>Por supuesto, la fuente es <b>gratuita</b> y de <b>código abierto</b>, por lo que puede ser descargada, utilizada y modificada por cualquiera.</p>
             <div class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
                 <a href="assets/others/cuchilleras.zip" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a>
