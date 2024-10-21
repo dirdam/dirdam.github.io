@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'CuchillerasSans';
+    src: url('https://dirdam.github.io/assets/css/fonts/CuchillerasSansVF.ttf') format('truetype');
+    font-weight: thin;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CuchillerasSans';
+    src: url('https://dirdam.github.io/assets/css/fonts/CuchillerasSansItalicVF.ttf') format('truetype');
+    font-weight: thin;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Cuchilleras';
+    src: url('https://dirdam.github.io/assets/css/fonts/CuchillerasVF.ttf') format('truetype');
+    font-weight: thin;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cuchilleras';
+    src: url('https://dirdam.github.io/assets/css/fonts/CuchillerasItalicVF.ttf') format('truetype');
+    font-weight: thin;
+    font-style: italic;
+}
