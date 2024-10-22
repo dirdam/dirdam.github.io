@@ -78,6 +78,10 @@
             .download-buttons a:last-child {
                 margin-bottom: 0; /* Remove margin from the last button */
             }
+
+            #in-field-button {
+                margin-bottom: 20px;
+            }
         }
 
         .field {
@@ -191,6 +195,53 @@
                 width: 100%; /* Ensure the textarea takes up the full width of the container */
             }
         }
+</style>
+<style> /* Custom styles for the range inputs */
+    input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(to right, rgb(216, 224, 249), rgb(152, 182, 243));
+        border-radius: 5px;
+        outline: none;
+        transition: background 0.3s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: transparent; /* Make the thumb transparent, as we're using a custom element */
+        cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    #font-weight-value,
+    #font-width-value {
+        cursor: grab;
+        user-select: none; /* Prevents text selection */
+        -webkit-user-select: none; /* For Safari */
+        -ms-user-select: none; /* For older IE/Edge */
+    }
+
+    #font-weight-value:active,
+    #font-width-value:active {
+        cursor: grabbing;
+    }
 </style>
 </head>
 <body style="-webkit-transition: all 1s; transition: all 1s">
@@ -374,14 +425,14 @@
             </table>
             <br>
             <p>Por supuesto, la fuente es <b>gratuita</b> y de <b>código abierto</b>, por lo que puede ser descargada, utilizada y modificada por cualquiera.</p>
-            <div class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
+            <div id="in-field-button" class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
                 <a href="https://github.com/dirdam/cuchilleras/tree/main?tab=readme-ov-file#c%C3%B3mo-instalar-en-tu-ordenador" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a>
             </div>
         </section>
         <section class="main"></section>
 
         <!-- Interactive Text Area Section -->
-        <section class="field">
+        <section class="field" onmouseover="document.getElementById('overlay').style.backgroundColor='rgb(244,244,254)'" onmouseout="document.getElementById('overlay').style.backgroundColor='#f4f4f4'">
             <h2 style="text-align: center">Prueba la fuente</h2>
             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                 <p style="font-size: large; margin-bottom: 10px;">Escribe aquí y comprueba cómo se ve tu texto en <i>Cuchilleras</i>:</p>
@@ -389,8 +440,24 @@
                     style="font-family: 'Cuchilleras'"></textarea>
                 
                 <p style="font-size: large; margin-bottom: 10px;">Mismo texto usando <i>Cuchilleras Sans</i>, la versión sin remate/serifa:</p>
-                <textarea id="font-test-sans"  class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." 
+                <textarea id="font-test-sans" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." 
                     style="font-family: 'CuchillerasSans'" readonly></textarea>
+        
+                <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
+                    <label for="font-weight" style="font-size: large; width: 60px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Peso:</label>
+                    <div style="position: relative; width: 200px;">
+                        <input type="range" id="font-weight" min="100" max="900" step="10" value="200" style="width: 100%;">
+                        <div id="font-weight-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">200</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center; margin-bottom: 20px;">
+                    <label for="font-width" style="font-size: large; width: 60px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Anc'ho:</label>
+                    <div style="position: relative; width: 200px;">
+                        <input type="range" id="font-width" min="60" max="100" step="1" value="100" style="width: 100%;">
+                        <div id="font-width-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">100%</div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="main"></section>
@@ -461,11 +528,91 @@
             // Apply the opacity to the overlay
             document.getElementById('overlay').style.opacity = opacity;
         });
+    </script>
+
+    <script>
+        const fontWeightInput = document.getElementById('font-weight');
+        const fontWidthInput = document.getElementById('font-width');
+        const fontWeightValue = document.getElementById('font-weight-value');
+        const fontWidthValue = document.getElementById('font-width-value');
+
+        const fontTest = document.getElementById('font-test');
+        const fontTestSans = document.getElementById('font-test-sans');
+
+        // Update the font weight
+        fontWeightInput.addEventListener('input', (event) => {
+            const weight = event.target.value;
+            updateSliderValuePosition(fontWeightInput, fontWeightValue);
+            fontWeightValue.textContent = weight;
+            fontTest.style.fontWeight = weight;
+            fontTestSans.style.fontWeight = weight;
+        });
+
+        // Update the font width
+        fontWidthInput.addEventListener('input', (event) => {
+            const width = event.target.value + '%';
+            updateSliderValuePosition(fontWidthInput, fontWidthValue);
+            fontWidthValue.textContent = width;
+            fontTest.style.fontStretch = width;
+            fontTestSans.style.fontStretch = width;
+        });
+
+        // Function to update the position of the value above the slider
+        function updateSliderValuePosition(slider, valueElement) {
+            const sliderRect = slider.getBoundingClientRect();
+            const thumbWidth = valueElement.offsetWidth; // Use the width of the value element for centering
+            const percentage = (slider.value - slider.min) / (slider.max - slider.min);
+            // const thumbPosition = percentage * (sliderRect.width - thumbWidth);
+            const thumbPosition = percentage * (sliderRect.width) - thumbWidth/2;
+
+            // Position the value element directly above the thumb
+            valueElement.style.left = `calc(${thumbPosition}px)`;
+            valueElement.textContent = slider.value + (slider.id === 'font-width' ? '%' : '');
+        }
+
+        // Initial position update for slider values
+        updateSliderValuePosition(fontWeightInput, fontWeightValue);
+        updateSliderValuePosition(fontWidthInput, fontWidthValue);
 
         // Sync the content between the two textareas
-        document.getElementById('font-test').addEventListener('input', function() {
-            document.getElementById('font-test-sans').value = this.value;
+        fontTest.addEventListener('input', function() {
+            fontTestSans.value = this.value;
         });
+
+        // Variables to store state
+        let isDraggingWeight = false;
+        let isDraggingWidth = false;
+
+        // Handle dragging for the weight value
+        fontWeightValue.addEventListener('mousedown', () => {
+            isDraggingWeight = true;
+        });
+        document.addEventListener('mouseup', () => {
+            isDraggingWeight = false;
+            isDraggingWidth = false;
+        });
+        document.addEventListener('mousemove', (event) => {
+            if (isDraggingWeight) {
+                updateSliderOnDrag(event, fontWeightInput, fontWeightValue);
+            }
+            if (isDraggingWidth) {
+                updateSliderOnDrag(event, fontWidthInput, fontWidthValue);
+            }
+        });
+
+        // Handle dragging for the width value
+        fontWidthValue.addEventListener('mousedown', () => {
+            isDraggingWidth = true;
+        });
+
+        // Function to update slider position based on drag
+        function updateSliderOnDrag(event, slider, valueElement) {
+            const sliderRect = slider.getBoundingClientRect();
+            const newSliderValue = ((event.clientX - sliderRect.left) / sliderRect.width) * (slider.max - slider.min) + parseFloat(slider.min);
+            slider.value = Math.min(slider.max, Math.max(slider.min, newSliderValue));
+            slider.dispatchEvent(new Event('input'));
+        }
+
     </script>
 </body>
 </html>
