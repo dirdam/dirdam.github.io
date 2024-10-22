@@ -4,7 +4,9 @@ $(document).ready(function(){
 
     // Make sure this.hash has a value before overriding default behavior
     var lang = ['#en', '#es', '#ja'];
-    if (this.hash !== "" && !lang.includes(this.hash)) {
+    // Check if the link is an external link
+    var isExternal = this.href && this.href.startsWith('http') && !this.href.startsWith(window.location.origin);
+    if (this.hash !== "" && !lang.includes(this.hash) && !isExternal) {
       // Prevent default anchor click behavior
       event.preventDefault();
 
@@ -20,6 +22,8 @@ $(document).ready(function(){
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
-    } // End if
+    } else if (isExternal) {
+      return true;
+    }
   });
 });
