@@ -34,19 +34,21 @@
         }
 
         /* Create a pseudo-element to handle the fixed background for all devices */
-        body::before {
+        #background-transition { /* If only one background image, change this id to body::before */
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("images/pic_cuchilleras_background.png"); /* Desktop background */
+            background-image: url("images/cuchilleras/pic_cuchilleras_background_left.png"); /* Desktop background */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
             z-index: -1; /* Ensure it's behind the content */
             will-change: transform; /* Optimize for better performance */
+            transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+            opacity: 1; /* Initially fully visible */
         }
         .download-buttons {
             display: flex;
@@ -60,8 +62,8 @@
         }
 
         @media only screen and (max-width: 768px) {
-            body::before {
-                background-image: url("images/pic_cuchilleras_background_mobile.png");
+            #background-transition { /* If only one background image, change this id to body::before */
+                background-image: url("images/cuchilleras/pic_cuchilleras_background_mobile_left.png");
             }
 
             .download-buttons {
@@ -312,7 +314,7 @@
 </head>
 <body style="-webkit-transition: all 1s; transition: all 1s">
     <!-- Header -->
-    <header id="header" class="alt" style="background-image: url('images/pic_cuchilleras.jpg'); background-size: cover;">
+    <header id="header" class="alt" style="background-image: url('images/cuchilleras/pic_cuchilleras.jpg'); background-size: cover;">
         <div class="inner">
             <h1>Cuchilleras</h1>
             <p style="font-weight: 400;">Innovación en la escritura del español</p>
@@ -320,9 +322,10 @@
     </header>
 
     <!-- Wrapper -->
+    <div id="background-transition"></div>
     <div id="overlay"></div>
     <div id="wrapper">
-        <img src="images/logo_cuchilleras.png" alt="">
+        <img src="images/cuchilleras/logo_cuchilleras.png" alt="">
 
         <div class="download-buttons" style="align-items: center; display: flex; justify-content: center;">
             <a href="https://github.com/dirdam/cuchilleras/tree/main?tab=readme-ov-file#c%C3%B3mo-instalar-en-tu-ordenador" class="button big"><span class="icon fas fa-download"></span> Descargar fuente</a>
@@ -544,7 +547,7 @@
         <section class="field" onmouseover="document.getElementById('overlay').style.backgroundColor='rgb(229,241,231)'" onmouseout="document.getElementById('overlay').style.backgroundColor='#f4f4f4'">
             <h2 style="text-align: center">Texto de ejemplo</h2>
             <p style="font-family: Cuchilleras; font-weight: 300; font-size: x-large;">«<i style="font-weight: 500;">Las Cuchilleras</i> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <span style="font-weight: 500;">Dehesa de Valgallego</span> (Área Recreativa), en el término municipal de <span style="font-weight: 500;">Torrelaguna</span>. Alrededor de <i style="font-weight: 500;">Las Cuchilleras</i> podemos encontrar otros lugares de interés para senderistas como el <span style="font-weight: 500;">Arroyo de San Vicente</span>, la <span style="font-weight: 500;">Atalaya de Arrebatacapas</span> o la chopera».</p>
-            <img src="images/pic_cuchilleras2.jpg" alt="">
+            <img src="images/cuchilleras/pic_cuchilleras2.jpg" alt="">
         </section>
         <section class="main"></section>
 
@@ -730,6 +733,46 @@
             } else {
                 fontTest.style.fontFamily = 'Cuchilleras';
             }
+        });
+    </script>
+    <script>
+        let isLeftBackground = true;
+
+        // Define images for desktop and mobile
+        const desktopImages = {
+            right: 'url("images/cuchilleras/pic_cuchilleras_background_right.png")',
+            left: 'url("images/cuchilleras/pic_cuchilleras_background_left.png")'
+        };
+
+        const mobileImages = {
+            right: 'url("images/cuchilleras/pic_cuchilleras_background_mobile_right.png")',
+            left: 'url("images/cuchilleras/pic_cuchilleras_background_mobile_left.png")'
+        };
+
+        // Determine which images to use based on screen width
+        function getCurrentImages() {
+            return window.innerWidth <= 768 ? mobileImages : desktopImages;
+        }
+
+        setInterval(() => {
+            const backgroundDiv = document.getElementById('background-transition');
+            const images = getCurrentImages(); // Get the images based on screen size
+
+            backgroundDiv.style.opacity = 0; // Start fading out
+
+            setTimeout(() => {
+                backgroundDiv.style.backgroundImage = isLeftBackground ? images.right : images.left;
+                
+                backgroundDiv.style.opacity = 1; // Fade back in with the new image
+                isLeftBackground = !isLeftBackground;
+            }, 1000); // Time to wait before changing the image (matches the fade-out duration)
+        }, 10000); // Repeat every 10 seconds
+
+        // Optional: Adjust images immediately on window resize
+        window.addEventListener('resize', () => {
+            const backgroundDiv = document.getElementById('background-transition');
+            const images = getCurrentImages();
+            backgroundDiv.style.backgroundImage = isLeftBackground ? images.left : images.right;
         });
 
     </script>
