@@ -183,7 +183,6 @@
         .responsive-textarea {
             width: 80%;
             height: 90px;
-            font-size: 40px;
             padding: 10px 20px;
             margin-bottom: 10px;
             border-radius: 5px;
@@ -230,6 +229,7 @@
         cursor: pointer;
     }
 
+    #font-size-value,
     #font-weight-value,
     #font-width-value {
         cursor: grab;
@@ -238,6 +238,7 @@
         -ms-user-select: none; /* For older IE/Edge */
     }
 
+    #font-size-value:active,
     #font-weight-value:active,
     #font-width-value:active {
         cursor: grabbing;
@@ -501,8 +502,7 @@
             <h2 style="text-align: center">Prueba la fuente</h2>
             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                 <p style="font-size: large; margin-bottom: 10px;">Escribe aquí y comprueba cómo se ve tu texto:</p>
-                <textarea id="font-test" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." 
-                    style="font-family: 'Cuchilleras'"></textarea>
+                <textarea id="font-test" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." style="font-family: 'Cuchilleras'; font-size: 24px;"></textarea>
                 
                 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative;">
                     <span id="switch-text-left" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;"><b>Cuchilleras</b></span>
@@ -514,7 +514,15 @@
                 </div>
 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
-                    <label for="font-weight" style="font-size: large; width: 60px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Peso:</label>
+                    <label for="font-size" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Tamaño:</label>
+                    <div style="position: relative; width: 200px;">
+                        <input type="range" id="font-size" min="14" max="40" step="1" value="24" style="width: 100%;">
+                        <div id="font-size-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">24</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
+                    <label for="font-weight" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Peso:</label>
                     <div style="position: relative; width: 200px;">
                         <input type="range" id="font-weight" min="100" max="900" step="10" value="200" style="width: 100%;">
                         <div id="font-weight-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">200</div>
@@ -522,9 +530,9 @@
                 </div>
                 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center; margin-bottom: 20px;">
-                    <label for="font-width" style="font-size: large; width: 60px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Anc'ho:</label>
+                    <label for="font-width" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Anc'ho:</label>
                     <div style="position: relative; width: 200px;">
-                        <input type="range" id="font-width" min="60" max="100" step="1" value="100" style="width: 100%;">
+                        <input type="range" id="font-width" min="62" max="100" step="1" value="100" style="width: 100%;">
                         <div id="font-width-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">100%</div>
                     </div>
                 </div>
@@ -601,12 +609,22 @@
     </script>
 
     <script>
+        const fontSizeInput = document.getElementById('font-size');
         const fontWeightInput = document.getElementById('font-weight');
         const fontWidthInput = document.getElementById('font-width');
+        const fontSizeValue = document.getElementById('font-size-value');
         const fontWeightValue = document.getElementById('font-weight-value');
         const fontWidthValue = document.getElementById('font-width-value');
 
         const fontTest = document.getElementById('font-test');
+
+        // Update the font size
+        fontSizeInput.addEventListener('input', (event) => {
+            const size = event.target.value;
+            updateSliderValuePosition(fontSizeInput, fontSizeValue);
+            fontSizeValue.textContent = size;
+            fontTest.style.fontSize = size + 'px';
+        });
 
         // Update the font weight
         fontWeightInput.addEventListener('input', (event) => {
@@ -618,10 +636,10 @@
 
         // Update the font width
         fontWidthInput.addEventListener('input', (event) => {
-            const width = event.target.value + '%';
+            const width = event.target.value;
             updateSliderValuePosition(fontWidthInput, fontWidthValue);
             fontWidthValue.textContent = width;
-            fontTest.style.fontStretch = width;
+            fontTest.style.fontStretch = width + '%';
         });
 
         // Function to update the position of the value above the slider
@@ -634,21 +652,25 @@
 
             // Position the value element directly above the thumb
             valueElement.style.left = `calc(${thumbPosition}px)`;
-            valueElement.textContent = slider.value + (slider.id === 'font-width' ? '%' : '');
+            valueElement.textContent = slider.value;
         }
 
         // Initial position update for slider values
+        updateSliderValuePosition(fontSizeInput, fontSizeValue);
         updateSliderValuePosition(fontWeightInput, fontWeightValue);
         updateSliderValuePosition(fontWidthInput, fontWidthValue);
 
         // Variables to store state
+        let isDraggingSize = false;
         let isDraggingWeight = false;
         let isDraggingWidth = false;
 
         // Handle dragging for the weight value
         // Generic function to handle the start of dragging
         function handleDragStart(event, type) {
-            if (type === 'weight') {
+            if (type === 'size') {
+                isDraggingSize = true;
+            } else if (type === 'weight') {
                 isDraggingWeight = true;
             } else if (type === 'width') {
                 isDraggingWidth = true;
@@ -657,6 +679,7 @@
 
         // Generic function to handle the end of dragging
         function handleDragEnd() {
+            isDraggingSize = false;
             isDraggingWeight = false;
             isDraggingWidth = false;
         }
@@ -664,6 +687,9 @@
         // Generic function to handle dragging movements
         function handleDragMove(event) {
             const touch = event.touches ? event.touches[0] : event; // Support both touch and mouse events
+            if (isDraggingSize) {
+                updateSliderOnDrag(touch, fontSizeInput, fontSizeValue);
+            }
             if (isDraggingWeight) {
                 updateSliderOnDrag(touch, fontWeightInput, fontWeightValue);
             }
@@ -674,6 +700,7 @@
 
         // Attach event listeners for both weight and width dragging
         ['mousedown', 'touchstart'].forEach(eventType => {
+            fontSizeValue.addEventListener(eventType, (event) => handleDragStart(event, 'size'));
             fontWeightValue.addEventListener(eventType, (event) => handleDragStart(event, 'weight'));
             fontWidthValue.addEventListener(eventType, (event) => handleDragStart(event, 'width'));
         });
