@@ -646,26 +646,46 @@
         let isDraggingWidth = false;
 
         // Handle dragging for the weight value
-        fontWeightValue.addEventListener('mousedown', () => {
-            isDraggingWeight = true;
-        });
-        document.addEventListener('mouseup', () => {
+        // Generic function to handle the start of dragging
+        function handleDragStart(event, type) {
+            if (type === 'weight') {
+                isDraggingWeight = true;
+            } else if (type === 'width') {
+                isDraggingWidth = true;
+            }
+        }
+
+        // Generic function to handle the end of dragging
+        function handleDragEnd() {
             isDraggingWeight = false;
             isDraggingWidth = false;
-        });
-        document.addEventListener('mousemove', (event) => {
+        }
+
+        // Generic function to handle dragging movements
+        function handleDragMove(event) {
+            const touch = event.touches ? event.touches[0] : event; // Support both touch and mouse events
             if (isDraggingWeight) {
-                updateSliderOnDrag(event, fontWeightInput, fontWeightValue);
+                updateSliderOnDrag(touch, fontWeightInput, fontWeightValue);
             }
             if (isDraggingWidth) {
-                updateSliderOnDrag(event, fontWidthInput, fontWidthValue);
+                updateSliderOnDrag(touch, fontWidthInput, fontWidthValue);
             }
+        }
+
+        // Attach event listeners for both weight and width dragging
+        ['mousedown', 'touchstart'].forEach(eventType => {
+            fontWeightValue.addEventListener(eventType, (event) => handleDragStart(event, 'weight'));
+            fontWidthValue.addEventListener(eventType, (event) => handleDragStart(event, 'width'));
         });
 
-        // Handle dragging for the width value
-        fontWidthValue.addEventListener('mousedown', () => {
-            isDraggingWidth = true;
+        ['mouseup', 'touchend'].forEach(eventType => {
+            document.addEventListener(eventType, handleDragEnd);
         });
+
+        ['mousemove', 'touchmove'].forEach(eventType => {
+            document.addEventListener(eventType, handleDragMove);
+        });
+
 
         // Function to update slider position based on drag
         function updateSliderOnDrag(event, slider, valueElement) {
