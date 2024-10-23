@@ -231,6 +231,20 @@
         cursor: pointer;
     }
 
+    .slider-label {
+        font-size: large;
+        width: 80px;
+        text-align: right;
+        line-height: 1;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+
+    .slider-bar {
+        position: relative;
+        width: 200px;
+    }
+
     #font-size-value,
     #font-weight-value,
     #font-width-value {
@@ -269,14 +283,22 @@
     }
 
     @media only screen and (max-width: 768px) {
-            #switch-text-left {
-                right: 60px;
-            }
-
-            #switch-text-right {
-                left: 60px;
-            }
+        .slider-label {
+            margin-right: 10px;
         }
+
+        .slider-bar {
+            width: 150px;
+        }
+
+        #switch-text-left {
+            right: 60px;
+        }
+
+        #switch-text-right {
+            left: 60px;
+        }
+    }
 
     .slider {
         position: absolute;
@@ -517,24 +539,24 @@
                 </div>
 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
-                    <label for="font-size" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Tamaño:</label>
-                    <div style="position: relative; width: 200px;">
+                    <label class="slider-label" for="font-size">Tamaño:</label>
+                    <div class="slider-bar">
                         <input type="range" id="font-size" min="14" max="40" step="1" value="24" style="width: 100%;">
                         <div id="font-size-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">24</div>
                     </div>
                 </div>
 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
-                    <label for="font-weight" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Peso:</label>
-                    <div style="position: relative; width: 200px;">
+                    <label class="slider-label" for="font-weight">Peso:</label>
+                    <div class="slider-bar">
                         <input type="range" id="font-weight" min="100" max="900" step="10" value="200" style="width: 100%;">
                         <div id="font-weight-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">200</div>
                     </div>
                 </div>
                 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center; margin-bottom: 20px;">
-                    <label for="font-width" style="font-size: large; width: 80px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Anc'ho:</label>
-                    <div style="position: relative; width: 200px;">
+                    <label class="slider-label" for="font-width">Anc'ho:</label>
+                    <div class="slider-bar">
                         <input type="range" id="font-width" min="62" max="100" step="1" value="100" style="width: 100%;">
                         <div id="font-width-value" style="position: absolute; top: -10px; left: 0; transform: translateX(0); width: 40px; height: 30px; background-color: rgb(81, 111, 171); color: white; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 14px;">100%</div>
                     </div>
