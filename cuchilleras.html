@@ -242,6 +242,71 @@
     #font-width-value:active {
         cursor: grabbing;
     }
+
+    /* Styles for the toggle button */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    #switch-text-left {
+        right: 80px;
+    }
+
+    #switch-text-right {
+        left: 80px;
+    }
+
+    @media only screen and (max-width: 768px) {
+            #switch-text-left {
+                right: 60px;
+            }
+
+            #switch-text-right {
+                left: 60px;
+            }
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(216, 224, 249);
+        transition: 0.4s;
+        border-radius: 15px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: rgb(81, 111, 171);
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider {
+        background-color: rgb(152, 182, 243);
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+
 </style>
 </head>
 <body style="-webkit-transition: all 1s; transition: all 1s">
@@ -439,10 +504,15 @@
                 <textarea id="font-test" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." 
                     style="font-family: 'Cuchilleras'"></textarea>
                 
-                <p style="font-size: large; margin-bottom: 10px;">Mismo texto usando <i>Cuchilleras Sans</i>, la versión sin remate/serifa:</p>
-                <textarea id="font-test-sans" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." 
-                    style="font-family: 'CuchillerasSans'" readonly></textarea>
-        
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative;">
+                    <span id="switch-text-left" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;"><b>Cuchilleras</b></span>
+                    <label class="switch">
+                        <input type="checkbox" id="font-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span id="switch-text-right" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;"><b>Cuchilleras Sans</b></span>
+                </div>
+
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
                     <label for="font-weight" style="font-size: large; width: 60px; text-align: right; line-height: 1; margin-top: 15px; margin-right: 20px;">Peso:</label>
                     <div style="position: relative; width: 200px;">
@@ -537,7 +607,6 @@
         const fontWidthValue = document.getElementById('font-width-value');
 
         const fontTest = document.getElementById('font-test');
-        const fontTestSans = document.getElementById('font-test-sans');
 
         // Update the font weight
         fontWeightInput.addEventListener('input', (event) => {
@@ -545,7 +614,6 @@
             updateSliderValuePosition(fontWeightInput, fontWeightValue);
             fontWeightValue.textContent = weight;
             fontTest.style.fontWeight = weight;
-            fontTestSans.style.fontWeight = weight;
         });
 
         // Update the font width
@@ -554,7 +622,6 @@
             updateSliderValuePosition(fontWidthInput, fontWidthValue);
             fontWidthValue.textContent = width;
             fontTest.style.fontStretch = width;
-            fontTestSans.style.fontStretch = width;
         });
 
         // Function to update the position of the value above the slider
@@ -573,11 +640,6 @@
         // Initial position update for slider values
         updateSliderValuePosition(fontWeightInput, fontWeightValue);
         updateSliderValuePosition(fontWidthInput, fontWidthValue);
-
-        // Sync the content between the two textareas
-        fontTest.addEventListener('input', function() {
-            fontTestSans.value = this.value;
-        });
 
         // Variables to store state
         let isDraggingWeight = false;
@@ -612,6 +674,16 @@
             slider.value = Math.min(slider.max, Math.max(slider.min, newSliderValue));
             slider.dispatchEvent(new Event('input'));
         }
+
+        // Toggle between the two font families
+        document.getElementById('font-toggle').addEventListener('change', function() {
+            const fontTest = document.getElementById('font-test');
+            if (this.checked) {
+                fontTest.style.fontFamily = 'CuchillerasSans';
+            } else {
+                fontTest.style.fontFamily = 'Cuchilleras';
+            }
+        });
 
     </script>
 </body>
