@@ -282,6 +282,38 @@
         left: 80px;
     }
 
+    /* Tooltip styling */
+    .tooltip-icon {
+        display: inline-block;
+        margin-left: 5px;
+        color: #555;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .tooltip-icon::after {
+        content: attr(data-tooltip);
+        visibility: hidden;
+        opacity: 0;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 4px;
+        position: absolute;
+        top: -30px; /* Adjusts position above icon */
+        left: 50%;
+        transform: translateX(-50%);
+        transition: opacity 0.3s;
+        font-size: 12px;
+        z-index: 1;
+    }
+
+    .tooltip-icon:hover::after {
+        visibility: visible;
+        opacity: 1;
+    }
+
     @media only screen and (max-width: 768px) {
         .slider-label {
             margin-right: 10px;
@@ -297,6 +329,12 @@
 
         #switch-text-right {
             left: 60px;
+        }
+
+        .tooltip-icon::after {
+            left: auto; /* Reset center alignment */
+            right: 0; /* Align tooltip with the right side of the screen */
+            transform: translateX(0); /* Remove centering transform */
         }
     }
 
@@ -530,12 +568,17 @@
                 <textarea id="font-test" class="responsive-textarea" placeholder="Niño. Corre. Chilla. Lucha. Llora." style="font-family: 'Cuchilleras'; font-size: 24px;"></textarea>
                 
                 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px; position: relative;">
-                    <span id="switch-text-left" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;"><b>Cuchilleras</b></span>
+                    <span id="switch-text-left" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;">
+                        <b>Cuchilleras</b>
+                    </span>
                     <label class="switch">
                         <input type="checkbox" id="font-toggle">
                         <span class="slider"></span>
                     </label>
-                    <span id="switch-text-right" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;"><b>Cuchilleras Sans</b></span>
+                    <span id="switch-text-right" style="font-size: large; position: absolute; top: -4px; white-space: nowrap;">
+                        <b>Cuchilleras Sans</b>
+                        <span class="tooltip-icon" data-tooltip="Versión sin remate/serifa."> ⓘ</span>
+                    </span>
                 </div>
 
                 <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
