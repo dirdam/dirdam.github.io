@@ -14,6 +14,116 @@
 		<link rel="stylesheet" href="assets/css/sections.css" />
         <link rel="shortcut icon" href="images/lasso_logo.ico"/>
 	</head>
+	<style>
+		.hex-grid {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-bottom: 40px;
+			gap: 20px;
+		}
+
+		.hex-row {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+		}
+	
+		.hex {
+			flex: 0 0 auto; /* Ensure circles don't shrink or grow */
+			width: 150px; /* Circle size */
+			height: 150px;
+			border-radius: 50%;
+			background-color: #ccc;
+			transition: transform 0.3s ease, z-index 0.3s ease;
+			cursor: pointer;
+			overflow: hidden;
+			border: 1px solid black;
+		}
+
+		.hex img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			/* border-radius: 50%; Ensures the image fits inside the circle */
+		}
+
+		.hex:hover {
+			transform: scale(1.2);
+			z-index: 10; /* Bring the hovered hexagon to the front */
+		}
+
+		.hex:hover .hex-text {
+			opacity: 1;
+			bottom: 0; /* Adjust animation as required */
+		}
+
+		.hex-text {
+			position: absolute;
+			/* bottom: -150px; */
+			width: 100%;
+			height: inherit;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 16px;
+			font-weight: bolder;
+			color: white;
+			/* add contour to text */
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 5px;
+			opacity: 0;
+			/* transition: bottom 0.3s ease, opacity 0.3s ease; */
+			transition: opacity 0.3s ease;
+		}
+
+		#highlight-container {
+			width: 100%;
+			/* height: 400px; */
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		#highlight-container img {
+			width: auto;
+			height: 300px;
+			object-fit: contain;
+			display: block; /* Image is shown */
+			border: 2px solid black;
+			border-radius: 10px;
+		}
+		#highlight-container img:hover {
+			box-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Add a shadow */
+			transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+		}
+
+		#highlight-container a {
+			text-decoration: none;
+			border: none;
+		}
+
+		#highlight-container .highlight-text {
+			/* background: rgba(0, 0, 0, 0.7); */
+			color: black;
+			padding: 10px;
+			font-size: 18px;
+			text-align: center;
+			margin-top: 10px;
+			width: 100%;
+		}
+
+		.hex {
+			transition: 0.3s ease; /* opacity 0.3s ease;*/
+		}
+	</style>
 	<body style="-webkit-transition: all 1s; transition: all 1s">
 
 		<!-- Header -->
@@ -33,7 +143,7 @@
 							<h2 id="main_title"></h2>
 						</header>
 						<h3 id="selection_summary"></h3>
-						<div style="text-transform: uppercase; text-align: center">
+						<!-- <div style="text-transform: uppercase; text-align: center">
 							<h5><a id="main_antichamber" href="#antichamber"></a></h5>
 							<h5><a id="main_obra" href="#obra"></a></h5>
 							<h5><a id="main_manifold" href="#manifold"></a></h5>
@@ -42,84 +152,46 @@
 							<h5><a id="main_tunic" href="#tunic"></a></h5>
 							<h5><a id="main_cocoon" href="#cocoon"></a></h5>
 							<h5><a id="main_sennaar" href="#sennaar"></a></h5>
-						</div>
+						</div> -->
 					</section>
 
-				<!-- Banner -->
-					<section id="antichamber" class="field" onmouseover="document.body.style.backgroundColor='rgba(15,15,15,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_antichamber" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(15,15,15)">
-								<a href="http://antichamber-game.com/" target="_blank" ><img src="images/pic_antichamber.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_antichamber"></h3>
-					</section><br>
-					<section id="obra" class="field" onmouseover="document.body.style.backgroundColor='rgba(40,40,20,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_obra" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(40,40,20)">
-								<a href="https://obradinn.com/" target="_blank"><img src="images/pic_obra.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_obra"></h3>
-					</section><br>
-					<section id="manifold" class="field" onmouseover="document.body.style.backgroundColor='rgba(185,185,170,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_manifold" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(185,185,170)">
-								<a href="https://manifold.garden/" target="_blank"><img src="images/pic_manifold2.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_manifold"></h3>
-					</section><br>
-					<section id="baba" class="field" onmouseover="document.body.style.backgroundColor='rgba(145,50,80,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_baba" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(145,50,80)">
-								<a href="https://hempuli.com/baba/" target="_blank"><img src="images/pic_baba.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_baba"></h3>
-					</section><br>
-					<section id="fez" class="field" onmouseover="document.body.style.backgroundColor='rgba(55,120,160,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_fez" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(55,120,160)">
-								<a href="https://fezgame.com/" target="_blank"><img src="images/pic_fez.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_fez"></h3>
-						<h3 id="selection_fez2"></h3>
-					</section><br>
-					<section id="tunic" class="field" onmouseover="document.body.style.backgroundColor='rgba(180,140,70,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_tunic" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(180,140,70)">
-								<a href="hhttps://tunicgame.com/" target="_blank"><img src="images/pic_tunic.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_tunic"></h3>
-						<h3 id="selection_tunic2"></h3>
-					</section><br>
-					<section id="cocoon" class="field" onmouseover="document.body.style.backgroundColor='rgba(90,60,60,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_cocoon" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(90,60,60)">
-								<a href="https://www.cocoongame.com/" target="_blank"><img src="images/pic_cocoon.png" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_cocoon"></h3>
-					</section><br>
-					<section id="sennaar" class="field" onmouseover="document.body.style.backgroundColor='rgba(185,175,75,0.1)'" onmouseout="document.body.style.backgroundColor='#f4f4f4'">						
-						<h3 id="title_sennaar" style="text-align: center; text-transform: uppercase; text-decoration: underline;"></h3>
-						<article class="item" style="margin-left: auto; margin-right: auto; padding-top: 0;">
-							<header class="explore_thumbnail" style="--box-shadow-color: rgb(185,175,75)">
-								<a href="https://www.focus-entmt.com/en/games/chants-of-sennaar" target="_blank"><img src="images/pic_sennaar.jpeg" alt=""></a>
-							</header>
-						</article>
-						<h3 id="selection_sennaar"></h3>
-					</section><br>
+					<section id="grid" class="field">
+						<div id="highlight-container"></div>
+						<div class="hex-grid">
+							<div class="hex">
+								<img src="images/pic_antichamber.jpeg" alt="Antichamber">
+								<div class="hex-text">Antichamber</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_obra.jpeg" alt="Return of the Obra Dinn">
+								<div class="hex-text">Return of the Obra Dinn</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_manifold2.jpeg" alt="Manifold Garden">
+								<div class="hex-text">Manifold Garden</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_baba.jpeg" alt="Baba is you">
+								<div class="hex-text">Baba is you</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_fez.jpeg" alt="Fez">
+								<div class="hex-text">Fez</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_tunic.jpeg" alt="Tunic">
+								<div class="hex-text">Tunic</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_cocoon.png" alt="Cocoon">
+								<div class="hex-text">Cocoon</div>
+							</div>
+							<div class="hex">
+								<img src="images/pic_sennaar.jpeg" alt="Chants of Sennar">
+								<div class="hex-text">Chants of Sennar</div>
+							</div>
+						</div>
+					</section>
 					<section id="m1" class="main"></section>
 
 				<!-- Banner -->
@@ -164,33 +236,9 @@
 					"header_title": {"type": "text", "en": "Games recommendations", "es": "Recomendaciones de juegos", "ja": "おすすめのゲーム"},
 					"header_subtitle": {"type": "html", "en": 'Food for thought', "es": 'Para darle al coco', "ja": '思考力を促す'},
 					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
-					"main_antichamber": {"type": "text", "en": "Antichamber", "es": "Antichamber", "ja": "Antichamber"},
-					"title_antichamber": {"type": "text", "en": "Antichamber", "es": "Antichamber", "ja": "Antichamber"},
-					"main_obra": {"type": "text", "en": "Return of the Obra Dinn", "es": "Return of the Obra Dinn", "ja": "Return of the Obra Dinn"},
-					"title_obra": {"type": "text", "en": "Return of the Obra Dinn", "es": "Return of the Obra Dinn", "ja": "Return of the Obra Dinn"},
-					"main_manifold": {"type": "text", "en": "Manifold Garden", "es": "Manifold Garden", "ja": "Manifold Garden"},
-					"title_manifold": {"type": "text", "en": "Manifold Garden", "es": "Manifold Garden", "ja": "Manifold Garden"},
-					"main_baba": {"type": "text", "en": "Baba is you", "es": "Baba is you", "ja": "Baba is you"},
-					"title_baba": {"type": "text", "en": "Baba is you", "es": "Baba is you", "ja": "Baba is you"},
-					"main_fez": {"type": "text", "en": "Fez", "es": "Fez", "ja": "Fez"},
-					"title_fez": {"type": "text", "en": "Fez", "es": "Fez", "ja": "Fez"},
-					"main_tunic": {"type": "text", "en": "Tunic", "es": "Tunic", "ja": "Tunic"},
-					"title_tunic": {"type": "text", "en": "Tunic", "es": "Tunic", "ja": "Tunic"},
-					"main_cocoon": {"type": "text", "en": "Cocoon", "es": "Cocoon", "ja": "Cocoon"},
-					"title_cocoon": {"type": "text", "en": "Cocoon", "es": "Cocoon", "ja": "Cocoon"},
-					"main_sennaar": {"type": "text", "en": "Chants of Sennar", "es": "Chants of Sennar", "ja": "Chants of Sennar"},
-					"title_sennaar": {"type": "text", "en": "Chants of Sennar", "es": "Chants of Sennar", "ja": "Chants of Sennar"},
 					"selection_summary": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">This is a selection of games which I consider marvels. If you like abstract thinking, deduction and logic but at the same time crave for new ways of thinking and thinking outside of the box these games will scratch your itch.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Esta es una selección de juegos que considero maravillas. Si te gustan el pensamiento abstracto, la deducción y la lógica pero a la vez buscas nuevas formas de pensar y ser sorprendido creo que estos juegos satisfarán tus inquietudes.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">こちらは私は素晴らしいと思うゲームの選抜です．あなたはもし抽象的思考，推理や論理が好きで新しい考え方や考えたことがない観点を見つけるのが好きならこの選抜はあなたに向いていると思います．</span>'},
-					"selection_antichamber": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Explore a facility where things are not always as they look. You\'ll have to use logic and "antilogic" to advance in the game.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Explora unas instalaciones donde las cosas no siempre son lo que parecen. Tendrás que usar la lógica y la «antilógica» para avanzar en el juego.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">不思議な施設を探検します．自らの探検方法によって環境も変わります．論理と「非論理」を使います．</span>'},
-					"selection_obra": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">You are a detective on a boat. Unlike other detective games where the story is given away by the choices you are given, this game is based on pure deduction. You\'ll feel actually solving mysteries.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Eres un detective en un barco. A diferencia de otros juegos de detectives donde la historia se revela por las opciones que te dan, este juego está basado exclusivamente en la deducción. Te sentirás realmente resolviendo misterios.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">あなたは探偵として船で調査します．他の探偵ゲームと違って，ストーリーが与えられる選択肢によって誘導されず，純粋な推理力を使う必要があります．本当に謎を解く探偵の気持ちになります．</span>'},
-					"selection_manifold": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Loops, maths, gravity, infinity. And puzzle-solving. What else do you need?</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Bucles, mates, gravedad, infinito. Y resolución de puzles. ¿Qué más necesitas?</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">ループ，数理，重力，無限大．そしてパズルを解く．それ以外要るものはない．</span>'},
-					"selection_baba": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Puzzles where you can change the logic of how the world works. Make the rules you need to beat each stage.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Puzles en los que puedes cambiar la lógica con la que funciona el mundo. Crea las reglas que necesites para pasarte cada pantalla.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">世界で働く論理を変えてパズルを解くゲームです．必要に応じたルールを作成し，各々のステージをクリアしましょう．</span>'},
-					"selection_fez": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Live in a 3D world with a 2D perspective. Thought-intense platformer where you\'ll also face an unknown language that you\'ll need to understand to travel to every possible place.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Vive en un mundo en 3D con una perspectiva en 2D. Un juego de plataformas cargado de pensamiento donde también te encontrarás con un idioma desconocido que tendrás que entender para poder acceder a todos los posibles lugares.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">2Dを見る3Dの世界．思考力をよく使うプラットフォーマーで，あらゆる場所にアクセスできるように不明な言語も復号しないといけません．</span>'},
 					"selection_fez2": {"type": "html", "en": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">If you want to write in Fez\'s script you can download the font I created <a href="fonts.html">here</a> (contains spoilers).</span>', "es": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Si quieres escribir como en Fez puedes descargar la fuente que creé <a href="fonts.html">aquí</a> (contiene spoilers).</span>', "ja": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Fezの言語で書きたい場合，私が作った<a href="fonts.html">このフォント</a>をダウンロードしてください．(スポイラーを含む)</span>'},
-					"selection_tunic": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Adventure game like no other. Back to when you were a kid and understood nothing but how to combat. The game forces you to little by little unravel an unknown language that will shed light on your adventure. It is packed with satisfactory secrets.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Un juego de aventura como ningún otro. Te devuelve a cuando eras un niño y no entendías nada salvo cómo combatir. El juego te fuerza poco a poco a desentrañar un idioma desconocido que arrojará luz sobre tu aventura. Está repleto de secretos satisfactorios.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">独特な冒険ゲームです．攻撃ボタンしか分からないあの子供の頃の時代に戻されます．ゲームが少しずつ不思議な言語を理解させて，冒険の目的が少しずつ明らかになります．発見する時にスッキリする不思議な秘密を山ほど織り込んでいます．</span>'},
 					"selection_tunic2": {"type": "html", "en": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">If you want to write in Tunic\'s script you can download the font I created <a href="fonts.html">here</a> (contains spoilers).</span>', "es": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Si quieres escribir como en Tunic puedes descargar la fuente que creé <a href="fonts.html">aquí</a> (contiene spoilers).</span>', "ja": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Tunicの言語で書きたい場合，私が作った<a href="fonts.html">このフォント</a>をダウンロードしてください．(スポイラーを含む)</span>'},
-					"selection_cocoon": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Puzzle adventure across worlds within worlds. Carry worlds, dive into worlds and think in and out of the box.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Aventura con puzles a través de mundos dentro de mundos. Lleva mundos, sumérgete en ellos y piensa dentro y fuera del contexto.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">ワールドの境を超えたパズル冒険です．ワールドを運ぶ，ワールドに潜り込む，外と中の区別で混乱するゲームです．</span>'},
-					"selection_sennaar": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Understand languages to understand their people. Make associations between glyphs and meanings to advance.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Entiende idiomas para entender a sus hablantes. Haz asociaciones entre glifos y significados para avanzar.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">言語を理解し，話者を理解せよ．進むために表記と意味の関係性を明確にする必要があります．</span>'},
 					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
 					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
 					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
@@ -203,16 +251,105 @@
 					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
 				};
 				fillLanguages(others);
-				// Languages flags
-				var flags = {
-					"media_hanayama": {"type": "title", "en": setTitle("en", "ja"), "es": setTitle("es", "ja"), "ja": setTitle("ja", "ja")},
-					"media_gengo": {"type": "title", "en": setTitle("en", "en"), "es": setTitle("es", "en"), "ja": setTitle("ja", "en")},
-					"media_fcej": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
-					"media_elpais": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
-					"media_mxm": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")},
-					"media_fcej2": {"type": "title", "en": setTitle("en", "es"), "es": setTitle("es", "es"), "ja": setTitle("ja", "es")}
-				}
-				fillLanguages(flags);
+			</script>
+			<script>
+				// Dynamically change the highlight container
+				var games_info = {"Antichamber": {"link": "http://antichamber-game.com/", "text": {"en": 'Explore a facility where things are not always as they look. You\'ll have to use logic and "antilogic" to advance in the game.', "es": 'Explora unas instalaciones donde las cosas no siempre son lo que parecen. Tendrás que usar la lógica y la «antilógica» para avanzar en el juego.', "ja": '不思議な施設を探検します．自らの探検方法によって環境も変わります．論理と「非論理」を使います．'}},
+				"Return of the Obra Dinn": {"link": "https://obradinn.com/", "text": {"en": 'You are a detective on a boat. Unlike other detective games where the story is given away by the choices you are presented, this game is based on pure deduction. You\'ll feel actually solving mysteries.', "es": 'Eres un detective en un barco. A diferencia de otros juegos de detectives donde la historia se revela por las opciones que te dan, este juego está basado exclusivamente en la deducción. Te sentirás realmente resolviendo misterios.', "ja": 'あなたは探偵として船で調査します．他の探偵ゲームと違って，ストーリーが与えられる選択肢によって誘導されず，純粋な推理力を使う必要があります．本当に謎を解く探偵の気持ちになります．'}},
+				"Manifold Garden": {"link": "https://manifold.garden/", "text": {"en": 'Loops, maths, gravity, infinity. And puzzle-solving. What else do you need?', "es": 'Bucles, mates, gravedad, infinito. Y resolución de puzles. ¿Qué más necesitas?', "ja": 'ループ，数理，重力，無限大．そしてパズルを解く．それ以外要るものはない．'}},
+				"Baba is you": {"link": "https://hempuli.com/baba/", "text": {"en": 'Puzzles where you can change the logic of how the world works. Make the rules you need to beat each stage.', "es": 'Puzles en los que puedes cambiar la lógica con la que funciona el mundo. Crea las reglas que necesites para pasarte cada pantalla.', "ja": '世界で働く論理を変えてパズルを解くゲームです．必要に応じたルールを作成し，各々のステージをクリアしましょう．'}},
+				"Fez": {"link": "https://fezgame.com/", "text": {"en": 'Live in a 3D world with a 2D perspective. Thought-intense platformer where you\'ll also face an unknown language that you\'ll need to understand to travel to every possible place.', "es": 'Vive en un mundo en 3D con una perspectiva en 2D. Un juego de plataformas cargado de pensamiento donde también te encontrarás con un idioma desconocido que tendrás que entender para poder acceder a todos los posibles lugares.', "ja": '2Dを見る3Dの世界．思考力をよく使うプラットフォーマーで，あらゆる場所にアクセスできるように不明な言語も復号しないといけません．'}},
+				"Tunic": {"link": "https://tunicgame.com/", "text": {"en": 'Adventure game like no other. Back to when you were a kid and understood nothing but how to combat. The game forces you to unravel little by little an unknown language that will shed light on your adventure. It is packed with satisfactory secrets.', "es": 'Un juego de aventura como ningún otro. Te devuelve a cuando eras un niño y no entendías nada salvo cómo combatir. El juego te fuerza poco a poco a desentrañar un idioma desconocido que arrojará luz sobre tu aventura. Está repleto de secretos satisfactorios.', "ja": '独特な冒険ゲームです．攻撃ボタンしか分からないあの子供の頃の時代に戻されます．ゲームが少しずつ不思議な言語を理解させて，冒険の目的が少しずつ明らかになります．発見する時にスッキリする不思議な秘密を山ほど織り込んでいます．'}},
+				"Cocoon": {"link": "https://www.cocoongame.com/", "text": {"en": 'Puzzle adventure across worlds within worlds. Carry worlds, dive into worlds and think in and out of the box.', "es": 'Aventura con puzles a través de mundos dentro de mundos. Lleva mundos, sumérgete en ellos y piensa dentro y fuera del contexto.', "ja": 'ワールドの境を超えたパズル冒険です．ワールドを運ぶ，ワールドに潜り込む，外と中の区別で混乱するゲームです．'}},
+				"Chants of Sennar": {"link": "https://www.focus-entmt.com/en/games/chants-of-sennaar", "text": {"en": 'Understand languages to understand their people. Make associations between glyphs and meanings to advance.', "es": 'Entiende idiomas para entender a sus hablantes. Haz asociaciones entre glifos y significados para avanzar.', "ja": '言語を理解し，話者を理解せよ．進むために表記と意味の関係性を明確にする必要があります．'}}};
+				document.addEventListener("DOMContentLoaded", function() {
+					const hexes = document.querySelectorAll(".hex");
+					const highlightContainer = document.getElementById("highlight-container");
+					const highlightImage = document.createElement("img");
+					const highlightText = document.createElement("div");
+					highlightText.classList.add("highlight-text");
+					
+					function updateHighlight(hex) {
+						// Update the highlight container
+						const imageSrc = hex.querySelector("img").src;
+						// const textContent = hex.querySelector(".hex-text").textContent;
+
+						const imageLink = document.createElement("a");
+						imageLink.href = games_info[hex.querySelector("img").alt]["link"];
+						imageLink.target = "_blank"; // Open the link in a new tab
+						highlightImage.src = imageSrc;
+						imageLink.appendChild(highlightImage);
+
+						highlightContainer.appendChild(imageLink);
+						highlightText.textContent = games_info[hex.querySelector("img").alt]["text"][chosen_language];
+						// highlightText.textContent = textContent;
+						highlightContainer.appendChild(highlightText);
+
+
+						// Dim other circles
+						hexes.forEach(h => {
+							h.style.opacity = h === hex ? "1" : "0.5";
+						});
+
+						fillLanguages(fillers);
+					}
+
+					// Pre-select
+					const preselect_name = "Tunic";
+					const preselectedHex = Array.from(hexes).find(hex => hex.querySelector("img").alt === preselect_name);
+					if (preselectedHex) {
+						updateHighlight(preselectedHex);
+					}
+
+					// Add click event listeners to each hex
+					hexes.forEach(hex => {
+						hex.addEventListener("click", () => {
+							updateHighlight(hex);
+						});
+					});
+				});
+			</script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					const container = document.querySelector(".hex-grid");
+					const hexes = Array.from(document.querySelectorAll(".hex"));
+
+					function adjustRows() {
+						const containerWidth = container.offsetWidth;
+						const circleWidth = hexes[0].offsetWidth + 20; // Circle width + gap
+						let maxCirclesPerRow = Math.floor(containerWidth / circleWidth); // Maximum number of circles in a row
+						let rowCount = 0;
+
+						// Ensure we alternate between even and odd rows
+						let remainingHexes = [...hexes]; // Clone the hexes array
+
+						container.innerHTML = ''; // Clear current layout
+
+						while (remainingHexes.length > 0) {
+							// Determine the number of circles for this row
+							const rowSize = rowCount % 2 === 0
+								? Math.min(maxCirclesPerRow, remainingHexes.length) // Odd rows
+								: Math.min(maxCirclesPerRow - 1, remainingHexes.length);   // Even rows
+
+							// Extract the hexes for the current row
+							const currentRow = remainingHexes.splice(0, rowSize);
+
+							// Create and append the row
+							const rowDiv = document.createElement('div');
+							rowDiv.classList.add('hex-row');
+							currentRow.forEach(hex => rowDiv.appendChild(hex));
+							container.appendChild(rowDiv);
+
+							rowCount++; // Increment row count
+						}
+					}
+
+					// Run on load
+					adjustRows();
+
+					// Adjust dynamically on window resize
+					window.addEventListener('resize', adjustRows);
+				});
 			</script>
 	</body>
 </html>
