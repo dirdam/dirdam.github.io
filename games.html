@@ -118,12 +118,17 @@
 			text-align: center;
 			margin-top: 10px;
 			width: 100%;
+			letter-spacing: 0.1rem;
 		}
 
 		@media (max-width: 768px) {
 			.hex {
 				width: 80px;
 				height: 80px;
+			}
+			.hex-text {
+				font-size: 14px;
+				line-height: 1.2;
 			}
 			#highlight-container img {
 				width: 100%;
@@ -150,16 +155,6 @@
 							<h2 id="main_title"></h2>
 						</header>
 						<h3 id="selection_summary"></h3>
-						<!-- <div style="text-transform: uppercase; text-align: center">
-							<h5><a id="main_antichamber" href="#antichamber"></a></h5>
-							<h5><a id="main_obra" href="#obra"></a></h5>
-							<h5><a id="main_manifold" href="#manifold"></a></h5>
-							<h5><a id="main_baba" href="#baba"></a></h5>
-							<h5><a id="main_fez" href="#fez"></a></h5>
-							<h5><a id="main_tunic" href="#tunic"></a></h5>
-							<h5><a id="main_cocoon" href="#cocoon"></a></h5>
-							<h5><a id="main_sennaar" href="#sennaar"></a></h5>
-						</div> -->
 					</section>
 
 					<section id="grid" class="field">
@@ -242,7 +237,7 @@
 				var fillers = {
 					"header_title": {"type": "text", "en": "Games recommendations", "es": "Recomendaciones de juegos", "ja": "おすすめのゲーム"},
 					"header_subtitle": {"type": "html", "en": 'Food for thought', "es": 'Para darle al coco', "ja": '思考力を促す'},
-					"main_title": {"type": "text", "en": "INDEX", "es": "ÍNDICE", "ja": "目次"},
+					"main_title": {"type": "text", "en": "GOOD GAME", "es": "BUEN JUEGO", "ja": "いいゲーム"},
 					"selection_summary": {"type": "html", "en": '<span style="letter-spacing: 0.1rem; font-size: 18px;">This is a selection of games which I consider marvels. If you like abstract thinking, deduction and logic but at the same time crave for new ways of thinking and thinking outside of the box these games will scratch your itch.</span>', "es": '<span style="letter-spacing: 0.1rem; font-size: 18px;">Esta es una selección de juegos que considero maravillas. Si te gustan el pensamiento abstracto, la deducción y la lógica pero a la vez buscas nuevas formas de pensar y ser sorprendido creo que estos juegos satisfarán tus inquietudes.</span>', "ja": '<span style="letter-spacing: 0.1rem; font-size: 18px;">こちらは私は素晴らしいと思うゲームの選抜です．あなたはもし抽象的思考，推理や論理が好きで新しい考え方や考えたことがない観点を見つけるのが好きならこの選抜はあなたに向いていると思います．</span>'},
 					"selection_fez2": {"type": "html", "en": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">If you want to write in Fez\'s script you can download the font I created <a href="fonts.html">here</a> (contains spoilers).</span>', "es": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Si quieres escribir como en Fez puedes descargar la fuente que creé <a href="fonts.html">aquí</a> (contiene spoilers).</span>', "ja": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Fezの言語で書きたい場合，私が作った<a href="fonts.html">このフォント</a>をダウンロードしてください．(スポイラーを含む)</span>'},
 					"selection_tunic2": {"type": "html", "en": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">If you want to write in Tunic\'s script you can download the font I created <a href="fonts.html">here</a> (contains spoilers).</span>', "es": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Si quieres escribir como en Tunic puedes descargar la fuente que creé <a href="fonts.html">aquí</a> (contiene spoilers).</span>', "ja": '<span style="color: red;" class="icon fas fa-keyboard"></span><span style="letter-spacing: 0.1rem; font-size: 18px;">Tunicの言語で書きたい場合，私が作った<a href="fonts.html">このフォント</a>をダウンロードしてください．(スポイラーを含む)</span>'},
