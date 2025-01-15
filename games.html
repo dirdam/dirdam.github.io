@@ -120,8 +120,15 @@
 			width: 100%;
 		}
 
-		.hex {
-			transition: 0.3s ease; /* opacity 0.3s ease;*/
+		@media (max-width: 768px) {
+			.hex {
+				width: 80px;
+				height: 80px;
+			}
+			#highlight-container img {
+				width: 100%;
+				height: auto;
+			}
 		}
 	</style>
 	<body style="-webkit-transition: all 1s; transition: all 1s">
@@ -261,7 +268,10 @@
 				"Fez": {"link": "https://fezgame.com/", "text": {"en": 'Live in a 3D world with a 2D perspective. Thought-intense platformer where you\'ll also face an unknown language that you\'ll need to understand to travel to every possible place.', "es": 'Vive en un mundo en 3D con una perspectiva en 2D. Un juego de plataformas cargado de pensamiento donde también te encontrarás con un idioma desconocido que tendrás que entender para poder acceder a todos los posibles lugares.', "ja": '2Dを見る3Dの世界．思考力をよく使うプラットフォーマーで，あらゆる場所にアクセスできるように不明な言語も復号しないといけません．'}},
 				"Tunic": {"link": "https://tunicgame.com/", "text": {"en": 'Adventure game like no other. Back to when you were a kid and understood nothing but how to combat. The game forces you to unravel little by little an unknown language that will shed light on your adventure. It is packed with satisfactory secrets.', "es": 'Un juego de aventura como ningún otro. Te devuelve a cuando eras un niño y no entendías nada salvo cómo combatir. El juego te fuerza poco a poco a desentrañar un idioma desconocido que arrojará luz sobre tu aventura. Está repleto de secretos satisfactorios.', "ja": '独特な冒険ゲームです．攻撃ボタンしか分からないあの子供の頃の時代に戻されます．ゲームが少しずつ不思議な言語を理解させて，冒険の目的が少しずつ明らかになります．発見する時にスッキリする不思議な秘密を山ほど織り込んでいます．'}},
 				"Cocoon": {"link": "https://www.cocoongame.com/", "text": {"en": 'Puzzle adventure across worlds within worlds. Carry worlds, dive into worlds and think in and out of the box.', "es": 'Aventura con puzles a través de mundos dentro de mundos. Lleva mundos, sumérgete en ellos y piensa dentro y fuera del contexto.', "ja": 'ワールドの境を超えたパズル冒険です．ワールドを運ぶ，ワールドに潜り込む，外と中の区別で混乱するゲームです．'}},
-				"Chants of Sennar": {"link": "https://www.focus-entmt.com/en/games/chants-of-sennaar", "text": {"en": 'Understand languages to understand their people. Make associations between glyphs and meanings to advance.', "es": 'Entiende idiomas para entender a sus hablantes. Haz asociaciones entre glifos y significados para avanzar.', "ja": '言語を理解し，話者を理解せよ．進むために表記と意味の関係性を明確にする必要があります．'}}};
+				"Chants of Sennar": {"link": "https://www.focus-entmt.com/en/games/chants-of-sennaar", "text": {"en": 'Understand languages to understand their people. Make associations between glyphs and meanings to advance.', "es": 'Entiende idiomas para entender a sus hablantes. Haz asociaciones entre glifos y significados para avanzar.', "ja": '言語を理解し，話者を理解せよ．進むために表記と意味の関係性を明確にする必要があります．'}},
+				"Outer Wilds": {"link": "https://www.mobiusdigitalgames.com/outer-wilds.html", "text": {"en": 'Explore a solar system where time loops every 22 minutes. Unravel the mysteries of the universe.', "es": 'Explora un sistema solar donde el tiempo se reinicia cada 22 minutos. Desentraña los misterios del universo.', "ja": '22分ごとに時間がループする太陽系を探検します．宇宙の謎を解き明かします．'}}
+
+				};
 				document.addEventListener("DOMContentLoaded", function() {
 					const hexes = document.querySelectorAll(".hex");
 					const highlightContainer = document.getElementById("highlight-container");
