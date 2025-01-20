@@ -116,9 +116,16 @@
 			padding: 10px;
 			font-size: 18px;
 			text-align: center;
-			margin-top: 10px;
 			width: 100%;
 			letter-spacing: 0.1rem;
+		}
+
+		#game_title {
+			font-size: 24px;
+			font-weight: bolder;
+			margin-top: 20px;
+			margin-bottom: 0;
+			text-decoration: underline;
 		}
 
 		@media (max-width: 768px) {
@@ -161,6 +168,7 @@
 
 					<section id="grid" class="field">
 						<div id="highlight-container"></div>
+						<h2 id="game_title"></h2>
 						<div class="hex-grid">
 							<div class="hex">
 								<img src="images/pic_antichamber.jpeg" alt="Antichamber">
@@ -285,8 +293,13 @@
 						imageLink.appendChild(highlightImage);
 
 						highlightContainer.appendChild(imageLink);
+
+						// Update game_title dynamically
+						const gameTitle = document.getElementById("game_title");
+						gameTitle.textContent = hex.querySelector("img").alt;
+						highlightContainer.appendChild(gameTitle);
+						
 						highlightText.textContent = games_info[hex.querySelector("img").alt]["text"][chosen_language];
-						// highlightText.textContent = textContent;
 						highlightContainer.appendChild(highlightText);
 
 
