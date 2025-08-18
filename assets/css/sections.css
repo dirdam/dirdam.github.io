@@ -942,6 +942,11 @@ table.alt tfoot {
 	-webkit-transition: opacity 2s ease;
 	-ms-transition: opacity 2s ease;
 	transition: opacity 2s ease;
+	opacity: 0; /* Start hidden by default */
+}
+
+/* Show the header content after loading */
+body:not(.is-loading) #header.alt .inner {
 	opacity: 1;
 }
 
