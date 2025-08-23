@@ -47,117 +47,235 @@
 		</ul>
 	</section>
 
-	<!-- Items -->
-	<section class="main items">
-		<article class="item">
-			<header>
-				<a id="main_background"><img src="images/pic_ginkgo.jpg" alt=""></a>
-				<h3 id="main_background_title"></h3>
-			</header>
-			<p id="main_background_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_background_button" href="background.html" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_work"><img src="images/pic_intercity.jpg" alt=""></a>
-				<h3 id="main_work_title"></h3>
-			</header>
-			<p id="main_work_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_work_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_squadro"><img src="images/pic_squadro_top.png" alt=""></a>
-				<h3 id="main_squadro_title"></h3>
-			</header>
-			<p id="main_squadro_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_squadro_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_marco"><img src="images/pic_marco_top2.jpg" alt=""></a>
-				<h3 id="main_marco_title"></h3>
-			</header>
-			<p id="main_marco_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_marco_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_fonts"><img src="images/pic_fonts2.png" alt=""></a>
-				<h3 id="main_fonts_title"></h3>
-			</header>
-			<p id="main_fonts_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_fonts_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_cuchilleras"><img src="images/cuchilleras/pic_cuchilleras2.jpg" alt=""></a>
-				<h3 id="main_cuchilleras_title"></h3>
-			</header>
-			<p id="main_cuchilleras_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_cuchilleras_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_apps"><img src="images/pic_apps.png" alt=""></a>
-				<h3 id="main_apps_title"></h3>
-			</header>
-			<p id="main_apps_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_apps_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_projects"><img src="images/pic_earth.jpg" alt=""></a>
-				<h3 id="main_projects_title"></h3>
-			</header>
-			<p id="main_projects_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_projects_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_games"><img src="images/pic_snes.png" alt=""></a>
-				<h3 id="main_games_title"></h3>
-			</header>
-			<p id="main_games_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_games_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_trips"><img src="images/pic_world.svg" alt=""></a>
-				<h3 id="main_trips_title"></h3>
-			</header>
-			<p id="main_trips_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_trips_button" class="button"></a></li>
-			</ul>
-		</article>
+	<!-- Tree Navigation -->
+	<section class="main tree-container">
+		<div class="tree-nav-wrapper">
+			<!-- Tree Navigation -->
+			<div class="tree-navigation">
+				<div class="tree-node root-node">
+					<div class="tree-item" 
+						data-bg="images/pic_ginkgo.jpg" 
+						data-subtitle-en="From undergraduate student to Doctor of Philosophy. Papers and talks can be found here."
+						data-subtitle-es="De estudiante universitario a Philosophiæ doctor. Aquí se pueden encontrar artículos y ponencias."
+						data-subtitle-ja="学部生から博士まで. ペーパーと参加した勉強会を閲覧できます."
+						data-href-en="background.html"
+						data-href-es="background.html#es"
+						data-href-ja="background.html#ja">
+						<span id="tree_about_me" class="tree-label">About me</span>
+					</div>
+					
+					<div class="tree-children">
+						<div class="tree-node">
+							<div class="tree-item"
+								data-bg="images/pic_intercity.jpg"
+								data-subtitle-en="Part-time jobs, internship and full-time employment."
+								data-subtitle-es="Trabajos a tiempo parcial, prácticas en empresa y empleo a tiempo completo."
+								data-subtitle-ja="アルバイト，インターンシップと正社員."
+								data-href-en="work.html"
+								data-href-es="work.html#es"
+								data-href-ja="work.html#ja">
+								<span id="tree_life_experience" class="tree-label">Life experience</span>
+							</div>
+							
+							<div class="tree-children">
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_ginkgo.jpg"
+										data-subtitle-en="From undergraduate student to Doctor of Philosophy. Papers and talks can be found here."
+										data-subtitle-es="De estudiante universitario a Philosophiæ doctor. Aquí se pueden encontrar artículos y ponencias."
+										data-subtitle-ja="学部生から博士まで. ペーパーと参加した勉強会を閲覧できます."
+										data-href-en="background.html"
+										data-href-es="background.html#es"
+										data-href-ja="background.html#ja">
+										<span class="tree-label">Bio</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_ginkgo.jpg"
+										data-subtitle-en="Academic background and research papers."
+										data-subtitle-es="Historial académico y artículos de investigación."
+										data-subtitle-ja="学歴と研究論文."
+										data-href-en="background.html"
+										data-href-es="background.html#es"
+										data-href-ja="background.html#ja">
+										<span class="tree-label">Academy</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_intercity.jpg"
+										data-subtitle-en="Part-time jobs, internship and full-time employment."
+										data-subtitle-es="Trabajos a tiempo parcial, prácticas en empresa y empleo a tiempo completo."
+										data-subtitle-ja="アルバイト，インターンシップと正社員."
+										data-href-en="work.html"
+										data-href-es="work.html#es"
+										data-href-ja="work.html#ja">
+										<span class="tree-label">Work</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_world.svg"
+										data-subtitle-en="All the places where I have been."
+										data-subtitle-es="Todos los lugares en los que he estado."
+										data-subtitle-ja="私が訪問したことがある全ての場所."
+										data-href-en="trips.html"
+										data-href-es="trips.html#es"
+										data-href-ja="trips.html#ja">
+										<span class="tree-label">Trips</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="tree-node">
+							<div class="tree-item"
+								data-bg="images/pic_snes.png"
+								data-subtitle-en="Selection of games for thinkers."
+								data-subtitle-es="Selección de juegos para pensadores."
+								data-subtitle-ja="考えることが好きな人への選抜."
+								data-href-en="games.html"
+								data-href-es="games.html#es"
+								data-href-ja="games.html#ja">
+								<span class="tree-label">Games</span>
+							</div>
+							
+							<div class="tree-children">
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_squadro_top.png"
+										data-subtitle-en="Squadro is a 2-player strategy board game created by myself and published by GIGAMIC. Learn about it and play it online here."
+										data-subtitle-es="Squadro es un juego de mesa de estrategia para 2 jugadores creado por mí mismo y publicado por GIGAMIC. Conoce más acerca de él y juégalo online aquí."
+										data-subtitle-ja="Squadro（スクアドロ）は私が考案した2人用戦略ボードゲームです．GIGAMICによって出版されています．Squadro についてもっと知って、オンラインで遊んでみてください."
+										data-href-en="squadro.html"
+										data-href-es="squadro.html#es"
+										data-href-ja="squadro.html#ja">
+										<span class="tree-label">Squadro</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_marco_top2.jpg"
+										data-subtitle-en="Marco Polo's Map is a puzzle game created by myself and published by HANAYAMA. Learn about it here."
+										data-subtitle-es="El mapa de Marco Polo es un juego-puzzle creado por mí mismo y publicado por HANAYAMA. Conoce más acerca de él aquí."
+										data-subtitle-ja="マルコ・ポーロの地図は私が考案したパズルゲームです．ハナヤマによって出版されています．マルコ・ポーロの地図 についてもっと知るのにこちらをクリックしてください."
+										data-href-en="marco_polo.html"
+										data-href-es="marco_polo.html#es"
+										data-href-ja="marco_polo.html#ja">
+										<span class="tree-label">Marco Polo</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_snes.png"
+										data-subtitle-en="Selection of games for thinkers."
+										data-subtitle-es="Selección de juegos para pensadores."
+										data-subtitle-ja="考えることが好きな人への選抜."
+										data-href-en="games.html"
+										data-href-es="games.html#es"
+										data-href-ja="games.html#ja">
+										<span class="tree-label">Recommendations</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="tree-node">
+							<div class="tree-item"
+								data-bg="images/pic_fonts2.png"
+								data-subtitle-en="Beautiful fonts to type exotic languages. Download the available ones or send your request here."
+								data-subtitle-es="Fuentes bonitas para escribir idiomas exóticos. Descarga las disponibles o envía tu encargo aquí."
+								data-subtitle-ja="不思議な言語を書くための素敵なフォント収集．こちらでフォントのダウンロードやリクエストはできます."
+								data-href-en="fonts.html"
+								data-href-es="fonts.html#es"
+								data-href-ja="fonts.html#ja">
+								<span class="tree-label">Fonts</span>
+							</div>
+							
+							<div class="tree-children">
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/cuchilleras/pic_cuchilleras2.jpg"
+										data-subtitle-en="The definitive font for writing in Spanish."
+										data-subtitle-es="La fuente definitiva para escribir en español."
+										data-subtitle-ja="スペイン語で書くための決定的なフォント."
+										data-href-en="cuchilleras.html"
+										data-href-es="cuchilleras.html#es"
+										data-href-ja="cuchilleras.html#ja">
+										<span class="tree-label">Cuchilleras</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_fonts2.png"
+										data-subtitle-en="Beautiful fonts to type exotic languages."
+										data-subtitle-es="Fuentes bonitas para escribir idiomas exóticos."
+										data-subtitle-ja="不思議な言語を書くための素敵なフォント収集."
+										data-href-en="fonts.html"
+										data-href-es="fonts.html#es"
+										data-href-ja="fonts.html#ja">
+										<span class="tree-label">Games fonts</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="tree-node">
+							<div class="tree-item"
+								data-bg="images/pic_earth.jpg"
+								data-subtitle-en="Programming as a hobby. I have created several online apps and games. You can try them and play them here."
+								data-subtitle-es="Programación como afición. He creado varias aplicaciones y juegos disponibles online. Puedes probarlas y jugarlos aquí."
+								data-subtitle-ja="プログラミングを，趣味として．様々なアプリやゲームを開発しました．こちらで試してみてください."
+								data-href-en="projects.html"
+								data-href-es="projects.html#es"
+								data-href-ja="projects.html#ja">
+								<span class="tree-label">Programming</span>
+							</div>
+							
+							<div class="tree-children">
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_apps.png"
+										data-subtitle-en="My deployed apps. Have fun!"
+										data-subtitle-es="Mis aplicaciones implementadas. ¡Diviértete!"
+										data-subtitle-ja="自分がデプロイしたアプリ．楽しんで！"
+										data-href-en="apps.html"
+										data-href-es="apps.html#es"
+										data-href-ja="apps.html#ja">
+										<span class="tree-label">Streamlit</span>
+									</div>
+								</div>
+								
+								<div class="tree-node">
+									<div class="tree-item"
+										data-bg="images/pic_earth.jpg"
+										data-subtitle-en="Programming as a hobby. I have created several online apps and games."
+										data-subtitle-es="Programación como afición. He creado varias aplicaciones y juegos disponibles online."
+										data-subtitle-ja="プログラミングを，趣味として．様々なアプリやゲームを開発しました."
+										data-href-en="projects.html"
+										data-href-es="projects.html#es"
+										data-href-ja="projects.html#ja">
+										<span class="tree-label">Exploring</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Subtitle Display Area -->
+			<div class="subtitle-display">
+				<h3 id="current-subtitle"></h3>
+			</div>
+		</div>
 	</section>
 
 	<!-- Call To Action -->
@@ -170,7 +288,7 @@
 
 	<!-- Footer -->
 	<footer id="footer">
-		<p id="footer_text" class="copyright"></p>
+		<p class="copyright">&copy; Adrï, 2025.</p>
 	</footer>
 
 </div>
@@ -198,69 +316,115 @@
 					"header_title": {"type": "text", "en": "Knotably clever", "es": "Ingenio al desnudo", "ja": "結びの一番"},
 					"intro_title": {"type": "text", "en": "Made of ideas.", "es": "Hecho de ideas.", "ja": "アイディアでできている．"},
 					"intro_subtitle": {"type": "text", "en": "About me", "es": "Sobre mí", "ja": "私について"},
-					"main_background": {"type": "href", "en": "background.html", "es": "background.html#es", "ja": "background.html#ja"},
-					"main_background_title": {"type": "text", "en": "Academic background", "es": "Historial académico", "ja": "学歴"},
-					"main_background_subtitle": {"type": "html", "en": 'From undergraduate student to <em>Doctor of Philosophy</em>.<br>Papers and talks can be found here.', "es": 'De estudiante universitario a <em>Philosophiæ doctor</em>.<br>Aquí se pueden encontrar artículos y ponencias.', "ja": '学部生から博士まで．<br>ペーパーと参加した勉強会を閲覧できます．'},
-					"main_background_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_work": {"type": "href", "en": "work.html", "es": "work.html#es", "ja": "work.html#ja"},
-					"main_work_title": {"type": "text", "en": "Working experience", "es": "Experiencia laboral", "ja": "職歴"},
-					"main_work_subtitle": {"type": "text", "en": "Part-time jobs, internship and full-time employment.", "es": "Trabajos a tiempo parcial, prácticas en empresa y empleo a tiempo completo.", "ja": "アルバイト，インターンシップと正社員．"},
-					"main_work_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_squadro": {"type": "href", "en": "squadro.html", "es": "squadro.html#es", "ja": "squadro.html#ja"},
-					"main_squadro_title": {"type": "text", "en": "Squadro", "es": "Squadro", "ja": "Squadro"},
-					"main_squadro_subtitle": {"type": "html", "en": "<em>Squadro</em> &nbsp;is a 2-player strategy board game created by myself and published by GIGAMIC. Learn about it and play it online here.", "es": "<em>Squadro</em> &nbsp;es un juego de mesa de estrategia para 2 jugadores creado por mí mismo y publicado por GIGAMIC. Conoce más acerca de él y juégalo online aquí.", "ja": "<em>Squadro</em>（スクアドロ）は私が考案した2人用戦略ボードゲームです．GIGAMICによって出版されています．<em>Squadro</em> についてもっと知って、オンラインで遊んでみてください．"},
-					"main_squadro_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_marco": {"type": "href", "en": "marco_polo.html", "es": "marco_polo.html#es", "ja": "marco_polo.html#ja"},
-					"main_marco_title": {"type": "text", "en": "Marco Polo's Map", "es": "El mapa de Marco Polo", "ja": "マルコ・ポーロの地図"},
-					"main_marco_subtitle": {"type": "html", "en": "<em>Marco Polo's Map</em> &nbsp;is a puzzle game created by myself and published by HANAYAMA. Learn about it here.", "es": "<em>El mapa de Marco Polo</em> &nbsp;es un juego-puzzle creado por mí mismo y publicado por HANAYAMA. Conoce más acerca de él aquí.", "ja": "<em>マルコ・ポーロの地図</em>は私が考案したパズルゲームです．ハナヤマによって出版されています．<em>マルコ・ポーロの地図</em> についてもっと知るのにこちらをクリックしてください．"},
-					"main_marco_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_fonts": {"type": "href", "en": "fonts.html", "es": "fonts.html#es", "ja": "fonts.html#ja"},
-					"main_fonts_title": {"type": "text", "en": "Fonts", "es": "Fuentes", "ja": "フォント"},
-					"main_fonts_subtitle": {"type": "html", "en": "Beautiful fonts to type exotic languages. Download the available ones or send your request here.", "es": "Fuentes bonitas para escribir idiomas exóticos. Descarga las disponibles o envía tu encargo aquí.", "ja": "不思議な言語を書くための素敵なフォント収集．こちらでフォントのダウンロードやリクエストはできます．"},
-					"main_fonts_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_cuchilleras": {"type": "href", "en": "cuchilleras.html", "es": "cuchilleras.html", "ja": "cuchilleras.html"},
-					"main_cuchilleras_title": {"type": "text", "en": "Cuchilleras", "es": "Cuchilleras", "ja": "Cuchilleras"},
-					"main_cuchilleras_subtitle": {"type": "html", "en": "The definitive font for writing in Spanish.<br>(Explanation only available in Spanish)", "es": "La fuente definitiva para escribir en español.", "ja": "スペイン語で書くための決定的なフォント．<br>（説明文はスペイン語のみ）"},
-					"main_cuchilleras_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_apps": {"type": "href", "en": "apps.html", "es": "apps.html#es", "ja": "apps.html#ja"},
-					"main_apps_title": {"type": "text", "en": "Apps", "es": "Apps", "ja": "アプリ"},
-					"main_apps_subtitle": {"type": "html", "en": "My deployed apps. Have fun!", "es": "Mis aplicaciones implementadas. ¡Diviértete!", "ja": "自分がデプロイしたアプリ．楽しんで！"},
-					"main_apps_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_projects": {"type": "href", "en": "projects.html", "es": "projects.html#es", "ja": "projects.html#ja"},
-					"main_projects_title": {"type": "text", "en": "Exploring", "es": "Explorar", "ja": "探検"},
-					"main_projects_subtitle": {"type": "text", "en": "Programming as a hobby. I have created several online apps and games. You can try them and play them here.", "es": "Programación como afición. He creado varias aplicaciones y juegos disponibles online. Puedes probarlas y jugarlos aquí.", "ja": "プログラミングを，趣味として．様々なアプリやゲームを開発しました．こちらで試してみてください．"},
-					"main_projects_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_games": {"type": "href", "en": "games.html", "es": "games.html#es", "ja": "games.html#ja"},
-					"main_games_title": {"type": "text", "en": "Games recommendations", "es": "Recomendaciones de juegos", "ja": "おすすめのゲーム"},
-					"main_games_subtitle": {"type": "text", "en": "Selection of games for thinkers.", "es": "Selección de juegos para pensadores.", "ja": "考えることが好きな人への選抜．"},
-					"main_games_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_trips": {"type": "href", "en": "trips.html", "es": "trips.html#es", "ja": "trips.html#ja"},
-					"main_trips_title": {"type": "text", "en": "Trips", "es": "Viajes", "ja": "旅行"},
-					"main_trips_subtitle": {"type": "text", "en": "All the places where I have been.", "es": "Todos los lugares en los que he estado.", "ja": "私が訪問したことがある全ての場所．"},
-					"main_trips_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
+					"tree_about_me": {"type": "text", "en": "About me", "es": "Sobre mí", "ja": "私について"},
+					"tree_life_experience": {"type": "text", "en": "Life experience", "es": "Experiencia de vida", "ja": "人生経験"},
 					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
 					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
 					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
-					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
-					"footer_text": {"type": "html", "en": '&copy; Adrï, 2025.', "es": '&copy; Adrï, 2025.', "ja": '&copy; Adrï，2025．'}
+					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"}
 				};
 				fillLanguages(fillers);
+				
 				// Others
-				var others = { // Necessary to avoid overlap
-					"main_background_button": {"type": "href", "en": "background.html", "es": "background.html#es", "ja": "background.html#ja"},
-					"main_work_button": {"type": "href", "en": "work.html", "es": "work.html#es", "ja": "work.html#ja"},
-					"main_squadro_button": {"type": "href", "en": "squadro.html", "es": "squadro.html#es", "ja": "squadro.html#ja"},
-					"main_marco_button": {"type": "href", "en": "marco_polo.html", "es": "marco_polo.html#es", "ja": "marco_polo.html#ja"},
-					"main_fonts_button": {"type": "href", "en": "fonts.html", "es": "fonts.html#es", "ja": "fonts.html#ja"},
-					"main_cuchilleras_button": {"type": "href", "en": "cuchilleras.html", "es": "cuchilleras.html#es", "ja": "cuchilleras.html#ja"},
-					"main_apps_button": {"type": "href", "en": "apps.html", "es": "apps.html#es", "ja": "apps.html#ja"},
-					"main_projects_button": {"type": "href", "en": "projects.html", "es": "projects.html#es", "ja": "projects.html#ja"},
-					"main_games_button": {"type": "href", "en": "games.html", "es": "games.html#es", "ja": "games.html#ja"},
-					"main_trips_button": {"type": "href", "en": "trips.html", "es": "trips.html#es", "ja": "trips.html#ja"},
+				var others = {
 					"intro_subtitle": {"type": "href", "en": "about.html", "es": "about.html#es", "ja": "about.html#ja"},
 					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
 				};
 				fillLanguages(others);
+
+				// Tree Navigation Functionality
+				function initTreeNavigation() {
+					const language = (window.location.hash.substr(1) && ['en', 'es', 'ja'].includes(window.location.hash.substr(1))) ? window.location.hash.substr(1) : "en";
+					const treeItems = document.querySelectorAll('.tree-item');
+					const subtitleDisplay = document.getElementById('current-subtitle');
+					const subtitleContainer = document.querySelector('.subtitle-display');
+					let currentBackground = null;
+					let currentSubtitle = null;
+					
+					// First, identify leaf nodes (nodes with no children)
+					treeItems.forEach(item => {
+						const parent = item.parentElement;
+						const hasChildren = parent.querySelector('.tree-children');
+						
+						if (!hasChildren) {
+							// This is a leaf node - make it clickable
+							item.classList.add('leaf-node');
+						}
+					});
+					
+					treeItems.forEach(item => {
+						const isLeafNode = item.classList.contains('leaf-node');
+						
+						// Hover effects only for leaf nodes (background change and subtitle)
+						if (isLeafNode) {
+							item.addEventListener('mouseenter', function() {
+								const bg = this.getAttribute('data-bg');
+								const subtitle = this.getAttribute(`data-subtitle-${language}`);
+								
+								if (bg && bg !== currentBackground) {
+									currentBackground = bg;
+									document.body.style.backgroundImage = `url('${bg}')`;
+									document.body.style.backgroundSize = 'cover';
+									document.body.style.backgroundPosition = 'center';
+									document.body.style.backgroundAttachment = 'fixed';
+									document.body.style.transition = 'background-image 0.6s ease-in-out';
+								}
+								
+								if (subtitle && subtitle !== currentSubtitle) {
+									currentSubtitle = subtitle;
+									if (subtitleDisplay && subtitleContainer) {
+										// Show the subtitle container
+										subtitleContainer.classList.add('show');
+										
+										// Smooth transition for subtitle change
+										subtitleDisplay.style.transition = 'opacity 0.3s ease-in-out';
+										subtitleDisplay.style.opacity = '0';
+										
+										setTimeout(() => {
+											subtitleDisplay.innerHTML = subtitle;
+											subtitleDisplay.style.opacity = '1';
+											subtitleDisplay.classList.add('show');
+										}, 150);
+									}
+								}
+							});
+							
+							item.addEventListener('mouseleave', function() {
+								// Hide the subtitle when leaving a leaf node
+								if (subtitleContainer) {
+									subtitleContainer.classList.remove('show');
+								}
+								if (subtitleDisplay) {
+									subtitleDisplay.classList.remove('show');
+								}
+							});
+							
+							// Click navigation for leaf nodes
+							item.addEventListener('click', function() {
+								const href = this.getAttribute(`data-href-${language}`);
+								if (href) {
+									// Add a subtle click animation
+									this.style.transform = 'translateX(-1px)';
+									setTimeout(() => {
+										window.location.href = href;
+									}, 150);
+								}
+							});
+						} else {
+							// Non-leaf nodes: only show subtle hover effect (no background change)
+							item.addEventListener('mouseenter', function() {
+								this.style.background = 'rgba(102, 102, 102, 0.05)';
+							});
+							
+							item.addEventListener('mouseleave', function() {
+								this.style.background = 'transparent';
+							});
+						}
+					});
+				}
+				
+				// Initialize tree navigation when page loads
+				document.addEventListener('DOMContentLoaded', initTreeNavigation);
 			</script>
 	</body>
 </html>
