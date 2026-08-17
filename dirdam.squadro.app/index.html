@@ -200,9 +200,14 @@
         </div>
 
         <div class="footer">
-            <p>Made by Adrian Jiménez Pascual</p>
-            <p><a href="https://dirdam.github.io" target="_blank">Visit my personal page</a></p>
+            <p>
+                &copy; <span id="footerYear"></span>
+                <a href="https://dirdam.github.io" target="_blank" rel="noopener noreferrer">Adri&aacute;n Jim&eacute;nez Pascual</a>
+            </p>
         </div>
     </div>
+    <script>
+        document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
