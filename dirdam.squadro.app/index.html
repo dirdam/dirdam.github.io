@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian's Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 50px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .tool-card.active {
+            border: 3px solid #667eea;
+        }
+
+        .tool-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .tool-card.coming-soon:hover {
+            transform: none;
+        }
+
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tool-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tool-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .tool-button:hover {
+            opacity: 0.9;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #999;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adrian's Tools</h1>
+        <p class="subtitle">Personal projects and web applications</p>
+
+        <div class="tools-grid">
+            <!-- Stock Market Visualization Tool -->
+            <div class="tool-card active" onclick="window.location.href='/stocks'">
+                <div class="tool-icon">📈</div>
+                <div class="tool-title">Stock Market Visualization</div>
+                <div class="tool-description">
+                    Interactive stock market analysis tool with valley detection algorithm. 
+                    Analyze undervaluation opportunities across Nikkei 225, Nasdaq 100, Dow Jones, and EURO STOXX 50.
+                </div>
+                <a href="/stocks" class="tool-button">Open Tool</a>
+            </div>
+
+            <!-- Placeholder for future tool 2 -->
+            <div class="tool-card coming-soon">
+                <div class="tool-icon">🛠️</div>
+                <div class="tool-title">Tool 2</div>
+                <div class="tool-description">
+                    Another exciting tool coming soon. Stay tuned for updates!
+                </div>
+                <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+
+            <!-- Placeholder for future tool 3 -->
+            <div class="tool-card coming-soon">
+                <div class="tool-icon">🚀</div>
+                <div class="tool-title">Tool 3</div>
+                <div class="tool-description">
+                    More tools in development. Check back later!
+                </div>
+                <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Made by Adrian Jiménez Pascual</p>
+            <p><a href="https://dirdam.github.io" target="_blank">Visit my personal page</a></p>
+        </div>
+    </div>
+</body>
+</html>
