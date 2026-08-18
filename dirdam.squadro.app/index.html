@@ -89,6 +89,26 @@
             color: #aeb4c7;
         }
 
+        .tool-card.timezones {
+            /* Same technique the app itself uses for its background: a faint
+               graticule grid (two thin-line gradients) over a midday sky
+               gradient, light blue fading into sunlit gold. */
+            background-image:
+                linear-gradient(rgba(20, 86, 127, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 86, 127, 0.06) 1px, transparent 1px),
+                linear-gradient(160deg, #8ec9ea 0%, #bfe3f7 30%, #eef6f5 55%, #fff3c4 75%, #ffe9a0 100%);
+            background-size: 32px 32px, 32px 32px, cover;
+            border-color: #14567f;
+        }
+
+        .tool-card.timezones .tool-title {
+            color: #1e3a52;
+        }
+
+        .tool-card.timezones .tool-description {
+            color: #34495e;
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -188,10 +208,21 @@
                 <a href="/solis" class="tool-button">Open Tool</a>
             </div>
 
-            <!-- Placeholder for future tool 3 -->
+            <!-- Solar Timezones -->
+            <div class="tool-card active timezones" onclick="window.location.href='/timezones'">
+                <div class="tool-icon">🕐</div>
+                <div class="tool-title">Solar Timezones</div>
+                <div class="tool-description">
+                    Compares official clock time with solar time worldwide. Search any city, or explore
+                    the map, to see how far its official clock has drifted from the Sun &mdash; and why.
+                </div>
+                <a href="/timezones" class="tool-button">Open Tool</a>
+            </div>
+
+            <!-- Placeholder for future tool 4 -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
-                <div class="tool-title">Tool 3</div>
+                <div class="tool-title">Tool 4</div>
                 <div class="tool-description">
                     More tools in development. Check back later!
                 </div>
