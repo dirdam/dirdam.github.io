@@ -196,6 +196,30 @@
             border-color: rgba(20, 86, 127, 0.25);
         }
 
+        .tool-card.flags {
+            /* Same wash the app itself uses as a background: a soft blend of the
+               flag-legend hues (red/gold/blue/green), evoking "a touch of color". */
+            background-image: linear-gradient(160deg, #fdeaea 0%, #fdf6e3 30%, #eef4fb 65%, #eef8ee 100%);
+            border-color: #d80027;
+        }
+
+        .tool-card.flags .tool-title {
+            background: linear-gradient(120deg, #d80027 0%, #0052b4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.flags .tool-description {
+            color: #555;
+        }
+
+        .tool-card.flags .badge {
+            background: rgba(216, 0, 39, 0.08);
+            color: #d80027;
+            border-color: rgba(216, 0, 39, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -450,6 +474,20 @@
                 <a href="/squadro-stats" class="tool-button" data-i18n="openApp">Open App</a>
             </div>
 
+            <!-- Flags -->
+            <div class="tool-card active flags" data-badges="geography" onclick="window.location.href='/flags'">
+                <div class="tool-icon">🏳️</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                </div>
+                <div class="tool-title" data-i18n="flagsTitle">Flags</div>
+                <div class="tool-description" data-i18n="flagsDesc">
+                    Interactive world map of flag colors: hover a country to see who shares its palette,
+                    or click a color to filter. Available in English, Spanish, and Japanese.
+                </div>
+                <a href="/flags" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Placeholder for future app -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
@@ -503,6 +541,9 @@
                 squadroStatsTitle: 'Squadro Statistics Visualizer',
                 squadroStatsDesc: `Interactive statistics for the board game Squadro as played on Board Game Arena: win
                     rates, game-length distributions, world rankings, ELO history, and full game replays.`,
+                flagsTitle: 'Flags',
+                flagsDesc: `Interactive world map of flag colors: hover a country to see who shares its palette,
+                    or click a color to filter. Available in English, Spanish, and Japanese.`,
                 nextAppTitle: 'Next App',
                 nextAppDesc: 'More apps in development.',
                 comingSoon: 'Coming Soon',
@@ -529,6 +570,9 @@
                 squadroStatsTitle: 'Visualizador de estadísticas de Squadro',
                 squadroStatsDesc: `Estadísticas interactivas del juego de mesa Squadro jugado en Board Game Arena: porcentajes
                     de victoria, distribución de la duración de las partidas, ranking mundial, historial de ELO y repeticiones completas.`,
+                flagsTitle: 'Banderas',
+                flagsDesc: `Mapa interactivo de los colores de las banderas del mundo: pasa el cursor sobre un país para ver
+                    quién comparte su paleta, o haz clic en un color para filtrar. Disponible en inglés, español y japonés.`,
                 nextAppTitle: 'Próxima app',
                 nextAppDesc: 'Más apps en desarrollo.',
                 comingSoon: 'Próximamente',
