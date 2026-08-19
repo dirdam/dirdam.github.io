@@ -384,6 +384,18 @@
             <path d="M13 17V5" />
             <path d="M8 17v-3" />
         </symbol>
+        <symbol id="icon-dna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m10 16 1.5 1.5" />
+            <path d="m14 8-1.5-1.5" />
+            <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" />
+            <path d="m16.5 10.5 1 1" />
+            <path d="m17 6-2.891-2.891" />
+            <path d="M2 15c6.667-6 13.333 0 20-6" />
+            <path d="m20 9 .5.5" />
+            <path d="m6.5 12.5 1 1" />
+            <path d="m7 18 2.891 2.891" />
+            <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" />
+        </symbol>
         <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10" />
             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
@@ -428,6 +440,10 @@
             <button type="button" class="filter-chip" data-badge="statistics" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg>
                 <span data-i18n="badgeStatistics">Statistics</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="genetics" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-dna"></use></svg>
+                <span data-i18n="badgeGenetics">Genetics</span>
             </button>
             <button type="button" class="filter-chip" data-badge="geography" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-globe"></use></svg>
@@ -524,11 +540,11 @@
             </div>
 
             <!-- Surnames Evolution -->
-            <div class="tool-card active surnames" data-badges="statistics geography" onclick="window.location.href='/surnames'">
+            <div class="tool-card active surnames" data-badges="statistics genetics" onclick="window.location.href='/surnames'">
                 <div class="tool-icon">🌳</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
-                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeGenetics">Genetics</span></span>
                 </div>
                 <div class="tool-title" data-i18n="surnamesTitle">Surnames Evolution</div>
                 <div class="tool-description" data-i18n="surnamesDesc">
@@ -577,6 +593,7 @@
                 badgeFinance: 'Finance',
                 badgeGame: 'Game',
                 badgeStatistics: 'Statistics',
+                badgeGenetics: 'Genetics',
                 badgeGeography: 'Geography',
                 badgeAstronomy: 'Astronomy',
                 badgeTime: 'Time',
@@ -610,6 +627,7 @@
                 badgeFinance: 'Finanzas',
                 badgeGame: 'Juego',
                 badgeStatistics: 'Estadísticas',
+                badgeGenetics: 'Genética',
                 badgeGeography: 'Geografía',
                 badgeAstronomy: 'Astronomía',
                 badgeTime: 'Tiempo',
