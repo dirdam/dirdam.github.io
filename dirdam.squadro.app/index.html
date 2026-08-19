@@ -220,6 +220,29 @@
             border-color: rgba(216, 0, 39, 0.25);
         }
 
+        .tool-card.surnames {
+            /* Same warm cream-to-sage wash the app itself uses as a background. */
+            background-image: linear-gradient(160deg, #f3ede3 0%, #eef4ec 45%, #eaf1ee 100%);
+            border-color: #8a5a3c;
+        }
+
+        .tool-card.surnames .tool-title {
+            background: linear-gradient(120deg, #8a5a3c 0%, #2f6b4f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.surnames .tool-description {
+            color: #5a5a5a;
+        }
+
+        .tool-card.surnames .badge {
+            background: rgba(138, 90, 60, 0.08);
+            color: #8a5a3c;
+            border-color: rgba(138, 90, 60, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -500,6 +523,21 @@
                 <a href="/flags" class="tool-button" data-i18n="openApp">Open App</a>
             </div>
 
+            <!-- Surnames Evolution -->
+            <div class="tool-card active surnames" data-badges="statistics geography" onclick="window.location.href='/surnames'">
+                <div class="tool-icon">🌳</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                </div>
+                <div class="tool-title" data-i18n="surnamesTitle">Surnames Evolution</div>
+                <div class="tool-description" data-i18n="surnamesDesc">
+                    Watch a simulated population's family names spread, compete, and go extinct across
+                    generations — pick a country's real surname data (US, Spain, Japan) and watch it play out.
+                </div>
+                <a href="/surnames" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Placeholder for future app -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
@@ -557,6 +595,9 @@
                 flagsTitle: 'Flags',
                 flagsDesc: `Interactive world map of flag colors: hover a country to see who shares its palette,
                     or click a color to filter.`,
+                surnamesTitle: 'Surnames Evolution',
+                surnamesDesc: `Watch a simulated population's family names spread, compete, and go extinct across
+                    generations — pick a country's real surname data (US, Spain, Japan) and watch it play out.`,
                 nextAppTitle: 'Next App',
                 nextAppDesc: 'More apps in development.',
                 comingSoon: 'Coming Soon',
@@ -587,6 +628,9 @@
                 flagsTitle: 'Banderas',
                 flagsDesc: `Mapa interactivo de los colores de las banderas del mundo: pasa el cursor sobre un país para ver
                     quién comparte su paleta, o haz clic en un color para filtrar.`,
+                surnamesTitle: 'Evolución de apellidos',
+                surnamesDesc: `Observa cómo los apellidos de una población simulada se propagan, compiten y se extinguen
+                    a lo largo de generaciones — elige los datos reales de apellidos de un país (EE.UU., España, Japón) y obsérvalo.`,
                 nextAppTitle: 'Próxima app',
                 nextAppDesc: 'Más apps en desarrollo.',
                 comingSoon: 'Próximamente',
