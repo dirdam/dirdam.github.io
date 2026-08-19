@@ -377,6 +377,13 @@
             <circle cx="12" cy="12" r="10" />
             <path d="M12 6v6l4 2" />
         </symbol>
+        <symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+        </symbol>
     </svg>
 
     <div class="container">
@@ -410,6 +417,10 @@
             <button type="button" class="filter-chip" data-badge="time" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-clock"></use></svg>
                 <span data-i18n="badgeTime">Time</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="colors" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-palette"></use></svg>
+                <span data-i18n="badgeColors">Colors</span>
             </button>
         </div>
 
@@ -475,10 +486,11 @@
             </div>
 
             <!-- Flags -->
-            <div class="tool-card active flags" data-badges="geography" onclick="window.location.href='/flags'">
-                <div class="tool-icon">🏳️</div>
+            <div class="tool-card active flags" data-badges="geography colors" onclick="window.location.href='/flags'">
+                <div class="tool-icon">🏳️‍🌈</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-palette"></use></svg><span data-i18n="badgeColors">Colors</span></span>
                 </div>
                 <div class="tool-title" data-i18n="flagsTitle">Flags</div>
                 <div class="tool-description" data-i18n="flagsDesc">
@@ -530,6 +542,7 @@
                 badgeGeography: 'Geography',
                 badgeAstronomy: 'Astronomy',
                 badgeTime: 'Time',
+                badgeColors: 'Colors',
                 stocksTitle: 'Stock Market Visualization',
                 stocksDesc: `Interactive stock market analysis tool with valley detection algorithm.
                     Analyze undervaluation opportunities across Nikkei 225, Nasdaq 100, Dow Jones, and EURO STOXX 50.`,
@@ -559,6 +572,7 @@
                 badgeGeography: 'Geografía',
                 badgeAstronomy: 'Astronomía',
                 badgeTime: 'Tiempo',
+                badgeColors: 'Colores',
                 stocksTitle: 'Visualización bursátil',
                 stocksDesc: `Herramienta interactiva de análisis bursátil con un algoritmo de detección de valles.
                     Analiza oportunidades de infravaloración en el Nikkei 225, el Nasdaq 100, el Dow Jones y el EURO STOXX 50.`,
