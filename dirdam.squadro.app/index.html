@@ -72,6 +72,47 @@
             margin-bottom: 50px;
         }
 
+        .filter-hint {
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .filter-chip:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .filter-chip[aria-pressed="true"] {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -123,6 +164,12 @@
             color: #aeb4c7;
         }
 
+        .tool-card.solis .badge {
+            background: rgba(255, 255, 255, 0.12);
+            color: #f1f3f8;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
         .tool-card.timezones {
             /* Same technique the app itself uses for its background: a faint
                graticule grid (two thin-line gradients) over a midday sky
@@ -143,9 +190,48 @@
             color: #34495e;
         }
 
+        .tool-card.timezones .badge {
+            background: rgba(20, 86, 127, 0.08);
+            color: #14567f;
+            border-color: rgba(20, 86, 127, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
+        }
+
+        .tool-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eef0fc;
+            color: #4c51bf;
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.72em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-icon {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+
+        .filter-chip .badge-icon {
+            width: 14px;
+            height: 14px;
         }
 
         .tool-title {
@@ -222,20 +308,95 @@
             .lang-toggle button {
                 padding: 12px 18px;
             }
+
+            .filter-chip {
+                padding: 10px 14px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Lucide icons (ISC license, https://lucide.dev), inlined as a sprite so badges/filters work fully offline. -->
+    <svg style="display: none" aria-hidden="true">
+        <symbol id="icon-trending-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 7h6v6" />
+            <path d="m22 7-8.5 8.5-5-5L2 17" />
+        </symbol>
+        <symbol id="icon-dices" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="12" height="12" x="2" y="10" rx="2" ry="2" />
+            <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" />
+            <path d="M6 18h.01" />
+            <path d="M10 14h.01" />
+            <path d="M15 6h.01" />
+            <path d="M18 9h.01" />
+        </symbol>
+        <symbol id="icon-bar-chart-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+            <path d="M18 17V9" />
+            <path d="M13 17V5" />
+            <path d="M8 17v-3" />
+        </symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+        </symbol>
+        <symbol id="icon-orbit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+        </symbol>
+    </svg>
+
     <div class="container">
         <div class="lang-toggle" id="langToggle" role="group" aria-label="Language"></div>
 
         <h1 data-i18n="pageTitle">Adrï's Apps</h1>
         <p class="subtitle" data-i18n="subtitle">Personal projects and web applications</p>
 
+        <p class="filter-hint" data-i18n="filterHint">Filter by category:</p>
+        <div class="filter-bar" id="filterBar" role="group" aria-label="Filter apps by category">
+            <button type="button" class="filter-chip" data-badge="finance" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-trending-up"></use></svg>
+                <span data-i18n="badgeFinance">Finance</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="game" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-dices"></use></svg>
+                <span data-i18n="badgeGame">Game</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="statistics" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg>
+                <span data-i18n="badgeStatistics">Statistics</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="geography" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-globe"></use></svg>
+                <span data-i18n="badgeGeography">Geography</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="astronomy" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-orbit"></use></svg>
+                <span data-i18n="badgeAstronomy">Astronomy</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="time" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-clock"></use></svg>
+                <span data-i18n="badgeTime">Time</span>
+            </button>
+        </div>
+
         <div class="tools-grid">
             <!-- Stock Market Visualization Tool -->
-            <div class="tool-card active" onclick="window.location.href='/stocks'">
+            <div class="tool-card active" data-badges="finance statistics" onclick="window.location.href='/stocks'">
                 <div class="tool-icon">📈</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-trending-up"></use></svg><span data-i18n="badgeFinance">Finance</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                </div>
                 <div class="tool-title" data-i18n="stocksTitle">Stock Market Visualization</div>
                 <div class="tool-description" data-i18n="stocksDesc">
                     Interactive stock market analysis tool with valley detection algorithm.
@@ -245,8 +406,12 @@
             </div>
 
             <!-- Ex parte Solis (name kept as-is in every language: it's Latin, not English) -->
-            <div class="tool-card active solis" onclick="window.location.href='/solis'">
+            <div class="tool-card active solis" data-badges="astronomy geography" onclick="window.location.href='/solis'">
                 <div class="tool-icon">☀️</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-orbit"></use></svg><span data-i18n="badgeAstronomy">Astronomy</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                </div>
                 <div class="tool-title">Ex parte Solis</div>
                 <div class="tool-description" data-i18n="solisDesc">
                     Interactive visualization of Earth from the Sun's reference frame, with a
@@ -256,8 +421,12 @@
             </div>
 
             <!-- Solar Timezones -->
-            <div class="tool-card active timezones" onclick="window.location.href='/timezones'">
+            <div class="tool-card active timezones" data-badges="geography time" onclick="window.location.href='/timezones'">
                 <div class="tool-icon">🕐</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
+                </div>
                 <div class="tool-title" data-i18n="timezonesTitle">Solar Timezones</div>
                 <div class="tool-description" data-i18n="timezonesDesc">
                     Compares official clock time with solar time worldwide. Search any city, or explore
@@ -267,8 +436,12 @@
             </div>
 
             <!-- Squadro Statistics Visualizer -->
-            <div class="tool-card active" onclick="window.location.href='/squadro-stats'">
+            <div class="tool-card active" data-badges="game statistics" onclick="window.location.href='/squadro-stats'">
                 <div class="tool-icon">🏆</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dices"></use></svg><span data-i18n="badgeGame">Game</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                </div>
                 <div class="tool-title" data-i18n="squadroStatsTitle">Squadro Statistics Visualizer</div>
                 <div class="tool-description" data-i18n="squadroStatsDesc">
                     Interactive statistics for the board game Squadro as played on Board Game Arena: win
@@ -312,6 +485,13 @@
             en: {
                 pageTitle: "Adrï's Apps",
                 subtitle: 'Personal projects and web applications',
+                filterHint: 'Filter by category:',
+                badgeFinance: 'Finance',
+                badgeGame: 'Game',
+                badgeStatistics: 'Statistics',
+                badgeGeography: 'Geography',
+                badgeAstronomy: 'Astronomy',
+                badgeTime: 'Time',
                 stocksTitle: 'Stock Market Visualization',
                 stocksDesc: `Interactive stock market analysis tool with valley detection algorithm.
                     Analyze undervaluation opportunities across Nikkei 225, Nasdaq 100, Dow Jones, and EURO STOXX 50.`,
@@ -331,6 +511,13 @@
             es: {
                 pageTitle: 'Las apps de Adrï',
                 subtitle: 'Proyectos personales y aplicaciones web',
+                filterHint: 'Filtrar por categoría:',
+                badgeFinance: 'Finanzas',
+                badgeGame: 'Juego',
+                badgeStatistics: 'Estadísticas',
+                badgeGeography: 'Geografía',
+                badgeAstronomy: 'Astronomía',
+                badgeTime: 'Tiempo',
                 stocksTitle: 'Visualización bursátil',
                 stocksDesc: `Herramienta interactiva de análisis bursátil con un algoritmo de detección de valles.
                     Analiza oportunidades de infravaloración en el Nikkei 225, el Nasdaq 100, el Dow Jones y el EURO STOXX 50.`,
@@ -404,6 +591,30 @@
         document.documentElement.lang = currentLang;
         applyStaticDict();
         renderToggle();
+
+        // --- Category filter: chips toggle independently (OR logic — a card
+        // shows if it matches ANY active chip); no chips active shows everything.
+        const filterBar = document.getElementById('filterBar');
+        const activeBadges = new Set();
+        const toolCards = document.querySelectorAll('.tool-card');
+
+        function updateCardVisibility() {
+            toolCards.forEach((card) => {
+                const badges = (card.getAttribute('data-badges') || '').split(/\s+/).filter(Boolean);
+                const visible = activeBadges.size === 0 || badges.some((b) => activeBadges.has(b));
+                card.style.display = visible ? '' : 'none';
+            });
+        }
+
+        filterBar.querySelectorAll('.filter-chip').forEach((chip) => {
+            chip.addEventListener('click', () => {
+                const badge = chip.getAttribute('data-badge');
+                const wasActive = chip.getAttribute('aria-pressed') === 'true';
+                chip.setAttribute('aria-pressed', String(!wasActive));
+                wasActive ? activeBadges.delete(badge) : activeBadges.add(badge);
+                updateCardVisibility();
+            });
+        });
     </script>
 </body>
 </html>
