@@ -121,12 +121,40 @@
         }
 
         .tool-card {
+            position: relative;
             background: white;
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+        }
+
+        /* Populated from /view-counts.json (see view-counts/ for the script
+           that derives it from nginx's access log) — hidden until that fetch
+           resolves, so it never flashes a stale/placeholder number. */
+        .view-badge {
+            display: none;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.06);
+            color: #6b7280;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        .view-badge.visible {
+            display: inline-flex;
+        }
+
+        .view-badge svg {
+            width: 14px;
+            height: 14px;
         }
 
         .tool-card:hover {
@@ -419,6 +447,10 @@
             <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
             <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
         </symbol>
+        <symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+            <circle cx="12" cy="12" r="3" />
+        </symbol>
     </svg>
 
     <div class="container">
@@ -466,6 +498,7 @@
         <div class="tools-grid">
             <!-- Stock Market Visualization Tool -->
             <div class="tool-card active" data-badges="finance statistics" onclick="window.location.href='/stocks'">
+                <div class="view-badge" data-app="stocks"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">📈</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-trending-up"></use></svg><span data-i18n="badgeFinance">Finance</span></span>
@@ -481,6 +514,7 @@
 
             <!-- Ex parte Solis (name kept as-is in every language: it's Latin, not English) -->
             <div class="tool-card active solis" data-badges="astronomy geography" onclick="window.location.href='/solis'">
+                <div class="view-badge" data-app="solis"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">☀️</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-orbit"></use></svg><span data-i18n="badgeAstronomy">Astronomy</span></span>
@@ -496,6 +530,7 @@
 
             <!-- Solar Timezones -->
             <div class="tool-card active timezones" data-badges="geography time" onclick="window.location.href='/timezones'">
+                <div class="view-badge" data-app="timezones"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🕐</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
@@ -511,6 +546,7 @@
 
             <!-- Squadro Statistics Visualizer -->
             <div class="tool-card active" data-badges="game statistics" onclick="window.location.href='/squadro-stats'">
+                <div class="view-badge" data-app="squadro-stats"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🏆</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-dices"></use></svg><span data-i18n="badgeGame">Game</span></span>
@@ -526,6 +562,7 @@
 
             <!-- Flags -->
             <div class="tool-card active flags" data-badges="geography colors" onclick="window.location.href='/flags'">
+                <div class="view-badge" data-app="flags"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🏳️‍🌈</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
@@ -542,6 +579,7 @@
 
             <!-- Surnames Evolution -->
             <div class="tool-card active surnames" data-badges="statistics genetics" onclick="window.location.href='/surnames'">
+                <div class="view-badge" data-app="surnames"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🌳</div>
                 <div class="tool-badges">
                     <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
@@ -739,6 +777,25 @@
                 updateCardVisibility();
             });
         });
+
+        // --- View counts: /view-counts.json is written server-side by
+        // view-counts/update_view_counts.py from nginx's access log, on a
+        // cron schedule — fetched once here to fill in each card's eye-icon
+        // badge. A missing/zero count (no cron run yet, unrecognized app, or
+        // a failed fetch) just leaves that badge hidden rather than showing
+        // a stale "0".
+        fetch('/view-counts.json', { cache: 'no-store' })
+            .then((res) => (res.ok ? res.json() : null))
+            .then((data) => {
+                if (!data || !data.views) return;
+                document.querySelectorAll('.view-badge').forEach((badge) => {
+                    const count = data.views[badge.getAttribute('data-app')];
+                    if (!count) return;
+                    badge.querySelector('.view-count').textContent = count.toLocaleString();
+                    badge.classList.add('visible');
+                });
+            })
+            .catch(() => {});
     </script>
 </body>
 </html>
