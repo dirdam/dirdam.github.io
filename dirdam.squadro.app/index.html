@@ -271,6 +271,29 @@
             border-color: rgba(138, 90, 60, 0.25);
         }
 
+        .tool-card.phyllotaxis {
+            /* Same warm cream-to-sage wash the app itself uses as a background. */
+            background-image: linear-gradient(160deg, #fdf3e0 0%, #fbf8ea 35%, #f2f8ef 70%, #eaf5e9 100%);
+            border-color: #c9820a;
+        }
+
+        .tool-card.phyllotaxis .tool-title {
+            background: linear-gradient(120deg, #c9820a 0%, #4a7c3a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.phyllotaxis .tool-description {
+            color: #5a5a5a;
+        }
+
+        .tool-card.phyllotaxis .badge {
+            background: rgba(201, 130, 10, 0.08);
+            color: #c9820a;
+            border-color: rgba(201, 130, 10, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -451,6 +474,9 @@
             <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
             <circle cx="12" cy="12" r="3" />
         </symbol>
+        <symbol id="icon-spiral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="12.5,12 12.93,13.18 11.43,14.43 8.84,13.5 7.96,10.01 10.84,6.62 16.13,6.98 19.5,12.13" />
+        </symbol>
     </svg>
 
     <div class="container">
@@ -492,6 +518,10 @@
             <button type="button" class="filter-chip" data-badge="colors" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-palette"></use></svg>
                 <span data-i18n="badgeColors">Colors</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="math" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-spiral"></use></svg>
+                <span data-i18n="badgeMath">Math</span>
             </button>
         </div>
 
@@ -593,6 +623,23 @@
                 <a href="/surnames" class="tool-button" data-i18n="openApp">Open App</a>
             </div>
 
+            <!-- Phyllotaxis -->
+            <div class="tool-card active phyllotaxis" data-badges="math colors" onclick="window.location.href='/phyllotaxis'">
+                <div class="view-badge" data-app="phyllotaxis"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🌻</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-spiral"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-palette"></use></svg><span data-i18n="badgeColors">Colors</span></span>
+                </div>
+                <div class="tool-title" data-i18n="phyllotaxisTitle">Phyllotaxis</div>
+                <div class="tool-description" data-i18n="phyllotaxisDesc">
+                    The golden angle behind sunflowers and pinecones — grow a floret pattern one seed at a
+                    time and watch the spiral arms emerge, with full control over the generation angle,
+                    field size, and growth speed.
+                </div>
+                <a href="/phyllotaxis" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Placeholder for future app -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
@@ -637,6 +684,7 @@
                 badgeAstronomy: 'Astronomy',
                 badgeTime: 'Time',
                 badgeColors: 'Colors',
+                badgeMath: 'Math',
                 stocksTitle: 'Stock Market Visualization',
                 stocksDesc: `Interactive stock market analysis tool with valley detection algorithm.
                     Analyze undervaluation opportunities across Nikkei 225, Nasdaq 100, Dow Jones, and EURO STOXX 50.`,
@@ -655,6 +703,10 @@
                 surnamesTitle: 'Surnames Evolution',
                 surnamesDesc: `Watch a simulated population's family names spread, compete, and go extinct across
                     generations — pick a country's real surname data (US, Spain, Japan) and watch it play out.`,
+                phyllotaxisTitle: 'Phyllotaxis',
+                phyllotaxisDesc: `The golden angle behind sunflowers and pinecones — grow a floret pattern one seed at a
+                    time and watch the spiral arms emerge, with full control over the generation angle,
+                    field size, and growth speed.`,
                 nextAppTitle: 'Next App',
                 nextAppDesc: 'More apps in development.',
                 comingSoon: 'Coming Soon',
@@ -672,6 +724,7 @@
                 badgeAstronomy: 'Astronomía',
                 badgeTime: 'Tiempo',
                 badgeColors: 'Colores',
+                badgeMath: 'Matemáticas',
                 stocksTitle: 'Visualización bursátil',
                 stocksDesc: `Herramienta interactiva de análisis bursátil con un algoritmo de detección de valles.
                     Analiza oportunidades de infravaloración en el Nikkei 225, el Nasdaq 100, el Dow Jones y el EURO STOXX 50.`,
@@ -691,6 +744,10 @@
                 surnamesTitle: 'Evolución de apellidos',
                 surnamesDesc: `Observa cómo los apellidos de una población simulada se propagan, compiten y se extinguen
                     a lo largo de generaciones — elige los datos reales de apellidos de un país (EE.UU., España, Japón) y obsérvalo.`,
+                phyllotaxisTitle: 'Filotaxis',
+                phyllotaxisDesc: `El ángulo áureo que hay detrás de los girasoles y las piñas — haz crecer un patrón de
+                    flósculos semilla a semilla y observa cómo emergen los brazos en espiral, con control total
+                    sobre el ángulo de generación, el tamaño del campo y la velocidad de crecimiento.`,
                 nextAppTitle: 'Próxima app',
                 nextAppDesc: 'Más apps en desarrollo.',
                 comingSoon: 'Próximamente',
