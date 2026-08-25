@@ -35,12 +35,14 @@ APP_PATTERNS = {
     'solis': re.compile(r'^/solis/?(?:\?.*)?$'),
     'timezones': re.compile(r'^/timezones/?(?:\?.*)?$'),
     'squadro-stats': re.compile(r'^/squadro-stats/?(?:\?.*)?$'),
-    # /flags, /surnames, and /phyllotaxis 301-redirect the bare path to add
-    # the trailing slash (see their nginx location blocks) — only count the
-    # slashed form so a single visit isn't counted twice across the redirect hop.
+    # /flags, /surnames, /phyllotaxis, and /predator-prey 301-redirect the
+    # bare path to add the trailing slash (see their nginx location blocks)
+    # — only count the slashed form so a single visit isn't counted twice
+    # across the redirect hop.
     'flags': re.compile(r'^/flags/(?:\?.*)?$'),
     'surnames': re.compile(r'^/surnames/(?:\?.*)?$'),
     'phyllotaxis': re.compile(r'^/phyllotaxis/(?:\?.*)?$'),
+    'predator-prey': re.compile(r'^/predator-prey/(?:\?.*)?$'),
 }
 
 BOT_UA_RE = re.compile(r'bot|spider|crawl|curl|wget|python-requests|python-httpx|scrapy', re.IGNORECASE)

@@ -303,6 +303,38 @@
             border-color: rgba(201, 130, 10, 0.25);
         }
 
+        .tool-card.predator-prey {
+            /* Same warm-to-sage wash the app itself uses, plus a scaled-down
+               version of its own real simulated wave bands (an actual RK4
+               run of the Classic preset, not an approximation) rippling
+               along the bottom edge in the app's real prey-green/predator-
+               red identity colors. */
+            background-image:
+                url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22340%22%20height%3D%22150%22%20viewBox%3D%220%200%20340%20150%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22pf%22%20x1%3D%220%22%20y1%3D%2232%22%20x2%3D%220%22%20y2%3D%22148%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23008300%22%20stop-opacity%3D%220%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23008300%22%20stop-opacity%3D%220.42%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22df%22%20x1%3D%220%22%20y1%3D%2232%22%20x2%3D%220%22%20y2%3D%22148%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e34948%22%20stop-opacity%3D%220%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e34948%22%20stop-opacity%3D%220.38%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath%20d%3D%22M%200.0%20148%20L%200.0%20106.6%20L%202.6%20100.9%20L%204.8%2095.8%20L%207.4%2090.0%20L%209.6%2084.9%20L%2012.2%2079.3%20L%2014.8%2074.2%20L%2017.0%2069.9%20L%2019.6%2065.8%20L%2022.1%2062.2%20L%2024.4%2059.8%20L%2027.0%2057.8%20L%2029.2%2056.7%20L%2031.8%2056.3%20L%2034.3%2056.8%20L%2036.6%2057.9%20L%2039.2%2059.9%20L%2041.7%2062.6%20L%2044.0%2065.5%20L%2046.5%2069.3%20L%2048.8%2073.0%20L%2051.4%2077.5%20L%2053.9%2082.2%20L%2056.2%2086.6%20L%2058.7%2091.6%20L%2061.0%2096.1%20L%2063.6%20101.0%20L%2066.1%20105.9%20L%2068.4%20110.2%20L%2071.0%20114.8%20L%2073.5%20119.1%20L%2075.8%20122.8%20L%2078.3%20126.7%20L%2080.6%20130.0%20L%2083.2%20133.3%20L%2085.7%20136.3%20L%2088.0%20138.7%20L%2090.5%20141.1%20L%2093.1%20143.2%20L%2095.4%20144.7%20L%2097.9%20146.1%20L%20100.2%20147.0%20L%20102.7%20147.7%20L%20105.3%20148.0%20L%20107.6%20147.9%20L%20110.1%20147.5%20L%20112.4%20146.7%20L%20114.9%20145.5%20L%20117.5%20143.9%20L%20119.8%20142.0%20L%20122.3%20139.5%20L%20124.9%20136.6%20L%20127.1%20133.6%20L%20129.7%20129.8%20L%20132.0%20126.1%20L%20134.5%20121.5%20L%20137.1%20116.6%20L%20139.3%20111.9%20L%20141.9%20106.4%20L%20144.5%20100.7%20L%20146.7%2095.5%20L%20149.3%2089.7%20L%20151.6%2084.6%20L%20154.1%2079.1%20L%20156.7%2073.9%20L%20158.9%2069.8%20L%20161.5%2065.6%20L%20163.8%2062.5%20L%20166.3%2059.7%20L%20168.9%2057.7%20L%20171.1%2056.7%20L%20173.7%2056.3%20L%20176.2%2056.9%20L%20178.5%2058.0%20L%20181.1%2060.0%20L%20183.3%2062.4%20L%20185.9%2065.7%20L%20188.4%2069.4%20L%20190.7%2073.2%20L%20193.3%2077.7%20L%20195.5%2081.9%20L%20198.1%2086.8%20L%20200.7%2091.8%20L%20202.9%2096.3%20L%20205.5%20101.3%20L%20208.0%20106.1%20L%20210.3%20110.4%20L%20212.9%20115.0%20L%20215.1%20118.9%20L%20217.7%20123.0%20L%20220.2%20126.9%20L%20222.5%20130.1%20L%20225.1%20133.4%20L%20227.6%20136.4%20L%20229.9%20138.8%20L%20232.4%20141.2%20L%20234.7%20143.1%20L%20237.3%20144.8%20L%20239.8%20146.1%20L%20242.1%20147.1%20L%20244.6%20147.7%20L%20246.9%20148.0%20L%20249.5%20147.9%20L%20252.0%20147.5%20L%20254.3%20146.7%20L%20256.8%20145.5%20L%20259.4%20143.8%20L%20261.7%20141.9%20L%20264.2%20139.4%20L%20266.5%20136.8%20L%20269.0%20133.4%20L%20271.6%20129.6%20L%20273.9%20125.9%20L%20276.4%20121.3%20L%20279.0%20116.4%20L%20281.3%20111.7%20L%20283.8%20106.2%20L%20286.1%20101.1%20L%20288.6%2095.3%20L%20291.2%2089.5%20L%20293.5%2084.4%20L%20296.0%2078.9%20L%20298.3%2074.3%20L%20300.8%2069.6%20L%20303.4%2065.4%20L%20305.7%2062.3%20L%20308.2%2059.6%20L%20310.8%2057.6%20L%20313.0%2056.6%20L%20315.6%2056.3%20L%20317.9%2056.8%20L%20320.4%2058.1%20L%20323.0%2060.1%20L%20325.2%2062.5%20L%20327.8%2065.8%20L%20330.4%2069.6%20L%20332.6%2073.4%20L%20335.2%2077.9%20L%20337.4%2082.1%20L%20340.0%2087.0%20L%20340.0%20148%20Z%22%20fill%3D%22url%28%23df%29%22/%3E%3Cpath%20d%3D%22M%200.0%20148%20L%200.0%2056.3%20L%202.6%2056.7%20L%204.8%2057.8%20L%207.4%2059.7%20L%209.6%2062.1%20L%2012.2%2065.5%20L%2014.8%2069.6%20L%2017.0%2073.7%20L%2019.6%2078.8%20L%2022.1%2084.2%20L%2024.4%2089.3%20L%2027.0%2095.1%20L%2029.2%20100.3%20L%2031.8%20106.1%20L%2034.3%20111.8%20L%2036.6%20116.5%20L%2039.2%20121.6%20L%2041.7%20126.3%20L%2044.0%20130.1%20L%2046.5%20134.0%20L%2048.8%20137.1%20L%2051.4%20140.0%20L%2053.9%20142.5%20L%2056.2%20144.4%20L%2058.7%20146.0%20L%2061.0%20147.0%20L%2063.6%20147.7%20L%2066.1%20148.0%20L%2068.4%20147.9%20L%2071.0%20147.4%20L%2073.5%20146.4%20L%2075.8%20145.3%20L%2078.3%20143.6%20L%2080.6%20141.8%20L%2083.2%20139.5%20L%2085.7%20136.8%20L%2088.0%20134.1%20L%2090.5%20130.8%20L%2093.1%20127.3%20L%2095.4%20123.9%20L%2097.9%20119.8%20L%20100.2%20116.0%20L%20102.7%20111.6%20L%20105.3%20107.0%20L%20107.6%20102.7%20L%20110.1%2097.9%20L%20112.4%2093.6%20L%20114.9%2088.8%20L%20117.5%2084.0%20L%20119.8%2079.9%20L%20122.3%2075.5%20L%20124.9%2071.3%20L%20127.1%2067.9%20L%20129.7%2064.5%20L%20132.0%2061.8%20L%20134.5%2059.4%20L%20137.1%2057.7%20L%20139.3%2056.7%20L%20141.9%2056.3%20L%20144.5%2056.8%20L%20146.7%2057.8%20L%20149.3%2059.8%20L%20151.6%2062.2%20L%20154.1%2065.7%20L%20156.7%2069.8%20L%20158.9%2073.9%20L%20161.5%2079.0%20L%20163.8%2083.8%20L%20166.3%2089.5%20L%20168.9%2095.4%20L%20171.1%20100.6%20L%20173.7%20106.4%20L%20176.2%20112.0%20L%20178.5%20116.8%20L%20181.1%20121.8%20L%20183.3%20126.0%20L%20185.9%20130.3%20L%20188.4%20134.1%20L%20190.7%20137.2%20L%20193.3%20140.2%20L%20195.5%20142.4%20L%20198.1%20144.4%20L%20200.7%20146.0%20L%20202.9%20147.0%20L%20205.5%20147.7%20L%20208.0%20148.0%20L%20210.3%20147.9%20L%20212.9%20147.3%20L%20215.1%20146.5%20L%20217.7%20145.2%20L%20220.2%20143.5%20L%20222.5%20141.7%20L%20225.1%20139.4%20L%20227.6%20136.7%20L%20229.9%20134.0%20L%20232.4%20130.7%20L%20234.7%20127.5%20L%20237.3%20123.7%20L%20239.8%20119.6%20L%20242.1%20115.8%20L%20244.6%20111.4%20L%20246.9%20107.3%20L%20249.5%20102.5%20L%20252.0%2097.7%20L%20254.3%2093.4%20L%20256.8%2088.6%20L%20259.4%2083.8%20L%20261.7%2079.7%20L%20264.2%2075.3%20L%20266.5%2071.6%20L%20269.0%2067.7%20L%20271.6%2064.3%20L%20273.9%2061.7%20L%20276.4%2059.3%20L%20279.0%2057.6%20L%20281.3%2056.7%20L%20283.8%2056.3%20L%20286.1%2056.7%20L%20288.6%2057.9%20L%20291.2%2059.9%20L%20293.5%2062.4%20L%20296.0%2065.8%20L%20298.3%2069.5%20L%20300.8%2074.1%20L%20303.4%2079.2%20L%20305.7%2084.1%20L%20308.2%2089.8%20L%20310.8%2095.6%20L%20313.0%20100.8%20L%20315.6%20106.6%20L%20317.9%20111.6%20L%20320.4%20117.0%20L%20323.0%20122.0%20L%20325.2%20126.2%20L%20327.8%20130.5%20L%20330.4%20134.3%20L%20332.6%20137.3%20L%20335.2%20140.3%20L%20337.4%20142.5%20L%20340.0%20144.5%20L%20340.0%20148%20Z%22%20fill%3D%22url%28%23pf%29%22/%3E%3C/svg%3E"),
+                linear-gradient(180deg, #fdf3e0 0%, #f5ecd0 30%, #dce8c8 65%, #c8ddc0 100%);
+            background-repeat: no-repeat, no-repeat;
+            background-position: bottom center, center;
+            background-size: 100% 130px, cover;
+            border-color: #b8492f;
+        }
+
+        .tool-card.predator-prey .tool-title {
+            background: linear-gradient(120deg, #b8492f 0%, #2f7a4d 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.predator-prey .tool-description {
+            color: #5a5a5a;
+        }
+
+        .tool-card.predator-prey .badge {
+            background: rgba(184, 73, 47, 0.08);
+            color: #b8492f;
+            border-color: rgba(184, 73, 47, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -649,6 +681,23 @@
                 <a href="/phyllotaxis" class="tool-button" data-i18n="openApp">Open App</a>
             </div>
 
+            <!-- Predator-Prey -->
+            <div class="tool-card active predator-prey" data-badges="math evolution" onclick="window.location.href='/predator-prey'">
+                <div class="view-badge" data-app="predator-prey"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🐇</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-spiral"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeEvolution">Evolution</span></span>
+                </div>
+                <div class="tool-title" data-i18n="predatorPreyTitle">Predator-Prey</div>
+                <div class="tool-description" data-i18n="predatorPreyDesc">
+                    The Lotka-Volterra equations behind every predator-prey cycle — watch two populations
+                    rise and fall in a feedback loop of growth and predation, with live population and
+                    phase-plane charts, and full control over every rate.
+                </div>
+                <a href="/predator-prey" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Placeholder for future app -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
@@ -716,6 +765,10 @@
                 phyllotaxisDesc: `The golden angle behind sunflowers and pinecones — grow a floret pattern one seed at a
                     time and watch the spiral arms emerge, with full control over the generation angle,
                     field size, and growth speed.`,
+                predatorPreyTitle: 'Predator-Prey',
+                predatorPreyDesc: `The Lotka-Volterra equations behind every predator-prey cycle — watch two populations
+                    rise and fall in a feedback loop of growth and predation, with live population and
+                    phase-plane charts, and full control over every rate.`,
                 nextAppTitle: 'Next App',
                 nextAppDesc: 'More apps in development.',
                 comingSoon: 'Coming Soon',
@@ -757,6 +810,10 @@
                 phyllotaxisDesc: `El ángulo áureo que hay detrás de los girasoles y las piñas — haz crecer un patrón de
                     flósculos semilla a semilla y observa cómo emergen los brazos en espiral, con control total
                     sobre el ángulo de generación, el tamaño del campo y la velocidad de crecimiento.`,
+                predatorPreyTitle: 'Depredador-Presa',
+                predatorPreyDesc: `Las ecuaciones de Lotka-Volterra detrás de todo ciclo depredador-presa — observa cómo dos
+                    poblaciones suben y bajan en un bucle de retroalimentación de crecimiento y depredación, con
+                    gráficos en vivo de población y plano de fase, y control total sobre cada tasa.`,
                 nextAppTitle: 'Próxima app',
                 nextAppDesc: 'Más apps en desarrollo.',
                 comingSoon: 'Próximamente',
