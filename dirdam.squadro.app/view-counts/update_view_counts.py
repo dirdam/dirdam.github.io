@@ -43,6 +43,7 @@ APP_PATTERNS = {
     'surnames': re.compile(r'^/surnames/(?:\?.*)?$'),
     'phyllotaxis': re.compile(r'^/phyllotaxis/(?:\?.*)?$'),
     'predator-prey': re.compile(r'^/predator-prey/(?:\?.*)?$'),
+    'strobe': re.compile(r'^/strobe/(?:\?.*)?$'),
 }
 
 BOT_UA_RE = re.compile(r'bot|spider|crawl|curl|wget|python-requests|python-httpx|scrapy', re.IGNORECASE)
