@@ -93,16 +93,28 @@
    for sizing). Reuses the same aurora animation machinery above — no extra
    JS, no extra paint cost. */
 
-/* About: a slow-moving "flame" sweep in the red/yellow of the Spanish flag
+/* About: a slow-moving "flame" glow in the red/yellow of the Spanish flag
    — red and yellow naturally interpolate through orange, so no third color
-   is needed for the fire look. A short, independent flicker animation on
-   each blob (desynced periods, like the base drift periods above) adds the
-   irregular pulse of a real flame without any JS. */
+   is needed for the fire look. The base gradient is circular rather than
+   the shared diagonal sweep, echoing the ripple canvas effect drawn on top
+   of it; it still drifts via the same hero-drift-base background-position
+   animation, just panning a radial "sun" around instead of a linear band.
+   A short, independent flicker animation on each blob (desynced periods,
+   like the base drift periods above) adds the irregular pulse of a real
+   flame without any JS. */
 .hero--about {
   --hero-c1: #aa151b;
   --hero-c2: #f1bf00;
   --hero-blob-a-highlight: rgba(255, 233, 150, 0.6);
   --hero-blob-b-highlight: rgba(255, 120, 0, 0.65);
+  background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--about {
+    background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  }
 }
 
 .hero--about::before {
@@ -127,6 +139,46 @@
   }
 }
 
+/* Background: the same moving circular gradient as About's flame theme,
+   but its light endpoint continuously cross-fades between Japan's white
+   and Spain's yellow every 10s — the two flags of this page's "Spain →
+   Japan" academic move, alternating. --hero-flag-color is registered via
+   @property purely so the browser knows to interpolate it as a color
+   (smooth crossfade) rather than jump-cutting between keyframes; --hero-c2
+   is aliased to it so the blob highlight (which also reads --hero-c2)
+   cycles in sync automatically. The white endpoint is kept a soft
+   off-white rather than pure white so the hero's white heading text stays
+   legible throughout the drift instead of vanishing when the pan brings
+   the light end of the gradient behind it. */
+@property --hero-flag-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fbeceb;
+}
+
+@keyframes hero-flag-cycle {
+  0%   { --hero-flag-color: #fbeceb; }
+  50%  { --hero-flag-color: #f1bf00; }
+  100% { --hero-flag-color: #fbeceb; }
+}
+
+.hero--background {
+  --hero-c1: #bc002d;
+  --hero-c2: var(--hero-flag-color);
+  --hero-blob-a-highlight: rgba(255, 255, 255, 0.5);
+  --hero-blob-b-highlight: rgba(220, 20, 60, 0.55);
+  background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  background-size: 200% 200%;
+  animation: hero-drift-base 13s ease-in-out infinite, hero-flag-cycle 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--background {
+    animation: none;
+    background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  }
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -134,13 +186,15 @@
   justify-content: center;
 }
 
-/* Per-page hero canvas effects (see network-bg.js / ripple-bg.js) — sit
-   above the gradient/blobs, below the actual hero content. z-index:1 is
-   load-bearing here: .hero::after is generated content, which paints after
-   real DOM children even though it's also z-index:0, so without an
-   explicit higher z-index the canvas would render *under* that blob. */
+/* Per-page hero canvas effects (see network-bg.js / ripple-bg.js /
+   trail-bg.js) — sit above the gradient/blobs, below the actual hero
+   content. z-index:1 is load-bearing here: .hero::after is generated
+   content, which paints after real DOM children even though it's also
+   z-index:0, so without an explicit higher z-index the canvas would render
+   *under* that blob. */
 .hero-network,
-.hero-ripples {
+.hero-ripples,
+.hero-trails {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -151,7 +205,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-network,
-  .hero-ripples {
+  .hero-ripples,
+  .hero-trails {
     display: none;
   }
 }
