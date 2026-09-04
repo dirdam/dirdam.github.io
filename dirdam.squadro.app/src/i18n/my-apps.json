@@ -51,7 +51,7 @@
     "fencedHow4": "By checking \"Metafunction\" you can see how the fenced function would look if unfenced — and, on the right, the fenced version of that as the new input.",
     "openDesmos": "Open in Desmos",
     "openGallery": "Gallery",
-    "pageSubtitle": "Hobby programming and interactive apps."
+    "pageSubtitle": "For the sake of it"
   },
   "es": {
     "pageTitle": "Explorar",
@@ -105,7 +105,7 @@
     "fencedHow4": "Marcando \"Metafunction\" puedes ver cómo sería la función cercada fuera del cerco — y, a la derecha, su versión cercada si se toma como la nueva función de entrada.",
     "openDesmos": "Abrir en Desmos",
     "openGallery": "Galería",
-    "pageSubtitle": "Programación como afición y apps interactivas."
+    "pageSubtitle": "Porque sí"
   },
   "ja": {
     "pageTitle": "探検",
@@ -159,6 +159,6 @@
     "fencedHow4": "「Metafunction」をチェックすると、囲いを外した場合の関数の見た目が分かります。また右側には、それを新しい入力関数とした場合の囲い版が表示されます。",
     "openDesmos": "Desmosで開く",
     "openGallery": "ギャラリー",
-    "pageSubtitle": "趣味のプログラミングとインタラクティブなアプリ。"
+    "pageSubtitle": "世界を拓く"
   }
 }
