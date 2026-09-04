@@ -9,14 +9,16 @@ PAGES = [
     {"name": "index", "title": "Adrï — Data Scientist, Game Designer, Mathematician",
      "description": "Personal site of Adrián Jiménez Pascual — data scientist, mathematician, and game designer.",
      "hero_variant": "hero--full", "has_subtitle": True, "extra_css": [],
-     "extra_js": ["/assets/js/network-bg.js"],
+     "extra_js": ["/assets/js/network-bg.js"], "hero_canvas_class": "hero-network",
      # The cursive "Adrï" signature (KnotFont's "A" glyph) instead of plain
      # text — identical in every language, so it skips data-i18n entirely.
      "hero_heading_html": '<span class="knot-glyph hero-signature" aria-hidden="true">A</span>'
                            '<span class="visually-hidden">Adrián Jiménez Pascual</span>'},
     {"name": "about", "title": "About — Adrï",
      "description": "About Adrián Jiménez Pascual.",
-     "hero_variant": "hero--compact", "has_subtitle": False, "extra_css": [], "extra_js": []},
+     "hero_variant": "hero--compact", "hero_theme": "hero--about",
+     "has_subtitle": True, "extra_css": [],
+     "extra_js": ["/assets/js/ripple-bg.js"], "hero_canvas_class": "hero-ripples"},
     {"name": "background", "title": "Academic Background — Adrï",
      "description": "Academic background, papers and talks.",
      "hero_variant": "hero--compact", "has_subtitle": True, "extra_css": [], "extra_js": []},
@@ -77,16 +79,18 @@ def build_page(page, partials, common):
             .replace("{{DESCRIPTION}}", page["description"])
             .replace("{{EXTRA_CSS}}", extra_css))
     subtitle = '<p class="subtitle" data-i18n="pageSubtitle"></p>' if page["has_subtitle"] else ""
-    is_hub = page["hero_variant"] == "hero--full"
     hero_heading = page.get("hero_heading_html", '<span data-i18n="pageTitle"></span>')
-    # The animated particle-network canvas is landing-page-only — it's a
-    # real per-frame cost, not worth paying on every page's short banner.
-    hero_network = '<canvas class="hero-network" aria-hidden="true"></canvas>' if is_hub else ""
+    # Each hero canvas effect (particle network, orbits, ...) is opted into
+    # per page via hero_canvas_class — every one is a real per-frame cost,
+    # not worth paying on pages that don't ask for it.
+    hero_canvas_class = page.get("hero_canvas_class")
+    hero_canvas = f'<canvas class="{hero_canvas_class}" aria-hidden="true"></canvas>' if hero_canvas_class else ""
     header = (partials["header"]
               .replace("{{HERO_VARIANT_CLASS}}", page["hero_variant"])
+              .replace("{{HERO_THEME_CLASS}}", page.get("hero_theme", ""))
               .replace("{{HERO_HEADING}}", hero_heading)
               .replace("{{HERO_SUBTITLE_BLOCK}}", subtitle)
-              .replace("{{HERO_NETWORK}}", hero_network))
+              .replace("{{HERO_CANVAS}}", hero_canvas))
     footer = partials["footer"]
 
     body_path = SRC / "pages" / f'{page["name"]}.html'

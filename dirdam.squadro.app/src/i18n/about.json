@@ -1,6 +1,7 @@
 {
   "en": {
     "pageTitle": "About me",
+    "pageSubtitle": "Yo",
     "navBio": "Bio",
     "navMedia": "On media",
     "bioWho": "Who: Adrián Jiménez Pascual.",
@@ -14,6 +15,7 @@
   },
   "es": {
     "pageTitle": "Sobre mí",
+    "pageSubtitle": "Yo",
     "navBio": "Bio",
     "navMedia": "En los medios",
     "bioWho": "Quién: Adrián Jiménez Pascual.",
@@ -27,6 +29,7 @@
   },
   "ja": {
     "pageTitle": "私について",
+    "pageSubtitle": "Yo",
     "navBio": "伝記",
     "navMedia": "メディアで",
     "bioWho": "誰：Adrián Jiménez Pascual（アドリアン ヒメネス パスクアル）。",

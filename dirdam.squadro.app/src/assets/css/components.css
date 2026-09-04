@@ -13,7 +13,14 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(120deg, var(--color-brand-start), var(--color-brand-end), var(--color-brand-start));
+  /* Per-page color theme, overridable by a `.hero--<page>` modifier class
+     (see "Per-page hero themes" below) — defaults to the shared brand
+     gradient so pages without their own theme are unaffected. */
+  --hero-c1: var(--color-brand-start);
+  --hero-c2: var(--color-brand-end);
+  --hero-blob-a-highlight: rgba(255, 255, 255, 0.32);
+  --hero-blob-b-highlight: rgba(180, 150, 255, 0.55);
+  background: linear-gradient(120deg, var(--hero-c1), var(--hero-c2), var(--hero-c1));
   background-size: 200% 200%;
   animation: hero-drift-base 13s ease-in-out infinite;
   padding: var(--space-10) var(--space-8) var(--space-11);
@@ -30,15 +37,15 @@
 }
 
 .hero::before {
-  background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.32), transparent 45%),
-              radial-gradient(circle at 68% 62%, var(--color-brand-end), transparent 55%);
+  background: radial-gradient(circle at 30% 35%, var(--hero-blob-a-highlight), transparent 45%),
+              radial-gradient(circle at 68% 62%, var(--hero-c2), transparent 55%);
   mix-blend-mode: soft-light;
   animation: hero-drift-blob-a 8s ease-in-out infinite;
 }
 
 .hero::after {
-  background: radial-gradient(circle at 62% 28%, rgba(180, 150, 255, 0.55), transparent 50%),
-              radial-gradient(circle at 22% 72%, var(--color-brand-start), transparent 55%);
+  background: radial-gradient(circle at 62% 28%, var(--hero-blob-b-highlight), transparent 50%),
+              radial-gradient(circle at 22% 72%, var(--hero-c1), transparent 55%);
   mix-blend-mode: overlay;
   animation: hero-drift-blob-b 6s ease-in-out infinite;
 }
@@ -75,7 +82,48 @@
   }
 
   .hero {
-    background: var(--gradient-brand);
+    background: linear-gradient(135deg, var(--hero-c1), var(--hero-c2));
+  }
+}
+
+/* ---------- Per-page hero themes ----------
+   Each inner page can carry its own hero color story instead of the shared
+   brand gradient, by overriding the --hero-* custom properties from a
+   `.hero--<page>` modifier class (combined with `.hero--compact`/`.hero--full`
+   for sizing). Reuses the same aurora animation machinery above — no extra
+   JS, no extra paint cost. */
+
+/* About: a slow-moving "flame" sweep in the red/yellow of the Spanish flag
+   — red and yellow naturally interpolate through orange, so no third color
+   is needed for the fire look. A short, independent flicker animation on
+   each blob (desynced periods, like the base drift periods above) adds the
+   irregular pulse of a real flame without any JS. */
+.hero--about {
+  --hero-c1: #aa151b;
+  --hero-c2: #f1bf00;
+  --hero-blob-a-highlight: rgba(255, 233, 150, 0.6);
+  --hero-blob-b-highlight: rgba(255, 120, 0, 0.65);
+}
+
+.hero--about::before {
+  animation: hero-drift-blob-a 8s ease-in-out infinite, hero-flame-flicker 2.4s ease-in-out infinite;
+}
+
+.hero--about::after {
+  animation: hero-drift-blob-b 6s ease-in-out infinite, hero-flame-flicker 3.1s ease-in-out infinite;
+}
+
+@keyframes hero-flame-flicker {
+  0%, 100% { opacity: 0.85; }
+  35%      { opacity: 1; }
+  60%      { opacity: 0.78; }
+  80%      { opacity: 0.96; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--about::before,
+  .hero--about::after {
+    animation: none;
   }
 }
 
@@ -86,19 +134,24 @@
   justify-content: center;
 }
 
-/* Landing-page-only particle network (see network-bg.js) — sits above the
-   gradient/blobs, below the actual hero content. */
-.hero-network {
+/* Per-page hero canvas effects (see network-bg.js / ripple-bg.js) — sit
+   above the gradient/blobs, below the actual hero content. z-index:1 is
+   load-bearing here: .hero::after is generated content, which paints after
+   real DOM children even though it's also z-index:0, so without an
+   explicit higher z-index the canvas would render *under* that blob. */
+.hero-network,
+.hero-ripples {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-network {
+  .hero-network,
+  .hero-ripples {
     display: none;
   }
 }
@@ -140,7 +193,7 @@
 .hero .subtitle {
   color: var(--overlay-white-90);
   font-size: var(--font-size-subtitle);
-  text-transform: uppercase;
+  font-variant: small-caps;
   letter-spacing: 0.08em;
   max-width: 40em;
   margin: 0 auto;

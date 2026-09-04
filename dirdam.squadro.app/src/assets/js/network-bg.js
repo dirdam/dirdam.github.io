@@ -136,9 +136,19 @@
 
   document.addEventListener('visibilitychange', syncRunning);
 
+  // Watches the hero element itself, not just the window — the hero's
+  // height can change for reasons that aren't a window resize (a web font
+  // swapping in and changing the heading's line height, for one), and the
+  // canvas is given a fixed pixel height at resize() time, so it needs to
+  // be re-measured whenever the hero's own box changes.
   var resizeTimer = null;
-  window.addEventListener('resize', function () {
+  function scheduleResize() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(resize, 150);
-  });
+  }
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(scheduleResize).observe(hero);
+  } else {
+    window.addEventListener('resize', scheduleResize);
+  }
 })();
