@@ -45,11 +45,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 body {
 	line-height: 1;
 	-webkit-text-size-adjust: none;
 	-ms-overflow-style: scrollbar;
 	background: #f4f4f4;
+	overflow-x: hidden;
 }
 
 ol, ul {
@@ -981,18 +986,6 @@ body.is-loading #header.alt .inner {
 
 	#header.alt .inner {
 		max-width: 20em;
-	}
-
-	#signature {
-		font-size: 90px !important;
-		line-height: 90px !important;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	#signature {
-		font-size: 60px !important;
-		line-height: 60px !important;
 	}
 }
 
