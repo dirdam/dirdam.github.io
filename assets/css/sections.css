@@ -982,6 +982,18 @@ body.is-loading #header.alt .inner {
 	#header.alt .inner {
 		max-width: 20em;
 	}
+
+	#signature {
+		font-size: 90px !important;
+		line-height: 90px !important;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#signature {
+		font-size: 60px !important;
+		line-height: 60px !important;
+	}
 }
 
 /* Main Content */
