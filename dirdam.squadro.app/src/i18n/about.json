@@ -1,0 +1,41 @@
+{
+  "en": {
+    "pageTitle": "About me",
+    "navBio": "Bio",
+    "navMedia": "On media",
+    "bioWho": "Who: Adrián Jiménez Pascual.",
+    "bioWhen": "When: Fall of the Berlin Wall.",
+    "bioWhere": "Where: Geographic center of Spain.",
+    "bioWhat": "What: Philosophiæ doctor in Mathematicis. General thinker.",
+    "mediaHeading": "Press mentions",
+    "youtubeHeading": "On YouTube",
+    "mediaMxmYoutube": "(full video <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>)",
+    "mediaUbiYoutube": "🏆 <i>Runner-up</i> in <a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>MRKB</b></a> world tournament at Gamescom 2019."
+  },
+  "es": {
+    "pageTitle": "Sobre mí",
+    "navBio": "Bio",
+    "navMedia": "En los medios",
+    "bioWho": "Quién: Adrián Jiménez Pascual.",
+    "bioWhen": "Cuándo: La caída del muro de Berlín.",
+    "bioWhere": "Dónde: Centro geográfico de España.",
+    "bioWhat": "Qué: Philosophiæ doctor in Mathematicis. Pensador general.",
+    "mediaHeading": "Apariciones en prensa",
+    "youtubeHeading": "En YouTube",
+    "mediaMxmYoutube": "(vídeo completo <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">aquí</a>)",
+    "mediaUbiYoutube": "🏆 <i>Subcampeón</i> de <a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>MRKB</b></a> en el campeonato mundial en Gamescom 2019."
+  },
+  "ja": {
+    "pageTitle": "私について",
+    "navBio": "伝記",
+    "navMedia": "メディアで",
+    "bioWho": "誰：Adrián Jiménez Pascual（アドリアン ヒメネス パスクアル）。",
+    "bioWhen": "いつ：ベルリンの壁崩壊。",
+    "bioWhere": "どこ：スペインの幾何的中心。",
+    "bioWhat": "何：数理科学博士。一般的思想家。",
+    "mediaHeading": "メディア掲載",
+    "youtubeHeading": "YouTubeで",
+    "mediaMxmYoutube": "（フルバージョンは<a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">こちら</a>）",
+    "mediaUbiYoutube": "🏆 Gamescom 2019における<a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>MRKB</b></a>の世界大会にて<i>準優勝</i>。"
+  }
+}

@@ -1,0 +1,102 @@
+/* Reset + base typography/layout primitives, shared by every page. */
+
+/* Adrï's personal "knot" glyph face — the same custom icon-font used for
+   the decorative knot diagrams on the old site's Background page. Each
+   "letter" is actually a whole illustrated mark (e.g. "A" = the cursive
+   "Adrï" signature wordmark, "B" = a stylized self-portrait), not a literal
+   alphabet — used sparingly as identity marks, never as a body font. */
+@font-face {
+  font-family: 'KnotFont';
+  src: url('/assets/fonts/KnotFont.otf') format('opentype');
+  font-display: swap;
+}
+
+.knot-glyph {
+  font-family: 'KnotFont', serif;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* overflow-x lives on <html> only, not here — any explicit overflow value
+   on <body> (even just overflow-x) makes browsers also compute overflow-y
+   as "auto", which turns body into its own scroll container and silently
+   breaks `position: sticky` for everything inside it (the sticky nav bar
+   just scrolls away instead of pinning). */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-page-bg);
+  min-height: 100vh;
+  line-height: var(--line-height-body);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+main {
+  display: block;
+  padding-bottom: var(--space-12);
+}
+
+section + section {
+  margin-top: var(--space-10);
+}
+
+.section-title {
+  font-size: var(--font-size-section-title);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-7);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* One consistent, visible focus style everywhere (the old design had none). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-7);
+  }
+}

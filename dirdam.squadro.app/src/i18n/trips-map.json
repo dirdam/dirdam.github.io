@@ -1,0 +1,32 @@
+{
+  "en": {
+    "pageTitle": "Map of touch-downs",
+    "explanation": "Visualization of the places where I have been.",
+    "legend1": "Long-term residence",
+    "legend2": "Short visit (region/country)",
+    "legend3": "Business trip (region/country)",
+    "legend4": "Transit",
+    "hoverHint": "Hover over a country",
+    "backToTrips": "← Back to Trips"
+  },
+  "es": {
+    "pageTitle": "Mapa de apariciones",
+    "explanation": "Visualización de los lugares en los que he estado.",
+    "legend1": "Residencia de larga duración",
+    "legend2": "Estancia breve (región/país)",
+    "legend3": "Viaje de negocios (región/país)",
+    "legend4": "Escala",
+    "hoverHint": "Pasa el ratón sobre un país",
+    "backToTrips": "← Volver a Viajes"
+  },
+  "ja": {
+    "pageTitle": "訪問地図",
+    "explanation": "私が訪れた場所の可視化。",
+    "legend1": "長期間滞在",
+    "legend2": "短期滞在（地域/国）",
+    "legend3": "海外出張（地域/国）",
+    "legend4": "乗り継ぎ",
+    "hoverHint": "国にカーソルを合わせてください",
+    "backToTrips": "← 旅行に戻る"
+  }
+}

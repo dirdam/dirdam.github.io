@@ -1,0 +1,35 @@
+<div class="content-card" style="max-width: 40em; margin: 0 auto;">
+  <div class="card-icon"><svg><use href="#icon-mail"></use></svg></div>
+  <p style="margin-bottom: var(--space-8);" data-i18n="pageSubtitle"></p>
+  <form id="contact_form" method="POST">
+    <div class="form-field">
+      <label for="contact_subject_input" data-i18n="labelSubject"></label>
+      <input id="contact_subject_input" type="text" name="_subject" data-i18n="placeholderSubject" data-i18n-attr="placeholder" required>
+    </div>
+    <div class="form-field">
+      <label for="contact_email_input" data-i18n="labelEmail"></label>
+      <input id="contact_email_input" type="email" name="_replyto" data-i18n="placeholderEmail" data-i18n-attr="placeholder" required>
+    </div>
+    <div class="form-field">
+      <label for="contact_message_input" data-i18n="labelMessage"></label>
+      <textarea id="contact_message_input" name="message" rows="6" data-i18n="placeholderMessage" data-i18n-attr="placeholder" required></textarea>
+    </div>
+    <input type="text" name="_gotcha" style="display:none">
+    <input type="hidden" name="_next" value="/thanks.html">
+    <button id="contact_send" class="btn-pill btn-pill--primary" type="submit" data-i18n="sendButton"></button>
+  </form>
+</div>
+
+<script>
+  (function () {
+    function addDot(arr) {
+      var res = '';
+      for (var i = 0; i < arr.length; i++) res += arr[i] + (i === arr.length - 1 ? '' : '.');
+      return res;
+    }
+    document.getElementById('contact_form').setAttribute(
+      'action',
+      'https://formspree.io/' + addDot(['adrian', 'jimenez', 'pascual@gmail', 'com'])
+    );
+  })();
+</script>

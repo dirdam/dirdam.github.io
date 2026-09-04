@@ -1,0 +1,50 @@
+{
+  "en": {
+    "pageTitle": "Games recommendations",
+    "pageSubtitle": "Food for thought",
+    "selectionSummary": "This is a selection of games which I consider marvels. If you like abstract thinking, deduction and logic but at the same time crave new ways of thinking and thinking outside the box, these games will scratch your itch.<br><strong>Note</strong>: it is best to play these games without reading anything about them in advance. Make them <em>your</em> experience.",
+    "fezNote": "⌨️ If you want to write in Fez's script, you can download the font I created <a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">here</a> (contains spoilers).",
+    "tunicNote": "⌨️ If you want to write in Tunic's script, you can download the font I created <a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">here</a> (contains spoilers).",
+    "gameDescAntichamber": "Explore a facility where things are not always as they look. You'll have to use logic and \"antilogic\" to advance in the game.",
+    "gameDescObra": "You are a detective on a boat. Unlike other detective games where the story is given away by the choices you are presented, this game is based on pure deduction. You'll feel like you're actually solving mysteries.",
+    "gameDescManifold": "Loops, maths, gravity, infinity. And puzzle-solving. What else do you need?",
+    "gameDescBaba": "Puzzle game where you create and break the rules of how each stage behaves. Literally.",
+    "gameDescFez": "Live in a 3D world with a 2D perspective. A thought-intense platformer where you'll also face an unknown language you'll need to understand to travel to every possible place.",
+    "gameDescTunic": "Adventure game like no other. Back to when you were a kid and understood nothing but how to fight. The game forces you to unravel, little by little, an unknown language that will shed light on your adventure. Packed with satisfying secrets.",
+    "gameDescCocoon": "Puzzle adventure across worlds within worlds. Carry worlds, dive into worlds, and think in and out of the box.",
+    "gameDescSennaar": "Understand languages to understand their people. Make associations between glyphs and meanings to advance.",
+    "gameDescOw": "Discover, engage, fear; repeat. Set in a time loop, you have no mission other than what your curiosity tells you. Explore a whole mini-galaxy to learn why things are as they are. Its \"Echoes of the Eye\" expansion is equally recommended."
+  },
+  "es": {
+    "pageTitle": "Recomendaciones de juegos",
+    "pageSubtitle": "Para darle al coco",
+    "selectionSummary": "Esta es una selección de juegos que considero maravillas. Si te gustan el pensamiento abstracto, la deducción y la lógica pero a la vez buscas nuevas formas de pensar y ser sorprendido, creo que estos juegos satisfarán tus inquietudes.<br><strong>Nota</strong>: es mejor jugar a estos juegos sin leer nada acerca de ellos. Haz de ellos <em>tu</em> experiencia.",
+    "fezNote": "⌨️ Si quieres escribir como en Fez puedes descargar la fuente que creé <a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">aquí</a> (contiene spoilers).",
+    "tunicNote": "⌨️ Si quieres escribir como en Tunic puedes descargar la fuente que creé <a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">aquí</a> (contiene spoilers).",
+    "gameDescAntichamber": "Explora unas instalaciones donde las cosas no siempre son lo que parecen. Tendrás que usar la lógica y la «antilógica» para avanzar en el juego.",
+    "gameDescObra": "Eres un detective en un barco. A diferencia de otros juegos de detectives donde la historia se revela por las opciones que te dan, este juego está basado exclusivamente en la deducción. Te sentirás realmente resolviendo misterios.",
+    "gameDescManifold": "Bucles, mates, gravedad, infinito. Y resolución de puzles. ¿Qué más necesitas?",
+    "gameDescBaba": "Juego de puzles donde creas y rompes las reglas de cómo se comporta cada pantalla. Literalmente.",
+    "gameDescFez": "Vive en un mundo en 3D con una perspectiva en 2D. Un juego de plataformas cargado de pensamiento donde también te encontrarás con un idioma desconocido que tendrás que entender para acceder a todos los posibles lugares.",
+    "gameDescTunic": "Un juego de aventura como ningún otro. Te devuelve a cuando eras un niño y no entendías nada salvo cómo combatir. El juego te fuerza poco a poco a desentrañar un idioma desconocido que arrojará luz sobre tu aventura. Repleto de secretos satisfactorios.",
+    "gameDescCocoon": "Aventura con puzles a través de mundos dentro de mundos. Lleva mundos, sumérgete en ellos y piensa dentro y fuera del contexto.",
+    "gameDescSennaar": "Entiende idiomas para entender a sus hablantes. Haz asociaciones entre glifos y significados para avanzar.",
+    "gameDescOw": "Descubre, involúcrate, teme; repite. Ambientado en un bucle temporal, no tienes otra misión que la que te dicta tu curiosidad. Explora una mini-galaxia entera para aprender por qué las cosas son como son. Su expansión «Echoes of the Eye» es igualmente recomendable."
+  },
+  "ja": {
+    "pageTitle": "おすすめのゲーム",
+    "pageSubtitle": "思考力を促す",
+    "selectionSummary": "こちらは私が素晴らしいと思うゲームの選抜です。抽象的思考、推理や論理が好きで、新しい考え方やこれまでにない視点を見つけるのが好きなら、この選抜はきっと気に入ると思います。<br><strong>注意</strong>：これらのゲームについて事前に何も読まない方が良いです。<em>自分</em>の経験にしてください。",
+    "fezNote": "⌨️ Fezの言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">このフォント</a>をダウンロードしてください（スポイラーを含みます）。",
+    "tunicNote": "⌨️ Tunicの言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\">このフォント</a>をダウンロードしてください（スポイラーを含みます）。",
+    "gameDescAntichamber": "不思議な施設を探検します。自らの探検方法によって環境も変わります。論理と「非論理」を使います。",
+    "gameDescObra": "あなたは探偵として船で調査します。他の探偵ゲームと違って、ストーリーが与えられる選択肢によって誘導されず、純粋な推理力を使う必要があります。本当に謎を解く探偵の気持ちになります。",
+    "gameDescManifold": "ループ、数理、重力、無限大。そしてパズルを解く。それ以外要るものはない。",
+    "gameDescBaba": "ステージが従うルールを作成したり、破壊したりする。文字通り。",
+    "gameDescFez": "2Dを見る3Dの世界。思考力をよく使うプラットフォーマーで、あらゆる場所にアクセスできるように不明な言語も解読しないといけません。",
+    "gameDescTunic": "独特な冒険ゲームです。攻撃ボタンしか分からないあの子供の頃の時代に戻されます。ゲームが少しずつ不思議な言語を理解させて、冒険の目的が少しずつ明らかになります。発見する時にスッキリする不思議な秘密を山ほど織り込んでいます。",
+    "gameDescCocoon": "ワールドの境を超えたパズル冒険です。ワールドを運ぶ、ワールドに潜り込む、外と中の区別で混乱するゲームです。",
+    "gameDescSennaar": "言語を理解し、話者を理解せよ。進むために表記と意味の関係性を明確にする必要があります。",
+    "gameDescOw": "発見する、挑戦する、恐れる；繰り返す。時間ループの中で、好奇心が教えること以外の使命はありません。なぜ物事がそうなっているのかを学ぶために、小さな銀河系を探検します。「Echoes of the Eye」拡張もおすすめです。"
+  }
+}

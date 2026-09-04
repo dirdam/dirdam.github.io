@@ -1,0 +1,291 @@
+<nav class="pill-nav" aria-label="On this page">
+  <a href="#apps" data-i18n="navApps"></a>
+  <a href="#hobby" data-i18n="navHobby"></a>
+</nav>
+
+<section id="apps">
+        <p class="filter-hint" data-i18n="filterHint">Filter by category:</p>
+        <div class="filter-bar" id="filterBar" role="group" aria-label="Filter apps by category">
+            <button type="button" class="filter-chip" data-badge="astronomy" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-orbit"></use></svg>
+                <span data-i18n="badgeAstronomy">Astronomy</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="colors" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-palette"></use></svg>
+                <span data-i18n="badgeColors">Colors</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="evolution" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-dna"></use></svg>
+                <span data-i18n="badgeEvolution">Evolution</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="finance" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-trending-up"></use></svg>
+                <span data-i18n="badgeFinance">Finance</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="game" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-dices"></use></svg>
+                <span data-i18n="badgeGame">Game</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="geography" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-globe"></use></svg>
+                <span data-i18n="badgeGeography">Geography</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="math" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-pi"></use></svg>
+                <span data-i18n="badgeMath">Math</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="statistics" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg>
+                <span data-i18n="badgeStatistics">Statistics</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="time" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-clock"></use></svg>
+                <span data-i18n="badgeTime">Time</span>
+            </button>
+        </div>
+
+        <div class="tools-grid">
+            <!-- Stock Market Visualization Tool -->
+            <div class="tool-card active" data-badges="finance statistics" onclick="if (!event.target.closest('a')) window.location.href='/stocks'">
+                <div class="view-badge" data-app="stocks"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">📈</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-trending-up"></use></svg><span data-i18n="badgeFinance">Finance</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                </div>
+                <div class="tool-title" data-i18n="stocksTitle">Stock Market Visualization</div>
+                <div class="tool-description" data-i18n="stocksDesc">
+                    Interactive stock market analysis tool with valley detection algorithm.
+                    Analyze undervaluation opportunities across Nikkei 225, Nasdaq 100, Dow Jones, and EURO STOXX 50.
+                </div>
+                <a href="/stocks" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
+            <!-- Ex parte Solis (name kept as-is in every language: it's Latin, not English) -->
+            <div class="tool-card active solis" data-badges="astronomy geography" onclick="if (!event.target.closest('a')) window.location.href='/solis'">
+                <div class="view-badge" data-app="solis"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">☀️</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-orbit"></use></svg><span data-i18n="badgeAstronomy">Astronomy</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                </div>
+                <div class="tool-title">Ex parte Solis</div>
+                <div class="tool-description" data-i18n="solisDesc">
+                    Interactive visualization of Earth from the Sun's reference frame, with a
+                    draggable 3D globe and an hour-of-day slider to explore the Sun's-eye view.
+                </div>
+                <div class="tool-actions">
+                    <a href="/solis" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/solis" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Solar Timezones -->
+            <div class="tool-card active timezones" data-badges="geography time" onclick="if (!event.target.closest('a')) window.location.href='/timezones'">
+                <div class="view-badge" data-app="timezones"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🕐</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
+                </div>
+                <div class="tool-title" data-i18n="timezonesTitle">Solar Timezones</div>
+                <div class="tool-description" data-i18n="timezonesDesc">
+                    Compares official clock time with solar time worldwide. Search any city, or explore
+                    the map, to see how far its official clock has drifted from the Sun &mdash; and why.
+                </div>
+                <a href="/timezones" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
+            <!-- Squadro Statistics Visualizer -->
+            <div class="tool-card active" data-badges="game statistics" onclick="if (!event.target.closest('a')) window.location.href='/squadro-stats'">
+                <div class="view-badge" data-app="squadro-stats"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🏆</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dices"></use></svg><span data-i18n="badgeGame">Game</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                </div>
+                <div class="tool-title" data-i18n="squadroStatsTitle">Squadro Statistics Visualizer</div>
+                <div class="tool-description" data-i18n="squadroStatsDesc">
+                    Interactive statistics for the board game Squadro as played on Board Game Arena: win
+                    rates, game-length distributions, world rankings, ELO history, and full game replays.
+                </div>
+                <a href="/squadro-stats" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
+            <!-- Flags -->
+            <div class="tool-card active flags" data-badges="geography colors" onclick="if (!event.target.closest('a')) window.location.href='/flags'">
+                <div class="view-badge" data-app="flags"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🏳️‍🌈</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-palette"></use></svg><span data-i18n="badgeColors">Colors</span></span>
+                </div>
+                <div class="tool-title" data-i18n="flagsTitle">Flags Colors</div>
+                <div class="tool-description" data-i18n="flagsDesc">
+                    An interactive world map of flag colors, with two modes to explore: Same color flags
+                    groups countries whose flags share the exact same palette, while Flag blender mixes
+                    each flag's own colors together, like paint, into one blended shade per country.
+                </div>
+                <div class="tool-actions">
+                    <a href="/flags" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/flags" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Surnames Evolution -->
+            <div class="tool-card active surnames" data-badges="statistics evolution" onclick="if (!event.target.closest('a')) window.location.href='/surnames'">
+                <div class="view-badge" data-app="surnames"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🌳</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeEvolution">Evolution</span></span>
+                </div>
+                <div class="tool-title" data-i18n="surnamesTitle">Surnames Evolution</div>
+                <div class="tool-description" data-i18n="surnamesDesc">
+                    Watch a simulated population's family names spread, compete, and go extinct across
+                    generations — pick a country's real surname data (US, Spain, Japan) and watch it play out.
+                </div>
+                <div class="tool-actions">
+                    <a href="/surnames" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/surnames-evolution" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Phyllotaxis -->
+            <div class="tool-card active phyllotaxis" data-badges="math evolution" onclick="if (!event.target.closest('a')) window.location.href='/phyllotaxis'">
+                <div class="view-badge" data-app="phyllotaxis"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🌻</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeEvolution">Evolution</span></span>
+                </div>
+                <div class="tool-title" data-i18n="phyllotaxisTitle">Phyllotaxis</div>
+                <div class="tool-description" data-i18n="phyllotaxisDesc">
+                    The golden angle behind sunflowers and pinecones — grow a floret pattern one seed at a
+                    time and watch the spiral arms emerge, with full control over the generation angle,
+                    field size, and growth speed.
+                </div>
+                <div class="tool-actions">
+                    <a href="/phyllotaxis" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/math/tree/main/phyllotaxis" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Predator-Prey -->
+            <div class="tool-card active predator-prey" data-badges="math evolution" onclick="if (!event.target.closest('a')) window.location.href='/predator-prey'">
+                <div class="view-badge" data-app="predator-prey"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🐇</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeEvolution">Evolution</span></span>
+                </div>
+                <div class="tool-title" data-i18n="predatorPreyTitle">Predator-Prey</div>
+                <div class="tool-description" data-i18n="predatorPreyDesc">
+                    The Lotka-Volterra equations behind every predator-prey cycle — watch two populations
+                    rise and fall in a feedback loop of growth and predation, with live population and
+                    phase-plane charts, and full control over every rate.
+                </div>
+                <div class="tool-actions">
+                    <a href="/predator-prey" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/math/tree/main/predator-prey" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Stroboscopic Effect -->
+            <div class="tool-card active strobe" data-badges="math time" onclick="if (!event.target.closest('a')) window.location.href='/strobe'">
+                <div class="view-badge" data-app="strobe"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🛞</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
+                </div>
+                <div class="tool-title" data-i18n="strobeTitle">Stroboscopic Effect</div>
+                <div class="tool-description" data-i18n="strobeDesc">
+                    Why a spinning wheel can appear to freeze, creep forward, or spin backward under a
+                    strobe light or camera — watch the true continuous motion next to what the strobe
+                    actually samples, with full control over spoke count, rotation speed, and strobe rate.
+                </div>
+                <div class="tool-actions">
+                    <a href="/strobe" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/math/tree/main/stroboscopic-effect" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Double Pendulum -->
+            <div class="tool-card active double-pendulum" data-badges="math time" onclick="if (!event.target.closest('a')) window.location.href='/double-pendulum'">
+                <div class="view-badge" data-app="double-pendulum"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🕰️</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
+                </div>
+                <div class="tool-title" data-i18n="doublePendulumTitle">Double Pendulum</div>
+                <div class="tool-description" data-i18n="doublePendulumDesc">
+                    Two nearly-identical double pendulums, one a fraction of a degree apart at the start, torn
+                    apart by chaos — watch how a system with no randomness anywhere in its equations can still
+                    become impossible to predict, with full control over mass, length, gravity, and starting angles.
+                </div>
+                <div class="tool-actions">
+                    <a href="/double-pendulum" class="tool-button" data-i18n="openApp">Open App</a>
+                    <a href="https://github.com/dirdam/math/tree/main/double-pendulum" target="_blank" rel="noopener noreferrer" class="tool-icon-button" data-i18n="viewSource" data-i18n-attr="title" title="View source" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </div>
+            </div>
+
+            <!-- LETRA -->
+            <div class="tool-card active" data-badges="evolution" onclick="if (!event.target.closest('a')) window.open('https://letras.streamlit.app/', '_blank')">
+                <div class="tool-icon">🧬</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dna"></use></svg><span data-i18n="badgeEvolution">Evolution</span></span>
+                </div>
+                <div class="tool-title" data-i18n="letraTitle">LETRA</div>
+                <div class="tool-description" data-i18n="letraDesc"></div>
+                <div class="tool-actions">
+                    <a href="https://letras.streamlit.app/" target="_blank" rel="noopener noreferrer" class="tool-button" data-i18n="openApp">Open App</a>
+                </div>
+            </div>
+
+            <!-- Common denominator -->
+            <div class="tool-card active" data-badges="game" onclick="if (!event.target.closest('a')) window.open('https://denominador-comun.streamlit.app/', '_blank')">
+                <div class="tool-icon">🧩</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-dices"></use></svg><span data-i18n="badgeGame">Game</span></span>
+                </div>
+                <div class="tool-title" data-i18n="raeTitle">Common denominator</div>
+                <div class="tool-description" data-i18n="raeDesc"></div>
+                <div class="tool-actions">
+                    <a href="https://denominador-comun.streamlit.app/" target="_blank" rel="noopener noreferrer" class="tool-button" data-i18n="openApp">Open App</a>
+                </div>
+            </div>
+
+            <!-- Placeholder for future app -->
+            <div class="tool-card coming-soon">
+                <div class="tool-icon">🚀</div>
+                <div class="tool-title" data-i18n="nextAppTitle">Next App</div>
+                <div class="tool-description" data-i18n="nextAppDesc">
+                    More apps in development.
+                </div>
+                <span class="coming-soon-badge" data-i18n="comingSoon">Coming Soon</span>
+            </div>
+        </div>
+</section>
+
+<section id="hobby" style="margin-top: var(--space-11);">
+  <h2 class="section-title" data-i18n="navHobby"></h2>
+  <div class="content-card">
+    <h3 data-i18n="fencedTitle"></h3>
+    <p data-i18n-html="fencedDesc"></p>
+    <p data-i18n-html="fencedMotivation"></p>
+    <h4 style="margin-top: var(--space-7);">How it works</h4>
+    <ul>
+      <li data-i18n-html="fencedHow0"></li>
+      <li data-i18n="fencedHow1"></li>
+      <li data-i18n="fencedHow2"></li>
+      <li data-i18n-html="fencedHow3"></li>
+      <li data-i18n-html="fencedHow4"></li>
+    </ul>
+    <div class="tool-actions" style="margin-top: var(--space-7);">
+      <a href="https://www.desmos.com/calculator/ikrlmabqvz" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--primary" data-i18n="openDesmos"></a>
+      <a href="https://dirdam.github.io/projects/fenced_functions.html" target="_blank" rel="noopener noreferrer" class="btn-pill" style="background: var(--overlay-black-06);" data-i18n="openGallery"></a>
+    </div>
+  </div>
+</section>

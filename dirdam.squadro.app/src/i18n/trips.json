@@ -1,0 +1,20 @@
+{
+  "en": {
+    "pageTitle": "Trips",
+    "pageSubtitle": "Around the globe",
+    "tripsIntro": "A visualization of the places I've been, mapped out and (very roughly) timed. Hover any highlighted country on the interactive map for details.",
+    "openMap": "Open the interactive map"
+  },
+  "es": {
+    "pageTitle": "Viajes",
+    "pageSubtitle": "Alrededor del mundo",
+    "tripsIntro": "Una visualización de los lugares en los que he estado, ubicados en el mapa y (muy aproximadamente) cronometrados. Pasa el ratón sobre cualquier país resaltado del mapa interactivo para ver más detalles.",
+    "openMap": "Abrir el mapa interactivo"
+  },
+  "ja": {
+    "pageTitle": "旅行",
+    "pageSubtitle": "世界中",
+    "tripsIntro": "私が訪れた場所を地図上に示し、（あくまで大まかに）滞在期間も記録しています。インタラクティブな地図でハイライトされた国にカーソルを合わせると詳細が表示されます。",
+    "openMap": "インタラクティブな地図を開く"
+  }
+}

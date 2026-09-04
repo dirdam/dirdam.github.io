@@ -1,0 +1,35 @@
+{
+  "en": {
+    "pageTitle": "Contact",
+    "pageSubtitle": "Comments, requests, questions…",
+    "labelSubject": "Subject",
+    "placeholderSubject": "Title",
+    "labelEmail": "Email",
+    "placeholderEmail": "Your email address",
+    "labelMessage": "Content",
+    "placeholderMessage": "Please describe your inquiry here",
+    "sendButton": "Send"
+  },
+  "es": {
+    "pageTitle": "Contacto",
+    "pageSubtitle": "Comentarios, solicitudes, preguntas…",
+    "labelSubject": "Asunto",
+    "placeholderSubject": "Título",
+    "labelEmail": "Email",
+    "placeholderEmail": "Tu dirección de correo",
+    "labelMessage": "Contenido",
+    "placeholderMessage": "Por favor describe tu consulta aquí",
+    "sendButton": "Enviar"
+  },
+  "ja": {
+    "pageTitle": "お問い合わせ",
+    "pageSubtitle": "コメント・依頼・質問等",
+    "labelSubject": "題目",
+    "placeholderSubject": "タイトル",
+    "labelEmail": "メール",
+    "placeholderEmail": "あなたのメールアドレス",
+    "labelMessage": "内容",
+    "placeholderMessage": "詳細をご記入ください",
+    "sendButton": "送信する"
+  }
+}

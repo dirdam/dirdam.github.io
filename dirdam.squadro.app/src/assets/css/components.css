@@ -1,0 +1,940 @@
+/* Shared site-wide components: hero, nav, language toggle, cards, buttons,
+   footer, and the bottom-right home-link widget. Loaded on every page.
+   The Apps-grid-specific components (tool-card themes, filter chips, view
+   badges) live in apps-theme.css, loaded only on my-apps.html. */
+
+/* ---------- Hero / header ---------- */
+/* "Aurora" background: a base gradient sweep plus two soft blob layers
+   drifting independently along irregular (non-symmetric) waypoints, each on
+   its own period. The three periods (13s/8s/6s) share no common factor, so
+   the combined pattern takes their LCM (624s, ~10 minutes) to exactly
+   repeat, which reads as organic/non-looping in normal viewing rather than
+   the metronomic back-and-forth a single simple animation gives. */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, var(--color-brand-start), var(--color-brand-end), var(--color-brand-start));
+  background-size: 200% 200%;
+  animation: hero-drift-base 13s ease-in-out infinite;
+  padding: var(--space-10) var(--space-8) var(--space-11);
+  text-align: center;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero::before {
+  background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.32), transparent 45%),
+              radial-gradient(circle at 68% 62%, var(--color-brand-end), transparent 55%);
+  mix-blend-mode: soft-light;
+  animation: hero-drift-blob-a 8s ease-in-out infinite;
+}
+
+.hero::after {
+  background: radial-gradient(circle at 62% 28%, rgba(180, 150, 255, 0.55), transparent 50%),
+              radial-gradient(circle at 22% 72%, var(--color-brand-start), transparent 55%);
+  mix-blend-mode: overlay;
+  animation: hero-drift-blob-b 6s ease-in-out infinite;
+}
+
+@keyframes hero-drift-base {
+  0%   { background-position: 0% 30%; }
+  22%  { background-position: 65% 10%; }
+  47%  { background-position: 100% 70%; }
+  71%  { background-position: 30% 95%; }
+  100% { background-position: 0% 30%; }
+}
+
+@keyframes hero-drift-blob-a {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  28%  { transform: translate(7%, -9%) scale(1.12); }
+  54%  { transform: translate(-6%, 5%) scale(0.94); }
+  81%  { transform: translate(9%, 6%) scale(1.06); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+@keyframes hero-drift-blob-b {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(-8%, 6%) scale(1.1); }
+  62%  { transform: translate(6%, -7%) scale(0.92); }
+  86%  { transform: translate(-4%, -4%) scale(1.05); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero::before,
+  .hero::after {
+    animation: none;
+  }
+
+  .hero {
+    background: var(--gradient-brand);
+  }
+}
+
+.hero--full {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Landing-page-only particle network (see network-bg.js) — sits above the
+   gradient/blobs, below the actual hero content. */
+.hero-network {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-network {
+    display: none;
+  }
+}
+
+.hero--compact {
+  padding: var(--space-9) var(--space-8) var(--space-10);
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  color: #ffffff;
+  font-size: var(--font-size-hero);
+  text-shadow: 0 2px 10px var(--overlay-black-20);
+  margin-bottom: var(--space-8);
+}
+
+/* The cursive "Adrï" signature wordmark (KnotFont's "A" glyph), used as the
+   landing-page hero title in place of plain text. Kept at a fixed size
+   across breakpoints rather than shrunk on mobile — matches the original
+   site's own proportions — and relies on the sitewide `overflow-x: hidden`
+   safety net rather than responsive shrinking to stay well-behaved on
+   narrow viewports. */
+.hero-signature {
+  display: inline-block;
+  font-size: 130px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px var(--overlay-black-20);
+}
+
+.hero--compact h1 {
+  font-size: var(--font-size-hero-compact);
+  margin-bottom: var(--space-5);
+}
+
+.hero .subtitle {
+  color: var(--overlay-white-90);
+  font-size: var(--font-size-subtitle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+/* ---------- Language toggle ----------
+   Rendered twice on every page (one in the sticky nav bar, one in the
+   footer — see i18n.js's renderToggle, which keeps both in sync) — CSS
+   alone decides which is visible: nav bar on desktop, footer on mobile.
+   Neither ever sits on the dark hero gradient anymore, so this is a plain
+   light-context pill everywhere, unlike the earlier white-on-translucent
+   styling that only worked over the gradient. */
+.lang-toggle {
+  display: inline-flex;
+  background: var(--overlay-black-06);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.lang-toggle button:hover {
+  color: var(--color-text);
+}
+
+.lang-toggle button[aria-pressed="true"] {
+  background: var(--gradient-brand);
+  color: #ffffff;
+}
+
+/* Nav-bar instance: hidden by default (mobile uses the footer instead),
+   shown ≥769px as a flex sibling of the pill row, right-aligned — reads as
+   "primary navigation first, locale/utility switcher after it", the same
+   left-to-right priority most multilingual sites use. */
+.nav-bar-lang-toggle {
+  display: none;
+}
+
+/* Footer instance: the default/mobile placement, "always at the bottom"
+   exactly like every other page already had (the landing page's hero
+   instance was the one exception this unifies away). */
+.footer-lang-toggle {
+  display: inline-flex;
+  margin: 0 auto var(--space-6);
+}
+
+.footer-lang-toggle button {
+  padding: 12px 18px;
+}
+
+@media screen and (min-width: 769px) {
+  /* Only touches desktop widths, where the toggle actually appears here —
+     the mobile pill-wrapping layout (a plain block-level .site-nav) is
+     untouched below this breakpoint. Treats the pill row + toggle as one
+     centered cluster rather than forcing a perfectly page-centered pill
+     row with the toggle floated off to one side — simpler, and never at
+     risk of the toggle overlapping the pills regardless of how many wrap. */
+  .site-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .site-nav-bar .site-nav {
+    margin: 0;
+  }
+
+  .nav-bar-lang-toggle {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .footer-lang-toggle {
+    display: none;
+  }
+}
+
+/* ---------- Site nav (pill row under the hero) ---------- */
+/* Sticky bar the pill nav lives in — pinned to the top of the viewport on
+   scroll, with a frosted-glass look so page content sliding underneath it
+   stays legible without a heavy, opaque bar. */
+.site-nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-neutral);
+  box-shadow: 0 4px 20px rgba(30, 20, 60, 0.05);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-8);
+}
+
+/* Rendered directly on the plain page background (never inside .hero), so
+   it needs light-context colors, not the white-on-translucent-white styling
+   that would only work over the gradient. Shared by the standalone Contact
+   pill and every dropdown trigger, so they all look like the same pill. */
+.site-nav a,
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  border: 1px solid var(--color-badge-border);
+  padding: var(--space-3) var(--space-7);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  font-family: inherit;
+  /* Browsers apply their own default line-height to <button> (the dropdown
+     triggers) instead of inheriting the page's — normally 1.6 here — so
+     without pinning it explicitly, the plain <a> pills (like Contact) end
+     up visibly taller than the <button> ones for identical padding. */
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.site-nav a svg,
+.nav-dropdown-trigger svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"],
+.nav-dropdown-trigger:hover,
+.nav-dropdown.is-open .nav-dropdown-trigger,
+.nav-dropdown-trigger.is-current-group {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.site-nav a.is-external {
+  opacity: 0.85;
+}
+
+/* ---------- Nav group dropdowns (Personal / Creations / Exploring) ---------- */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-caret {
+  width: 11px !important;
+  height: 11px !important;
+  margin-left: -2px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown.is-open .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+/* The outer element is the actual hover/hit-testing box, and it has NO
+   visual gap from the trigger (top: 100%) — instead it covers what would
+   be the gap with transparent padding-top, so the cursor is still "over"
+   this element (and therefore still over .nav-dropdown) while crossing
+   from the pill down into the menu. Without this, that empty gap between
+   pill and card is a dead zone where the mouse is over neither element,
+   :hover breaks, and the menu closes before the cursor ever reaches it.
+   The actual visible card is the inner element, offset below the bridge. */
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  z-index: 25;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-dropdown-menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 220px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card-resting);
+  padding: var(--space-4);
+  transform: translateY(-6px);
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu-inner,
+.nav-dropdown:focus-within .nav-dropdown-menu-inner,
+.nav-dropdown.is-open .nav-dropdown-menu-inner {
+  transform: translateY(0);
+}
+
+.nav-dropdown-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: left;
+  white-space: nowrap;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-dropdown-menu a svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--color-badge-text);
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a[aria-current="page"] {
+  /* `.site-nav a[aria-current="page"]` (for the top-level pills' gradient
+     fill) matches these links too and sets color:#fff — same specificity,
+     so without an explicit override here that white text silently wins,
+     leaving barely-readable white-on-light-lavender. */
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+}
+
+/* These now carry a leading category icon too (chess-pawn, compass, etc.),
+   so only the trailing "external" glyph gets pushed to the far edge —
+   the leading icon stays grouped tightly with the label like every other
+   item, instead of `justify-content: space-between` spreading all three
+   children apart evenly. */
+.nav-dropdown-menu a.is-external svg:last-child {
+  width: 13px;
+  height: 13px;
+  margin-left: auto;
+  color: var(--color-text-subtle);
+}
+
+.nav-dropdown-heading {
+  display: block;
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  padding: var(--space-3) var(--space-4) 0;
+}
+
+.nav-dropdown-heading:first-child {
+  padding-top: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .nav-dropdown-menu {
+    left: 0;
+    transform: none;
+  }
+}
+
+/* ---------- In-page pill sub-nav (jump links within a content page) ---------- */
+.pill-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-9) 0;
+}
+
+/* Deliberately plain/neutral — distinct from the colored .site-nav pills,
+   so an in-page jump nav doesn't read as another top-level nav. */
+.pill-nav a,
+.pill-nav button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-neutral);
+  padding: var(--space-3) var(--space-7);
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.pill-nav a:hover,
+.pill-nav button:hover,
+.pill-nav a[aria-current="true"],
+.pill-nav button[aria-pressed="true"] {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 12px 30px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: inherit;
+  transition: opacity var(--transition-med), transform var(--transition-fast);
+}
+
+.btn-pill--primary {
+  background: var(--gradient-brand);
+  color: #ffffff;
+}
+
+.btn-pill--primary:hover {
+  opacity: 0.9;
+}
+
+.btn-pill--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--overlay-black-06);
+  color: var(--color-text);
+  transition: background var(--transition-fast);
+}
+
+.btn-pill--icon:hover {
+  background: var(--overlay-black-12);
+}
+
+.btn-pill--icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-9);
+}
+
+.card {
+  position: relative;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-9);
+  box-shadow: var(--shadow-card-resting);
+  transition: transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.card--interactive {
+  cursor: pointer;
+}
+
+.card--interactive:hover,
+.card--interactive:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card--interactive a.card-link-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  margin-bottom: var(--space-6);
+}
+
+.card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.card-title {
+  font-size: var(--font-size-card-title);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.card-description {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-7);
+}
+
+/* Photo-identity cards (landing page) — a photo top half with the title
+   overlaid on a dark scrim, and a plain body below. Gives each destination
+   visual identity (borrowed from the old site's own photos) while keeping
+   the rounded/shadow card language of the rest of the new design. */
+.card--photo {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card--photo .card-photo-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  /* Capped so a card doesn't blow up when it's alone (or one of only two)
+     in a `minmax(260px, 1fr)` grid row and the column stretches far wider
+     than the usual 3-across row — e.g. the single-card "Programming"
+     sub-block. object-fit: cover on the <img> just shows a wider slice of
+     the same photo instead of growing the box taller. */
+  max-height: 210px;
+  overflow: hidden;
+  background: var(--color-badge-bg);
+}
+
+.card--photo .card-photo-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-med);
+}
+
+.card--interactive.card--photo:hover .card-photo-media img {
+  transform: scale(1.06);
+}
+
+.card--photo .card-photo-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+/* A pseudo-element paints after real children by default, so without an
+   explicit z-index here the ::after scrim above was rendering ON TOP of
+   this title instead of behind it. */
+.card--photo .card-photo-title {
+  position: absolute;
+  z-index: 1;
+  left: var(--space-7);
+  right: var(--space-7);
+  bottom: var(--space-5);
+  color: #ffffff;
+  font-size: var(--font-size-card-title);
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card--photo .card-photo-body {
+  padding: var(--space-6) var(--space-7) var(--space-7);
+  flex: 1;
+}
+
+.card--photo .card-photo-body .card-description {
+  margin-bottom: 0;
+}
+
+/* Landing-page identity block: the KnotFont "B" portrait mark, full name,
+   and tagline — sits right under the sticky nav, before the first block,
+   so a visitor gets "who this is" at a glance from the very top. */
+.intro-identity {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.intro-face {
+  display: block;
+  font-size: 120px;
+  color: #555555;
+  margin-bottom: var(--space-4);
+}
+
+.intro-name {
+  font-size: 1.7em;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  /* optically compensate the trailing letter-spacing gap so the name
+     still reads as centered rather than shifted left */
+  padding-left: 0.28em;
+}
+
+.intro-tagline {
+  margin-top: var(--space-4);
+  font-size: 1em;
+  color: var(--color-text-faint);
+}
+
+/* Block/section headings that group cards on the landing page. */
+/* Each block is its own visible panel (tinted, rounded, bordered) so the
+   cards inside visibly belong together, distinct from both the page
+   background and the plain-white cards nested inside it. */
+.card-block {
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-badge-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-9) var(--space-8);
+  box-shadow: 0 4px 20px rgba(30, 20, 60, 0.06);
+}
+
+/* Now a sibling that sits BEFORE its .card-block panel (not nested inside
+   it), so the section label reads as introducing the panel rather than
+   being trapped in it. */
+.card-block-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-section-title);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 var(--space-6);
+}
+
+.card-block-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.card-block-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Decorative break between landing-page blocks — a clear "new section"
+   cue now that every block shares the same panel color. */
+.block-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  margin: var(--space-10) auto;
+  max-width: 20em;
+}
+
+.block-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border-neutral) 50%, transparent);
+}
+
+.block-divider-line:first-child {
+  background: linear-gradient(to right, transparent, var(--color-border-neutral));
+}
+
+.block-divider-line:last-child {
+  background: linear-gradient(to left, transparent, var(--color-border-neutral));
+}
+
+.block-divider svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-badge-text);
+  flex-shrink: 0;
+}
+
+.card-subblock-title {
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-subtle);
+  text-align: center;
+  margin: var(--space-8) 0 var(--space-6);
+}
+
+.card-subblock-title:first-of-type {
+  margin-top: 0;
+}
+
+/* Read-only prose sections (replaces the old site's `.field` blocks). */
+.content-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-9);
+  box-shadow: var(--shadow-card-resting);
+  border-left: 4px solid var(--color-brand-start);
+}
+
+.content-card + .content-card {
+  margin-top: var(--space-8);
+}
+
+.content-card h3 {
+  font-size: var(--font-size-card-title);
+  margin-bottom: var(--space-5);
+}
+
+.content-card p + p,
+.content-card ul + p,
+.content-card p + ul {
+  margin-top: var(--space-5);
+}
+
+.content-card ul {
+  padding-left: 1.2em;
+}
+
+.content-card li {
+  margin-bottom: var(--space-4);
+}
+
+.content-card img.inline-logo {
+  vertical-align: middle;
+  height: 28px;
+  width: auto;
+  margin-right: var(--space-3);
+}
+
+.content-card iframe {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-md);
+}
+
+/* ---------- Badges (small external/legacy tags) ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--overlay-black-06);
+  color: var(--color-text-subtle);
+  padding: 3px var(--space-5);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-badge);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Forms (Contact page) ---------- */
+.form-field {
+  margin-bottom: var(--space-7);
+}
+
+.form-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font: inherit;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid #d8d8de;
+  border-radius: var(--radius-md);
+  background: #fff;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-brand-start);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  color: var(--color-text-faint);
+  padding: var(--space-11) var(--space-8) var(--space-9);
+}
+
+.site-footer .copyright {
+  margin-top: var(--space-8);
+  font-size: var(--font-size-small);
+}
+
+/* ---------- Bottom-right home-link widget (ported verbatim) ---------- */
+#bottom {
+  position: fixed;
+  bottom: 0.5cm;
+  right: 0.5cm;
+  z-index: 5;
+}
+
+.sticker {
+  width: 2.2cm;
+  height: 2.2cm;
+}
+
+.lasso .sticker-img {
+  background-image: url("../images/lasso_logo.jpg");
+  background-size: 2.2cm 2.2cm;
+}
+
+.lasso .sticker-shadow {
+  opacity: 0.6;
+}
+
+/* ---------- Scroll reveal ----------
+   Progressive enhancement: reveal.js adds `has-reveal` to <html> at load
+   time (before this rule can apply to any content), then flips each target
+   to `.is-visible` as it enters the viewport. If JS never runs, the
+   `has-reveal` scope is simply absent and every block/card renders normally
+   — content is never hidden by CSS alone. */
+.has-reveal .card-block,
+.has-reveal .content-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 0.84, 0.44, 1),
+              transform 0.7s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.has-reveal .card-block.is-visible,
+.has-reveal .content-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-reveal .card-block,
+  .has-reveal .content-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: var(--font-size-hero-mobile);
+  }
+
+  .lang-toggle button {
+    padding: 12px 18px;
+  }
+
+  .content-card,
+  .card {
+    padding: var(--space-7);
+  }
+}
