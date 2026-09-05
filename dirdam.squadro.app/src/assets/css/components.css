@@ -1113,6 +1113,31 @@
   letter-spacing: 0.02em;
 }
 
+/* Work page's employment date ranges — the same light-blue badge palette
+   used site-wide (nav pills, the lasso home circle, ...), rather than the
+   plain gray .tag gets by default, with the em dash kept a neutral gray
+   (see .tag-emdash) instead of picking up the badge's blue text color. */
+.tag--dates {
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-badge-border);
+  color: var(--color-badge-text);
+}
+
+.tag--dates .tag-emdash {
+  color: var(--color-text-subtle);
+}
+
+/* A row of standalone .tag badges (e.g. the individual years the Todai
+   part-time lecturing spans) rather than one badge inline with text —
+   sits between the card's logo image and its description, same position
+   as the single .tag--dates badge in the main-employer sections above. */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+
 /* ---------- Forms (Contact page) ---------- */
 .form-field {
   margin-bottom: var(--space-7);
