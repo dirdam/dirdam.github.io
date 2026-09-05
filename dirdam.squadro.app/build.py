@@ -26,7 +26,10 @@ PAGES = [
      "extra_js": ["/assets/js/trail-bg.js"], "hero_canvas_class": "hero-trails"},
     {"name": "work", "title": "Working Experience — Adrï",
      "description": "Working experience: jobs, internships and full-time roles.",
-     "hero_variant": "hero--compact", "has_subtitle": True, "extra_css": [], "extra_js": []},
+     "hero_variant": "hero--compact", "hero_theme": "hero--work",
+     "has_subtitle": True, "extra_css": [],
+     "extra_js": ["/assets/js/math-bg.js"], "hero_canvas_class": "hero-math",
+     "hero_canvas_tag": "svg"},
     {"name": "my-apps", "title": "Exploring — Adrï",
      "description": "Hobby projects and interactive apps.",
      "hero_variant": "hero--compact", "has_subtitle": True,
@@ -82,11 +85,15 @@ def build_page(page, partials, common):
             .replace("{{EXTRA_CSS}}", extra_css))
     subtitle = '<p class="subtitle" data-i18n="pageSubtitle"></p>' if page["has_subtitle"] else ""
     hero_heading = page.get("hero_heading_html", '<span data-i18n="pageTitle"></span>')
-    # Each hero canvas effect (particle network, orbits, ...) is opted into
-    # per page via hero_canvas_class — every one is a real per-frame cost,
-    # not worth paying on pages that don't ask for it.
+    # Each hero effect (particle network, orbits, ...) is opted into per
+    # page via hero_canvas_class — every one is a real per-frame cost, not
+    # worth paying on pages that don't ask for it. Most draw to a <canvas>;
+    # math-bg.js instead builds real SVG elements (Lucide icon paths, drawn
+    # via stroke-dasharray/dashoffset) so hero_canvas_tag lets a page opt
+    # into an <svg> host element instead.
     hero_canvas_class = page.get("hero_canvas_class")
-    hero_canvas = f'<canvas class="{hero_canvas_class}" aria-hidden="true"></canvas>' if hero_canvas_class else ""
+    hero_canvas_tag = page.get("hero_canvas_tag", "canvas")
+    hero_canvas = f'<{hero_canvas_tag} class="{hero_canvas_class}" aria-hidden="true"></{hero_canvas_tag}>' if hero_canvas_class else ""
     header = (partials["header"]
               .replace("{{HERO_VARIANT_CLASS}}", page["hero_variant"])
               .replace("{{HERO_THEME_CLASS}}", page.get("hero_theme", ""))

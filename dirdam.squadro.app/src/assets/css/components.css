@@ -179,6 +179,28 @@
   }
 }
 
+/* Work: a three-tone blue gradient sampled from Adrï's brand mark (navy →
+   mid-blue → bright blue), sweeping the same diagonal band as the shared
+   default gradient but through three real hues via an extra --hero-c3 stop
+   instead of interpolating just two. The aurora blob layers still only
+   read c1/c2 (see .hero::before/::after above), so their highlights are
+   picked to read against navy rather than against the brighter blue. */
+.hero--work {
+  --hero-c1: #0b2e74;
+  --hero-c2: #1d46b9;
+  --hero-c3: #2851f6;
+  --hero-blob-a-highlight: rgba(255, 255, 255, 0.28);
+  --hero-blob-b-highlight: rgba(120, 170, 255, 0.55);
+  background: linear-gradient(120deg, var(--hero-c1), var(--hero-c2), var(--hero-c3), var(--hero-c2), var(--hero-c1));
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--work {
+    background: linear-gradient(135deg, var(--hero-c1), var(--hero-c2), var(--hero-c3));
+  }
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -194,7 +216,8 @@
    *under* that blob. */
 .hero-network,
 .hero-ripples,
-.hero-trails {
+.hero-trails,
+.hero-math {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -206,7 +229,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-network,
   .hero-ripples,
-  .hero-trails {
+  .hero-trails,
+  .hero-math {
     display: none;
   }
 }
