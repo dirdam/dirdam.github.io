@@ -22,6 +22,32 @@ document.addEventListener('DOMContentLoaded', function () {
   var yearEl = document.getElementById('footerYear');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Work page's company logo badges — the enlarged popover already opens
+  // on hover/focus via CSS alone (see .logo-popover in components.css);
+  // this just adds the same click/tap toggle (touch devices, keyboard
+  // users) with outside-click and Escape to close, one open at a time,
+  // mirroring the nav dropdown behavior below.
+  var logoBadges = document.querySelectorAll('.card-block-icon--logo');
+  if (logoBadges.length) {
+    var closeLogoBadges = function (except) {
+      logoBadges.forEach(function (b) {
+        if (b !== except) b.classList.remove('is-open');
+      });
+    };
+    logoBadges.forEach(function (badge) {
+      badge.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = !badge.classList.contains('is-open');
+        closeLogoBadges(badge);
+        badge.classList.toggle('is-open', willOpen);
+      });
+    });
+    document.addEventListener('click', function () { closeLogoBadges(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLogoBadges();
+    });
+  }
+
   // Nav group dropdowns — open on hover via CSS alone, but also toggle on
   // click/tap (for touch devices and keyboard users) with outside-click
   // and Escape to close, and only one open at a time.

@@ -850,6 +850,12 @@
   background: var(--gradient-brand);
   color: #ffffff;
   flex-shrink: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .card-block-icon svg {
@@ -861,18 +867,80 @@
    glyph for the company's own logo — a plain white disc rather than the
    brand-gradient fill, since a logo brings its own colors and a purple
    background would fight with them; part-time jobs (several employers,
-   no single badge to show) keep the generic icon. */
+   no single badge to show) keep the generic icon.
+
+   It's a <button>, not a <span>: hovering (or focusing, or tapping) it
+   reveals a much bigger version of the same logo in a popover centered
+   on top of the badge, since the small badge alone is too small to make
+   out some logos clearly. Hover/focus opens it with CSS alone; main.js
+   also toggles an .is-open class on click so touch devices and keyboard
+   users (Enter/Space activate a button natively, no extra JS needed for
+   that part) get the same result, with outside-click/Escape closing it. */
 .card-block-icon--logo {
   background: #ffffff;
   border: 1px solid var(--color-badge-border);
-  overflow: hidden;
   padding: 3px;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.card-block-icon--logo img {
+.card-block-icon--logo:hover,
+.card-block-icon--logo:focus-visible {
+  box-shadow: 0 2px 10px rgba(30, 20, 60, 0.18);
+  transform: translateY(-1px);
+}
+
+.card-block-icon--logo > img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 50%;
+}
+
+.logo-popover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  padding: var(--space-5);
+  background: #ffffff;
+  border: 1px solid var(--color-badge-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(30, 20, 60, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+}
+
+.logo-popover img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card-block-icon--logo:hover .logo-popover,
+.card-block-icon--logo:focus-visible .logo-popover,
+.card-block-icon--logo.is-open .logo-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-block-icon--logo,
+  .logo-popover {
+    transition: none;
+  }
 }
 
 /* Decorative break between landing-page blocks — a clear "new section"
