@@ -857,6 +857,24 @@
   height: 18px;
 }
 
+/* Main (full-time) employers on the Work page swap the generic briefcase
+   glyph for the company's own logo — a plain white disc rather than the
+   brand-gradient fill, since a logo brings its own colors and a purple
+   background would fight with them; part-time jobs (several employers,
+   no single badge to show) keep the generic icon. */
+.card-block-icon--logo {
+  background: #ffffff;
+  border: 1px solid var(--color-badge-border);
+  overflow: hidden;
+  padding: 3px;
+}
+
+.card-block-icon--logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Decorative break between landing-page blocks — a clear "new section"
    cue now that every block shares the same panel color. */
 .block-divider {
