@@ -656,6 +656,17 @@
   border-color: transparent;
 }
 
+/* Separator between two groups of pills (e.g. Work page's main employers
+   vs part-time jobs) — a plain flex item, so it picks up the same `gap`
+   spacing as every pair of pills either side of it (no separate margin to
+   keep in sync), and stretches to the row's own height for free via the
+   container's default align-items: stretch (nothing here overrides it),
+   matching the capsules' height exactly rather than a hand-picked value. */
+.pill-nav-divider {
+  width: 0;
+  border-left: 1px dashed var(--color-border-neutral);
+}
+
 /* ---------- Buttons ---------- */
 .btn-pill {
   display: inline-flex;
@@ -878,7 +889,10 @@
 
 /* Now a sibling that sits BEFORE its .card-block panel (not nested inside
    it), so the section label reads as introducing the panel rather than
-   being trapped in it. */
+   being trapped in it. Top margin gives it room to breathe from whatever
+   came before (another section's panel, now that the block-dividers that
+   used to separate sections were removed from every page but the
+   landing one); bottom margin does the same before its own panel below. */
 .card-block-title {
   display: flex;
   align-items: center;
@@ -887,7 +901,7 @@
   font-size: var(--font-size-section-title);
   font-weight: 700;
   text-align: center;
-  margin: 0 0 var(--space-6);
+  margin: var(--space-10) 0 var(--space-8);
 }
 
 .card-block-icon {
