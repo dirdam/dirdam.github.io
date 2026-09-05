@@ -294,6 +294,9 @@
 }
 
 .lang-toggle button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: none;
   color: var(--color-text-subtle);
@@ -317,9 +320,14 @@
 /* Nav-bar instance: hidden by default (mobile uses the footer instead),
    shown ≥769px as a flex sibling of the pill row, right-aligned — reads as
    "primary navigation first, locale/utility switcher after it", the same
-   left-to-right priority most multilingual sites use. */
+   left-to-right priority most multilingual sites use. Fixed to the same
+   --nav-capsule-height as the pills/lasso circle next to it — its buttons
+   stretch to fill that (the default flex align-items:stretch, since
+   nothing overrides it) and stay centered via .lang-toggle button's own
+   flex centering above. */
 .nav-bar-lang-toggle {
   display: none;
+  height: var(--nav-capsule-height);
 }
 
 /* Footer instance: the default/mobile placement, "always at the bottom"
@@ -368,6 +376,12 @@
    scroll, with a frosted-glass look so page content sliding underneath it
    stays legible without a heavy, opaque bar. */
 .site-nav-bar {
+  /* Single source of truth for every capsule-shaped control in the bar
+     (pills, dropdown triggers, the lasso home circle, the language
+     toggle) so they line up exactly instead of each sizing itself from
+     its own padding/line-height, which — given a <button> vs <a> vs a
+     wrapped toggle all compute that differently — never quite agreed. */
+  --nav-capsule-height: 36px;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -394,11 +408,13 @@
 .nav-dropdown-trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   background: var(--color-badge-bg);
   color: var(--color-badge-text);
   border: 1px solid var(--color-badge-border);
-  padding: var(--space-3) var(--space-7);
+  height: var(--nav-capsule-height);
+  padding: 0 var(--space-7);
   border-radius: var(--radius-pill);
   font-size: var(--font-size-small);
   font-weight: 600;
@@ -406,7 +422,9 @@
   /* Browsers apply their own default line-height to <button> (the dropdown
      triggers) instead of inheriting the page's — normally 1.6 here — so
      without pinning it explicitly, the plain <a> pills (like Contact) end
-     up visibly taller than the <button> ones for identical padding. */
+     up visibly taller than the <button> ones for identical padding. Height
+     is fixed above anyway (see --nav-capsule-height), but this still keeps
+     the text itself vertically centered within that fixed box. */
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
@@ -432,6 +450,38 @@
 
 .site-nav a.is-external {
   opacity: 0.85;
+}
+
+/* Home-link logo circle, first in the pill row (the same lasso mark as
+   the bottom-right sticker widget — see #bottom/.lasso above — just
+   without that widget's own drag/shadow behavior) — a one-click way back
+   to the top page from anywhere in the nav, without hunting for the
+   corner widget. Higher-specificity selector so it overrides the generic
+   pill look .site-nav a gets above instead of a plain circle with pill
+   padding/radius. Same --nav-capsule-height as every other control here,
+   so it's exactly as tall as the pills next to it, not just visually close. */
+.site-nav a.site-nav-home {
+  width: var(--nav-capsule-height);
+  height: var(--nav-capsule-height);
+  padding: 0;
+  gap: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: none;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-nav a.site-nav-home:hover {
+  background: none;
+  border-color: var(--color-badge-border);
+  box-shadow: 0 2px 10px rgba(30, 20, 60, 0.18);
+  transform: translateY(-1px);
+}
+
+.site-nav-home img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ---------- Nav group dropdowns (Personal / Creations / Exploring) ---------- */
