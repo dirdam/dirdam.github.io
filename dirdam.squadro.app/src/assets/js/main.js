@@ -1,8 +1,5 @@
-/* Small glue script, loaded on every page after i18n.js and sticker.min.js. */
+/* Small glue script, loaded on every page after i18n.js. */
 document.addEventListener('DOMContentLoaded', function () {
-  // Bottom-right home-link widget (unchanged from the old site).
-  if (window.Sticker) Sticker.init('.sticker');
-
   // Highlight the current page in the nav (including inside a dropdown
   // menu, in which case the group's trigger pill gets highlighted too so
   // a visitor can tell which group they're in without opening it).

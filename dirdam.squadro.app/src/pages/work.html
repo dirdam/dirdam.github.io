@@ -7,11 +7,27 @@
   <a href="#part" data-i18n="navPart"></a>
 </nav>
 
+<div class="badge-legend" role="note">
+  <span class="tag" data-i18n="legendDepartment"></span>
+  <span class="tag tag--role" data-i18n="legendRole"></span>
+  <span class="tag tag--dates" data-i18n="legendPeriod"></span>
+</div>
+
 <h2 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Insight Edge logo"><img src="/assets/images/logos/logo_ie.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_insight.png" alt=""></span></button><span data-i18n="navIe"></span></h2>
 <section id="ie">
   <div class="content-card">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="ieDates"></p>
-    <p data-i18n-html="ieIntro"></p>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag" data-i18n="ieDepartment"></span>
+    </div>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag tag--role" data-i18n-html="ieRoleSenior"></span>
+      <span class="tag tag--role" data-i18n-html="ieRoleManager"></span>
+      <span class="tag tag--dates" data-i18n-html="ieDatesManager"></span>
+    </div>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag tag--role" data-i18n-html="ieRoleLead"></span>
+      <span class="tag tag--dates" data-i18n-html="ieDatesLead"></span>
+    </div>
     <h4 style="margin-top: var(--space-7);" data-i18n="projectsHeading"></h4>
     <ul>
       <li data-i18n-html="ieProject1"></li>
@@ -31,8 +47,13 @@
 <h2 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Accenture logo"><img src="/assets/images/logos/logo_acc.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_accenture.jpg" alt=""></span></button><span data-i18n="navAcn"></span></h2>
 <section id="acn">
   <div class="content-card">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="acnDates"></p>
-    <p data-i18n-html="acnIntro"></p>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag" data-i18n="acnDepartment"></span>
+    </div>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag tag--role" data-i18n-html="acnRole"></span>
+      <span class="tag tag--dates" data-i18n-html="acnDates"></span>
+    </div>
     <h4 style="margin-top: var(--space-7);" data-i18n="projectsHeading"></h4>
     <ul>
       <li data-i18n-html="acnProject1"></li>
@@ -46,8 +67,13 @@
 <h2 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Works Applications logo"><img src="/assets/images/logos/logo_wap.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_worksap.png" alt=""></span></button><span data-i18n="navWorks"></span></h2>
 <section id="works">
   <div class="content-card">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="worksDates"></p>
-    <p data-i18n-html="worksIntro"></p>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag" data-i18n="worksDepartment"></span>
+    </div>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag tag--role" data-i18n-html="worksRole"></span>
+      <span class="tag tag--dates" data-i18n-html="worksDates"></span>
+    </div>
     <h4 style="margin-top: var(--space-7);" data-i18n="projectsHeading"></h4>
     <ul>
       <li data-i18n-html="worksProject1"></li>
@@ -59,38 +85,67 @@
 <h2 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Yahoo! JAPAN logo"><img src="/assets/images/logos/logo_y.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_yahoo.png" alt=""></span></button><span data-i18n="navYahoo"></span></h2>
 <section id="yahoo">
   <div class="content-card">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="yahooDates"></p>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag" data-i18n="yahooDepartment"></span>
+    </div>
+    <div class="tag-row" style="margin: var(--space-4) 0;">
+      <span class="tag tag--role" data-i18n-html="yahooRole"></span>
+      <span class="tag tag--dates" data-i18n-html="yahooDates"></span>
+    </div>
     <p data-i18n-html="yahooIntro"></p>
   </div>
 </section>
 
 <h2 class="card-block-title"><span class="card-block-icon"><svg><use href="#icon-component"></use></svg></span><span data-i18n="navPart"></span></h2>
 <section id="part">
-  <div class="content-card">
-    <img src="/assets/images/logos/logo_todai_2.png" alt="The University of Tokyo" style="height:56px; display:block; margin: 0 auto var(--space-5);">
-    <div class="tag-row">
-      <span class="tag tag--dates">2019</span>
-      <span class="tag tag--dates">2020</span>
-      <span class="tag tag--dates">2021</span>
-      <span class="tag tag--dates">2022</span>
-      <span class="tag tag--dates">2023</span>
-      <span class="tag tag--dates">2024</span>
+  <div class="part-entry">
+    <h3 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="The University of Tokyo logo"><img src="/assets/images/logos/logo_todai.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_todai_2.png" alt=""></span></button><span data-i18n="todaiName"></span></h3>
+    <div class="content-card">
+      <div class="tag-row">
+        <span class="tag tag--role" data-i18n="todaiRole"></span>
+        <span class="tag tag--dates">2019</span>
+        <span class="tag tag--dates">2020</span>
+        <span class="tag tag--dates">2021</span>
+        <span class="tag tag--dates">2022</span>
+        <span class="tag tag--dates">2023</span>
+        <span class="tag tag--dates">2024</span>
+      </div>
+      <p data-i18n-html="partTodai"></p>
     </div>
-    <p data-i18n-html="partTodai"></p>
   </div>
-  <div class="content-card">
-    <img src="/assets/images/logos/lasso.png" alt="Lasso" style="height:64px; display:block; margin: 0 auto var(--space-5);">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="lassoDates"></p>
-    <p data-i18n-html="partLasso"></p>
+  <div class="part-entry">
+    <h3 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Lasso logo"><img src="/assets/images/logos/lasso.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/lasso.png" alt=""></span></button><span data-i18n="lassoName"></span></h3>
+    <div class="content-card">
+      <div class="tag-row" style="margin: var(--space-4) 0;">
+        <span class="tag tag--role" data-i18n="lassoRole"></span>
+        <span class="tag tag--dates" data-i18n-html="lassoDates"></span>
+      </div>
+      <p data-i18n-html="partLasso"></p>
+    </div>
   </div>
-  <div class="content-card">
-    <img src="/assets/images/logos/logo_hanayama.jpg" alt="Hanayama" style="height:64px; display:block; margin: 0 auto var(--space-5);">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="hanayamaDates"></p>
-    <p data-i18n-html="partHanayama"></p>
+  <div class="part-entry">
+    <h3 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Hanayama logo"><img src="/assets/images/logos/logo_hana.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_hanayama.jpg" alt=""></span></button><span data-i18n="hanayamaName"></span></h3>
+    <div class="content-card">
+      <div class="tag-row" style="margin: var(--space-4) 0;">
+        <span class="tag tag--role" data-i18n="hanayamaRole"></span>
+        <span class="tag tag--dates" data-i18n-html="hanayamaDates"></span>
+      </div>
+      <p data-i18n-html="partHanayama"></p>
+    </div>
   </div>
-  <div class="content-card">
-    <img src="/assets/images/logos/logo_gengo.png" alt="Gengo" style="height:48px; display:block; margin: 0 auto var(--space-5);">
-    <p class="tag tag--dates" style="margin: var(--space-4) 0;" data-i18n-html="gengoDates"></p>
-    <p data-i18n-html="partGengo"></p>
+  <div class="part-entry">
+    <h3 class="card-block-title"><button type="button" class="card-block-icon card-block-icon--logo" aria-label="Gengo logo"><img src="/assets/images/logos/logo_gengo.png" alt=""><span class="logo-popover"><img src="/assets/images/logos/logo_gengo.png" alt=""></span></button><span data-i18n="gengoName"></span></h3>
+    <div class="content-card">
+      <div class="tag-row" style="margin: var(--space-4) 0;">
+        <span class="tag tag--role" data-i18n="gengoRoleSenior"></span>
+        <span class="tag tag--dates" data-i18n-html="gengoDatesSenior"></span>
+      </div>
+      <div class="tag-row" style="margin: var(--space-4) 0;">
+        <span class="tag tag--role" data-i18n="gengoRoleEn"></span>
+        <span class="tag tag--role" data-i18n="gengoRoleJa"></span>
+        <span class="tag tag--dates" data-i18n-html="gengoDatesTranslators"></span>
+      </div>
+      <p data-i18n-html="partGengo"></p>
+    </div>
   </div>
 </section>

@@ -127,9 +127,7 @@ def build_page(page, partials, common):
         body,
         "</main>",
         footer,
-        partials["widget"],
         '<script src="/assets/js/i18n.js"></script>',
-        '<script src="/assets/js/sticker.min.js"></script>',
         '<script src="/assets/js/main.js"></script>',
         '<script src="/assets/js/reveal.js"></script>',
         extra_js,
@@ -146,7 +144,7 @@ def main():
 
     partials = {
         name: read_text(PARTIALS / f"{name}.html")
-        for name in ("head", "icons", "header", "nav", "footer", "widget")
+        for name in ("head", "icons", "header", "nav", "footer")
     }
     common = json.loads(read_text(I18N / "common.json"))
     for page in PAGES:
