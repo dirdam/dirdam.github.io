@@ -85,3 +85,18 @@
   /* Layout */
   --content-max-width: 1200px;
 }
+
+/* Per-language body typeface. `--font-sans` above stays as the default/
+   fallback (used before i18n.js sets `<html lang>`, and as the trailing
+   fallback segment of each stack below) — everything in this codebase
+   already reads --font-sans (directly, or via `font-family: inherit`), so
+   overriding it here re-themes the whole site with no other CSS changes. */
+html[lang="es"] {
+  --font-sans: 'CuchillerasSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+html[lang="en"] {
+  --font-sans: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+html[lang="ja"] {
+  --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}

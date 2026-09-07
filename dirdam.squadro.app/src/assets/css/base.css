@@ -18,6 +18,24 @@
   font-style: normal;
 }
 
+/* Spanish body typeface — variable font, weight axis spans the full
+   100-900 range (Thin-Black), matched via `font-weight: 100 900` so the
+   browser picks the right instance for whatever weight is requested. */
+@font-face {
+  font-family: 'CuchillerasSans';
+  src: url('/assets/fonts/CuchillerasSansVF.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CuchillerasSans';
+  src: url('/assets/fonts/CuchillerasSansItalicVF.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
