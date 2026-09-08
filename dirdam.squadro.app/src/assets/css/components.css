@@ -1631,10 +1631,13 @@
   padding-left: 1.2em;
 }
 
-/* Press mentions list (About page): each entry already opens with a
-   colored badge, so a bullet dot in front of it is redundant clutter —
-   drop the marker and its indent, unlike .content-card ul's default. */
-#press ul {
+/* Lists whose entries already open with a colored badge (About's Press
+   list, Background's Papers/Talks lists) — a bullet dot in front of a
+   badge is redundant clutter, so drop the marker and its indent, unlike
+   .content-card ul's default. */
+#press ul,
+#papers ul,
+#talks ul {
   list-style: none;
   padding-left: 0;
 }
@@ -1731,6 +1734,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  text-decoration: none;
 }
 
 /* Work page's employment date ranges — the same light-blue badge palette
@@ -1802,6 +1806,27 @@
   background: rgba(71, 85, 105, 0.1);
   border: 1px solid rgba(71, 85, 105, 0.3);
   color: #334155;
+}
+
+/* Background page's arXiv reference badges — these are the only .tag
+   variant that's actually a link, so besides its own color (arXiv's own
+   brand red) it gets a hover/active highlight the plain tags don't need,
+   to read as clickable rather than just another metadata pill. */
+.tag--arxiv {
+  background: rgba(179, 27, 27, 0.1);
+  border: 1px solid rgba(179, 27, 27, 0.3);
+  color: #b31b1b;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tag--arxiv:hover,
+.tag--arxiv:focus-visible {
+  background: rgba(179, 27, 27, 0.22);
+  border-color: rgba(179, 27, 27, 0.45);
+}
+
+.tag--arxiv:active {
+  background: rgba(179, 27, 27, 0.32);
 }
 
 /* A row of standalone .tag badges (e.g. the individual years the Todai
@@ -1895,6 +1920,23 @@
   height: 1em;
   flex-shrink: 0;
   color: #ca8a04;
+}
+
+/* Generic arrow-prefixed caption line for supplementary info under a
+   badge+title list entry (Background page's Papers/Talks) — same visual
+   idiom as .video-entry-subtitle above, but usable inside a plain <li>
+   rather than a <details><summary>. */
+.entry-note {
+  display: block;
+  margin-top: var(--space-2);
+  margin-left: calc(var(--space-3) * 3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.entry-note-arrow {
+  color: var(--color-text-faint);
+  margin-right: var(--space-2);
 }
 
 /* Work page only: a thin secondary bar (thinner than the sticky
