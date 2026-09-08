@@ -858,11 +858,16 @@
 }
 
 .game-showcase-media {
+  /* Wider box (16:9 instead of 4:3, and wider in absolute terms too) so
+     object-fit: cover has to crop less off the sides of these games'
+     mostly-landscape key art — 4:3 was noticeably narrower than the
+     source images' own aspect ratio, cutting off logos/characters at
+     the edges (e.g. Tunic's title). */
   display: block;
-  flex: 0 0 240px;
+  flex: 0 0 320px;
   border-radius: var(--radius-md);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
 }
 
 .game-showcase-media img {
