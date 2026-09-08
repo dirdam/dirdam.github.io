@@ -953,6 +953,30 @@
   margin-top: var(--space-9);
 }
 
+/* Themed per-game background: --game-main/--game-accent/--game-text are
+   set inline by game-showcase.js from colors it samples out of the
+   selected game's own thumbnail (dominant background hue + the most
+   vivid distinct hue, standing in for the game's logo/title color) — see
+   that file's extractPalette(). Defaults here are the plain site card
+   look, so nothing changes before that JS runs or if it can't read a
+   given image. A compound selector (two classes, beats plain
+   .content-card's single-class rule below it) is what lets this override
+   .content-card's own background/border-left regardless of source order. */
+.content-card.game-showcase-highlight {
+  --game-main: var(--color-card-bg);
+  --game-accent: var(--color-brand-start);
+  --game-text: var(--color-text);
+  background: linear-gradient(135deg, var(--game-main), var(--game-accent));
+  border-left-color: var(--game-accent);
+  transition: background var(--transition-med), border-color var(--transition-med);
+}
+
+.game-showcase-highlight .card-title,
+.game-showcase-highlight .card-description {
+  color: var(--game-text);
+  transition: color var(--transition-med);
+}
+
 .game-showcase-media {
   /* Wider box (16:9 instead of 4:3, and wider in absolute terms too) so
      object-fit: cover has to crop less off the sides of these games'
@@ -1325,6 +1349,13 @@
   font-weight: 700;
   text-align: center;
   margin: var(--space-10) 0 var(--space-8);
+}
+
+/* On a page with no pill-nav above it (nothing to "breathe" away from —
+   see the comment above), the top margin is just dead space between the
+   hero and the title, so drop it when the title opens the page outright. */
+.container > .card-block-title:first-child {
+  margin-top: 0;
 }
 
 .card-block-icon {
