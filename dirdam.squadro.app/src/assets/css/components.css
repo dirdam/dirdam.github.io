@@ -1631,6 +1631,14 @@
   padding-left: 1.2em;
 }
 
+/* Press mentions list (About page): each entry already opens with a
+   colored badge, so a bullet dot in front of it is redundant clutter —
+   drop the marker and its indent, unlike .content-card ul's default. */
+#press ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 .content-card li {
   margin-bottom: var(--space-4);
 }
@@ -1778,6 +1786,15 @@
   color: var(--color-badge-text);
 }
 
+/* About page's press mentions: a fourth hue (emerald) for the language
+   badge, since neither .tag--dates' blue (used for the year) nor
+   .tag--role's purple (used for the outlet) was free to reuse here. */
+.tag--language {
+  background: rgba(5, 150, 105, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+  color: #047857;
+}
+
 /* A row of standalone .tag badges (e.g. the individual years the Todai
    part-time lecturing spans) rather than one badge inline with text —
    sits between the card's logo image and its description, same position
@@ -1787,6 +1804,62 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin: var(--space-5) 0;
+}
+
+/* Video entries (About page) — collapsed by default so four YouTube
+   embeds don't all sit expanded on the page at once. Native <details>
+   rather than a JS-driven toggle: no script needed, and modern browsers
+   don't fetch a closed <details>'s iframe src until it's expanded, so
+   this also defers loading every video until someone actually opens it. */
+.video-entry {
+  border-top: 1px solid var(--color-border-neutral);
+  padding: var(--space-5) 0;
+}
+
+.video-entry:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.video-entry summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  list-style: none;
+}
+
+.video-entry summary::-webkit-details-marker {
+  display: none;
+}
+
+.video-entry-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  color: var(--color-brand-start);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+}
+
+.video-entry-caret {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.video-entry[open] .video-entry-caret {
+  transform: rotate(180deg);
+}
+
+.video-entry-body {
+  margin-top: var(--space-6);
+}
+
+.video-entry-body p {
+  margin-top: var(--space-5);
 }
 
 /* Work page only: a thin secondary bar (thinner than the sticky
