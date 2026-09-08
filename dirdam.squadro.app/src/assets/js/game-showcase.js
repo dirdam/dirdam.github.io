@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const highlightTitle = document.getElementById('gameHighlightTitle');
   const highlightDesc = document.getElementById('gameHighlightDesc');
   const highlightNote = document.getElementById('gameHighlightNote');
+  const highlightNoteText = document.getElementById('gameHighlightNoteText');
 
   function applyButton(btn) {
     const titleKey = btn.getAttribute('data-title-key');
@@ -32,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (noteKey) {
       highlightNote.hidden = false;
-      highlightNote.setAttribute('data-i18n-html', noteKey);
-      highlightNote.innerHTML = window.I18N.t(noteKey);
+      highlightNoteText.setAttribute('data-i18n-html', noteKey);
+      highlightNoteText.innerHTML = window.I18N.t(noteKey);
     } else {
       highlightNote.hidden = true;
-      highlightNote.removeAttribute('data-i18n-html');
-      highlightNote.innerHTML = '';
+      highlightNoteText.removeAttribute('data-i18n-html');
+      highlightNoteText.innerHTML = '';
     }
   }
 

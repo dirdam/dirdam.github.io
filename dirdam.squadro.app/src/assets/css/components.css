@@ -891,8 +891,8 @@
   margin-bottom: var(--space-5);
 }
 
-.game-showcase-info .tag {
-  margin-top: var(--space-5);
+.game-showcase-info .note-callout {
+  margin-top: var(--space-6);
 }
 
 /* Flat-top regular hexagons chained edge-to-edge like a honeycomb: each
@@ -1380,6 +1380,42 @@
   width: 100%;
   border: none;
   border-radius: var(--radius-md);
+}
+
+/* ---------- Note callout (an aside sentence with a link, e.g. the Fez/
+   Tunic font-download notes) ---------- */
+/* .tag (below) is built for a short 2-4 word label — uppercase, tiny,
+   bold — and looked cramped/dull stretched over a full sentence with an
+   embedded link. This is sized like body text instead, with the same
+   left-accent-border language .content-card uses for its own emphasis. */
+.note-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background: var(--color-badge-bg);
+  border-left: 4px solid var(--color-brand-start);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  color: var(--color-text);
+  line-height: var(--line-height-body);
+}
+
+.note-callout-icon {
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.15em;
+  color: var(--color-brand-start);
+}
+
+.note-callout a {
+  color: var(--color-brand-start);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.note-callout a:hover {
+  text-decoration: none;
 }
 
 /* ---------- Badges (small external/legacy tags) ---------- */
