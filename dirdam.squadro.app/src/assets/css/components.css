@@ -903,14 +903,34 @@
    purposes but doesn't — `+`/`:nth-child` always match the real DOM
    tree, wrapper or not. */
 .game-picker {
-  --hex-w: 128px;
+  /* A % width — rather than a fixed px one — so the chain's total span
+     (7 hex-widths: the first hex plus 8 more at a 0.75-hex-width step)
+     always covers exactly .game-picker's own width, matching the content
+     cards above/below edge-to-edge instead of sitting narrower than them.
+     Side padding is dropped for the same reason (kept only top/bottom,
+     for hover-scale headroom). */
+  --hex-w: calc(100% / 7);
   --hex-h: calc(var(--hex-w) * 0.8660254);
   display: flex;
   align-items: flex-start;
   justify-content: safe center;
-  overflow-x: auto;
-  overflow-y: visible;
-  padding: var(--space-4) var(--space-6) calc(var(--hex-h) * 0.5 + var(--space-4));
+  /* The chain is sized to exactly fill this container's width now, so
+     there's nothing left to scroll — `overflow-x: auto` was only ever
+     needed back when hex size was a fixed px value that could exceed a
+     narrow container. With auto, though, the last hex's hover scale-up
+     counted as horizontal overflow, which spawned a scrollbar and (since
+     the view doesn't auto-scroll to reveal it) clipped that hex against
+     the container's right edge on the very hover meant to highlight it.
+     Visible lets the hover scale bleed slightly past the edge instead —
+     no scrollbar, nothing clipped. */
+  overflow: visible;
+  /* Symmetric small padding, top and bottom — the earlier bottom value
+     added calc(hex-h*0.5) to reserve room for the dropped-down even
+     hexagons, but flex already grows this container to fit them (their
+     own margin-top extends its natural auto height); the padding was
+     reserving that same space a second time, which read as a much bigger
+     gap below the chain than above it. */
+  padding: var(--space-4) 0;
 }
 
 .game-picker-item {
@@ -943,8 +963,18 @@
   --hex-clip: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   position: relative;
   display: block;
-  width: var(--hex-w);
-  height: var(--hex-h);
+  /* 100% of .game-picker-item (its own immediate parent), NOT var(--hex-w)
+     again — --hex-w is a % of .game-picker, and since custom properties
+     re-resolve wherever they're used rather than freezing to a pixel
+     value, reusing it here would take 1/7 of .game-picker-item's width
+     (itself already 1/7 of .game-picker), compounding to roughly 1/49
+     instead of matching the item's actual size. Height comes from
+     aspect-ratio instead of a var(--hex-h) computed the same way, since
+     percentage heights don't resolve reliably against a shrink-to-fit
+     parent like .game-picker-item's auto height. */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 0.8660254;
   padding: 3px;
   background: transparent;
   clip-path: var(--hex-clip);
