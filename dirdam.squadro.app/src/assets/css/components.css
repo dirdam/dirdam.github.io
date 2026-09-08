@@ -1862,6 +1862,32 @@
   margin-top: var(--space-5);
 }
 
+/* An entry's optional caption line (e.g. the Ubisoft one's tournament
+   result) — flex-basis: 100% pushes it onto its own row within the
+   summary's wrapping flex layout without disturbing the badges/title/
+   toggle row above it, and the left margin indents it to sit under the
+   title rather than flush with the badges. */
+.video-entry-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-basis: 100%;
+  margin-left: calc(var(--space-3) * 3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.video-entry-subtitle-arrow {
+  color: var(--color-text-faint);
+}
+
+.video-entry-subtitle-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: #ca8a04;
+}
+
 /* Work page only: a thin secondary bar (thinner than the sticky
    .site-nav-bar above it, and not sticky itself — just a one-time key,
    not something worth re-showing on every scroll) explaining what each
