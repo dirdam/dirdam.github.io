@@ -238,6 +238,19 @@
   }
 }
 
+/* My Apps: a near-black-to-dark-forest-green sweep and green-tinted blob
+   glow, deliberately muted rather than colorful — the digital-rain canvas
+   drawn on top (matrix-bg.js) is the real visual interest here, and a loud
+   gradient underneath would fight the falling glyphs instead of setting
+   them off. Same shared diagonal sweep shape as the default .hero, just
+   recolored, like .hero--games above. */
+.hero--myapps {
+  --hero-c1: #010a04;
+  --hero-c2: #0a2f17;
+  --hero-blob-a-highlight: rgba(0, 255, 65, 0.25);
+  --hero-blob-b-highlight: rgba(0, 200, 83, 0.35);
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -256,7 +269,8 @@
 .hero-trails,
 .hero-math,
 .hero-maze,
-.hero-globe {
+.hero-globe,
+.hero-matrix {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -271,7 +285,8 @@
   .hero-trails,
   .hero-math,
   .hero-maze,
-  .hero-globe {
+  .hero-globe,
+  .hero-matrix {
     display: none;
   }
 }

@@ -1,6 +1,6 @@
 {
   "en": {
-    "navGroupPersonal": "Personal",
+    "navGroupBio": "Bio",
     "navGroupCreations": "Creations",
     "navGroupExploring": "Exploring",
     "subBoardGames": "Board Games",
@@ -22,7 +22,7 @@
     "footerCopyrightSuffix": "."
   },
   "es": {
-    "navGroupPersonal": "Personal",
+    "navGroupBio": "Bio",
     "navGroupCreations": "Creaciones",
     "navGroupExploring": "Explorar",
     "subBoardGames": "Juegos de mesa",
@@ -44,7 +44,7 @@
     "footerCopyrightSuffix": "."
   },
   "ja": {
-    "navGroupPersonal": "個人",
+    "navGroupBio": "プロフィール",
     "navGroupCreations": "作品",
     "navGroupExploring": "探検",
     "subBoardGames": "ボードゲーム",
