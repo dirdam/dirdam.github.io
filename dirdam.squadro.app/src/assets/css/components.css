@@ -251,6 +251,30 @@
   --hero-blob-b-highlight: rgba(0, 200, 83, 0.35);
 }
 
+/* Reflections: an aged-manuscript palette — ivory near-white sweeping
+   through pale ochre to a deeper old-parchment gold and back, the same
+   three-stop technique as .hero--work above but light throughout (unlike
+   every other hero theme, which stays mid-to-dark so the default white
+   heading text reads against it). The quill canvas drawn on top
+   (quill-bg.js) traces dark sepia ink strokes, which is why this is the
+   one hero theme that also overrides the heading/subtitle color below
+   instead of using the shared white. */
+.hero--reflections {
+  --hero-c1: #faf3e0;
+  --hero-c2: #eed9a0;
+  --hero-c3: #ddbb6e;
+  --hero-blob-a-highlight: rgba(255, 255, 245, 0.6);
+  --hero-blob-b-highlight: rgba(200, 160, 90, 0.35);
+  background: linear-gradient(120deg, var(--hero-c1), var(--hero-c2), var(--hero-c3), var(--hero-c2), var(--hero-c1));
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--reflections {
+    background: linear-gradient(135deg, var(--hero-c1), var(--hero-c2), var(--hero-c3));
+  }
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -270,7 +294,8 @@
 .hero-math,
 .hero-maze,
 .hero-globe,
-.hero-matrix {
+.hero-matrix,
+.hero-quill {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -286,7 +311,8 @@
   .hero-math,
   .hero-maze,
   .hero-globe,
-  .hero-matrix {
+  .hero-matrix,
+  .hero-quill {
     display: none;
   }
 }
@@ -332,6 +358,20 @@
   letter-spacing: 0.08em;
   max-width: 40em;
   margin: 0 auto;
+}
+
+/* Reflections' hero background is light (see .hero--reflections above), so
+   the shared white heading/subtitle color would wash out — dark sepia ink
+   instead, with a soft pale halo standing in for the usual dark drop
+   shadow (a dark shadow would only dim contrast further on a light
+   background). */
+.hero--reflections h1 {
+  color: #3b2a14;
+  text-shadow: 0 1px 3px rgba(255, 250, 235, 0.6);
+}
+
+.hero--reflections .subtitle {
+  color: rgba(59, 41, 20, 0.85);
 }
 
 /* ---------- Language toggle ----------
