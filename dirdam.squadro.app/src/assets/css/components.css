@@ -997,10 +997,35 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 0.8660254;
-  padding: 3px;
-  background: transparent;
+  /* A regular `border` can't follow a clip-path outline cleanly — it's
+     drawn on the box's rectangular edges before clipping, so it would only
+     line up with the hexagon's shape at a few points and look broken
+     everywhere else. This padding-reveals-background trick sidesteps that:
+     the same hexagon clip-path is applied to both this element and the img
+     inside it (which sits flush, at 100% width/height), so the 1px this
+     background peeks out around the image forms a solid hexagonal ring.
+     The site's own main brand color (used on the landing page, nav pills,
+     etc.) rather than this page's one-off green/gold hero theme, so the
+     picker still reads as part of the same site everywhere else does. */
+  padding: 1px;
+  background: var(--color-brand-start);
   clip-path: var(--hex-clip);
-  transition: background var(--transition-fast), transform var(--transition-fast);
+  /* box-shadow would get clipped away along with the rest of this box's
+     rectangular corners — clip-path cuts everything outside the hexagon,
+     shadow included. filter: drop-shadow() isn't affected by clip-path (it
+     shadows the element's actual rendered — already-clipped — silhouette),
+     so it's the one that can give the hexagon a shadow at all. It's NOT
+     the site's usual soft, large card shadow (--shadow-card-resting) —
+     these hexagons deliberately touch/overlap their neighbors (the whole
+     honeycomb effect), and a later sibling paints over an earlier one in
+     their shared overlap area, hiding most of a soft wide shadow directly
+     behind the very next hex, exactly where the card token would put most
+     of its spread. A tight, high-contrast shadow (small blur, small
+     offset) stays close enough to each hex's own silhouette to still read
+     at the edges neighbors don't cover — the outer perimeter of the whole
+     chain, and the thin slivers around each touching point. */
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.55));
+  transition: background var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
 }
 
 .game-picker-hex img {
@@ -1011,9 +1036,23 @@
   clip-path: var(--hex-clip);
 }
 
+/* A light white wash over every hex by default, so the selected game's
+   full-color artwork reads as clearly picked out from the rest by
+   contrast — cleared on hover/focus too, so the artwork underneath is
+   still visible while actually looking at a given hex. */
+.game-picker-hex::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: var(--hex-clip);
+  background: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  transition: background var(--transition-fast);
+}
+
 .game-picker-label {
   position: absolute;
-  inset: 3px;
+  inset: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1032,6 +1071,12 @@
 .game-picker-item:hover .game-picker-hex,
 .game-picker-item:focus-visible .game-picker-hex {
   transform: scale(1.08);
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.6));
+}
+
+.game-picker-item:hover .game-picker-hex::after,
+.game-picker-item:focus-visible .game-picker-hex::after {
+  background: transparent;
 }
 
 .game-picker-item:hover .game-picker-label,
@@ -1039,13 +1084,20 @@
   opacity: 1;
 }
 
+/* The brand gradient's other end — reads as clearly distinct from the
+   lighter brand-start border above while staying within the same site-wide
+   palette rather than introducing an unrelated color. */
+.game-picker-item[aria-pressed="true"] .game-picker-hex::after {
+  background: transparent;
+}
+
 .game-picker-item[aria-pressed="true"] .game-picker-hex {
-  background: var(--color-brand-start);
+  background: var(--color-brand-end);
 }
 
 .game-picker-item[aria-pressed="true"] .game-picker-label {
   opacity: 1;
-  background: rgba(102, 126, 234, 0.55);
+  background: rgba(118, 75, 162, 0.6);
 }
 
 @media (max-width: 640px) {
