@@ -1,0 +1,41 @@
+{
+  "en": {
+    "pageTitle": "Reflections",
+    "pageSubtitle": "What I think (to some extent)",
+    "filterHint": "Filter by topic:",
+    "badgePhilosophy": "Philosophy",
+    "badgeWriting": "Writing",
+    "essayPlaceholderTitle": "Essay title goes here",
+    "essayPlaceholderDesc": "A short excerpt or summary of the essay goes here — replace this placeholder card with a real one.",
+    "nextEssayTitle": "Next essay",
+    "nextEssayDesc": "More reflections in the works.",
+    "comingSoon": "Coming Soon",
+    "readEssay": "Read"
+  },
+  "es": {
+    "pageTitle": "Reflexiones",
+    "pageSubtitle": "Lo que pienso (hasta cierto punto)",
+    "filterHint": "Filtrar por tema:",
+    "badgePhilosophy": "Filosofía",
+    "badgeWriting": "Escritura",
+    "essayPlaceholderTitle": "El título del ensayo va aquí",
+    "essayPlaceholderDesc": "Un breve extracto o resumen del ensayo va aquí — sustituye esta tarjeta de ejemplo por una real.",
+    "nextEssayTitle": "Próximo ensayo",
+    "nextEssayDesc": "Más reflexiones en camino.",
+    "comingSoon": "Próximamente",
+    "readEssay": "Leer"
+  },
+  "ja": {
+    "pageTitle": "エッセイ",
+    "pageSubtitle": "私の考え（ある程度）",
+    "filterHint": "テーマで絞り込む：",
+    "badgePhilosophy": "哲学",
+    "badgeWriting": "文章",
+    "essayPlaceholderTitle": "エッセイのタイトル",
+    "essayPlaceholderDesc": "エッセイの抜粋や要約をここに入れてください——このプレースホルダーを実際のものに置き換えてください。",
+    "nextEssayTitle": "次のエッセイ",
+    "nextEssayDesc": "さらにエッセイを準備中です。",
+    "comingSoon": "近日公開",
+    "readEssay": "読む"
+  }
+}

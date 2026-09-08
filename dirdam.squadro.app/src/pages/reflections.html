@@ -1,0 +1,40 @@
+<h2 class="card-block-title"><span class="card-block-icon"><svg><use href="#icon-file-text"></use></svg></span><span data-i18n="navReflections"></span></h2>
+<section id="essays">
+    <p class="filter-hint" data-i18n="filterHint"></p>
+    <div class="filter-bar" id="filterBar" role="group" aria-label="Filter essays by topic">
+        <button type="button" class="filter-chip" data-badge="philosophy" aria-pressed="false">
+            <svg class="badge-icon"><use href="#icon-compass"></use></svg>
+            <span data-i18n="badgePhilosophy">Philosophy</span>
+        </button>
+        <button type="button" class="filter-chip" data-badge="writing" aria-pressed="false">
+            <svg class="badge-icon"><use href="#icon-file-text"></use></svg>
+            <span data-i18n="badgeWriting">Writing</span>
+        </button>
+    </div>
+
+    <div class="tools-grid">
+        <!-- Placeholder essay — replace title/description/tags/link with a real one -->
+        <div class="tool-card active" data-badges="philosophy writing" onclick="if (!event.target.closest('a')) window.open('https://example.com/', '_blank')">
+            <div class="tool-icon">📝</div>
+            <div class="tool-badges">
+                <span class="badge"><svg class="badge-icon"><use href="#icon-compass"></use></svg><span data-i18n="badgePhilosophy">Philosophy</span></span>
+                <span class="badge"><svg class="badge-icon"><use href="#icon-file-text"></use></svg><span data-i18n="badgeWriting">Writing</span></span>
+            </div>
+            <div class="tool-title" data-i18n="essayPlaceholderTitle">Essay title goes here</div>
+            <div class="tool-description" data-i18n="essayPlaceholderDesc">
+                A short excerpt or summary of the essay goes here — replace this placeholder card with a real one.
+            </div>
+            <a href="https://example.com/" target="_blank" rel="noopener noreferrer" class="tool-button" data-i18n="readEssay">Read</a>
+        </div>
+
+        <!-- Placeholder for future essay -->
+        <div class="tool-card coming-soon">
+            <div class="tool-icon">✍️</div>
+            <div class="tool-title" data-i18n="nextEssayTitle">Next essay</div>
+            <div class="tool-description" data-i18n="nextEssayDesc">
+                More reflections in the works.
+            </div>
+            <span class="coming-soon-badge" data-i18n="comingSoon">Coming Soon</span>
+        </div>
+    </div>
+</section>
