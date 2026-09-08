@@ -43,7 +43,7 @@ PAGES = [
     {"name": "trips", "title": "Trips — Adrï",
      "description": "Places visited around the world, with an interactive map.",
      "hero_variant": "hero--compact", "has_subtitle": True, "extra_css": [],
-     "extra_js": ["/assets/js/trail-bg.js"], "hero_canvas_class": "hero-trails"},
+     "extra_js": ["/assets/js/globe-bg.js"], "hero_canvas_class": "hero-globe"},
     {"name": "contact", "title": "Contact — Adrï",
      "description": "Get in touch.",
      "hero_variant": "hero--compact", "has_subtitle": False, "extra_css": [], "extra_js": []},

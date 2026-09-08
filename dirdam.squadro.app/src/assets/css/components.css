@@ -233,7 +233,8 @@
 .hero-ripples,
 .hero-trails,
 .hero-math,
-.hero-maze {
+.hero-maze,
+.hero-globe {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -247,7 +248,8 @@
   .hero-ripples,
   .hero-trails,
   .hero-math,
-  .hero-maze {
+  .hero-maze,
+  .hero-globe {
     display: none;
   }
 }
