@@ -624,7 +624,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
-  margin: var(--space-9) 0;
+  margin: 0 0 var(--space-9);
 }
 
 /* Deliberately plain/neutral — distinct from the colored .site-nav pills,
@@ -841,6 +841,246 @@
 
 .card--photo .card-photo-body .card-description {
   margin-bottom: 0;
+}
+
+/* ---------- Game showcase (Games page) ---------- */
+/* One highlighted game (image + title + description) whose content swaps
+   when a thumbnail below it is clicked — see game-showcase.js. */
+.game-showcase {
+  margin-top: var(--space-9);
+}
+
+.game-showcase-highlight {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  margin-top: var(--space-9);
+}
+
+.game-showcase-media {
+  display: block;
+  flex: 0 0 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.game-showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-med);
+}
+
+.game-showcase-media:hover img {
+  transform: scale(1.05);
+}
+
+.game-showcase-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.game-showcase-info .card-title {
+  margin-bottom: var(--space-5);
+}
+
+.game-showcase-info .tag {
+  margin-top: var(--space-5);
+}
+
+/* Flat-top regular hexagons chained edge-to-edge like a honeycomb: each
+   hex after the first is pulled left by a quarter of its own width (so
+   its slanted edge touches the previous hex's slanted edge) and every
+   other one is dropped down by half a hex height (so the touching edges
+   actually line up, instead of two flat tops just overlapping). Plain
+   flat list of 9 buttons — no wrapper elements — so `+`/`:nth-child`
+   below see all 9 as real DOM siblings; below 640px the same flat list
+   is rearranged into 3 honeycomb columns via flex-wrap (see that media
+   query) rather than by restructuring the markup, since `display:
+   contents` looks like it flattens a wrapper for sibling-selector
+   purposes but doesn't — `+`/`:nth-child` always match the real DOM
+   tree, wrapper or not. */
+.game-picker {
+  --hex-w: 128px;
+  --hex-h: calc(var(--hex-w) * 0.8660254);
+  display: flex;
+  align-items: flex-start;
+  justify-content: safe center;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: var(--space-4) var(--space-6) calc(var(--hex-h) * 0.5 + var(--space-4));
+}
+
+.game-picker-item {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: var(--hex-w);
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.game-picker-item + .game-picker-item {
+  margin-left: calc(var(--hex-w) * -0.25);
+}
+
+.game-picker-item:nth-child(even) {
+  margin-top: calc(var(--hex-h) * 0.5);
+}
+
+.game-picker-item:hover,
+.game-picker-item:focus-visible {
+  z-index: 5;
+}
+
+.game-picker-hex {
+  --hex-clip: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  position: relative;
+  display: block;
+  width: var(--hex-w);
+  height: var(--hex-h);
+  padding: 3px;
+  background: transparent;
+  clip-path: var(--hex-clip);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.game-picker-hex img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  clip-path: var(--hex-clip);
+}
+
+.game-picker-label {
+  position: absolute;
+  inset: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4);
+  clip-path: var(--hex-clip);
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.game-picker-item:hover .game-picker-hex,
+.game-picker-item:focus-visible .game-picker-hex {
+  transform: scale(1.08);
+}
+
+.game-picker-item:hover .game-picker-label,
+.game-picker-item:focus-visible .game-picker-label {
+  opacity: 1;
+}
+
+.game-picker-item[aria-pressed="true"] .game-picker-hex {
+  background: var(--color-brand-start);
+}
+
+.game-picker-item[aria-pressed="true"] .game-picker-label {
+  opacity: 1;
+  background: rgba(102, 126, 234, 0.55);
+}
+
+@media (max-width: 640px) {
+  .game-showcase-highlight {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game-showcase-media {
+    flex-basis: auto;
+  }
+
+  /* Below this width the single-row honeycomb chain would run off-screen,
+     so the same flat list of 9 buttons is rearranged into a compact
+     3-column honeycomb block instead — no markup change needed.
+
+     This used to lean on column-direction flex-wrap breaking every 3rd
+     item automatically (via a height tuned to force that), but the exact
+     break point depends on how flex folds each item's own margin into
+     the wrap decision — margin-top on item 4 (for the middle column's
+     drop) can also inflate what flex treats as "this column's height",
+     nudging the wrap point off by a hair and throwing the whole cluster
+     out of alignment. Explicit coordinates sidestep that ambiguity
+     entirely: every item is `position: absolute` at a `left`/`top` value
+     computed directly from the hexagon geometry, so there's no flow
+     algorithm left to second-guess.
+
+     Hex width = 40% of the container (3 columns overlapping by a quarter
+     of a hex-width each need 2.5 hex-widths of total space, so
+     100/2.5 = 40%), hex height = 40% * 0.8660254 ≈ 34.641% (a flat-top
+     regular hexagon's height:width ratio). Column x-positions are 0%,
+     30%, 60% (each 10% left of the next column's un-overlapped 40%-step
+     position, i.e. a quarter-hex-width overlap). Column 2 additionally
+     drops every row by half a hex-height (17.3205%) so it nests into the
+     notches of columns 1 and 3. `.game-picker`'s own aspect-ratio both
+     matches the resulting cluster height and gives these `top: %` values
+     a definite container height to resolve against. */
+  .game-picker {
+    /* `100vw` (an earlier version of this rule) counts the scrollbar's own
+       width, which isn't part of the actual visible/container width — it
+       made the cluster overshoot past the content cards' right edge
+       whenever a scrollbar was present (e.g. testing via a desktop
+       browser's device toolbar). A % aspect-ratio-driven size avoids
+       that: it's resolved against .game-picker's own rendered width,
+       which — same as .content-card — is simply .container's actual
+       width, scrollbar or not. */
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1.2124356;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .game-picker-item {
+    position: absolute;
+    width: 40%;
+    margin: 0 !important;
+  }
+
+  .game-picker-hex {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 0.8660254;
+  }
+
+  /* `top` resolves against the CONTAINER's HEIGHT, not its width — but the
+     hex-height fractions above (34.641% etc.) were derived relative to the
+     container's WIDTH (since that's the axis aspect-ratio computes from).
+     Because .game-picker's own height is 1.2124356x its width, using those
+     width-relative numbers directly as `top` overshot every row downward
+     by that same factor, which is what was reading as "too spaced".
+     Dividing by 1.2124356 (== multiplying by 1/3.5, since the container is
+     exactly 3.5 hex-heights tall) converts each into the equivalent
+     fraction of the container's actual height: hex-height alone is
+     1/3.5 = 2/7 ≈ 28.5714% of that height, so the rows land at 0, 2/7,
+     4/7, and the half-hex offsets at 1/7, 3/7, 5/7. `left` didn't need
+     this conversion — it already resolves against width, which is the
+     same axis those fractions were computed in. */
+  .game-picker-item:nth-child(1) { left: 0%; top: 0%; }
+  .game-picker-item:nth-child(2) { left: 0%; top: 28.5714%; }
+  .game-picker-item:nth-child(3) { left: 0%; top: 57.1429%; }
+  .game-picker-item:nth-child(4) { left: 30%; top: 14.2857%; }
+  .game-picker-item:nth-child(5) { left: 30%; top: 42.8571%; }
+  .game-picker-item:nth-child(6) { left: 30%; top: 71.4286%; }
+  .game-picker-item:nth-child(7) { left: 60%; top: 0%; }
+  .game-picker-item:nth-child(8) { left: 60%; top: 28.5714%; }
+  .game-picker-item:nth-child(9) { left: 60%; top: 57.1429%; }
 }
 
 /* Landing-page identity block: the KnotFont "B" portrait mark, full name,

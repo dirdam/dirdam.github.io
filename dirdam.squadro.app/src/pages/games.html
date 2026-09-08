@@ -2,61 +2,90 @@
   <p data-i18n-html="selectionSummary"></p>
 </div>
 
-<div class="card-grid" style="margin-top: var(--space-9);">
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_antichamber.jpeg" alt="Antichamber" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title" data-i18n="gameTitleAntichamber"></h3>
-    <p class="card-description" data-i18n="gameDescAntichamber"></p>
-    <a class="card-link-overlay" href="http://antichamber-game.com/" target="_blank" rel="noopener noreferrer" aria-label="Antichamber"></a>
+<div class="game-showcase">
+  <div class="game-picker" id="gamePicker" role="list">
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_antichamber.jpeg" data-link="http://antichamber-game.com/"
+      data-title-key="gameTitleAntichamber" data-desc-key="gameDescAntichamber">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_antichamber.jpeg" alt="">
+        <span class="game-picker-label" data-i18n="gameTitleAntichamber"></span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_obra.jpeg" data-link="https://obradinn.com/"
+      data-title="Return of the Obra Dinn" data-desc-key="gameDescObra">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_obra.jpeg" alt="">
+        <span class="game-picker-label">Return of the Obra Dinn</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_manifold2.jpeg" data-link="https://manifold.garden/"
+      data-title="Manifold Garden" data-desc-key="gameDescManifold">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_manifold2.jpeg" alt="">
+        <span class="game-picker-label">Manifold Garden</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_baba.jpeg" data-link="https://hempuli.com/baba/"
+      data-title="Baba is you" data-desc-key="gameDescBaba">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_baba.jpeg" alt="">
+        <span class="game-picker-label">Baba is you</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_fez.jpeg" data-link="https://fezgame.com/"
+      data-title="Fez" data-desc-key="gameDescFez" data-note-key="fezNote">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_fez.jpeg" alt="">
+        <span class="game-picker-label">Fez</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="true"
+      data-img="/assets/images/games/pic_tunic.jpeg" data-link="https://tunicgame.com/"
+      data-title="Tunic" data-desc-key="gameDescTunic" data-note-key="tunicNote">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_tunic.jpeg" alt="">
+        <span class="game-picker-label">Tunic</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_cocoon.png" data-link="https://www.cocoongame.com/"
+      data-title="Cocoon" data-desc-key="gameDescCocoon">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_cocoon.png" alt="">
+        <span class="game-picker-label">Cocoon</span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_sennaar.jpeg" data-link="https://www.focus-entmt.com/en/games/chants-of-sennaar"
+      data-title-key="gameTitleSennaar" data-desc-key="gameDescSennaar">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_sennaar.jpeg" alt="">
+        <span class="game-picker-label" data-i18n="gameTitleSennaar"></span>
+      </span>
+    </button>
+    <button type="button" class="game-picker-item" role="listitem" aria-pressed="false"
+      data-img="/assets/images/games/pic_ow.png" data-link="https://www.mobiusdigitalgames.com/outer-wilds.html"
+      data-title="Outer Wilds" data-desc-key="gameDescOw">
+      <span class="game-picker-hex">
+        <img src="/assets/images/games/pic_ow.png" alt="">
+        <span class="game-picker-label">Outer Wilds</span>
+      </span>
+    </button>
   </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_obra.jpeg" alt="Return of the Obra Dinn" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Return of the Obra Dinn</h3>
-    <p class="card-description" data-i18n="gameDescObra"></p>
-    <a class="card-link-overlay" href="https://obradinn.com/" target="_blank" rel="noopener noreferrer" aria-label="Return of the Obra Dinn"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_manifold2.jpeg" alt="Manifold Garden" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Manifold Garden</h3>
-    <p class="card-description" data-i18n="gameDescManifold"></p>
-    <a class="card-link-overlay" href="https://manifold.garden/" target="_blank" rel="noopener noreferrer" aria-label="Manifold Garden"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_baba.jpeg" alt="Baba is you" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Baba is you</h3>
-    <p class="card-description" data-i18n="gameDescBaba"></p>
-    <a class="card-link-overlay" href="https://hempuli.com/baba/" target="_blank" rel="noopener noreferrer" aria-label="Baba is you"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_fez.jpeg" alt="Fez" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Fez</h3>
-    <p class="card-description" data-i18n="gameDescFez"></p>
-    <p class="tag" data-i18n-html="fezNote" style="position: relative; z-index: 1; display: block; margin-top: var(--space-5);"></p>
-    <a class="card-link-overlay" href="https://fezgame.com/" target="_blank" rel="noopener noreferrer" aria-label="Fez"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_tunic.jpeg" alt="Tunic" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Tunic</h3>
-    <p class="card-description" data-i18n="gameDescTunic"></p>
-    <p class="tag" data-i18n-html="tunicNote" style="position: relative; z-index: 1; display: block; margin-top: var(--space-5);"></p>
-    <a class="card-link-overlay" href="https://tunicgame.com/" target="_blank" rel="noopener noreferrer" aria-label="Tunic"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_cocoon.png" alt="Cocoon" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Cocoon</h3>
-    <p class="card-description" data-i18n="gameDescCocoon"></p>
-    <a class="card-link-overlay" href="https://www.cocoongame.com/" target="_blank" rel="noopener noreferrer" aria-label="Cocoon"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_sennaar.jpeg" alt="Chants of Sennaar" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title" data-i18n="gameTitleSennaar"></h3>
-    <p class="card-description" data-i18n="gameDescSennaar"></p>
-    <a class="card-link-overlay" href="https://www.focus-entmt.com/en/games/chants-of-sennaar" target="_blank" rel="noopener noreferrer" aria-label="Chants of Sennaar"></a>
-  </div>
-  <div class="card card--interactive">
-    <img src="/assets/images/games/pic_ow.png" alt="Outer Wilds" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
-    <h3 class="card-title">Outer Wilds</h3>
-    <p class="card-description" data-i18n="gameDescOw"></p>
-    <a class="card-link-overlay" href="https://www.mobiusdigitalgames.com/outer-wilds.html" target="_blank" rel="noopener noreferrer" aria-label="Outer Wilds"></a>
+
+  <div class="content-card game-showcase-highlight" id="gameHighlight">
+    <a class="game-showcase-media" id="gameHighlightLink" href="https://tunicgame.com/" target="_blank" rel="noopener noreferrer" aria-label="Tunic">
+      <img id="gameHighlightImg" src="/assets/images/games/pic_tunic.jpeg" alt="">
+    </a>
+    <div class="game-showcase-info">
+      <h3 class="card-title" id="gameHighlightTitle">Tunic</h3>
+      <p class="card-description" id="gameHighlightDesc" data-i18n="gameDescTunic"></p>
+      <p class="tag" id="gameHighlightNote" data-i18n-html="tunicNote"></p>
+    </div>
   </div>
 </div>
