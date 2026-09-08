@@ -953,13 +953,12 @@
   margin-top: var(--space-9);
 }
 
-/* Themed per-game background: --game-main/--game-accent/--game-text are
-   set inline by game-showcase.js from colors it samples out of the
-   selected game's own thumbnail (dominant background hue + the most
-   vivid distinct hue, standing in for the game's logo/title color) — see
-   that file's extractPalette(). Defaults here are the plain site card
-   look, so nothing changes before that JS runs or if it can't read a
-   given image. A compound selector (two classes, beats plain
+/* Themed per-game background: --game-main/--game-accent are set inline by
+   game-showcase.js from each game's hand-picked data-main-color/
+   data-accent-color (see games.html); --game-text is derived from
+   --game-main's luminance for contrast. Defaults here are the plain site
+   card look, so nothing changes before that JS runs or for a game with no
+   colors set. A compound selector (two classes, beats plain
    .content-card's single-class rule below it) is what lets this override
    .content-card's own background/border-left regardless of source order. */
 .content-card.game-showcase-highlight {
@@ -975,6 +974,42 @@
 .game-showcase-highlight .card-description {
   color: var(--game-text);
   transition: color var(--transition-med);
+}
+
+/* The font-download callout picks up the same per-game colors instead of
+   its site-wide neutral/purple styling, but deliberately toned down —
+   it's supplementary reading, not the card's main content, so it shouldn't
+   compete with it. The gradient runs accent->main, the reverse of the
+   card's own main->accent sweep (.content-card.game-showcase-highlight
+   above), and each stop is heavily blended with white so it reads as a
+   pale, muted chip rather than a second block of saturated color; a thin
+   all-around rim in --game-main (replacing the shared .note-callout's
+   left-only accent border) gives it a defined edge without extra fill. */
+.game-showcase-highlight .note-callout {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--game-accent) 35%, white 65%),
+    color-mix(in srgb, var(--game-main) 35%, white 65%));
+  border: 2px solid var(--game-main);
+  /* Not --game-text: that's calibrated for the much more saturated outer
+     card background, but heavily whitening both stops above means this
+     callout ends up pale regardless of how dark the game's own colors
+     are — the shared dark body-text color is reliably readable on it. */
+  color: var(--color-text);
+  transition: background var(--transition-med), border-color var(--transition-med);
+}
+
+.game-showcase-highlight .note-callout-icon,
+.game-showcase-highlight .note-callout a {
+  color: var(--game-main);
+}
+
+/* The UA's [hidden] -> display:none rule loses to .note-callout's own
+   `display: flex` above (same specificity, but author styles always beat
+   the user-agent stylesheet) unless something more specific re-asserts
+   it — without this, a game with no data-note-key still shows an empty
+   callout box (icon, no text) instead of nothing. */
+.note-callout[hidden] {
+  display: none;
 }
 
 .game-showcase-media {
