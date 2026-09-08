@@ -1555,6 +1555,58 @@
   margin-top: var(--space-8);
 }
 
+/* Quick-facts grid (About page's who/when/where/what) — one small card per
+   fact instead of a single card holding a bulleted list, each led by the
+   same circular icon (.card-block-icon, reused from the section headers
+   above) and a plain label instead of a pill badge. Four in a row on
+   desktop; the Responsive section below drops it to a 2x2 grid on narrow
+   screens. */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.fact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-6);
+  box-shadow: var(--shadow-card-resting);
+  text-align: center;
+}
+
+/* Recolored to the About page's own hero theme (.hero--about's red/gold
+   "flame" gradient) instead of the generic brand purple, tying these
+   cards to the page they're actually on rather than the site-wide default. */
+.fact-card .card-block-icon {
+  background: linear-gradient(135deg, #aa151b, #f1bf00);
+}
+
+.fact-label {
+  font-size: var(--font-size-badge);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-subtle);
+}
+
+.fact-card p {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text);
+}
+
+/* The Japanese katakana reading under Adrián's name (bioWho) — 4px
+   smaller than the line above it, like a parenthetical gloss rather than
+   equal-weight text. calc() off 1em (not a fixed size) so it stays 4px
+   below whatever .fact-card p's own size is. */
+.bio-reading {
+  font-size: calc(1em - 4px);
+}
+
 /* Part-time jobs: each entry's logo sits outside its .content-card (like
    the main employers' logo sitting in the heading above their card)
    rather than padded inside the card's own box — this wrapper just keeps
@@ -1630,6 +1682,32 @@
 
 .note-callout a:hover {
   text-decoration: none;
+}
+
+/* ---------- Category badges (icon + label pill) ----------
+   Originally the My Apps tool-card category pills (still used there, plus
+   the filter chips built on the same look); reused wherever a short
+   labeled fact benefits from an icon + pill treatment instead of plain
+   text, e.g. the About page's who/when/where/what list. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eef0fc;
+  color: #4c51bf;
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.badge-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 /* ---------- Badges (small external/legacy tags) ---------- */
@@ -1813,5 +1891,9 @@
   .content-card,
   .card {
     padding: var(--space-7);
+  }
+
+  .fact-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

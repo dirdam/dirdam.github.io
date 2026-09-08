@@ -365,27 +365,8 @@
             margin-bottom: 15px;
         }
 
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: #eef0fc;
-            color: #4c51bf;
-            border: 1px solid rgba(102, 126, 234, 0.25);
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.72em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-
-        .badge-icon {
-            width: 13px;
-            height: 13px;
-            flex-shrink: 0;
-        }
-
+        /* .badge/.badge-icon themselves now live in components.css (shared
+           site-wide, not just apps-theme pages) — see the comment there. */
         .filter-chip .badge-icon {
             width: 14px;
             height: 14px;
