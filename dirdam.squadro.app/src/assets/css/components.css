@@ -1808,10 +1808,11 @@
   color: #334155;
 }
 
-/* Background page's arXiv reference badges — these are the only .tag
-   variant that's actually a link, so besides its own color (arXiv's own
-   brand red) it gets a hover/active highlight the plain tags don't need,
-   to read as clickable rather than just another metadata pill. */
+/* Clickable reference badges — Background page's arXiv links, and Work
+   page's Yahoo patent link. These are the only .tag variant that's
+   actually a link, so besides its own color (arXiv's own brand red) it
+   gets a hover/active highlight the plain tags don't need, to read as
+   clickable rather than just another metadata pill. */
 .tag--arxiv {
   background: rgba(179, 27, 27, 0.1);
   border: 1px solid rgba(179, 27, 27, 0.3);
