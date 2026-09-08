@@ -201,6 +201,21 @@
   }
 }
 
+/* Games: forest green and gold, evoking Hyrule's Triforce/Kokiri-forest
+   palette (and Tunic's own green-tunic-and-gold-ruins look) — a fitting
+   theme for a page recommending games. Just a recolor of the shared
+   diagonal sweep, no new gradient shape or extra stop, so unlike About/
+   Background/Work above it only needs to override the custom properties
+   the base `.hero` rule already reads via var() — that rule's own
+   `background`/`animation` declarations pick up these new values on their
+   own, nothing to redeclare. */
+.hero--games {
+  --hero-c1: #1e5631;
+  --hero-c2: #d4af37;
+  --hero-blob-a-highlight: rgba(255, 224, 130, 0.55);
+  --hero-blob-b-highlight: rgba(120, 200, 130, 0.5);
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -217,7 +232,8 @@
 .hero-network,
 .hero-ripples,
 .hero-trails,
-.hero-math {
+.hero-math,
+.hero-maze {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -230,7 +246,8 @@
   .hero-network,
   .hero-ripples,
   .hero-trails,
-  .hero-math {
+  .hero-math,
+  .hero-maze {
     display: none;
   }
 }
