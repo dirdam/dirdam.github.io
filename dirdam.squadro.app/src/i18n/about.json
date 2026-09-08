@@ -16,8 +16,9 @@
     "legendMedia": "Media",
     "legendYear": "Year",
     "legendLanguage": "Language",
+    "legendLength": "Length",
     "watchLabel": "Watch",
-    "mediaMxmYoutube": "(full video <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>)",
+    "mediaMxmYoutube": "<span class=\"tag tag--length\">1:11:02</span> Full <b>Madrileños Around the World: Tokyo</b> video <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.",
     "mediaUbiYoutube": "<i>Runner-up</i> in <a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>Mario + Rabbids® Kingdom Battle</b></a> world tournament at Gamescom 2019."
   },
   "es": {
@@ -37,8 +38,9 @@
     "legendMedia": "Medio",
     "legendYear": "Año",
     "legendLanguage": "Idioma",
+    "legendLength": "Duración",
     "watchLabel": "Ver",
-    "mediaMxmYoutube": "(vídeo completo <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">aquí</a>)",
+    "mediaMxmYoutube": "<span class=\"tag tag--length\">1:11:02</span> Vídeo completo de <b>Madrileños por el mundo: Tokio</b> <a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">aquí</a>.",
     "mediaUbiYoutube": "<i>Subcampeón</i> de <a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>Mario + Rabbids® Kingdom Battle</b></a> en el campeonato mundial en Gamescom 2019."
   },
   "ja": {
@@ -58,8 +60,9 @@
     "legendMedia": "メディア",
     "legendYear": "年",
     "legendLanguage": "言語",
+    "legendLength": "再生時間",
     "watchLabel": "視聴する",
-    "mediaMxmYoutube": "（フルバージョンは<a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">こちら</a>）",
+    "mediaMxmYoutube": "<span class=\"tag tag--length\">1:11:02</span> <b>Madrileños por el mundo: Tokio</b>のフルバージョンは<a href=\"https://www.youtube.com/watch?v=RXHdQQNGJfc\" target=\"_blank\" rel=\"noopener noreferrer\">こちら</a>。",
     "mediaUbiYoutube": "Gamescom 2019における<a href=\"https://www.nintendo.com/games/detail/mario-rabbids-kingdom-battle-switch/\" target=\"_blank\" rel=\"noopener noreferrer\"><b>Mario + Rabbids® Kingdom Battle</b></a>の世界大会にて<i>準優勝</i>。"
   }
 }

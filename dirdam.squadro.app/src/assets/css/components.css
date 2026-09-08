@@ -1795,6 +1795,15 @@
   color: #047857;
 }
 
+/* About page's video entries: a fifth, neutral slate hue for the video's
+   length — deliberately muted rather than another bright color, since
+   it's supplementary metadata rather than a category like the others. */
+.tag--length {
+  background: rgba(71, 85, 105, 0.1);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  color: #334155;
+}
+
 /* A row of standalone .tag badges (e.g. the individual years the Todai
    part-time lecturing spans) rather than one badge inline with text —
    sits between the card's logo image and its description, same position
