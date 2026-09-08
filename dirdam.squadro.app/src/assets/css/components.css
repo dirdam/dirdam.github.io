@@ -216,6 +216,28 @@
   --hero-blob-b-highlight: rgba(120, 200, 130, 0.5);
 }
 
+/* Trips: a clear daytime sky (deep cerulean sweeping to a lighter horizon
+   blue) instead of the shared brand blue/purple — fitting a page about
+   travel, and it keeps the white wireframe globe drawn on top legible
+   against it. Same moving circular gradient as About's flame theme (a
+   panning "sun" rather than the base .hero's diagonal sweep) — reads like
+   open sky/sunlight rather than a directional streak, which suits a sky
+   theme better than the shared linear gradient shape would. */
+.hero--trips {
+  --hero-c1: #2b7fd1;
+  --hero-c2: #8ecbf0;
+  --hero-blob-a-highlight: rgba(255, 255, 255, 0.55);
+  --hero-blob-b-highlight: rgba(100, 180, 230, 0.5);
+  background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--trips {
+    background: radial-gradient(circle at 50% 50%, var(--hero-c2) 0%, var(--hero-c1) 75%);
+  }
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
