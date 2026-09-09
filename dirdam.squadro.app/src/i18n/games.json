@@ -38,19 +38,19 @@
   "ja": {
     "pageTitle": "おすすめのゲーム",
     "pageSubtitle": "思考力を促す",
-    "selectionSummary": "こちらは私が素晴らしいと思うゲームの選抜です。<strong>抽象的思考、推理や論理</strong>が好きで、新しい考え方やこれまでにない視点を見つけるのが好きなら、この選抜はきっと気に入ると思います。<br><strong>注意</strong>：これらのゲームについて事前に何も読まない方が良いです。<em>自分</em>の経験にしてください。",
+    "selectionSummary": "こちらは私が素晴らしいと思うゲームの選抜です．<strong>抽象的思考、推理や論理</strong>が好きで、新しい考え方やこれまでにない視点を見つけるのが好きなら、この選抜はきっと気に入ると思います．<br><strong>注意</strong>：これらのゲームについて事前に何も読まない方が良いです．<em>自分</em>の経験にしてください．",
     "gameTitleAntichamber": "Antichamber",
     "gameTitleSennaar": "Chants of Sennaar",
-    "fezNote": "<strong>Fez</strong>の言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>このフォント</strong></a>をダウンロードしてください（スポイラーを含みます）。",
-    "tunicNote": "<strong>Tunic</strong>の言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>このフォント</strong></a>をダウンロードしてください（スポイラーを含みます）。",
-    "gameDescAntichamber": "不思議な施設を探検します。自らの探検方法によって環境も変わります。論理と「非論理」を使います。",
-    "gameDescObra": "あなたは探偵として船で調査します。他の探偵ゲームと違って、ストーリーが与えられる選択肢によって誘導されず、純粋な推理力を使う必要があります。本当に謎を解く探偵の気持ちになります。",
-    "gameDescManifold": "ループ、数理、重力、無限大。そしてパズルを解く。それ以外要るものはない。",
-    "gameDescBaba": "ステージが従うルールを作成したり、破壊したりする。文字通り。",
-    "gameDescFez": "2Dを見る3Dの世界。思考力をよく使うプラットフォーマーで、あらゆる場所にアクセスできるように不明な言語も解読しないといけません。",
-    "gameDescTunic": "独特な冒険ゲームです。攻撃ボタンしか分からないあの子供の頃の時代に戻されます。ゲームが少しずつ不思議な言語を理解させて、冒険の目的が少しずつ明らかになります。発見する時にスッキリする不思議な秘密を山ほど織り込んでいます。",
-    "gameDescCocoon": "ワールドの境を超えたパズル冒険です。ワールドを運ぶ、ワールドに潜り込む、外と中の区別で混乱するゲームです。",
-    "gameDescSennaar": "言語を理解し、話者を理解せよ。進むために表記と意味の関係性を明確にする必要があります。",
-    "gameDescOw": "発見する、挑戦する、恐れる；繰り返す。時間ループの中で、好奇心が教えること以外の使命はありません。なぜ物事がそうなっているのかを学ぶために、小さな銀河系を探検します。「Echoes of the Eye」拡張もおすすめです。"
+    "fezNote": "<strong>Fez</strong>の言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>このフォント</strong></a>をダウンロードしてください（スポイラーを含みます）．",
+    "tunicNote": "<strong>Tunic</strong>の言語で書きたい場合、私が作った<a href=\"https://dirdam.github.io/fonts.html\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>このフォント</strong></a>をダウンロードしてください（スポイラーを含みます）．",
+    "gameDescAntichamber": "不思議な施設を探検します．自らの探検方法によって環境も変わります．論理と「非論理」を使います．",
+    "gameDescObra": "あなたは探偵として船で調査します．他の探偵ゲームと違って、ストーリーが与えられる選択肢によって誘導されず、純粋な推理力を使う必要があります．本当に謎を解く探偵の気持ちになります．",
+    "gameDescManifold": "ループ、数理、重力、無限大．そしてパズルを解く．それ以外要るものはない．",
+    "gameDescBaba": "ステージが従うルールを作成したり、破壊したりする．文字通り．",
+    "gameDescFez": "2Dを見る3Dの世界．思考力をよく使うプラットフォーマーで、あらゆる場所にアクセスできるように不明な言語も解読しないといけません．",
+    "gameDescTunic": "独特な冒険ゲームです．攻撃ボタンしか分からないあの子供の頃の時代に戻されます．ゲームが少しずつ不思議な言語を理解させて、冒険の目的が少しずつ明らかになります．発見する時にスッキリする不思議な秘密を山ほど織り込んでいます．",
+    "gameDescCocoon": "ワールドの境を超えたパズル冒険です．ワールドを運ぶ、ワールドに潜り込む、外と中の区別で混乱するゲームです．",
+    "gameDescSennaar": "言語を理解し、話者を理解せよ．進むために表記と意味の関係性を明確にする必要があります．",
+    "gameDescOw": "発見する、挑戦する、恐れる；繰り返す．時間ループの中で、好奇心が教えること以外の使命はありません．なぜ物事がそうなっているのかを学ぶために、小さな銀河系を探検します．「Echoes of the Eye」拡張もおすすめです．"
   }
 }
