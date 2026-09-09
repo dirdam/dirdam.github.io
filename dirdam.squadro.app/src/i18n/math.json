@@ -1,0 +1,17 @@
+{
+  "en": {
+    "pageTitle": "Math",
+    "pageSubtitle": "Chalk talk",
+    "mathIntro": "A collection of math papers, notes, and other things worth sharing. More to come."
+  },
+  "es": {
+    "pageTitle": "Matemáticas",
+    "pageSubtitle": "Charla de tiza",
+    "mathIntro": "Una colección de artículos, notas y otras cosas de matemáticas que merece la pena compartir. Más contenido próximamente."
+  },
+  "ja": {
+    "pageTitle": "数学",
+    "pageSubtitle": "黒板トーク",
+    "mathIntro": "数学に関する論文やノート，共有する価値のあるものを集めています．今後も追加予定です．"
+  }
+}
