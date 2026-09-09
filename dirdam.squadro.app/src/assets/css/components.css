@@ -1631,17 +1631,6 @@
   padding-left: 1.2em;
 }
 
-/* Lists whose entries already open with a colored badge (About's Press
-   list, Background's Papers/Talks lists) — a bullet dot in front of a
-   badge is redundant clutter, so drop the marker and its indent, unlike
-   .content-card ul's default. */
-#press ul,
-#papers ul,
-#talks ul {
-  list-style: none;
-  padding-left: 0;
-}
-
 .content-card li {
   margin-bottom: var(--space-4);
 }
@@ -1847,13 +1836,15 @@
    don't fetch a closed <details>'s iframe src until it's expanded, so
    this also defers loading every video until someone actually opens it. */
 .video-entry {
-  border-top: 1px solid var(--color-border-neutral);
   padding: var(--space-5) 0;
 }
 
-.video-entry:first-of-type {
-  border-top: none;
-  padding-top: 0;
+/* Each entry now lives in its own <li> (for the bullet marker), so
+   :first-of-type would match every entry — it's the only .video-entry
+   under its own <li> parent. "a preceding <li> sibling exists" is what
+   actually means "not the first entry" here. */
+li + li .video-entry {
+  border-top: 1px solid var(--color-border-neutral);
 }
 
 .video-entry summary {
