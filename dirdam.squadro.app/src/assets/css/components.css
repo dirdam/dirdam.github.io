@@ -1555,6 +1555,64 @@
   margin-top: var(--space-8);
 }
 
+/* Background page's Knot Gallery — each tile renders one diagram from the
+   custom KnotFont (see base.css's .knot-glyph) with its Rolfsen table
+   label underneath, echoing the old site's own knot gallery. */
+/* 11 equal-width columns so 5 big knots per row (even columns 2/4/6/8/10)
+   sit with a full knot-sized gap of white space between them AND at both
+   row edges (odd columns 1/3/5/7/9/11) — plain `gap` alone can't give
+   spacing that wide without also shrinking the knots themselves. */
+.knot-gallery {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: var(--space-8) 0;
+  text-align: center;
+}
+
+.knot-gallery-item:nth-child(5n+1) { grid-column: 2; }
+.knot-gallery-item:nth-child(5n+2) { grid-column: 4; }
+.knot-gallery-item:nth-child(5n+3) { grid-column: 6; }
+.knot-gallery-item:nth-child(5n+4) { grid-column: 8; }
+.knot-gallery-item:nth-child(5n)   { grid-column: 10; }
+
+.knot-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  /* Grid items stretch to fill their cell by default, which would center
+     the tile's own content (glyph + label) off from its actual column. */
+  justify-self: center;
+  align-self: center;
+  /* Lets the glyph render at its natural size without inflating its 1fr
+     track (the default min-width: auto would otherwise force every column
+     to grow to fit the widest glyph, breaking the equal 11-column split). */
+  min-width: 0;
+  /* The glyph is plain text, which would otherwise show the text-selection
+     (I-beam) cursor on hover instead of the normal pointer arrow. */
+  cursor: default;
+}
+
+.knot-gallery-glyph {
+  font-size: 160px;
+}
+
+/* Each knot's color is a flat step along the brand blue→purple scale,
+   positioned by its own crossing number (0 through 7) — 0 crossings is
+   pure --color-brand-start, 7 crossings is pure --color-brand-end, and
+   3/4/5/6 sit at their proportional point in between (crossings/7). */
+.knot-gallery-glyph--c0 { color: #667eea; }
+.knot-gallery-glyph--c3 { color: #6d68cb; }
+.knot-gallery-glyph--c4 { color: #6f61c1; }
+.knot-gallery-glyph--c5 { color: #715ab7; }
+.knot-gallery-glyph--c6 { color: #7452ac; }
+.knot-gallery-glyph--c7 { color: #764ba2; }
+
+.knot-gallery-label {
+  font-size: var(--font-size-small);
+  color: var(--color-text-subtle);
+}
+
 /* Quick-facts grid (About page's who/when/where/what) — one small card per
    fact instead of a single card holding a bulleted list, each led by the
    same circular icon (.card-block-icon, reused from the section headers
@@ -2037,5 +2095,18 @@ li + li .video-entry {
 
   .fact-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .knot-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .knot-gallery-item {
+    grid-column: auto;
+  }
+
+  .knot-gallery-glyph {
+    font-size: 90px;
   }
 }
