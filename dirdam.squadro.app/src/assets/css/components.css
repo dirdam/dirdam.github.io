@@ -275,6 +275,28 @@
   }
 }
 
+/* Fonts: a warm vellum/parchment palette — ivory through peach to a dusty
+   terracotta-tan, the same light three-stop technique as .hero--reflections
+   above but a distinct rosier hue so the two "light" hero themes (both
+   under Art & Language) don't read as duplicates. The glyph canvas drawn on
+   top (glyph-bg.js) traces actual letterforms from the page's own custom
+   fonts in dark ink, echoing a page of font-design work in progress. */
+.hero--fonts {
+  --hero-c1: #fdf8f0;
+  --hero-c2: #f2ddc7;
+  --hero-c3: #e0b48f;
+  --hero-blob-a-highlight: rgba(255, 250, 240, 0.6);
+  --hero-blob-b-highlight: rgba(200, 130, 90, 0.3);
+  background: linear-gradient(120deg, var(--hero-c1), var(--hero-c2), var(--hero-c3), var(--hero-c2), var(--hero-c1));
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--fonts {
+    background: linear-gradient(135deg, var(--hero-c1), var(--hero-c2), var(--hero-c3));
+  }
+}
+
 .hero--full {
   min-height: 60vh;
   display: flex;
@@ -295,7 +317,8 @@
 .hero-maze,
 .hero-globe,
 .hero-matrix,
-.hero-quill {
+.hero-quill,
+.hero-glyphs {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -312,7 +335,8 @@
   .hero-maze,
   .hero-globe,
   .hero-matrix,
-  .hero-quill {
+  .hero-quill,
+  .hero-glyphs {
     display: none;
   }
 }
@@ -372,6 +396,18 @@
 
 .hero--reflections .subtitle {
   color: rgba(59, 41, 20, 0.85);
+}
+
+/* Fonts' hero background is light too (see .hero--fonts above), same
+   reasoning as Reflections just above — dark ink instead of the shared
+   white heading color. */
+.hero--fonts h1 {
+  color: #3d2b1f;
+  text-shadow: 0 1px 3px rgba(255, 250, 240, 0.6);
+}
+
+.hero--fonts .subtitle {
+  color: rgba(61, 43, 31, 0.85);
 }
 
 /* ---------- Language toggle ----------
