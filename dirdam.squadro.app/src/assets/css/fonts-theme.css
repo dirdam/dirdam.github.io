@@ -98,11 +98,31 @@
 
 .font-card-info {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
+/* Card content (title/credit/sample text) varies in length across fonts,
+   which used to leave the button at a different height in every card —
+   growing .font-card-info to fill the card and pinning the button to the
+   bottom of it (rather than centering right after the content) keeps it
+   at the same row position in every card regardless. */
 .font-card-info .tool-button {
-  display: table;
-  margin: 0 auto;
+  margin-top: auto;
+  align-self: center;
+}
+
+/* The franchise badge is now a link (to the game's own site), not just a
+   label — reset the anchor's default underline and add a hover cue so it
+   still reads as clickable without looking like body text. */
+.font-card-info .badge {
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.font-card-info .badge:hover {
+  opacity: 0.8;
 }
 
 .font-card-title {
