@@ -150,14 +150,30 @@
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.1);
   text-shadow: none;
+  /* The original dirdam.github.io fonts page explicitly forced these on
+     (its .description rule) — without them some browsers quietly disable
+     the ligature substitutions these fonts rely on (most visibly Tunic,
+     whose whole script is built out of GSUB "liga" letter-pair glyphs —
+     see glyph-bg.js's own extraction notes on that same ligature table). */
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+  font-feature-settings: "liga" 1, "dlig" 1;
 }
 
 .font-sample--sheikah { font-family: 'Sheikah', serif; }
 .font-sample--hylian { font-family: 'Hylian', serif; }
 .font-sample--gerudo { font-family: 'Gerudo', serif; }
 .font-sample--fez { font-family: 'Fez', serif; }
-.font-sample--tunic { font-family: 'Tunic', serif; }
 .font-sample--unown { font-family: 'Unown', serif; }
+
+/* Nonzero letter-spacing is itself enough to make some browsers suppress
+   ligatures outright (spacing them apart would require reshaping the
+   ligature, which they simply refuse to do) — Tunic needs its ligatures
+   intact more than it needs the extra tracking every other font here
+   just gets for free cosmetically, so it alone goes back to normal. */
+.font-sample--tunic {
+  font-family: 'Tunic', serif;
+  letter-spacing: normal;
+}
 
 .font-card.sheikah {
   background-image: linear-gradient(120deg,
