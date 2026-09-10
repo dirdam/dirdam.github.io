@@ -1,0 +1,365 @@
+/* Fonts showcase page theme — ported from the standalone dirdam.github.io
+   fonts.html page. The 6 custom conlang/pictographic fonts it shows off are
+   only ever used here, so their @font-face rules live in this page-scoped
+   file rather than base.css (which only carries fonts every page pays for).
+   Per-font accent colors below are lifted from the original page's carousel
+   glow colors and each game's own palette, the same way apps-theme.css
+   themes each My Apps card after its own app. */
+
+@font-face {
+  font-family: 'Sheikah';
+  src: url('/assets/fonts/Sheikah.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hylian';
+  src: url('/assets/fonts/Hylian.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gerudo';
+  src: url('/assets/fonts/Gerudo.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fez';
+  src: url('/assets/fonts/Fez.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tunic';
+  src: url('/assets/fonts/Tunic.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Unown';
+  src: url('/assets/fonts/Unown.otf') format('opentype');
+  font-display: swap;
+}
+
+/* ---------- Font showcase cards ----------
+   Replaces the generic apps-theme tool-card grid: one wide row per font
+   (media left / info right, same shape as games.html's own
+   .game-showcase-highlight), instead of a multi-column grid, so each card
+   has room for both the game's logo and a full-width diagonal color band.
+
+   The diagonal stripes are the *exact* five colors + 0.25 alpha the
+   original carousel used for that font's slice of its background (see
+   .carousel-inner in the old dirdam.github.io/fonts.html), just tiled as a
+   short repeating unit instead of one single sweep across a 600%-wide
+   strip — composited over the card's white background this reproduces the
+   same pastel bands the original page showed. */
+.font-card {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-resting);
+  margin-bottom: var(--space-9);
+}
+
+.font-card-media {
+  flex: 0 0 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.font-card-media img {
+  max-width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+}
+
+.font-card-info {
+  flex: 1;
+  min-width: 0;
+  /* Same white text-glow trick the original page's .description used, so
+     body text stays legible regardless of which stripe falls behind it. */
+  text-shadow: 0 0 12px #fff, 0 0 12px #fff, 0 0 12px #fff;
+}
+
+.font-card-title {
+  font-size: var(--font-size-card-title);
+  font-weight: bold;
+  margin-bottom: var(--space-3);
+}
+
+.font-card-credit {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+/* The font's own live sample now sits right before the download button,
+   in a solid-white plate so the glyphs read clearly against the stripes
+   behind it — the same role the original page's white bordered-image
+   swatch played against its colorful carousel background. */
+.font-sample {
+  font-size: 1.3em;
+  line-height: 1.45;
+  letter-spacing: 0.03em;
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.8);
+  text-shadow: none;
+}
+
+.font-sample--sheikah { font-family: 'Sheikah', serif; }
+.font-sample--hylian { font-family: 'Hylian', serif; }
+.font-sample--gerudo { font-family: 'Gerudo', serif; }
+.font-sample--fez { font-family: 'Fez', serif; }
+.font-sample--tunic { font-family: 'Tunic', serif; }
+.font-sample--unown { font-family: 'Unown', serif; }
+
+@media (max-width: 640px) {
+  .font-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .font-card-media {
+    flex-basis: auto;
+  }
+}
+
+.font-card.sheikah {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(112, 128, 144, 0.25) 0 60px,
+      rgba(220, 20, 60, 0.25) 60px 120px,
+      rgba(0, 0, 0, 0.25) 120px 180px,
+      rgba(255, 250, 250, 0.5) 180px 240px,
+      rgba(0, 71, 171, 0.25) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #2fb6c4;
+}
+.font-card.sheikah .font-card-title { color: #0f6674; }
+.font-card.sheikah .badge {
+  background: rgba(47, 182, 196, 0.16);
+  color: #0f6674;
+  border-color: rgba(47, 182, 196, 0.4);
+}
+
+.font-card.hylian {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(135, 206, 250, 0.25) 0 60px,
+      rgba(85, 107, 47, 0.25) 60px 120px,
+      rgba(101, 67, 33, 0.25) 120px 180px,
+      rgba(250, 250, 210, 0.35) 180px 240px,
+      rgba(245, 245, 220, 0.35) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #b8860b;
+}
+.font-card.hylian .font-card-title { color: #8a6d1a; }
+.font-card.hylian .badge {
+  background: rgba(201, 162, 39, 0.18);
+  color: #8a6d1a;
+  border-color: rgba(201, 162, 39, 0.4);
+}
+
+.font-card.gerudo {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(237, 201, 175, 0.35) 0 60px,
+      rgba(210, 105, 30, 0.25) 60px 120px,
+      rgba(255, 223, 0, 0.25) 120px 180px,
+      rgba(178, 34, 34, 0.25) 180px 240px,
+      rgba(0, 128, 0, 0.2) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #c1440e;
+}
+.font-card.gerudo .font-card-title { color: #a3390c; }
+.font-card.gerudo .badge {
+  background: rgba(193, 68, 14, 0.16);
+  color: #a3390c;
+  border-color: rgba(193, 68, 14, 0.4);
+}
+
+.font-card.fez {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 0, 0.2) 0 60px,
+      rgba(135, 240, 235, 0.25) 60px 120px,
+      rgba(50, 205, 50, 0.2) 120px 180px,
+      rgba(255, 0, 0, 0.15) 180px 240px,
+      rgba(220, 220, 220, 0.35) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #d6249f;
+}
+.font-card.fez .font-card-title { color: #93248a; }
+.font-card.fez .badge {
+  background: rgba(214, 36, 159, 0.14);
+  color: #93248a;
+  border-color: rgba(214, 36, 159, 0.35);
+}
+
+.font-card.tunic {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(34, 139, 34, 0.25) 0 60px,
+      rgba(255, 215, 0, 0.25) 60px 120px,
+      rgba(0, 0, 139, 0.2) 120px 180px,
+      rgba(178, 34, 34, 0.2) 180px 240px,
+      rgba(135, 206, 250, 0.25) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #2f7a4d;
+}
+.font-card.tunic .font-card-title { color: #235c3b; }
+.font-card.tunic .badge {
+  background: rgba(47, 122, 77, 0.16);
+  color: #235c3b;
+  border-color: rgba(47, 122, 77, 0.35);
+}
+
+.font-card.unown {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(169, 169, 169, 0.25) 0 60px,
+      rgba(135, 206, 235, 0.3) 60px 120px,
+      rgba(85, 107, 47, 0.2) 120px 180px,
+      rgba(176, 196, 222, 0.3) 180px 240px,
+      rgba(255, 223, 0, 0.25) 240px 300px),
+    var(--color-card-bg);
+  border: 2px solid #0b80bc;
+}
+.font-card.unown .font-card-title { color: #0b5788; }
+.font-card.unown .badge {
+  background: rgba(11, 128, 188, 0.16);
+  color: #0b5788;
+  border-color: rgba(11, 128, 188, 0.35);
+}
+
+/* ---------- "Who this is for" feature grid ----------
+   Centered icon-circle + text, the same 56px badge-circle language as the
+   shared .card-icon (contact/thanks pages), just three-across instead of
+   one-per-card — reads as a proper feature row instead of a plain list. */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-9);
+  margin: var(--space-8) 0;
+  text-align: center;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  margin-bottom: var(--space-5);
+}
+
+.feature-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.feature-text {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+}
+
+/* ---------- Possibilities image grid ----------
+   The original page's four-quadrant frame (gray header bar + demo image),
+   recolored with the site's own brand gradient instead of flat gray. */
+.possibilities-frame {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: var(--space-8) 0;
+}
+
+.possibilities-cell {
+  background: var(--color-card-bg);
+}
+
+.possibilities-cell:nth-child(1),
+.possibilities-cell:nth-child(3) {
+  border-right: 1px solid var(--color-border-neutral);
+}
+
+.possibilities-cell:nth-child(1),
+.possibilities-cell:nth-child(2) {
+  border-bottom: 1px solid var(--color-border-neutral);
+}
+
+.possibilities-label {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: var(--space-5) 0;
+}
+
+.possibilities-cell img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  padding: var(--space-6);
+}
+
+@media screen and (max-width: 600px) {
+  .possibilities-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .possibilities-cell:nth-child(1),
+  .possibilities-cell:nth-child(2),
+  .possibilities-cell:nth-child(3) {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-neutral);
+  }
+}
+
+/* ---------- Donate banner ----------
+   A soft gold band (the original page's PayPal-gold) instead of a lone
+   floating button, so the ask reads as a deliberate little section. */
+.donate-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(246, 185, 59, 0.14) 0%, rgba(250, 211, 144, 0.14) 100%);
+  border: 1px solid rgba(246, 185, 59, 0.35);
+  border-radius: var(--radius-lg);
+  padding: var(--space-9);
+  margin-top: var(--space-9);
+}
+
+.donate-banner p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* Warm PayPal-ish gold instead of the shared brand gradient — this is the
+   one button on the site asking for something back from the visitor rather
+   than sending them somewhere, so it deliberately reads differently. */
+.btn-pill--donate {
+  background: linear-gradient(135deg, #f6b93b 0%, #fad390 100%);
+  color: #4a3200;
+}
+
+.btn-pill--donate:hover {
+  opacity: 0.9;
+}
+
+.btn-pill--donate svg {
+  width: 18px;
+  height: 18px;
+}
