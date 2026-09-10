@@ -263,60 +263,50 @@
   line-height: var(--line-height-body);
 }
 
-/* ---------- Possibilities image grid ----------
-   The original page's four-quadrant frame (gray header bar + demo image),
-   recolored with the site's own brand gradient instead of flat gray. */
-.possibilities-frame {
+/* ---------- Possibilities card grid ----------
+   Same visual language as the site's own tools-grid/tool-card cards
+   (rounded, shadowed, lift-on-hover) instead of a bordered table — a
+   four-quadrant frame with gradient header bars read as a dull spec sheet,
+   and those bars were styled identically to the "Get a quote" buttons
+   right above/below, which made them look clickable when they aren't. The
+   label here is a small muted caption instead, so it reads as a caption
+   and nothing else. */
+.possibilities-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--color-border-neutral);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-7);
   margin: var(--space-8) 0;
 }
 
-.possibilities-cell {
+.possibility-card {
   background: var(--color-card-bg);
-}
-
-.possibilities-cell:nth-child(1),
-.possibilities-cell:nth-child(3) {
-  border-right: 1px solid var(--color-border-neutral);
-}
-
-.possibilities-cell:nth-child(1),
-.possibilities-cell:nth-child(2) {
-  border-bottom: 1px solid var(--color-border-neutral);
-}
-
-.possibilities-label {
-  background: var(--gradient-brand);
-  color: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-resting);
+  padding: var(--space-7);
   text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: var(--space-5) 0;
+  transition: transform var(--transition-med), box-shadow var(--transition-med);
 }
 
-.possibilities-cell img {
+.possibility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.possibility-label {
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-6);
+}
+
+.possibility-card img {
   display: block;
   width: 100%;
-  height: 160px;
+  height: 120px;
   object-fit: contain;
-  padding: var(--space-6);
-}
-
-@media screen and (max-width: 600px) {
-  .possibilities-frame {
-    grid-template-columns: 1fr;
-  }
-
-  .possibilities-cell:nth-child(1),
-  .possibilities-cell:nth-child(2),
-  .possibilities-cell:nth-child(3) {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border-neutral);
-  }
+  margin: 0 auto;
 }
 
 /* ---------- Donate banner ----------
