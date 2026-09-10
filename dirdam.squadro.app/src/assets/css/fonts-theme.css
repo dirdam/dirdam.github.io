@@ -38,50 +38,71 @@
 }
 
 /* ---------- Font showcase cards ----------
-   Replaces the generic apps-theme tool-card grid: one wide row per font
-   (media left / info right, same shape as games.html's own
-   .game-showcase-highlight), instead of a multi-column grid, so each card
-   has room for both the game's logo and a full-width diagonal color band.
+   A 3-across grid (media on top, info below in each card) rather than
+   games.html's single wide media-left/info-right row — with six fonts to
+   show, a grid reads as a gallery instead of a long scroll.
 
-   The diagonal stripes are the *exact* five colors + 0.25 alpha the
-   original carousel used for that font's slice of its background (see
-   .carousel-inner in the old dirdam.github.io/fonts.html), just tiled as a
-   short repeating unit instead of one single sweep across a 600%-wide
-   strip — composited over the card's white background this reproduces the
-   same pastel bands the original page showed. */
-.font-card {
-  display: flex;
+   Each card's background is a slow-panning gradient built from that font's
+   slice of the original carousel's colors (see .carousel-inner in the old
+   dirdam.github.io/fonts.html) — the same hero-drift-base pan/keyframe the
+   rest of the site already uses for its hero banners, so these read as
+   "one more moving gradient on this site" rather than a one-off effect. */
+.font-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-8);
-  align-items: center;
-  padding: var(--space-8);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card-resting);
+  margin-top: var(--space-9);
   margin-bottom: var(--space-9);
 }
 
+@media (max-width: 900px) {
+  .font-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .font-cards-grid { grid-template-columns: 1fr; }
+}
+
+.font-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-resting);
+  background-color: var(--color-card-bg);
+  background-size: 200% 200%;
+  animation: hero-drift-base 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .font-card {
+    animation: none;
+    background-position: 30% 50%;
+  }
+}
+
 .font-card-media {
-  flex: 0 0 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
-  background: #ffffff;
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0);
   padding: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .font-card-media img {
   max-width: 100%;
-  max-height: 140px;
+  max-height: 100px;
   object-fit: contain;
 }
 
 .font-card-info {
-  flex: 1;
   min-width: 0;
-  /* Same white text-glow trick the original page's .description used, so
-     body text stays legible regardless of which stripe falls behind it. */
-  text-shadow: 0 0 12px #fff, 0 0 12px #fff, 0 0 12px #fff;
+}
+
+.font-card-info .tool-button {
+  display: table;
+  margin: 0 auto;
 }
 
 .font-card-title {
@@ -107,6 +128,7 @@
   margin-bottom: var(--space-6);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   text-shadow: none;
 }
 
@@ -117,123 +139,94 @@
 .font-sample--tunic { font-family: 'Tunic', serif; }
 .font-sample--unown { font-family: 'Unown', serif; }
 
-@media (max-width: 640px) {
-  .font-card {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .font-card-media {
-    flex-basis: auto;
-  }
-}
-
 .font-card.sheikah {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(112, 128, 144, 0.25) 0 60px,
-      rgba(220, 20, 60, 0.25) 60px 120px,
-      rgba(0, 0, 0, 0.25) 120px 180px,
-      rgba(255, 250, 250, 0.5) 180px 240px,
-      rgba(0, 71, 171, 0.25) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #2fb6c4;
+  background-image: linear-gradient(120deg,
+    rgba(100, 88, 80, 0.2),
+    rgba(208, 171, 108, 0.2),
+    rgba(109, 232, 243, 0.2),
+    rgba(100, 88, 80, 0.2));
+  border: 2px solid #12c8d9;
 }
-.font-card.sheikah .font-card-title { color: #0f6674; }
+.font-card.sheikah .font-card-title { color: #0c838d; }
 .font-card.sheikah .badge {
-  background: rgba(47, 182, 196, 0.16);
-  color: #0f6674;
-  border-color: rgba(47, 182, 196, 0.4);
+  background: rgba(18, 200, 217, 0.16);
+  color: #0c838d;
+  border-color: rgba(18, 200, 217, 0.4);
 }
 
 .font-card.hylian {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(135, 206, 250, 0.25) 0 60px,
-      rgba(85, 107, 47, 0.25) 60px 120px,
-      rgba(101, 67, 33, 0.25) 120px 180px,
-      rgba(250, 250, 210, 0.35) 180px 240px,
-      rgba(245, 245, 220, 0.35) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #b8860b;
+  background-image: linear-gradient(120deg,
+    rgba(140, 120, 82, 0.2),
+    rgba(193, 85, 82, 0.2),
+    rgba(89, 139, 118, 0.2),
+    rgba(140, 120, 82, 0.2));
+  border: 2px solid #ad413e;
 }
-.font-card.hylian .font-card-title { color: #8a6d1a; }
+.font-card.hylian .font-card-title { color: #712a28; }
 .font-card.hylian .badge {
-  background: rgba(201, 162, 39, 0.18);
-  color: #8a6d1a;
-  border-color: rgba(201, 162, 39, 0.4);
+  background: rgba(173, 65, 62, 0.16);
+  color: #712a28;
+  border-color: rgba(173, 65, 62, 0.4);
 }
 
 .font-card.gerudo {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(237, 201, 175, 0.35) 0 60px,
-      rgba(210, 105, 30, 0.25) 60px 120px,
-      rgba(255, 223, 0, 0.25) 120px 180px,
-      rgba(178, 34, 34, 0.25) 180px 240px,
-      rgba(0, 128, 0, 0.2) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #c1440e;
+  background-image: linear-gradient(120deg,
+    rgba(244, 241, 109, 0.2),
+    rgba(212, 142, 50, 0.2),
+    rgba(214, 70, 48, 0.2),
+    rgba(244, 241, 109, 0.2));
+  border: 2px solid #c43c27;
 }
-.font-card.gerudo .font-card-title { color: #a3390c; }
+.font-card.gerudo .font-card-title { color: #802719; }
 .font-card.gerudo .badge {
-  background: rgba(193, 68, 14, 0.16);
-  color: #a3390c;
-  border-color: rgba(193, 68, 14, 0.4);
+  background: rgba(196, 60, 39, 0.16);
+  color: #802719;
+  border-color: rgba(196, 60, 39, 0.4);
 }
 
 .font-card.fez {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(255, 255, 0, 0.2) 0 60px,
-      rgba(135, 240, 235, 0.25) 60px 120px,
-      rgba(50, 205, 50, 0.2) 120px 180px,
-      rgba(255, 0, 0, 0.15) 180px 240px,
-      rgba(220, 220, 220, 0.35) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #d6249f;
+  background-image: linear-gradient(120deg,
+    rgba(101, 197, 242, 0.2),
+    rgba(111, 91, 167, 0.2),
+    rgba(138, 221, 68, 0.2),
+    rgba(242, 229, 95, 0.2));
+  border: 2px solid #655299;
 }
-.font-card.fez .font-card-title { color: #93248a; }
+.font-card.fez .font-card-title { color: #423564; }
 .font-card.fez .badge {
-  background: rgba(214, 36, 159, 0.14);
-  color: #93248a;
-  border-color: rgba(214, 36, 159, 0.35);
+  background: rgba(101, 82, 153, 0.16);
+  color: #423564;
+  border-color: rgba(101, 82, 153, 0.4);
 }
 
 .font-card.tunic {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(34, 139, 34, 0.25) 0 60px,
-      rgba(255, 215, 0, 0.25) 60px 120px,
-      rgba(0, 0, 139, 0.2) 120px 180px,
-      rgba(178, 34, 34, 0.2) 180px 240px,
-      rgba(135, 206, 250, 0.25) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #2f7a4d;
+  background-image: linear-gradient(120deg,
+    rgba(110, 116, 37, 0.2),
+    rgba(245, 234, 91, 0.2),
+    rgba(170, 123, 214, 0.2),
+    rgba(110, 116, 37, 0.2));
+  border: 2px solid #a9b239;
 }
-.font-card.tunic .font-card-title { color: #235c3b; }
+.font-card.tunic .font-card-title { color: #6e7425; }
 .font-card.tunic .badge {
-  background: rgba(47, 122, 77, 0.16);
-  color: #235c3b;
-  border-color: rgba(47, 122, 77, 0.35);
+  background: rgba(169, 178, 57, 0.18);
+  color: #6e7425;
+  border-color: rgba(169, 178, 57, 0.4);
 }
 
 .font-card.unown {
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(169, 169, 169, 0.25) 0 60px,
-      rgba(135, 206, 235, 0.3) 60px 120px,
-      rgba(85, 107, 47, 0.2) 120px 180px,
-      rgba(176, 196, 222, 0.3) 180px 240px,
-      rgba(255, 223, 0, 0.25) 240px 300px),
-    var(--color-card-bg);
-  border: 2px solid #0b80bc;
+  background-image: linear-gradient(120deg,
+    rgba(48, 42, 43, 0.2),
+    rgba(62, 136, 203, 0.2),
+    rgba(152, 200, 150, 0.2),
+    rgba(48, 42, 43, 0.2));
+  border: 2px solid #3279b9;
 }
-.font-card.unown .font-card-title { color: #0b5788; }
+.font-card.unown .font-card-title { color: #204f79; }
 .font-card.unown .badge {
-  background: rgba(11, 128, 188, 0.16);
-  color: #0b5788;
-  border-color: rgba(11, 128, 188, 0.35);
+  background: rgba(50, 121, 185, 0.16);
+  color: #204f79;
+  border-color: rgba(50, 121, 185, 0.4);
 }
 
 /* ---------- "Who this is for" feature grid ----------
