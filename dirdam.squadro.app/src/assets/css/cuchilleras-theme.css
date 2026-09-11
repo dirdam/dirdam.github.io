@@ -146,96 +146,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-8);
   margin: var(--space-8) 0;
-  flex-wrap: wrap;
 }
 
-.cuchilleras-toggle-label {
-  font-weight: 700;
-}
-
-.tooltip-icon {
-  display: inline-block;
-  margin-left: var(--space-2);
-  color: var(--color-text-muted);
-  cursor: help;
-  position: relative;
-}
-
-.tooltip-icon::after {
-  content: attr(data-tooltip);
-  visibility: hidden;
-  opacity: 0;
-  background-color: var(--color-text);
-  color: #fff;
-  text-align: center;
-  padding: var(--space-3);
-  border-radius: var(--radius-sm);
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: opacity var(--transition-fast);
-  font-size: var(--font-size-small);
-  white-space: nowrap;
-  z-index: 1;
-}
-
-.tooltip-icon:hover::after,
-.tooltip-icon:focus-visible::after {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Toggle switch (Cuchilleras <-> Cuchilleras Sans) — same two-tone-track/
-   solid-thumb look as the original dirdam.github.io page (track shade
-   changes with state, thumb stays the same brand-blue throughout), just
-   re-colored with this site's own tokens instead of hardcoded rgb()s. */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.switch .slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background-color: var(--color-badge-bg);
-  transition: var(--transition-med);
+/* Same segmented-pill look as the site's own language switcher (see
+   .lang-toggle in components.css) — a pressed pill button rather than an
+   iOS-style on/off switch, so this reads as "pick one of two options"
+   using a control this site already establishes, instead of a foreign
+   widget borrowed as-is from the original standalone page. */
+.cuchilleras-font-toggle {
+  display: inline-flex;
+  background: var(--overlay-black-06);
   border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
 }
 
-.switch .slider::before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: var(--color-brand-start);
-  transition: var(--transition-med);
-  border-radius: 50%;
+.cuchilleras-font-toggle button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
+  font-size: 1.05em;
+  padding: var(--space-4) var(--space-7);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.switch input:checked + .slider {
-  background-color: var(--color-badge-border);
+.cuchilleras-font-toggle button:hover {
+  color: var(--color-text);
 }
 
-.switch input:checked + .slider::before {
-  transform: translateX(26px);
+.cuchilleras-font-toggle button[aria-pressed="true"] {
+  background: var(--gradient-brand);
+  color: #ffffff;
 }
 
-.switch input:focus-visible + .slider {
+.cuchilleras-font-toggle button:focus-visible {
+  outline: none;
   box-shadow: var(--shadow-focus-ring);
 }
 

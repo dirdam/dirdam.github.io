@@ -54,7 +54,6 @@
     <h3 style="margin-top: var(--space-8);" data-i18n="howToTypeTitle"></h3>
     <p data-i18n-html="howToTypeText"></p>
 
-    <p style="margin-top: var(--space-8);" data-i18n-html="digraphIntro"></p>
     <div class="possibilities-grid">
       <div class="possibility-card">
         <div class="possibility-label">CH → C'H</div>
@@ -79,7 +78,7 @@
       </div>
     </div>
 
-    <p data-i18n="freeOpenNote"></p>
+    <p data-i18n-html="freeOpenNote"></p>
     <div class="tool-actions" style="justify-content:center; margin-top: var(--space-7);">
       <a class="btn-pill btn-pill--primary" href="https://github.com/dirdam/cuchilleras?tab=readme-ov-file#c%C3%B3mo-instalar-en-tu-ordenador" target="_blank" rel="noopener noreferrer"><svg><use href="#icon-download"></use></svg><span data-i18n="downloadFont"></span></a>
     </div>
@@ -96,15 +95,10 @@
     </div>
 
     <div class="cuchilleras-toggle-row">
-      <span class="cuchilleras-toggle-label" data-i18n="toggleSerif"></span>
-      <label class="switch">
-        <input type="checkbox" id="font-toggle">
-        <span class="slider"></span>
-      </label>
-      <span class="cuchilleras-toggle-label">
-        <span data-i18n="toggleSans"></span>
-        <span class="tooltip-icon" data-i18n="toggleSansTooltip" data-i18n-attr="data-tooltip"> ⓘ</span>
-      </span>
+      <div class="cuchilleras-font-toggle" role="group" aria-label="Font style">
+        <button type="button" id="font-toggle-serif" class="font-cuchilleras" aria-pressed="true" data-i18n="toggleSerif"></button>
+        <button type="button" id="font-toggle-sans" class="font-cuchilleras-sans" aria-pressed="false" data-i18n="toggleSans"></button>
+      </div>
     </div>
 
     <div class="cuchilleras-sliders">

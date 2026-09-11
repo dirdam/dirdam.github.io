@@ -72,11 +72,17 @@
     sliders.forEach(positionValue);
   });
 
-  // Serif/sans toggle.
-  var fontToggle = document.getElementById('font-toggle');
-  if (fontToggle) {
-    fontToggle.addEventListener('change', function () {
-      fontTest.style.fontFamily = fontToggle.checked ? "'CuchillerasSans'" : "'Cuchilleras'";
-    });
+  // Serif/sans segmented toggle (two pressed-pill buttons, matching the
+  // site's own language switcher rather than an on/off switch).
+  var serifBtn = document.getElementById('font-toggle-serif');
+  var sansBtn = document.getElementById('font-toggle-sans');
+  if (serifBtn && sansBtn) {
+    var selectFont = function (isSans) {
+      serifBtn.setAttribute('aria-pressed', String(!isSans));
+      sansBtn.setAttribute('aria-pressed', String(isSans));
+      fontTest.style.fontFamily = isSans ? "'CuchillerasSans'" : "'Cuchilleras'";
+    };
+    serifBtn.addEventListener('click', function () { selectFont(false); });
+    sansBtn.addEventListener('click', function () { selectFont(true); });
   }
 })();
