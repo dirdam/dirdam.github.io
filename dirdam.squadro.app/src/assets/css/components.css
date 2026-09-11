@@ -1715,6 +1715,14 @@
   margin-bottom: var(--space-5);
 }
 
+/* Centered, like fonts.html's "Possibilities"/"What to Expect" and every
+   other plain subheading a content-card carries — excluded here is
+   .card-title, the game-showcase-info's own left-aligned title that sits
+   beside its media, a distinct component rather than this generic case. */
+.content-card h3:not(.card-title) {
+  text-align: center;
+}
+
 .content-card p + p,
 .content-card ul + p,
 .content-card p + ul {

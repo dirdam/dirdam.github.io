@@ -1,0 +1,383 @@
+/* Cuchilleras page theme — ported from the standalone dirdam.github.io
+   cuchilleras.html. CuchillerasSans (the sans display cut) already lives in
+   base.css as the site's Spanish body typeface; the serif display cut used
+   for the essay quote and the riddle phrase is only ever used here, so it
+   is declared page-scoped, the same way fonts-theme.css keeps its six
+   conlang fonts out of the shared stylesheet. */
+
+@font-face {
+  font-family: 'Cuchilleras';
+  src: url('/assets/fonts/CuchillerasVF.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 50% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cuchilleras';
+  src: url('/assets/fonts/CuchillerasItalicVF.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 50% 100%;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Hero: a knife-blade-glint palette — dark rock umber sweeping to a warm
+   brass gold, echoing both the font's own name ("cuchillera" = a scabbard
+   of knives) and the gold accent the logo itself uses to highlight its new
+   ch/ll letters. Kept dark (unlike Fonts/Reflections' light parchment
+   themes) so the shared white heading/subtitle color still applies as-is. */
+.hero--cuchilleras {
+  --hero-c1: #3a2317;
+  --hero-c2: #c9962c;
+  --hero-blob-a-highlight: rgba(255, 214, 130, 0.5);
+  --hero-blob-b-highlight: rgba(139, 30, 30, 0.45);
+}
+
+/* ---------- Font utility classes ----------
+   The demonstration text (alphabet, digraph samples, quote, riddle) must
+   always render in the actual Cuchilleras faces regardless of the current
+   UI language — unlike body copy, which only switches to CuchillerasSans
+   when the site itself is in Spanish (see tokens.css). */
+.font-cuchilleras {
+  font-family: 'Cuchilleras', serif;
+}
+
+.font-cuchilleras-sans {
+  font-family: 'CuchillerasSans', sans-serif;
+}
+
+/* ---------- Intro ----------
+   A big wordmark image (as on the original dirdam.github.io page), instead
+   of plain text, right below the hero — it doubles as a first live specimen
+   of the font's new ch/ll letters (highlighted in gold in the image itself). */
+.cuchilleras-logo {
+  display: block;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto var(--space-8);
+}
+
+/* Both download buttons now sit above #introduction (right below the
+   pill-nav), so this is scoped to the whole page rather than that
+   section — safe since this stylesheet only ever loads on this page. */
+.btn-pill svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ---------- Alphabet / numbers tables ---------- */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.cuchilleras-table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+.cuchilleras-table td {
+  border: 1px solid var(--color-border-neutral);
+  padding: var(--space-4);
+  white-space: nowrap;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.cuchilleras-table td:first-child {
+  background-color: var(--color-page-bg);
+  font-weight: 600;
+  font-size: var(--font-size-small);
+  white-space: normal;
+}
+
+.cuchilleras-table-names td {
+  font-size: 1em;
+}
+
+/* Flags the three new letters (and the crossed 7) introduced by the font. */
+.cuchilleras-table td.is-new-letter {
+  background-color: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-weight: 700;
+}
+
+/* ---------- Digraph ligature demo ----------
+   Reuses the site's own .possibilities-grid/.possibility-card look (see
+   fonts-theme.css) instead of introducing a new card component. */
+.digraph-demo {
+  font-size: 1.3em;
+  margin: var(--space-2) 0 var(--space-5);
+}
+
+.digraph-demo.no-ligatures {
+  font-variant-ligatures: none;
+}
+
+.possibility-card .badge {
+  margin-top: var(--space-4);
+}
+
+.possibility-card .badge:first-of-type {
+  margin-top: 0;
+}
+
+/* ---------- Font tester ---------- */
+/* An id selector, not just the .font-cuchilleras utility class, so this
+   beats the higher-specificity `.form-field textarea { font: inherit }`
+   rule in components.css (which would otherwise reset font-family back to
+   the page's own body font). */
+#font-test {
+  font-family: 'Cuchilleras', serif;
+  font-size: 24px;
+  resize: vertical;
+}
+
+/* More breathing room than the shared .content-card p+p spacing gives —
+   this introduces the textarea below it, not another paragraph. */
+#type .form-field {
+  margin-top: var(--space-8);
+}
+
+.cuchilleras-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  margin: var(--space-8) 0;
+  flex-wrap: wrap;
+}
+
+.cuchilleras-toggle-label {
+  font-weight: 700;
+}
+
+.tooltip-icon {
+  display: inline-block;
+  margin-left: var(--space-2);
+  color: var(--color-text-muted);
+  cursor: help;
+  position: relative;
+}
+
+.tooltip-icon::after {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--color-text);
+  color: #fff;
+  text-align: center;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity var(--transition-fast);
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.tooltip-icon:hover::after,
+.tooltip-icon:focus-visible::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Toggle switch (Cuchilleras <-> Cuchilleras Sans) — same two-tone-track/
+   solid-thumb look as the original dirdam.github.io page (track shade
+   changes with state, thumb stays the same brand-blue throughout), just
+   re-colored with this site's own tokens instead of hardcoded rgb()s. */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--color-badge-bg);
+  transition: var(--transition-med);
+  border-radius: var(--radius-pill);
+}
+
+.switch .slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--color-brand-start);
+  transition: var(--transition-med);
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--color-badge-border);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.switch input:focus-visible + .slider {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* Size / weight / width sliders — a floating value bubble doubles as the
+   slider's own draggable thumb (the native thumb is made transparent). */
+.cuchilleras-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.cuchilleras-slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 420px;
+}
+
+.cuchilleras-slider-label {
+  width: 70px;
+  flex-shrink: 0;
+  text-align: right;
+  font-weight: 600;
+}
+
+.cuchilleras-slider-label::after {
+  content: ":";
+}
+
+/* Inset by exactly half the value-bubble's width (see .cuchilleras-slider-value
+   below) on each side — the bubble is centered on the thumb position, so
+   without this inset it would overhang past the track's own ends at the min
+   and max values: into the label/colon on the left, and out past the card's
+   own edge on the right. This keeps the bubble flush with, never past,
+   this container's edges at both extremes. */
+.cuchilleras-slider-bar {
+  position: relative;
+  flex: 1;
+  padding: 0 21px;
+}
+
+/* A visible gradient track (as on the original page) rather than a flat
+   bar — brand-start to brand-end, the same gradient the rest of the site
+   uses for its primary buttons. */
+.cuchilleras-slider-bar input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-pill);
+  outline: none;
+  margin: 0;
+}
+
+.cuchilleras-slider-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  cursor: grab;
+}
+
+.cuchilleras-slider-bar input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: grab;
+}
+
+/* A solid rounded-rect bubble, sitting directly on the track (vertically
+   centered on it) rather than floating in reserved space above — it reads
+   as the slider's own visible thumb, matching the label row's own vertical
+   alignment instead of sitting off on its own line above it. */
+.cuchilleras-slider-value {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  width: 42px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-brand-start);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cuchilleras-slider-value:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 600px) {
+  .cuchilleras-slider-row {
+    max-width: none;
+    /* The wider desktop gap doesn't fit next to a fixed-width label on a
+       narrow card — it pushed the track past the card's own edge. */
+    gap: var(--space-6);
+  }
+
+  .cuchilleras-slider-label {
+    width: 56px;
+  }
+}
+
+/* ---------- Example text ---------- */
+.cuchilleras-quote {
+  font-size: 1.4em;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: var(--space-7) 0;
+}
+
+.cuchilleras-photo {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+}
+
+.cuchilleras-caption {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ---------- Riddle ---------- */
+.cuchilleras-riddle {
+  font-size: 1.6em;
+  font-weight: 300;
+  text-align: center;
+  margin: var(--space-8) 0;
+  color: var(--color-badge-text);
+}
