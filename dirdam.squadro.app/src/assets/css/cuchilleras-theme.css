@@ -162,6 +162,9 @@
   gap: 2px;
 }
 
+/* Same height/padding as the nav bar's own pills (--nav-capsule-height,
+   see components.css) instead of the taller default button box the first
+   version of this toggle used. */
 .cuchilleras-font-toggle button {
   display: inline-flex;
   align-items: center;
@@ -169,8 +172,9 @@
   background: transparent;
   border: none;
   color: var(--color-text-subtle);
-  font-size: 1.05em;
-  padding: var(--space-4) var(--space-7);
+  height: 36px;
+  padding: 0 var(--space-7);
+  font-size: var(--font-size-small);
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
