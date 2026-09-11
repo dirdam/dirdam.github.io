@@ -130,10 +130,30 @@
    beats the higher-specificity `.form-field textarea { font: inherit }`
    rule in components.css (which would otherwise reset font-family back to
    the page's own body font). */
+/* A fixed, explicit height rather than relying on the rows attribute —
+   rows sizes the box in line-heights, which the size slider itself scales,
+   so the box would otherwise grow/shrink as its own font size changes.
+   resize:vertical still lets a visitor drag it taller by hand. */
 #font-test {
   font-family: 'Cuchilleras', serif;
   font-size: 24px;
+  height: 120px;
   resize: vertical;
+  /* --color-page-bg at 30% opacity — tinted enough to read as a distinct,
+     recessed field against the white content-card, but lighter than the
+     page's own solid background so it doesn't read as "a hole showing the
+     page through the card". The inset shadow reinforces that recessed
+     look on top of the tint. */
+  background: rgba(244, 244, 248, 0.3);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* #font-test's id-level specificity would otherwise silently beat the
+   site's shared focus-ring rules (both class-scoped) and blank out the
+   focus outline entirely — keep the inset shadow but layer the ring back
+   on top of it while focused. */
+#font-test:focus-visible {
+  box-shadow: var(--shadow-focus-ring), inset 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* More breathing room than the shared .content-card p+p spacing gives —
@@ -270,6 +290,12 @@
    centered on it) rather than floating in reserved space above — it reads
    as the slider's own visible thumb, matching the label row's own vertical
    alignment instead of sitting off on its own line above it. */
+/* A full pill, like every other control on this site (the font toggle
+   above, .btn-pill, .lang-toggle) — and its background is set inline by
+   cuchilleras.js to the exact point on the brand gradient the track itself
+   shows at that value, so the thumb always reads as part of the track
+   rather than a flat color dropped on top of it. The var() here is only
+   the pre-JS fallback (first paint, reduced-motion/no-JS). */
 .cuchilleras-slider-value {
   position: absolute;
   top: 50%;
@@ -282,7 +308,7 @@
   justify-content: center;
   background: var(--color-brand-start);
   color: #fff;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   font-size: var(--font-size-small);
   font-weight: 700;
   cursor: grab;

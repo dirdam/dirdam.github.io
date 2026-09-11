@@ -32,14 +32,11 @@
     "sliderSize": "Size",
     "sliderWeight": "Weight",
     "sliderWidth": "Width",
-    "exampleIntro": "An excerpt from the essay, set in Cuchilleras:",
     "exampleQuote": "«<em>Las Cuchilleras</em> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <strong>Dehesa de Valgallego</strong> (Área Recreativa), en el término municipal de <strong>Torrelaguna</strong>. Alrededor de <em>Las Cuchilleras</em> podemos encontrar otros lugares de interés para senderistas como el <strong>Arroyo de San Vicente</strong>, la <strong>Atalaya de Arrebatacapas</strong> o la chopera».",
-    "exampleCaption": "A description — in Spanish, set in Cuchilleras itself — of the actual rocky ridge near Torrelaguna, Spain, that lent the font its name.",
+    "exampleCaption": "View of the actual rocky ridge in Torrelaguna, Spain, that lent its name to the font.",
     "riddleIntro": "Adopting this writing system through Cuchilleras (or any font that follows it) means that <a href=\"https://static.ow.ly/docs/imperativo%20de%20salir%20con%20cl%C3%ADtico_4REK.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">the only Spanish sentence that couldn't be written down</a> — because of its digraphs — can finally be spelled out:",
     "riddlePhrase": "Sal'le al paso / Sal'le al encuentro",
-    "riddleExplanation": "This reads exactly as expected, since the writing system now distinguishes in writing between <strong><em>sal'le</em></strong> (a doubled <em>l</em>) and <strong><em>salle</em></strong> (<em>l'l</em>).",
-    "ctaButton": "Let me know",
-    "ctaTitle": "Want to know more?"
+    "riddleExplanation": "This reads exactly as expected, since the writing system now distinguishes in writing between <strong><em>sal'le</em></strong> (a doubled <em>l</em>) and <strong><em>salle</em></strong> (<em>l'l</em>)."
   },
   "es": {
     "pageTitle": "Cuchilleras",
@@ -74,14 +71,11 @@
     "sliderSize": "Tamaño",
     "sliderWeight": "Peso",
     "sliderWidth": "Anc'ho",
-    "exampleIntro": "Fragmento del ensayo, escrito en Cuchilleras:",
     "exampleQuote": "«<i>Las Cuchilleras</i> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <b>Dehesa de Valgallego</b> (Área Recreativa), en el término municipal de <b>Torrelaguna</b>. Alrededor de <i>Las Cuchilleras</i> podemos encontrar otros lugares de interés para senderistas como el <b>Arroyo de San Vicente</b>, la <b>Atalaya de Arrebatacapas</b> o la chopera».",
-    "exampleCaption": "Descripción — escrita en la propia Cuchilleras — de la formación rocosa cerca de Torrelaguna que da nombre a la fuente.",
+    "exampleCaption": "Vista de la propia formación rocosa en Torrelaguna, España, que da nombre a la fuente.",
     "riddleIntro": "La adopción de esta escritura a través de Cuchilleras u otra fuente que la siga implica que <a href=\"https://static.ow.ly/docs/imperativo%20de%20salir%20con%20cl%C3%ADtico_4REK.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">la única frase del español no representable por escrito</a> debido a la existencia de dígrafos ahora sí se puede escribir:",
     "riddlePhrase": "Sal'le al paso / Sal'le al encuentro",
-    "riddleExplanation": "Esto se leería como se espera, ya que en este sistema se distingue en la escritura entre <b><i>sal'le</i></b> (<i>ele geminada</i>) y <b><i>salle</i></b> (<i>el'le</i>).",
-    "ctaButton": "Házmelo saber",
-    "ctaTitle": "¿Quieres más?"
+    "riddleExplanation": "Esto se leería como se espera, ya que en este sistema se distingue en la escritura entre <b><i>sal'le</i></b> (<i>ele geminada</i>) y <b><i>salle</i></b> (<i>el'le</i>)."
   },
   "ja": {
     "pageTitle": "Cuchilleras",
@@ -116,13 +110,10 @@
     "sliderSize": "サイズ",
     "sliderWeight": "太さ",
     "sliderWidth": "幅",
-    "exampleIntro": "エッセイからの抜粋（Cuchillerasフォント使用）：",
     "exampleQuote": "«<em>Las Cuchilleras</em> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <strong>Dehesa de Valgallego</strong> (Área Recreativa), en el término municipal de <strong>Torrelaguna</strong>. Alrededor de <em>Las Cuchilleras</em> podemos encontrar otros lugares de interés para senderistas como el <strong>Arroyo de San Vicente</strong>, la <strong>Atalaya de Arrebatacapas</strong> o la chopera».",
-    "exampleCaption": "フォントの名前の由来となった，スペイン・トレラグーナ近郊の実在の岩山についてのスペイン語の説明文を，Cuchillerasフォント自体で表示しています。",
+    "exampleCaption": "フォントの名前の由来となった，スペイン・トレラグーナの実在の岩山の写真。",
     "riddleIntro": "Cuchillerasのような表記法を採用すると，二重字の存在により<a href=\"https://static.ow.ly/docs/imperativo%20de%20salir%20con%20cl%C3%ADtico_4REK.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">これまで書き表せなかった唯一のスペイン語の文</a>が，ついに書けるようになります：",
     "riddlePhrase": "Sal'le al paso / Sal'le al encuentro",
-    "riddleExplanation": "この表記法では<strong><em>sal'le</em></strong>（重複する<em>l</em>）と<strong><em>salle</em></strong>（<em>l'l</em>）が書き分けられるため，期待通りに読めます。",
-    "ctaButton": "お知らせください",
-    "ctaTitle": "もっと知りたいですか？"
+    "riddleExplanation": "この表記法では<strong><em>sal'le</em></strong>（重複する<em>l</em>）と<strong><em>salle</em></strong>（<em>l'l</em>）が書き分けられるため，期待通りに読めます。"
   }
 }

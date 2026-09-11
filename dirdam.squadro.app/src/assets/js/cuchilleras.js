@@ -13,6 +13,24 @@
     { input: document.getElementById('font-width'), value: document.getElementById('font-width-value'), apply: function (v) { fontTest.style.fontStretch = v + '%'; } },
   ];
 
+  // The thumb's own color is sampled live from the same brand-gradient
+  // tokens the track is painted with (see --gradient-brand in tokens.css),
+  // read via getComputedStyle rather than hardcoded so it can't drift out
+  // of sync with that gradient.
+  function hexToRgb(hex) {
+    var n = parseInt(hex.trim().replace('#', ''), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  var rootStyle = getComputedStyle(document.documentElement);
+  var gradientStart = hexToRgb(rootStyle.getPropertyValue('--color-brand-start'));
+  var gradientEnd = hexToRgb(rootStyle.getPropertyValue('--color-brand-end'));
+  function gradientColorAt(t) {
+    var r = Math.round(gradientStart[0] + (gradientEnd[0] - gradientStart[0]) * t);
+    var g = Math.round(gradientStart[1] + (gradientEnd[1] - gradientStart[1]) * t);
+    var b = Math.round(gradientStart[2] + (gradientEnd[2] - gradientStart[2]) * t);
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+
   function positionValue(slider) {
     // Measured against the input's own offsetLeft/offsetWidth (not
     // getBoundingClientRect, which is relative to the viewport) so this
@@ -25,6 +43,7 @@
     var bubbleWidth = slider.value.offsetWidth;
     var left = slider.input.offsetLeft + percentage * slider.input.offsetWidth - bubbleWidth / 2;
     slider.value.style.left = left + 'px';
+    slider.value.style.background = gradientColorAt(percentage);
     slider.value.textContent = slider.input.value + (slider.input === sliders[2].input ? '%' : '');
   }
 
