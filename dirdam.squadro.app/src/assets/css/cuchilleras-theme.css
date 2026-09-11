@@ -333,6 +333,53 @@
   }
 }
 
+/* ---------- Gallery ----------
+   Two specimen boxes, each cross-fading between its own stacked images
+   (see cuchilleras.js) — a purposeful revival of the original standalone
+   page's alternating background-photo effect, now demonstrating real
+   words set in the font instead of just decorating the page. */
+.cuchilleras-gallery-grid {
+  margin-top: var(--space-7);
+}
+
+/* aspect-ratio 4/3 gives this box exactly enough height for a square
+   image at 75% width (0.75 × 0.75 ≈ 0.5625, comfortably under 0.75) to
+   render at its full intended width without being squeezed shorter by a
+   fixed pixel height — that was the earlier bug: height:100% forced
+   object-fit:contain to size by height first, so square-ish images (like
+   Churrería/Taller) rendered far narrower than 75%. */
+.cuchilleras-gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cuchilleras-gallery-item img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.cuchilleras-gallery-item img.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cuchilleras-gallery-item img {
+    transition: none;
+  }
+}
+
 /* ---------- Example text ---------- */
 .cuchilleras-quote {
   font-size: 1.4em;

@@ -105,3 +105,24 @@
     sansBtn.addEventListener('click', function () { selectFont(true); });
   }
 })();
+
+/* Gallery: cross-fades each specimen box between its own stacked images
+   every few seconds. A separate IIFE (not gated on #font-test existing
+   above) since it's an independent feature of the page. */
+(function () {
+  var items = document.querySelectorAll('.cuchilleras-gallery-item');
+  if (!items.length) return;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  items.forEach(function (item) {
+    var images = item.querySelectorAll('img');
+    if (images.length < 2) return;
+    var index = 0;
+    setInterval(function () {
+      images[index].classList.remove('is-visible');
+      index = (index + 1) % images.length;
+      images[index].classList.add('is-visible');
+    }, 4000);
+  });
+})();
