@@ -90,12 +90,12 @@
     "sectionExample": "サンプルテキスト",
     "sectionRiddle": "最後の難関",
     "bannerTitle": "スペイン語にふさわしいフォント",
-    "introText": "<em>Cuchilleras</em>は，スペイン語表記の新しい標準を目指すフォントです。Googleのオープンソースフォント<a href=\"https://fonts.google.com/noto\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Noto</strong></a>をベースに，スペイン語の3つの子音二重字（<strong><em>c'h</em></strong>，<strong><em>l'l</em></strong>，<strong><em>r'r</em></strong>）を置き換える<strong>3つの新しい文字</strong>を導入し，さらにスペイン語の伝統的な手書きの通りに<strong><em>z</em>と<em>7</em>に斜線</strong>を加えています。",
+    "introText": "<em>Cuchilleras</em>は，スペイン語表記の新しい標準を目指すフォントです．Googleのオープンソースフォント<a href=\"https://fonts.google.com/noto\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Noto</strong></a>をベースに，スペイン語の3つの子音二重字（<strong><em>c'h</em></strong>，<strong><em>l'l</em></strong>，<strong><em>r'r</em></strong>）を置き換える<strong>3つの新しい文字</strong>を導入し，さらにスペイン語の伝統的な手書きの通りに<strong><em>z</em>と<em>7</em>に斜線</strong>を加えています．",
     "downloadFont": "フォントをダウンロード",
     "downloadEssay": "エッセイをダウンロード（PDF）",
-    "freeOpenNote": "このフォントは<strong>無料</strong>で<strong>オープンソース</strong>のため，誰でも自由にダウンロード・使用・改変できます。",
+    "freeOpenNote": "このフォントは<strong>無料</strong>で<strong>オープンソース</strong>のため，誰でも自由にダウンロード・使用・改変できます．",
     "howToTypeTitle": "入力方法",
-    "howToTypeText": "これらの文字はすべてフォントに組み込まれており，普段通りスペイン語を入力するだけで<strong>自動的に<em>表示</em></strong>されます。<br>新しい文字を元の二重字に分割したい場合は，2つの文字の間に<em>アポストロフィ</em>（<strong>'</strong>）を入力するだけです。",
+    "howToTypeText": "これらの文字はすべてフォントに組み込まれており，普段通りスペイン語を入力するだけで<strong>自動的に<em>表示</em></strong>されます．<br>新しい文字を元の二重字に分割したい場合は，2つの文字の間に<em>アポストロフィ</em>（<strong>'</strong>）を入力するだけです．",
     "labelUppercase": "大文字",
     "labelLowercase": "小文字",
     "labelName": "名称",
@@ -114,9 +114,9 @@
     "sliderWeight": "太さ",
     "sliderWidth": "幅",
     "exampleQuote": "«<em>Las Cuchilleras</em> es una zona montañosa con formaciones rocosas verticales en forma de cuchillos ubicada en las proximidades de la <strong>Dehesa de Valgallego</strong> (Área Recreativa), en el término municipal de <strong>Torrelaguna</strong>. Alrededor de <em>Las Cuchilleras</em> podemos encontrar otros lugares de interés para senderistas como el <strong>Arroyo de San Vicente</strong>, la <strong>Atalaya de Arrebatacapas</strong> o la chopera».",
-    "exampleCaption": "フォントの名前の由来となった，スペイン・トレラグーナの実在の岩山の写真。",
+    "exampleCaption": "フォントの名前の由来となった，スペイン・トレラグーナの実在の岩山の写真．",
     "riddleIntro": "Cuchillerasのような表記法を採用すると，二重字の存在により<a href=\"https://static.ow.ly/docs/imperativo%20de%20salir%20con%20cl%C3%ADtico_4REK.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">これまで書き表せなかった唯一のスペイン語の文</a>が，ついに書けるようになります：",
     "riddlePhrase": "Sal'le al paso / Sal'le al encuentro",
-    "riddleExplanation": "この表記法では<strong><em>sal'le</em></strong>（重複する<em>l</em>）と<strong><em>salle</em></strong>（<em>l'l</em>）が書き分けられるため，期待通りに読めます。"
+    "riddleExplanation": "この表記法では<strong><em>sal'le</em></strong>（重複する<em>l</em>）と<strong><em>salle</em></strong>（<em>l'l</em>）が書き分けられるため，期待通りに読めます．"
   }
 }

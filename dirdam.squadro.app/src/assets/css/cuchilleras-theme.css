@@ -22,16 +22,34 @@
   font-display: swap;
 }
 
-/* Hero: a knife-blade-glint palette — dark rock umber sweeping to a warm
-   brass gold, echoing both the font's own name ("cuchillera" = a scabbard
-   of knives) and the gold accent the logo itself uses to highlight its new
-   ch/ll letters. Kept dark (unlike Fonts/Reflections' light parchment
-   themes) so the shared white heading/subtitle color still applies as-is. */
+/* Hero: three-stop palette (sky blue, cream, sage), the same
+   three-stop technique as .hero--work above. Light throughout like
+   Fonts/Reflections' own light themes rather than the shared dark sweep,
+   so — like those two — the heading/subtitle switch to a dark ink instead
+   of the shared white below. */
 .hero--cuchilleras {
-  --hero-c1: #3a2317;
-  --hero-c2: #c9962c;
-  --hero-blob-a-highlight: rgba(255, 214, 130, 0.5);
-  --hero-blob-b-highlight: rgba(139, 30, 30, 0.45);
+  --hero-c1: #5d94eb;
+  --hero-c2: #ffe2c3;
+  --hero-c3: #858e75;
+  --hero-blob-a-highlight: rgba(255, 255, 255, 0.6);
+  --hero-blob-b-highlight: rgba(133, 142, 117, 0.4);
+  background: linear-gradient(120deg, var(--hero-c1), var(--hero-c2), var(--hero-c3), var(--hero-c2), var(--hero-c1));
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--cuchilleras {
+    background: linear-gradient(135deg, var(--hero-c1), var(--hero-c2), var(--hero-c3));
+  }
+}
+
+.hero--cuchilleras h1 {
+  color: #3d3626;
+  text-shadow: 0 1px 3px rgba(255, 250, 240, 0.6);
+}
+
+.hero--cuchilleras .subtitle {
+  color: rgba(61, 54, 38, 0.85);
 }
 
 /* ---------- Font utility classes ----------
@@ -368,6 +386,10 @@
   object-fit: contain;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
+  /* Same rounded-corner/elevation language as .cuchilleras-photo and every
+     other card on the site, instead of a bare rectangle. */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card-resting);
 }
 
 .cuchilleras-gallery-item img.is-visible {

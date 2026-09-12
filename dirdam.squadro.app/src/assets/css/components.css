@@ -318,7 +318,8 @@
 .hero-globe,
 .hero-matrix,
 .hero-quill,
-.hero-glyphs {
+.hero-glyphs,
+.hero-digraphs {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -336,7 +337,8 @@
   .hero-globe,
   .hero-matrix,
   .hero-quill,
-  .hero-glyphs {
+  .hero-glyphs,
+  .hero-digraphs {
     display: none;
   }
 }
