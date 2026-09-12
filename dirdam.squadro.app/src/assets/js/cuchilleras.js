@@ -107,8 +107,10 @@
 })();
 
 /* Gallery: cross-fades each specimen box between its own stacked images
-   every few seconds. A separate IIFE (not gated on #font-test existing
-   above) since it's an independent feature of the page. */
+   every few seconds, with a thumbnail strip to jump straight to one —
+   picking a thumb holds that image for 6s, then the auto cross-fade
+   resumes on its own from there. A separate IIFE (not gated on #font-test
+   existing above) since it's an independent feature of the page. */
 (function () {
   var items = document.querySelectorAll('.cuchilleras-gallery-item');
   if (!items.length) return;
@@ -118,11 +120,43 @@
   items.forEach(function (item) {
     var images = item.querySelectorAll('img');
     if (images.length < 2) return;
+    var wrap = item.closest('.cuchilleras-gallery');
+    var thumbs = wrap ? wrap.querySelectorAll('.cuchilleras-gallery-thumb') : [];
     var index = 0;
-    setInterval(function () {
+    var timer = null;
+    var resumeTimeout = null;
+
+    function show(newIndex) {
+      if (newIndex === index) return;
       images[index].classList.remove('is-visible');
-      index = (index + 1) % images.length;
+      if (thumbs[index]) thumbs[index].classList.remove('is-active');
+      index = newIndex;
       images[index].classList.add('is-visible');
-    }, 4000);
+      if (thumbs[index]) thumbs[index].classList.add('is-active');
+    }
+
+    function startAuto() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () {
+        show((index + 1) % images.length);
+      }, 4000);
+    }
+
+    startAuto();
+
+    thumbs.forEach(function (thumb, i) {
+      thumb.addEventListener('click', function () {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        show(i);
+        resumeTimeout = setTimeout(function () {
+          resumeTimeout = null;
+          startAuto();
+        }, 6000);
+      });
+    });
   });
 })();

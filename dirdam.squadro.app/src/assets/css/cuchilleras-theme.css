@@ -357,7 +357,64 @@
    page's alternating background-photo effect, now demonstrating real
    words set in the font instead of just decorating the page. */
 .cuchilleras-gallery-grid {
+  margin-top: var(--space-5);
+}
+
+/* ---------- Gallery thumbs ----------
+   Pick a specific specimen instead of waiting for the auto cross-fade —
+   clicking one stops the cycle (see cuchilleras.js). A grey overlay marks
+   every thumb as "not the current one" except the active pick, the usual
+   selected/unselected convention for a thumbnail strip. */
+.cuchilleras-gallery-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-5);
   margin-top: var(--space-7);
+}
+
+.cuchilleras-gallery-thumb {
+  position: relative;
+  width: 64px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-page-bg);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.cuchilleras-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cuchilleras-gallery-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(60, 60, 65, 0.45);
+  transition: background var(--transition-fast);
+}
+
+.cuchilleras-gallery-thumb:hover::after {
+  background: rgba(60, 60, 65, 0.2);
+}
+
+.cuchilleras-gallery-thumb.is-active {
+  border-color: var(--color-brand-start);
+}
+
+.cuchilleras-gallery-thumb.is-active::after {
+  background: rgba(60, 60, 65, 0);
+}
+
+.cuchilleras-gallery-thumb:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
 }
 
 /* aspect-ratio 4/3 gives this box exactly enough height for a square
