@@ -1,6 +1,8 @@
 """Build the static dirdam.squadro.app site from its source fragments."""
 
+import hashlib
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -82,6 +84,30 @@ PARTIALS = SRC / "partials"
 I18N = SRC / "i18n"
 DIST = ROOT / "dist"
 LANGUAGES = ("en", "es", "ja")
+
+# Cache-busting: Cloudflare edge-caches static file types (css/js/images) by
+# extension regardless of any Cache-Control we send, so a deploy that changes
+# one leaves the old version served until someone manually purges. Appending
+# a short hash of the file's own current content as a query string sidesteps
+# that entirely — a content change produces a new URL, so there is nothing
+# stale to purge; browsers and Cloudflare alike just fetch the new one.
+_ASSET_REF_RE = re.compile(r'(href|src)="(/assets/[^"?]+)"')
+
+
+def _asset_hash(rel_path: str) -> str | None:
+    file_path = SRC / rel_path.lstrip("/")
+    if not file_path.is_file():
+        return None
+    return hashlib.sha256(file_path.read_bytes()).hexdigest()[:10]
+
+
+def cachebust(html: str) -> str:
+    def repl(match: re.Match) -> str:
+        attr, path = match.group(1), match.group(2)
+        digest = _asset_hash(path)
+        return f'{attr}="{path}?v={digest}"' if digest else match.group(0)
+
+    return _ASSET_REF_RE.sub(repl, html)
 
 
 def read_text(path):
@@ -172,7 +198,7 @@ def main():
     common = json.loads(read_text(I18N / "common.json"))
     for page in PAGES:
         (DIST / f'{page["name"]}.html').write_text(
-            build_page(page, partials, common), encoding="utf-8"
+            cachebust(build_page(page, partials, common)), encoding="utf-8"
         )
     shutil.copytree(SRC / "assets", DIST / "assets")
     print(f"Built {len(PAGES)} pages -> dist/")
