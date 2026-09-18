@@ -133,6 +133,24 @@
                 </div>
             </div>
 
+            <!-- Retirement Suitability Map -->
+            <div class="tool-card active retiro" data-badges="geography statistics" onclick="if (!event.target.closest('a')) window.location.href='/retiro'">
+                <div class="view-badge" data-app="retiro"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🏡</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg><span data-i18n="badgeStatistics">Statistics</span></span>
+                </div>
+                <div class="tool-title" data-i18n="retiroTitle">Retirement Suitability Map</div>
+                <div class="tool-description" data-i18n="retiroDesc">
+                    Multi-criteria suitability map for choosing where to retire in the Sierra Norte de
+                    Madrid, or across the whole region — weigh what matters most to you (nature, healthcare,
+                    transit to Madrid, wildfire risk, and more) and see the best-fit spots light up on the map.
+                    App interface in Spanish only.
+                </div>
+                <a href="/retiro" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Surnames Evolution -->
             <div class="tool-card active surnames" data-badges="statistics evolution" onclick="if (!event.target.closest('a')) window.location.href='/surnames'">
                 <div class="view-badge" data-app="surnames"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>

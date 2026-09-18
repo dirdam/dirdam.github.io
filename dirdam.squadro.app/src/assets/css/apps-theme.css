@@ -202,6 +202,29 @@
             border-color: rgba(216, 0, 39, 0.25);
         }
 
+        .tool-card.retiro {
+            /* Same sage-to-sand wash the app itself uses as a background. */
+            background-image: linear-gradient(160deg, #e2ebe3 0%, #eef2e8 30%, #f4efdf 65%, #f7e8cf 100%);
+            border-color: #3b5744;
+        }
+
+        .tool-card.retiro .tool-title {
+            background: linear-gradient(120deg, #3b5744 0%, #b9835a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.retiro .tool-description {
+            color: #5f6d63;
+        }
+
+        .tool-card.retiro .badge {
+            background: rgba(59, 87, 68, 0.08);
+            color: #3b5744;
+            border-color: rgba(59, 87, 68, 0.25);
+        }
+
         .tool-card.surnames {
             /* Same warm cream-to-sage wash the app itself uses as a background. */
             background-image: linear-gradient(160deg, #f3ede3 0%, #eef4ec 45%, #eaf1ee 100%);

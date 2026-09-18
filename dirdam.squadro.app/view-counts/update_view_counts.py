@@ -35,11 +35,12 @@ APP_PATTERNS = {
     'solis': re.compile(r'^/solis/?(?:\?.*)?$'),
     'timezones': re.compile(r'^/timezones/?(?:\?.*)?$'),
     'squadro-stats': re.compile(r'^/squadro-stats/?(?:\?.*)?$'),
-    # /flags, /surnames, /phyllotaxis, and /predator-prey 301-redirect the
-    # bare path to add the trailing slash (see their nginx location blocks)
+    # /flags, /surnames, /phyllotaxis, /predator-prey, and /retiro 301-redirect
+    # the bare path to add the trailing slash (see their nginx location blocks)
     # — only count the slashed form so a single visit isn't counted twice
     # across the redirect hop.
     'flags': re.compile(r'^/flags/(?:\?.*)?$'),
+    'retiro': re.compile(r'^/retiro/(?:\?.*)?$'),
     'surnames': re.compile(r'^/surnames/(?:\?.*)?$'),
     'phyllotaxis': re.compile(r'^/phyllotaxis/(?:\?.*)?$'),
     'predator-prey': re.compile(r'^/predator-prey/(?:\?.*)?$'),
