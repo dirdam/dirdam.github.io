@@ -381,6 +381,38 @@
             border-color: rgba(30, 42, 74, 0.25);
         }
 
+        .tool-card.light-polarization {
+            /* Same technique the app itself uses: a real polarization-axis
+               field sampled point by point from Malus's law (cos^2(theta)),
+               not a decorative image — marks shrink near the crossed 90deg
+               angle and grow again as they realign, in the app's own
+               violet/teal identity colors. */
+            background-image:
+                url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22340%22%20height%3D%22150%22%20viewBox%3D%220%200%20340%20150%22%3E%3Cg%20stroke%3D%22%233d2a5c%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%3E%3Cline%20x1%3D%220%22%20y1%3D%2238%22%20x2%3D%220%22%20y2%3D%2252%22%20stroke-opacity%3D%220.67%22/%3E%3Cline%20x1%3D%2218.7%22%20y1%3D%2238.3%22%20x2%3D%2221.3%22%20y2%3D%2251.7%22%20stroke-opacity%3D%220.65%22/%3E%3Cline%20x1%3D%2237.7%22%20y1%3D%2239.1%22%20x2%3D%2242.3%22%20y2%3D%2250.9%22%20stroke-opacity%3D%220.61%22/%3E%3Cline%20x1%3D%2257.1%22%20y1%3D%2240.3%22%20x2%3D%2262.9%22%20y2%3D%2249.7%22%20stroke-opacity%3D%220.55%22/%3E%3Cline%20x1%3D%2277%22%20y1%3D%2241.7%22%20x2%3D%2283%22%20y2%3D%2248.3%22%20stroke-opacity%3D%220.47%22/%3E%3Cline%20x1%3D%2297.2%22%20y1%3D%2242.9%22%20x2%3D%22102.8%22%20y2%3D%2247.1%22%20stroke-opacity%3D%220.38%22/%3E%3Cline%20x1%3D%22117.7%22%20y1%3D%2243.8%22%20x2%3D%22122.3%22%20y2%3D%2246.2%22%20stroke-opacity%3D%220.31%22/%3E%3Cline%20x1%3D%22138.2%22%20y1%3D%2244.5%22%20x2%3D%22141.8%22%20y2%3D%2245.5%22%20stroke-opacity%3D%220.25%22/%3E%3Cline%20x1%3D%22158.5%22%20y1%3D%2244.9%22%20x2%3D%22161.5%22%20y2%3D%2245.1%22%20stroke-opacity%3D%220.22%22/%3E%3Cline%20x1%3D%22178.5%22%20y1%3D%2245.1%22%20x2%3D%22181.5%22%20y2%3D%2244.9%22%20stroke-opacity%3D%220.22%22/%3E%3Cline%20x1%3D%22198.2%22%20y1%3D%2245.5%22%20x2%3D%22201.8%22%20y2%3D%2244.5%22%20stroke-opacity%3D%220.25%22/%3E%3Cline%20x1%3D%22217.7%22%20y1%3D%2246.2%22%20x2%3D%22222.3%22%20y2%3D%2243.8%22%20stroke-opacity%3D%220.31%22/%3E%3Cline%20x1%3D%22237.2%22%20y1%3D%2247.1%22%20x2%3D%22242.8%22%20y2%3D%2242.9%22%20stroke-opacity%3D%220.38%22/%3E%3Cline%20x1%3D%22257%22%20y1%3D%2248.3%22%20x2%3D%22263%22%20y2%3D%2241.7%22%20stroke-opacity%3D%220.47%22/%3E%3Cline%20x1%3D%22277.1%22%20y1%3D%2249.7%22%20x2%3D%22282.9%22%20y2%3D%2240.3%22%20stroke-opacity%3D%220.55%22/%3E%3Cline%20x1%3D%22297.7%22%20y1%3D%2250.9%22%20x2%3D%22302.3%22%20y2%3D%2239.1%22%20stroke-opacity%3D%220.61%22/%3E%3Cline%20x1%3D%22318.7%22%20y1%3D%2251.7%22%20x2%3D%22321.3%22%20y2%3D%2238.3%22%20stroke-opacity%3D%220.65%22/%3E%3Cline%20x1%3D%22340%22%20y1%3D%2252%22%20x2%3D%22340%22%20y2%3D%2238%22%20stroke-opacity%3D%220.67%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%232ba7a3%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%3E%3Cline%20x1%3D%22-2.5%22%20y1%3D%2299.5%22%20x2%3D%222.5%22%20y2%3D%22110.5%22%20stroke-opacity%3D%220.59%22/%3E%3Cline%20x1%3D%2217%22%20y1%3D%22100.8%22%20x2%3D%2223%22%20y2%3D%22109.2%22%20stroke-opacity%3D%220.52%22/%3E%3Cline%20x1%3D%2237%22%20y1%3D%22102.1%22%20x2%3D%2243%22%20y2%3D%22107.9%22%20stroke-opacity%3D%220.44%22/%3E%3Cline%20x1%3D%2257.4%22%20y1%3D%22103.3%22%20x2%3D%2262.6%22%20y2%3D%22106.7%22%20stroke-opacity%3D%220.36%22/%3E%3Cline%20x1%3D%2277.9%22%20y1%3D%22104.1%22%20x2%3D%2282.1%22%20y2%3D%22105.9%22%20stroke-opacity%3D%220.29%22/%3E%3Cline%20x1%3D%2298.3%22%20y1%3D%22104.6%22%20x2%3D%22101.7%22%20y2%3D%22105.4%22%20stroke-opacity%3D%220.24%22/%3E%3Cline%20x1%3D%22118.5%22%20y1%3D%22105%22%20x2%3D%22121.5%22%20y2%3D%22105%22%20stroke-opacity%3D%220.22%22/%3E%3Cline%20x1%3D%22138.4%22%20y1%3D%22105.3%22%20x2%3D%22141.6%22%20y2%3D%22104.7%22%20stroke-opacity%3D%220.23%22/%3E%3Cline%20x1%3D%22158%22%20y1%3D%22105.7%22%20x2%3D%22162%22%20y2%3D%22104.3%22%20stroke-opacity%3D%220.27%22/%3E%3Cline%20x1%3D%22177.5%22%20y1%3D%22106.5%22%20x2%3D%22182.5%22%20y2%3D%22103.5%22%20stroke-opacity%3D%220.33%22/%3E%3Cline%20x1%3D%22197.1%22%20y1%3D%22107.5%22%20x2%3D%22202.9%22%20y2%3D%22102.5%22%20stroke-opacity%3D%220.41%22/%3E%3Cline%20x1%3D%22217%22%20y1%3D%22108.8%22%20x2%3D%22223%22%20y2%3D%22101.2%22%20stroke-opacity%3D%220.50%22/%3E%3Cline%20x1%3D%22237.3%22%20y1%3D%22110.1%22%20x2%3D%22242.7%22%20y2%3D%2299.9%22%20stroke-opacity%3D%220.57%22/%3E%3Cline%20x1%3D%22258.1%22%20y1%3D%22111.2%22%20x2%3D%22261.9%22%20y2%3D%2298.8%22%20stroke-opacity%3D%220.63%22/%3E%3Cline%20x1%3D%22279.2%22%20y1%3D%22111.9%22%20x2%3D%22280.8%22%20y2%3D%2298.1%22%20stroke-opacity%3D%220.66%22/%3E%3Cline%20x1%3D%22300.5%22%20y1%3D%22112%22%20x2%3D%22299.5%22%20y2%3D%2298%22%20stroke-opacity%3D%220.67%22/%3E%3Cline%20x1%3D%22321.7%22%20y1%3D%22111.4%22%20x2%3D%22318.3%22%20y2%3D%2298.6%22%20stroke-opacity%3D%220.64%22/%3E%3Cline%20x1%3D%22342.5%22%20y1%3D%22110.5%22%20x2%3D%22337.5%22%20y2%3D%2299.5%22%20stroke-opacity%3D%220.59%22/%3E%3C/g%3E%3C/svg%3E"),
+                linear-gradient(160deg, #f5f0fb 0%, #eef1f4 45%, #e3f3f0 100%);
+            background-repeat: no-repeat, no-repeat;
+            background-position: bottom center, center;
+            background-size: 100% 130px, cover;
+            border-color: #3d2a5c;
+        }
+
+        .tool-card.light-polarization .tool-title {
+            background: linear-gradient(120deg, #3d2a5c 0%, #2ba7a3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tool-card.light-polarization .tool-description {
+            color: #5a5a5a;
+        }
+
+        .tool-card.light-polarization .badge {
+            background: rgba(61, 42, 92, 0.08);
+            color: #3d2a5c;
+            border-color: rgba(61, 42, 92, 0.25);
+        }
+
         .tool-icon {
             font-size: 3em;
             margin-bottom: 15px;
