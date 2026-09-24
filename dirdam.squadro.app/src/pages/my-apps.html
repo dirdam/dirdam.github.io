@@ -8,7 +8,7 @@
         <p class="filter-hint" data-i18n="filterHint">Filter by category:</p>
         <div class="filter-bar" id="filterBar" role="group" aria-label="Filter apps by category">
             <button type="button" class="filter-chip" data-badge="astronomy" aria-pressed="false">
-                <svg class="badge-icon"><use href="#icon-orbit"></use></svg>
+                <svg class="badge-icon"><use href="#icon-telescope"></use></svg>
                 <span data-i18n="badgeAstronomy">Astronomy</span>
             </button>
             <button type="button" class="filter-chip" data-badge="colors" aria-pressed="false">
@@ -34,6 +34,10 @@
             <button type="button" class="filter-chip" data-badge="math" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-pi"></use></svg>
                 <span data-i18n="badgeMath">Math</span>
+            </button>
+            <button type="button" class="filter-chip" data-badge="physics" aria-pressed="false">
+                <svg class="badge-icon"><use href="#icon-magnet"></use></svg>
+                <span data-i18n="badgePhysics">Physics</span>
             </button>
             <button type="button" class="filter-chip" data-badge="statistics" aria-pressed="false">
                 <svg class="badge-icon"><use href="#icon-bar-chart-3"></use></svg>
@@ -67,7 +71,7 @@
                 <div class="view-badge" data-app="solis"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">☀️</div>
                 <div class="tool-badges">
-                    <span class="badge"><svg class="badge-icon"><use href="#icon-orbit"></use></svg><span data-i18n="badgeAstronomy">Astronomy</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-telescope"></use></svg><span data-i18n="badgeAstronomy">Astronomy</span></span>
                     <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
                 </div>
                 <div class="tool-title">Ex parte Solis</div>
@@ -211,11 +215,11 @@
             </div>
 
             <!-- Stroboscopic Effect -->
-            <div class="tool-card active strobe" data-badges="math time" onclick="if (!event.target.closest('a')) window.location.href='/strobe'">
+            <div class="tool-card active strobe" data-badges="physics time" onclick="if (!event.target.closest('a')) window.location.href='/strobe'">
                 <div class="view-badge" data-app="strobe"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🛞</div>
                 <div class="tool-badges">
-                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-magnet"></use></svg><span data-i18n="badgePhysics">Physics</span></span>
                     <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
                 </div>
                 <div class="tool-title" data-i18n="strobeTitle">Stroboscopic Effect</div>
@@ -231,11 +235,11 @@
             </div>
 
             <!-- Double Pendulum -->
-            <div class="tool-card active double-pendulum" data-badges="math time" onclick="if (!event.target.closest('a')) window.location.href='/double-pendulum'">
+            <div class="tool-card active double-pendulum" data-badges="physics time" onclick="if (!event.target.closest('a')) window.location.href='/double-pendulum'">
                 <div class="view-badge" data-app="double-pendulum"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🕰️</div>
                 <div class="tool-badges">
-                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-magnet"></use></svg><span data-i18n="badgePhysics">Physics</span></span>
                     <span class="badge"><svg class="badge-icon"><use href="#icon-clock"></use></svg><span data-i18n="badgeTime">Time</span></span>
                 </div>
                 <div class="tool-title" data-i18n="doublePendulumTitle">Double Pendulum</div>
@@ -251,11 +255,12 @@
             </div>
 
             <!-- Light Polarization -->
-            <div class="tool-card active light-polarization" data-badges="math" onclick="if (!event.target.closest('a')) window.location.href='/light-polarization'">
+            <div class="tool-card active light-polarization" data-badges="physics colors" onclick="if (!event.target.closest('a')) window.location.href='/light-polarization'">
                 <div class="view-badge" data-app="light-polarization"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
                 <div class="tool-icon">🕶️</div>
                 <div class="tool-badges">
-                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-magnet"></use></svg><span data-i18n="badgePhysics">Physics</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-palette"></use></svg><span data-i18n="badgeColors">Colors</span></span>
                 </div>
                 <div class="tool-title" data-i18n="lightPolarizationTitle">Light Polarization</div>
                 <div class="tool-description" data-i18n="lightPolarizationDesc">
