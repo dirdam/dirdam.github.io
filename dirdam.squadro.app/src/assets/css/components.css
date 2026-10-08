@@ -996,6 +996,69 @@
   margin-bottom: 0;
 }
 
+/* ---------- Work-in-progress items ----------
+   Pages that exist but aren't ready: shown in the nav menu and landing
+   cards with a WIP badge, but not clickable (no href / link overlay). */
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px var(--space-4);
+  border-radius: var(--radius-pill);
+  background: #fff4d6;
+  color: #8a5a00;
+  border: 1px dashed #e0a800;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.card--wip {
+  cursor: default;
+}
+
+.card--wip .card-photo-media img {
+  filter: grayscale(0.7);
+  opacity: 0.8;
+}
+
+.card--wip .card-photo-body .card-description {
+  color: var(--color-text-subtle);
+}
+
+.card--photo .card-photo-media .wip-badge {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-5);
+  right: var(--space-5);
+}
+
+.nav-dropdown-item.is-wip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.nav-dropdown-item.is-wip svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-item.is-wip .wip-badge {
+  margin-left: auto;
+}
+
 /* ---------- Game showcase (Games page) ---------- */
 /* One highlighted game (image + title + description) whose content swaps
    when a thumbnail below it is clicked — see game-showcase.js. */
