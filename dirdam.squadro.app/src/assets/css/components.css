@@ -319,7 +319,8 @@
 .hero-matrix,
 .hero-quill,
 .hero-glyphs,
-.hero-digraphs {
+.hero-digraphs,
+.hero-squadro-board {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -338,7 +339,8 @@
   .hero-matrix,
   .hero-quill,
   .hero-glyphs,
-  .hero-digraphs {
+  .hero-digraphs,
+  .hero-squadro-board {
     display: none;
   }
 }
