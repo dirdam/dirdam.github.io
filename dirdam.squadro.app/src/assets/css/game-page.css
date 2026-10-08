@@ -1,0 +1,290 @@
+/* Shared styles for the board-game pages (Squadro, Marco Polo's Map).
+   Built on the site's own components (hero, content-card, pill-nav,
+   btn-pill) — only what those don't already cover lives here. */
+
+/* ---------- Hero themes ---------- */
+.hero--squadro {
+  --hero-c1: #1b2a49;
+  --hero-c2: #e8833a;
+  --hero-blob-a-highlight: rgba(255, 200, 140, 0.5);
+  --hero-blob-b-highlight: rgba(120, 150, 220, 0.5);
+}
+
+.hero--marco-polo {
+  --hero-c1: #1f3c88;
+  --hero-c2: #c0392b;
+  --hero-blob-a-highlight: rgba(255, 190, 170, 0.5);
+  --hero-blob-b-highlight: rgba(130, 170, 240, 0.55);
+}
+
+/* ---------- Shared bits ---------- */
+.content-card h3 {
+  margin-bottom: var(--space-4);
+}
+
+.content-card h3.mt,
+.content-card .mt {
+  margin-top: var(--space-8);
+}
+
+.content-card p + p,
+.content-card div > p + p {
+  margin-top: var(--space-5);
+}
+
+.aside {
+  font-size: 0.92em;
+  color: var(--color-text-muted);
+}
+
+.flag {
+  width: 16px;
+  height: auto;
+  vertical-align: -2px;
+  border-radius: 2px;
+}
+
+.flag--lg { width: 20px; }
+.flag--xl { width: 25px; vertical-align: -4px; }
+
+.logo-inline {
+  height: 56px;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 var(--space-3);
+}
+
+.c-blue { color: #1d4ed8; font-weight: 700; }
+.c-red { color: #dc2626; font-weight: 700; }
+
+/* ---------- Gallery ---------- */
+.game-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.gallery-main {
+  margin: 0;
+  text-align: center;
+}
+
+.gallery-main img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: var(--color-badge-bg);
+}
+
+.gallery-main figcaption {
+  min-height: 1.4em;
+  margin-top: var(--space-3);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--space-4);
+}
+
+.gallery-thumb {
+  padding: 0;
+  border: 3px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-badge-bg);
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-thumb:hover { transform: translateY(-2px); }
+
+.gallery-thumb[aria-pressed="true"] {
+  border-color: var(--color-badge-text);
+}
+
+/* ---------- Video / media ---------- */
+.video-embed {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  margin: var(--space-5) auto 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+audio {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: var(--space-4) 0 var(--space-3);
+}
+
+.game-figure {
+  margin: var(--space-7) 0;
+  text-align: center;
+}
+
+.game-figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+.game-figure figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+.game-mini {
+  display: block;
+  margin: 0 auto var(--space-6);
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Rules / formulas ---------- */
+.rules-list {
+  padding-left: var(--space-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.rules-list ol {
+  margin-top: var(--space-4);
+  padding-left: var(--space-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.formula {
+  text-align: center;
+  font-family: 'Cambria Math', 'STIX Two Math', Georgia, serif;
+  font-size: 1.2em;
+  margin: var(--space-5) 0;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- References ---------- */
+.ref-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ref-list > li { line-height: 1.5; }
+
+.ref-list .starred {
+  font-size: 1.05em;
+}
+
+.ref-name {
+  font-weight: 700;
+}
+
+.ref-list--videos > li + li {
+  margin-top: var(--space-6);
+}
+
+.ref-icon--yt { color: #dc2626; }
+
+.more-reviews {
+  margin-top: var(--space-6);
+}
+
+.more-reviews summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-badge-text);
+  list-style: none;
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  background: var(--color-badge-bg);
+}
+
+.more-reviews summary::-webkit-details-marker { display: none; }
+
+.more-reviews .when-open,
+.more-reviews[open] .when-closed { display: none; }
+.more-reviews[open] .when-open { display: inline; }
+
+.more-reviews .ref-list { margin-top: var(--space-6); }
+
+.quote-carousel {
+  text-align: center;
+  min-height: 7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.quote-text {
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+.quote-author {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.stars {
+  display: inline-block;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  background: linear-gradient(90deg, #f59e0b calc(var(--rating) / 5 * 100%), #d1d5db 0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Sale ---------- */
+.shop-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.shop-link { margin-right: var(--space-3); }
+
+.actions { margin-top: var(--space-6); }
+
+.cta-card {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+.cta-card .card-block-title { margin-bottom: var(--space-6); }
+
+.video-embed + .aside {
+  margin-top: var(--space-3);
+  text-align: center;
+}
