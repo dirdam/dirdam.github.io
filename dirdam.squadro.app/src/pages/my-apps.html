@@ -1,6 +1,5 @@
 <nav class="pill-nav" aria-label="On this page">
   <a href="#apps" data-i18n="navApps"></a>
-  <a href="#hobby" data-i18n="navHobby"></a>
 </nav>
 
 <h2 class="card-block-title"><span class="card-block-icon"><svg><use href="#icon-square-code"></use></svg></span><span data-i18n="navApps"></span></h2>
@@ -300,6 +299,21 @@
                 </div>
             </div>
 
+            <!-- Fenced Functions -->
+            <div class="tool-card active" data-badges="math geography" onclick="if (!event.target.closest('a')) window.location.href='/fenced-functions'">
+                <div class="view-badge" data-app="fenced-functions"><svg><use href="#icon-eye"></use></svg><span class="view-count"></span></div>
+                <div class="tool-icon">🔲</div>
+                <div class="tool-badges">
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-pi"></use></svg><span data-i18n="badgeMath">Math</span></span>
+                    <span class="badge"><svg class="badge-icon"><use href="#icon-globe"></use></svg><span data-i18n="badgeGeography">Geography</span></span>
+                </div>
+                <div class="tool-title" data-i18n="fencedTitle">Fenced functions</div>
+                <div class="tool-description" data-i18n-html="fencedDesc">
+                    Launch the app, write a function <em>f(x)</em> under "Function to depict" and see how it would look like in a confined space.
+                </div>
+                <a href="/fenced-functions" class="tool-button" data-i18n="openApp">Open App</a>
+            </div>
+
             <!-- Placeholder for future app -->
             <div class="tool-card coming-soon">
                 <div class="tool-icon">🚀</div>
@@ -310,25 +324,4 @@
                 <span class="coming-soon-badge" data-i18n="comingSoon">Coming Soon</span>
             </div>
         </div>
-</section>
-
-<h2 class="card-block-title"><span class="card-block-icon"><svg><use href="#icon-puzzle"></use></svg></span><span data-i18n="navHobby"></span></h2>
-<section id="hobby">
-  <div class="content-card">
-    <h3 data-i18n="fencedTitle"></h3>
-    <p data-i18n-html="fencedDesc"></p>
-    <p data-i18n-html="fencedMotivation"></p>
-    <h4 style="margin-top: var(--space-7);">How it works</h4>
-    <ul>
-      <li data-i18n-html="fencedHow0"></li>
-      <li data-i18n="fencedHow1"></li>
-      <li data-i18n="fencedHow2"></li>
-      <li data-i18n-html="fencedHow3"></li>
-      <li data-i18n-html="fencedHow4"></li>
-    </ul>
-    <div class="tool-actions" style="margin-top: var(--space-7);">
-      <a href="https://www.desmos.com/calculator/ikrlmabqvz" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--primary" data-i18n="openDesmos"></a>
-      <a href="https://dirdam.github.io/projects/fenced_functions.html" target="_blank" rel="noopener noreferrer" class="btn-pill" style="background: var(--overlay-black-06);" data-i18n="openGallery"></a>
-    </div>
-  </div>
 </section>

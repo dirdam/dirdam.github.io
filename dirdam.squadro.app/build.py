@@ -54,7 +54,7 @@ PAGES = [
      "hero_canvas_class": "hero-digraphs", "hero_canvas_tag": "svg",
      "extra_js": ["/assets/js/cuchilleras-glyph-bg.js", "/assets/js/cuchilleras.js"]},
     {"name": "my-apps", "title": "My Apps — Adrï",
-     "description": "Hobby projects and interactive apps.",
+     "description": "Interactive apps.",
      "hero_variant": "hero--compact", "hero_theme": "hero--myapps",
      "has_subtitle": True, "extra_css": ["/assets/css/apps-theme.css"],
      "hero_canvas_class": "hero-matrix",

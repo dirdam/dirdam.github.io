@@ -46,6 +46,7 @@ APP_PATTERNS = {
     'predator-prey': re.compile(r'^/predator-prey/(?:\?.*)?$'),
     'strobe': re.compile(r'^/strobe/(?:\?.*)?$'),
     'double-pendulum': re.compile(r'^/double-pendulum/(?:\?.*)?$'),
+    'fenced-functions': re.compile(r'^/fenced-functions/(?:\?.*)?$'),
 }
 
 BOT_UA_RE = re.compile(r'bot|spider|crawl|curl|wget|python-requests|python-httpx|scrapy', re.IGNORECASE)
