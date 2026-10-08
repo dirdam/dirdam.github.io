@@ -116,6 +116,13 @@
             cursor: default;
         }
 
+        /* The count is still collected and wired up (see view-counts.js), just
+           not shown while the app is unfinished. Remove the .wip class — and
+           this rule goes with it — once the card links to the live app. */
+        .tool-card.wip .view-badge {
+            display: none !important;
+        }
+
         .tool-card.wip:hover {
             transform: none;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);

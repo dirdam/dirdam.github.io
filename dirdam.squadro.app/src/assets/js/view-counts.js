@@ -11,7 +11,8 @@
    the cards happen to be written in — no rebuild/redeploy needed when the
    counts change. Cards with no tracked view count (e.g. externally-hosted
    apps with no view-badge) count as 0 and sort to the bottom, keeping their
-   relative order; the "coming soon" placeholder always stays last. */
+   relative order. Cards marked .wip (unfinished apps) sit out of the ranking
+   and come right after it; the "coming soon" placeholder always stays last. */
 document.addEventListener('DOMContentLoaded', function () {
   const badges = document.querySelectorAll('.view-badge');
   if (!badges.length) return;
@@ -40,11 +41,13 @@ function sortCardsByViews(views) {
     const app = badge && badge.getAttribute('data-app');
     return (app && views[app]) || 0;
   };
+  const isWip = function (card) { return card.classList.contains('wip'); };
   const ranked = cards
-    .filter(function (card) { return !card.classList.contains('coming-soon'); })
+    .filter(function (card) { return !card.classList.contains('coming-soon') && !isWip(card); })
     .map(function (card, i) { return { card: card, i: i, v: viewsFor(card) }; })
     .sort(function (a, b) { return b.v - a.v || a.i - b.i; })
     .map(function (x) { return x.card; });
+  const wip = cards.filter(isWip);
   const comingSoon = cards.filter(function (card) { return card.classList.contains('coming-soon'); });
-  ranked.concat(comingSoon).forEach(function (card) { grid.appendChild(card); });
+  ranked.concat(wip, comingSoon).forEach(function (card) { grid.appendChild(card); });
 }

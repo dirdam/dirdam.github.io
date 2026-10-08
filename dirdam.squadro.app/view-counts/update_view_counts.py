@@ -46,6 +46,7 @@ APP_PATTERNS = {
     'predator-prey': re.compile(r'^/predator-prey/(?:\?.*)?$'),
     'strobe': re.compile(r'^/strobe/(?:\?.*)?$'),
     'double-pendulum': re.compile(r'^/double-pendulum/(?:\?.*)?$'),
+    'light-polarization': re.compile(r'^/light-polarization/(?:\?.*)?$'),
     'fenced-functions': re.compile(r'^/fenced-functions/(?:\?.*)?$'),
 }
 
