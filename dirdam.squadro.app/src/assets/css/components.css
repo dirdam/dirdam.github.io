@@ -360,14 +360,17 @@
 }
 
 /* The cursive "Adrï" signature wordmark (KnotFont's "A" glyph), used as the
-   landing-page hero title in place of plain text. Kept at a fixed size
-   across breakpoints rather than shrunk on mobile — matches the original
-   site's own proportions — and relies on the sitewide `overflow-x: hidden`
-   safety net rather than responsive shrinking to stay well-behaved on
-   narrow viewports. */
+   landing-page hero title in place of plain text. The glyph's ink is about
+   three times wider than its advance width (78px at 130px), so it used to
+   spill far outside its own box and rely on nothing clipping it — which
+   mobile Safari sometimes does, shearing off the sides. The box is now
+   sized to contain the whole signature (2.1em, centred), and the font-size
+   only shrinks on very narrow screens so that box never exceeds the page. */
 .hero-signature {
   display: inline-block;
-  font-size: 130px;
+  width: 2.1em;
+  text-align: center;
+  font-size: min(130px, 38vw);
   color: #ffffff;
   text-shadow: 0 2px 10px var(--overlay-black-20);
 }
@@ -746,9 +749,25 @@
 }
 
 @media screen and (max-width: 480px) {
+  /* The pills wrap onto two rows here, so a menu anchored to its own pill
+     (left:0 / left:50%) can poke past the viewport's right edge — even
+     while closed, since visibility:hidden still lays it out, which is what
+     made the whole page scroll sideways into empty space on phones.
+     Anchor every menu to the full-width bar instead and centre it, capped
+     to the viewport. */
+  .nav-dropdown {
+    position: static;
+  }
+
   .nav-dropdown-menu {
-    left: 0;
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - var(--space-6) * 2);
+  }
+
+  .nav-dropdown-menu-inner {
+    min-width: 0;
   }
 }
 
