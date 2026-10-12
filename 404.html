@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Adrï has moved — dirdam.squadro.app</title>
+	<meta name="description" content="Adrián Jiménez Pascual's site has moved to dirdam.squadro.app.">
+	<link rel="canonical" href="https://dirdam.squadro.app/">
+	<link rel="shortcut icon" href="https://dirdam.github.io/images/lasso_logo.ico">
+	<style>
+		/* Same look as the new site's landing hero (dirdam.squadro.app):
+		   drifting brand gradient, two soft glows, the network canvas, the
+		   "Adrï" signature and the "Knotably Clever" subtitle — stretched to
+		   fill the whole page, with one call to action to the new site. */
+		@font-face {
+			font-family: 'KnotFont';
+			src: url('https://dirdam.github.io/assets/css/fonts/KnotFont.otf') format('opentype');
+			font-display: swap;
+		}
+
+		:root {
+			--c1: #667eea;
+			--c2: #764ba2;
+		}
+
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+
+		html, body { height: 100%; }
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			color: #fff;
+			background: var(--c2);
+		}
+
+		.hero {
+			position: relative;
+			overflow: hidden;
+			min-height: 100vh;
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 20px;
+			text-align: center;
+			background: linear-gradient(120deg, var(--c1), var(--c2), var(--c1));
+			background-size: 200% 200%;
+			animation: drift-base 13s ease-in-out infinite;
+		}
+
+		.hero::before,
+		.hero::after {
+			content: '';
+			position: absolute;
+			inset: -25%;
+			z-index: 0;
+			pointer-events: none;
+		}
+
+		.hero::before {
+			background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.32), transparent 45%),
+			            radial-gradient(circle at 68% 62%, var(--c2), transparent 55%);
+			mix-blend-mode: soft-light;
+			animation: drift-a 8s ease-in-out infinite;
+		}
+
+		.hero::after {
+			background: radial-gradient(circle at 62% 28%, rgba(180, 150, 255, 0.55), transparent 50%),
+			            radial-gradient(circle at 22% 72%, var(--c1), transparent 55%);
+			mix-blend-mode: overlay;
+			animation: drift-b 6s ease-in-out infinite;
+		}
+
+		/* z-index 1: ::after paints after real children, so the canvas needs
+		   to sit explicitly above it (same as the new site). */
+		.hero-network {
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.content {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.signature {
+			display: inline-block;
+			width: 2.1em;
+			font-family: 'KnotFont', serif;
+			font-weight: normal;   /* the <h1> would otherwise fake-bold the glyph */
+			font-style: normal;
+			font-size: min(170px, 42vw);
+			line-height: 1;
+			color: #fff;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.visually-hidden {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			white-space: nowrap;
+		}
+
+		.subtitle {
+			margin-top: 28px;
+			font-size: 1.25em;
+			font-variant: small-caps;
+			letter-spacing: 0.08em;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.moved {
+			margin-top: 56px;
+			font-size: 1em;
+			color: rgba(255, 255, 255, 0.85);
+		}
+
+		.go {
+			display: inline-flex;
+			align-items: center;
+			gap: 14px;
+			margin-top: 18px;
+			padding: 20px 40px;
+			border-radius: 999px;
+			background: #fff;
+			color: var(--c2);
+			font-size: 1.3em;
+			font-weight: 700;
+			text-decoration: none;
+			box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+			animation: pulse 2.8s ease-in-out infinite;
+		}
+
+		.go:hover,
+		.go:focus-visible {
+			transform: translateY(-3px) scale(1.03);
+			box-shadow: 0 16px 44px rgba(40, 20, 90, 0.45);
+			animation-play-state: paused;
+		}
+
+		.go:focus-visible {
+			outline: 3px solid rgba(255, 255, 255, 0.8);
+			outline-offset: 4px;
+		}
+
+		.go svg {
+			width: 24px;
+			height: 24px;
+			transition: transform 0.2s ease;
+		}
+
+		.go:hover svg { transform: translateX(5px); }
+
+		.url {
+			margin-top: 18px;
+			font-size: 0.95em;
+			letter-spacing: 0.04em;
+			color: rgba(255, 255, 255, 0.75);
+		}
+
+		/* EN / ES / 日本語 switch, same shape as the new site's toggle, in
+		   translucent white so it reads on the purple background. */
+		.lang-toggle {
+			display: inline-flex;
+			gap: 2px;
+			margin-top: 28px;
+			padding: 3px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.16);
+		}
+
+		.lang-toggle button {
+			padding: 6px 14px;
+			border: none;
+			border-radius: 999px;
+			background: transparent;
+			color: rgba(255, 255, 255, 0.85);
+			font: inherit;
+			font-size: 0.85em;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background 0.2s ease, color 0.2s ease;
+		}
+
+		.lang-toggle button:hover { color: #fff; }
+
+		.lang-toggle button[aria-pressed="true"] {
+			background: #fff;
+			color: var(--c2);
+		}
+
+		.lang-toggle button:focus-visible {
+			outline: 2px solid #fff;
+			outline-offset: 2px;
+		}
+
+		@keyframes drift-base {
+			0%   { background-position: 0% 30%; }
+			22%  { background-position: 65% 10%; }
+			47%  { background-position: 100% 70%; }
+			71%  { background-position: 30% 95%; }
+			100% { background-position: 0% 30%; }
+		}
+
+		@keyframes drift-a {
+			0%   { transform: translate(0%, 0%) scale(1); }
+			28%  { transform: translate(7%, -9%) scale(1.12); }
+			54%  { transform: translate(-6%, 5%) scale(0.94); }
+			81%  { transform: translate(9%, 6%) scale(1.06); }
+			100% { transform: translate(0%, 0%) scale(1); }
+		}
+
+		@keyframes drift-b {
+			0%   { transform: translate(0%, 0%) scale(1); }
+			33%  { transform: translate(-8%, 6%) scale(1.1); }
+			62%  { transform: translate(6%, -7%) scale(0.92); }
+			86%  { transform: translate(-4%, -4%) scale(1.05); }
+			100% { transform: translate(0%, 0%) scale(1); }
+		}
+
+		/* A soft halo that breathes outwards, inviting the click. */
+		@keyframes pulse {
+			0%, 100% { box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35), 0 0 0 0 rgba(255, 255, 255, 0.45); }
+			50%      { box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35), 0 0 0 14px rgba(255, 255, 255, 0); }
+		}
+
+		@media (max-width: 480px) {
+			.go { padding: 18px 30px; font-size: 1.15em; }
+			.moved { margin-top: 44px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.hero, .hero::before, .hero::after, .go { animation: none; }
+			.hero { background: linear-gradient(135deg, var(--c1), var(--c2)); }
+			.hero-network { display: none; }
+		}
+	</style>
+</head>
+<body>
+	<main class="hero">
+		<canvas class="hero-network" aria-hidden="true"></canvas>
+		<div class="content">
+			<h1>
+				<span class="signature" aria-hidden="true">A</span>
+				<span class="visually-hidden">Adrián Jiménez Pascual</span>
+			</h1>
+			<p class="subtitle" data-i18n="subtitle">Knotably Clever</p>
+			<p class="moved" data-i18n="moved">This site has a new home.</p>
+			<a class="go" href="https://dirdam.squadro.app/">
+				<span data-i18n="go">Step into the new site</span>
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+			</a>
+			<p class="url">dirdam.squadro.app</p>
+			<div class="lang-toggle" role="group" aria-label="Language">
+				<button type="button" data-lang="en" lang="en">EN</button>
+				<button type="button" data-lang="es" lang="es">ES</button>
+				<button type="button" data-lang="ja" lang="ja">日本語</button>
+			</div>
+		</div>
+	</main>
+	<script>
+		// Same three languages as the new site: the browser's language by
+		// default, switchable with the toggle (remembered for next visit).
+		(function () {
+			var t = {
+				en: { subtitle: 'Knotably Clever', moved: 'This site has a new home.', go: 'Step into the new site' },
+				es: { subtitle: 'Ingenio al desnudo', moved: 'Esta web tiene un nuevo hogar.', go: 'Entra en la nueva web' },
+				ja: { subtitle: '結びの一番', moved: 'このサイトは引っ越しました。', go: '新しいサイトへ' }
+			};
+			var KEY = 'dirdam-redirect-lang';
+			var buttons = document.querySelectorAll('.lang-toggle button');
+
+			function apply(lang) {
+				document.documentElement.lang = lang;
+				document.querySelectorAll('[data-i18n]').forEach(function (el) {
+					el.textContent = t[lang][el.getAttribute('data-i18n')];
+				});
+				buttons.forEach(function (b) {
+					b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+				});
+			}
+
+			var saved = null;
+			try { saved = localStorage.getItem(KEY); } catch (e) {}
+			var browser = (navigator.language || 'en').slice(0, 2);
+			apply(t[saved] ? saved : t[browser] ? browser : 'en');
+
+			buttons.forEach(function (b) {
+				b.addEventListener('click', function () {
+					var lang = b.getAttribute('data-lang');
+					apply(lang);
+					try { localStorage.setItem(KEY, lang); } catch (e) {}
+				});
+			});
+		})();
+	</script>
+	<script src="https://dirdam.github.io/assets/js/network-bg.js"></script>
+</body>
+</html>

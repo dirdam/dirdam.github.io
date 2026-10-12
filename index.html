@@ -1,266 +1,311 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Adrï</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/sections.css">
+	<title>Adrï has moved — dirdam.squadro.app</title>
+	<meta name="description" content="Adrián Jiménez Pascual's site has moved to dirdam.squadro.app.">
+	<link rel="canonical" href="https://dirdam.squadro.app/">
 	<link rel="shortcut icon" href="images/lasso_logo.ico">
+	<style>
+		/* Same look as the new site's landing hero (dirdam.squadro.app):
+		   drifting brand gradient, two soft glows, the network canvas, the
+		   "Adrï" signature and the "Knotably Clever" subtitle — stretched to
+		   fill the whole page, with one call to action to the new site. */
+		@font-face {
+			font-family: 'KnotFont';
+			src: url('assets/css/fonts/KnotFont.otf') format('opentype');
+			font-display: swap;
+		}
+
+		:root {
+			--c1: #667eea;
+			--c2: #764ba2;
+		}
+
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+
+		html, body { height: 100%; }
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			color: #fff;
+			background: var(--c2);
+		}
+
+		.hero {
+			position: relative;
+			overflow: hidden;
+			min-height: 100vh;
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 20px;
+			text-align: center;
+			background: linear-gradient(120deg, var(--c1), var(--c2), var(--c1));
+			background-size: 200% 200%;
+			animation: drift-base 13s ease-in-out infinite;
+		}
+
+		.hero::before,
+		.hero::after {
+			content: '';
+			position: absolute;
+			inset: -25%;
+			z-index: 0;
+			pointer-events: none;
+		}
+
+		.hero::before {
+			background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.32), transparent 45%),
+			            radial-gradient(circle at 68% 62%, var(--c2), transparent 55%);
+			mix-blend-mode: soft-light;
+			animation: drift-a 8s ease-in-out infinite;
+		}
+
+		.hero::after {
+			background: radial-gradient(circle at 62% 28%, rgba(180, 150, 255, 0.55), transparent 50%),
+			            radial-gradient(circle at 22% 72%, var(--c1), transparent 55%);
+			mix-blend-mode: overlay;
+			animation: drift-b 6s ease-in-out infinite;
+		}
+
+		/* z-index 1: ::after paints after real children, so the canvas needs
+		   to sit explicitly above it (same as the new site). */
+		.hero-network {
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.content {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.signature {
+			display: inline-block;
+			width: 2.1em;
+			font-family: 'KnotFont', serif;
+			font-weight: normal;   /* the <h1> would otherwise fake-bold the glyph */
+			font-style: normal;
+			font-size: min(170px, 42vw);
+			line-height: 1;
+			color: #fff;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.visually-hidden {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			white-space: nowrap;
+		}
+
+		.subtitle {
+			margin-top: 28px;
+			font-size: 1.25em;
+			font-variant: small-caps;
+			letter-spacing: 0.08em;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.moved {
+			margin-top: 56px;
+			font-size: 1em;
+			color: rgba(255, 255, 255, 0.85);
+		}
+
+		.go {
+			display: inline-flex;
+			align-items: center;
+			gap: 14px;
+			margin-top: 18px;
+			padding: 20px 40px;
+			border-radius: 999px;
+			background: #fff;
+			color: var(--c2);
+			font-size: 1.3em;
+			font-weight: 700;
+			text-decoration: none;
+			box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+			animation: pulse 2.8s ease-in-out infinite;
+		}
+
+		.go:hover,
+		.go:focus-visible {
+			transform: translateY(-3px) scale(1.03);
+			box-shadow: 0 16px 44px rgba(40, 20, 90, 0.45);
+			animation-play-state: paused;
+		}
+
+		.go:focus-visible {
+			outline: 3px solid rgba(255, 255, 255, 0.8);
+			outline-offset: 4px;
+		}
+
+		.go svg {
+			width: 24px;
+			height: 24px;
+			transition: transform 0.2s ease;
+		}
+
+		.go:hover svg { transform: translateX(5px); }
+
+		.url {
+			margin-top: 18px;
+			font-size: 0.95em;
+			letter-spacing: 0.04em;
+			color: rgba(255, 255, 255, 0.75);
+		}
+
+		/* EN / ES / 日本語 switch, same shape as the new site's toggle, in
+		   translucent white so it reads on the purple background. */
+		.lang-toggle {
+			display: inline-flex;
+			gap: 2px;
+			margin-top: 28px;
+			padding: 3px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.16);
+		}
+
+		.lang-toggle button {
+			padding: 6px 14px;
+			border: none;
+			border-radius: 999px;
+			background: transparent;
+			color: rgba(255, 255, 255, 0.85);
+			font: inherit;
+			font-size: 0.85em;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background 0.2s ease, color 0.2s ease;
+		}
+
+		.lang-toggle button:hover { color: #fff; }
+
+		.lang-toggle button[aria-pressed="true"] {
+			background: #fff;
+			color: var(--c2);
+		}
+
+		.lang-toggle button:focus-visible {
+			outline: 2px solid #fff;
+			outline-offset: 2px;
+		}
+
+		@keyframes drift-base {
+			0%   { background-position: 0% 30%; }
+			22%  { background-position: 65% 10%; }
+			47%  { background-position: 100% 70%; }
+			71%  { background-position: 30% 95%; }
+			100% { background-position: 0% 30%; }
+		}
+
+		@keyframes drift-a {
+			0%   { transform: translate(0%, 0%) scale(1); }
+			28%  { transform: translate(7%, -9%) scale(1.12); }
+			54%  { transform: translate(-6%, 5%) scale(0.94); }
+			81%  { transform: translate(9%, 6%) scale(1.06); }
+			100% { transform: translate(0%, 0%) scale(1); }
+		}
+
+		@keyframes drift-b {
+			0%   { transform: translate(0%, 0%) scale(1); }
+			33%  { transform: translate(-8%, 6%) scale(1.1); }
+			62%  { transform: translate(6%, -7%) scale(0.92); }
+			86%  { transform: translate(-4%, -4%) scale(1.05); }
+			100% { transform: translate(0%, 0%) scale(1); }
+		}
+
+		/* A soft halo that breathes outwards, inviting the click. */
+		@keyframes pulse {
+			0%, 100% { box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35), 0 0 0 0 rgba(255, 255, 255, 0.45); }
+			50%      { box-shadow: 0 12px 36px rgba(40, 20, 90, 0.35), 0 0 0 14px rgba(255, 255, 255, 0); }
+		}
+
+		@media (max-width: 480px) {
+			.go { padding: 18px 30px; font-size: 1.15em; }
+			.moved { margin-top: 44px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.hero, .hero::before, .hero::after, .go { animation: none; }
+			.hero { background: linear-gradient(135deg, var(--c1), var(--c2)); }
+			.hero-network { display: none; }
+		}
+	</style>
 </head>
 <body>
-
-<!-- Header -->
-<header id="header" class="alt">
-	<div class="inner">
-		<h1><font id="signature" face="KnotFont" class="knots name" style="font-size: 150px; line-height: 150px;"></font></h1>
-		<p id="header_title"></p>
-	</div>
-</header>
-
-<!-- Wrapper -->
-<div id="wrapper">
-
-	<!-- Language Selection -->
-	<div id="language">
-		<span>
-			<a onclick="window.location.hash='#en'; window.location.reload()">
-				<img src="assets/flags/en.png" style="width: 50px" title="English">
+	<main class="hero">
+		<canvas class="hero-network" aria-hidden="true"></canvas>
+		<div class="content">
+			<h1>
+				<span class="signature" aria-hidden="true">A</span>
+				<span class="visually-hidden">Adrián Jiménez Pascual</span>
+			</h1>
+			<p class="subtitle" data-i18n="subtitle">Knotably Clever</p>
+			<p class="moved" data-i18n="moved">This site has a new home.</p>
+			<a class="go" href="https://dirdam.squadro.app/">
+				<span data-i18n="go">Step into the new site</span>
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</a>
-			<a onclick="window.location.hash='#es'; window.location.reload()">
-				<img src="assets/flags/es.svg" style="width: 50px" title="Español">
-			</a>
-			<a onclick="window.location.hash='#ja'; window.location.reload()">
-				<img src="assets/flags/jp.svg" style="width: 50px" title="日本語">
-			</a>
-		</span>
-	</div>
+			<p class="url">dirdam.squadro.app</p>
+			<div class="lang-toggle" role="group" aria-label="Language">
+				<button type="button" data-lang="en" lang="en">EN</button>
+				<button type="button" data-lang="es" lang="es">ES</button>
+				<button type="button" data-lang="ja" lang="ja">日本語</button>
+			</div>
+		</div>
+	</main>
+	<script>
+		// Same three languages as the new site: the browser's language by
+		// default, switchable with the toggle (remembered for next visit).
+		(function () {
+			var t = {
+				en: { subtitle: 'Knotably Clever', moved: 'This site has a new home.', go: 'Step into the new site' },
+				es: { subtitle: 'Ingenio al desnudo', moved: 'Esta web tiene un nuevo hogar.', go: 'Entra en la nueva web' },
+				ja: { subtitle: '結びの一番', moved: 'このサイトは引っ越しました。', go: '新しいサイトへ' }
+			};
+			var KEY = 'dirdam-redirect-lang';
+			var buttons = document.querySelectorAll('.lang-toggle button');
 
-	<!-- Banner -->
-	<section id="intro" class="main">
-		<font id="face" face="KnotFont" class="knots me" style="font-size: 100px; line-height: 0px;"></font>
-		<h2 style="margin-top: 64px;">Adrián Jiménez Pascual</h2>
-		<p id="intro_title"></p>
-		<ul class="actions">
-			<li><a id="intro_subtitle" class="button big"></a></li>
-		</ul>
-	</section>
+			function apply(lang) {
+				document.documentElement.lang = lang;
+				document.querySelectorAll('[data-i18n]').forEach(function (el) {
+					el.textContent = t[lang][el.getAttribute('data-i18n')];
+				});
+				buttons.forEach(function (b) {
+					b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+				});
+			}
 
-	<!-- Items -->
-	<section class="main items">
-		<article class="item">
-			<header>
-				<a id="main_background"><img src="images/pic_ginkgo.jpg" alt=""></a>
-				<h3 id="main_background_title"></h3>
-			</header>
-			<p id="main_background_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_background_button" href="background.html" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_work"><img src="images/pic_intercity.jpg" alt=""></a>
-				<h3 id="main_work_title"></h3>
-			</header>
-			<p id="main_work_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_work_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_squadro"><img src="images/pic_squadro_top.png" alt=""></a>
-				<h3 id="main_squadro_title"></h3>
-			</header>
-			<p id="main_squadro_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_squadro_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_marco"><img src="images/pic_marco_top2.jpg" alt=""></a>
-				<h3 id="main_marco_title"></h3>
-			</header>
-			<p id="main_marco_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_marco_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_fonts"><img src="images/pic_fonts2.png" alt=""></a>
-				<h3 id="main_fonts_title"></h3>
-			</header>
-			<p id="main_fonts_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_fonts_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_cuchilleras"><img src="images/cuchilleras/pic_cuchilleras2.jpg" alt=""></a>
-				<h3 id="main_cuchilleras_title"></h3>
-			</header>
-			<p id="main_cuchilleras_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_cuchilleras_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_apps"><img src="images/pic_apps.png" alt=""></a>
-				<h3 id="main_apps_title"></h3>
-			</header>
-			<p id="main_apps_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_apps_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_projects"><img src="images/pic_earth.jpg" alt=""></a>
-				<h3 id="main_projects_title"></h3>
-			</header>
-			<p id="main_projects_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_projects_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_games"><img src="images/pic_snes.png" alt=""></a>
-				<h3 id="main_games_title"></h3>
-			</header>
-			<p id="main_games_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_games_button" class="button"></a></li>
-			</ul>
-		</article>
-		
-		<article class="item">
-			<header>
-				<a id="main_trips"><img src="images/pic_world.svg" alt=""></a>
-				<h3 id="main_trips_title"></h3>
-			</header>
-			<p id="main_trips_subtitle"></p>
-			<ul class="actions">
-				<li><a id="main_trips_button" class="button"></a></li>
-			</ul>
-		</article>
-	</section>
+			var saved = null;
+			try { saved = localStorage.getItem(KEY); } catch (e) {}
+			var browser = (navigator.language || 'en').slice(0, 2);
+			apply(t[saved] ? saved : t[browser] ? browser : 'en');
 
-	<!-- Call To Action -->
-	<section id="cta" class="main special">
-		<h2 id="cta_title"></h2>
-		<ul class="actions">
-			<li><a id="cta_actions" class="button big"></a></li>
-		</ul>
-	</section>
-
-	<!-- Footer -->
-	<footer id="footer">
-		<p id="footer_text" class="copyright"></p>
-	</footer>
-
-</div>
-
-<!-- Bottom Sticker -->
-<div id="bottom" style="z-index: 1;">
-	<a id="lasso_link">
-		<span title="&copy; Adrián Jiménez Pascual" id="lasso_img" style="display: block;">
-			<div class="sticker lasso" style="width:2.5cm; height:2.5cm;"></div>
-		</span>
-	</a>
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/sticker.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="assets/js/smooth.js"></script>
-			<script>
-				// Languages
-				var fillers = {
-					"header_title": {"type": "text", "en": "Knotably clever", "es": "Ingenio al desnudo", "ja": "結びの一番"},
-					"intro_title": {"type": "text", "en": "Made of ideas.", "es": "Hecho de ideas.", "ja": "アイディアでできている．"},
-					"intro_subtitle": {"type": "text", "en": "About me", "es": "Sobre mí", "ja": "私について"},
-					"main_background": {"type": "href", "en": "background.html", "es": "background.html#es", "ja": "background.html#ja"},
-					"main_background_title": {"type": "text", "en": "Academic background", "es": "Historial académico", "ja": "学歴"},
-					"main_background_subtitle": {"type": "html", "en": 'From undergraduate student to <em>Doctor of Philosophy</em>.<br>Papers and talks can be found here.', "es": 'De estudiante universitario a <em>Philosophiæ doctor</em>.<br>Aquí se pueden encontrar artículos y ponencias.', "ja": '学部生から博士まで．<br>ペーパーと参加した勉強会を閲覧できます．'},
-					"main_background_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_work": {"type": "href", "en": "work.html", "es": "work.html#es", "ja": "work.html#ja"},
-					"main_work_title": {"type": "text", "en": "Working experience", "es": "Experiencia laboral", "ja": "職歴"},
-					"main_work_subtitle": {"type": "text", "en": "Part-time jobs, internship and full-time employment.", "es": "Trabajos a tiempo parcial, prácticas en empresa y empleo a tiempo completo.", "ja": "アルバイト，インターンシップと正社員．"},
-					"main_work_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_squadro": {"type": "href", "en": "squadro.html", "es": "squadro.html#es", "ja": "squadro.html#ja"},
-					"main_squadro_title": {"type": "text", "en": "Squadro", "es": "Squadro", "ja": "Squadro"},
-					"main_squadro_subtitle": {"type": "html", "en": "<em>Squadro</em> &nbsp;is a 2-player strategy board game created by myself and published by GIGAMIC. Learn about it and play it online here.", "es": "<em>Squadro</em> &nbsp;es un juego de mesa de estrategia para 2 jugadores creado por mí mismo y publicado por GIGAMIC. Conoce más acerca de él y juégalo online aquí.", "ja": "<em>Squadro</em>（スクアドロ）は私が考案した2人用戦略ボードゲームです．GIGAMICによって出版されています．<em>Squadro</em> についてもっと知って、オンラインで遊んでみてください．"},
-					"main_squadro_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_marco": {"type": "href", "en": "marco_polo.html", "es": "marco_polo.html#es", "ja": "marco_polo.html#ja"},
-					"main_marco_title": {"type": "text", "en": "Marco Polo's Map", "es": "El mapa de Marco Polo", "ja": "マルコ・ポーロの地図"},
-					"main_marco_subtitle": {"type": "html", "en": "<em>Marco Polo's Map</em> &nbsp;is a puzzle game created by myself and published by HANAYAMA. Learn about it here.", "es": "<em>El mapa de Marco Polo</em> &nbsp;es un juego-puzzle creado por mí mismo y publicado por HANAYAMA. Conoce más acerca de él aquí.", "ja": "<em>マルコ・ポーロの地図</em>は私が考案したパズルゲームです．ハナヤマによって出版されています．<em>マルコ・ポーロの地図</em> についてもっと知るのにこちらをクリックしてください．"},
-					"main_marco_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_fonts": {"type": "href", "en": "fonts.html", "es": "fonts.html#es", "ja": "fonts.html#ja"},
-					"main_fonts_title": {"type": "text", "en": "Fonts", "es": "Fuentes", "ja": "フォント"},
-					"main_fonts_subtitle": {"type": "html", "en": "Beautiful fonts to type exotic languages. Download the available ones or send your request here.", "es": "Fuentes bonitas para escribir idiomas exóticos. Descarga las disponibles o envía tu encargo aquí.", "ja": "不思議な言語を書くための素敵なフォント収集．こちらでフォントのダウンロードやリクエストはできます．"},
-					"main_fonts_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_cuchilleras": {"type": "href", "en": "cuchilleras.html", "es": "cuchilleras.html", "ja": "cuchilleras.html"},
-					"main_cuchilleras_title": {"type": "text", "en": "Cuchilleras", "es": "Cuchilleras", "ja": "Cuchilleras"},
-					"main_cuchilleras_subtitle": {"type": "html", "en": "The definitive font for writing in Spanish.<br>(Explanation only available in Spanish)", "es": "La fuente definitiva para escribir en español.", "ja": "スペイン語で書くための決定的なフォント．<br>（説明文はスペイン語のみ）"},
-					"main_cuchilleras_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_apps": {"type": "href", "en": "apps.html", "es": "apps.html#es", "ja": "apps.html#ja"},
-					"main_apps_title": {"type": "text", "en": "Apps", "es": "Apps", "ja": "アプリ"},
-					"main_apps_subtitle": {"type": "html", "en": "My deployed apps. Have fun!", "es": "Mis aplicaciones implementadas. ¡Diviértete!", "ja": "自分がデプロイしたアプリ．楽しんで！"},
-					"main_apps_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_projects": {"type": "href", "en": "projects.html", "es": "projects.html#es", "ja": "projects.html#ja"},
-					"main_projects_title": {"type": "text", "en": "Exploring", "es": "Explorar", "ja": "探検"},
-					"main_projects_subtitle": {"type": "text", "en": "Programming as a hobby. I have created several online apps and games. You can try them and play them here.", "es": "Programación como afición. He creado varias aplicaciones y juegos disponibles online. Puedes probarlas y jugarlos aquí.", "ja": "プログラミングを，趣味として．様々なアプリやゲームを開発しました．こちらで試してみてください．"},
-					"main_projects_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_games": {"type": "href", "en": "games.html", "es": "games.html#es", "ja": "games.html#ja"},
-					"main_games_title": {"type": "text", "en": "Games recommendations", "es": "Recomendaciones de juegos", "ja": "おすすめのゲーム"},
-					"main_games_subtitle": {"type": "text", "en": "Selection of games for thinkers.", "es": "Selección de juegos para pensadores.", "ja": "考えることが好きな人への選抜．"},
-					"main_games_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"main_trips": {"type": "href", "en": "trips.html", "es": "trips.html#es", "ja": "trips.html#ja"},
-					"main_trips_title": {"type": "text", "en": "Trips", "es": "Viajes", "ja": "旅行"},
-					"main_trips_subtitle": {"type": "text", "en": "All the places where I have been.", "es": "Todos los lugares en los que he estado.", "ja": "私が訪問したことがある全ての場所．"},
-					"main_trips_button": {"type": "text", "en": "More", "es": "Más", "ja": "もっと"},
-					"back_text": {"type": "html", "en": 'Back to: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> TOP</a> <span class="space"></span> <a href="./" class="button big"><span class="icon fas fa-home"></span> MAIN PAGE</a>', "es": 'Volver a: <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> ARRIBA</a> <span class="space"></span> <a href="./#es" class="button big"><span class="icon fas fa-home"></span> PÁGINA PRINCIPAL</a>', "ja": 'もどる： <span class="space"></span> <a href="#header" class="button big"><span class="icon fas fa-arrow-up"></span> トップ</a> <span class="space"></span> <a href="./#ja" class="button big"><span class="icon fas fa-home"></span> ホーム</a>'},
-					"cta_title": {"type": "text", "en": "Want more?", "es": "¿Quieres más?", "ja": "もっと知りたい？"},
-					"cta_actions": {"type": "text", "en": "Let me know", "es": "Házmelo saber", "ja": "教えてください"},
-					"lasso_link": {"type": "href", "en": "./", "es": "./#es", "ja": "./#ja"},
-					"footer_text": {"type": "html", "en": '&copy; Adrï, 2025.', "es": '&copy; Adrï, 2025.', "ja": '&copy; Adrï，2025．'}
-				};
-				fillLanguages(fillers);
-				// Others
-				var others = { // Necessary to avoid overlap
-					"main_background_button": {"type": "href", "en": "background.html", "es": "background.html#es", "ja": "background.html#ja"},
-					"main_work_button": {"type": "href", "en": "work.html", "es": "work.html#es", "ja": "work.html#ja"},
-					"main_squadro_button": {"type": "href", "en": "squadro.html", "es": "squadro.html#es", "ja": "squadro.html#ja"},
-					"main_marco_button": {"type": "href", "en": "marco_polo.html", "es": "marco_polo.html#es", "ja": "marco_polo.html#ja"},
-					"main_fonts_button": {"type": "href", "en": "fonts.html", "es": "fonts.html#es", "ja": "fonts.html#ja"},
-					"main_cuchilleras_button": {"type": "href", "en": "cuchilleras.html", "es": "cuchilleras.html#es", "ja": "cuchilleras.html#ja"},
-					"main_apps_button": {"type": "href", "en": "apps.html", "es": "apps.html#es", "ja": "apps.html#ja"},
-					"main_projects_button": {"type": "href", "en": "projects.html", "es": "projects.html#es", "ja": "projects.html#ja"},
-					"main_games_button": {"type": "href", "en": "games.html", "es": "games.html#es", "ja": "games.html#ja"},
-					"main_trips_button": {"type": "href", "en": "trips.html", "es": "trips.html#es", "ja": "trips.html#ja"},
-					"intro_subtitle": {"type": "href", "en": "about.html", "es": "about.html#es", "ja": "about.html#ja"},
-					"cta_actions": {"type": "href", "en": "contact.html", "es": "contact.html#es", "ja": "contact.html#ja"}
-				};
-				fillLanguages(others);
-			</script>
-	</body>
+			buttons.forEach(function (b) {
+				b.addEventListener('click', function () {
+					var lang = b.getAttribute('data-lang');
+					apply(lang);
+					try { localStorage.setItem(KEY, lang); } catch (e) {}
+				});
+			});
+		})();
+	</script>
+	<script src="assets/js/network-bg.js"></script>
+</body>
 </html>
